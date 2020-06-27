@@ -31,7 +31,7 @@ module.exports = {
     'import/no-unresolved': [
       'error',
       {
-        ignore: ['@app', '@core'],
+        ignore: ['test-utils', '@app', '@core', '@assets', '@test'],
       },
     ], // ignore module import
     'max-len': ['error', 120], // change max length for a line to 120
@@ -54,5 +54,8 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
+  },
+  env: {
+    jest: true,
   },
 };
