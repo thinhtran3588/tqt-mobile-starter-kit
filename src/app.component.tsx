@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {RootLayout, LoadingScreen, Text} from '@core/components';
+import {RootLayout, LoadingScreen, Text, Icon} from '@core/components';
 import {useTranslation, I18nextProvider} from 'react-i18next';
 import {sleep} from '@tqt/mobile';
 import {i18next} from './i18n';
@@ -20,6 +20,7 @@ const BaseApp = (): JSX.Element => {
       <Text uppercase>uppercase</Text>
       <Text lowercase>LOWERCASE</Text>
       <Text lowercase>{t('settings')}</Text>
+      <Icon name='home' size={25} />
     </RootLayout>
   );
 };

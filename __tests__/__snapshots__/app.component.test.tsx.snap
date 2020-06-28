@@ -257,6 +257,26 @@ exports[`renders app correctly 2`] = `
           >
             settings
           </Text>
+          <Text
+            allowFontScaling={false}
+            style={
+              Array [
+                Object {
+                  "color": undefined,
+                  "fontSize": 25,
+                },
+                undefined,
+                Object {
+                  "fontFamily": "Material Design Icons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
         </SafeAreaView>
       </View>
     </I18nextProvider>
