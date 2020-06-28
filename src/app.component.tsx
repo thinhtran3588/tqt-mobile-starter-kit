@@ -1,11 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import {RootLayout, LoadingScreen, Text, Icon} from '@core/components';
+import {RootLayout, LoadingScreen, Text, Icon, PaperProvider, PaperDefaultTheme, Button, Alert} from '@core/components';
 import {useTranslation, I18nextProvider} from 'react-i18next';
 import {sleep} from '@tqt/mobile';
 import {i18next} from './i18n';
 
 const BaseApp = (): JSX.Element => {
   const {t} = useTranslation('common');
+
+  const onPress = (): void => {
+    Alert.alert('Alert', 'test');
+  };
 
   return (
     <RootLayout>
@@ -21,12 +25,24 @@ const BaseApp = (): JSX.Element => {
       <Text lowercase>LOWERCASE</Text>
       <Text lowercase>{t('settings')}</Text>
       <Icon name='home' size={25} />
+      <Button icon='camera' mode='contained' onPress={onPress}>
+        Press me
+      </Button>
     </RootLayout>
   );
 };
 
 export const App = (): JSX.Element => {
   const [isBootstrapping, setIsBootstrapping] = useState(true);
+  const theme: typeof PaperDefaultTheme = {
+    ...PaperDefaultTheme,
+    colors: {
+      ...PaperDefaultTheme.colors,
+      primary: 'tomato',
+      accent: 'yellow',
+    },
+    dark: true,
+  };
   useEffect(() => {
     (async () => {
       await sleep(1000);
@@ -38,7 +54,9 @@ export const App = (): JSX.Element => {
   }
   return (
     <I18nextProvider i18n={i18next}>
-      <BaseApp />
+      <PaperProvider theme={theme}>
+        <BaseApp />
+      </PaperProvider>
     </I18nextProvider>
   );
 };
