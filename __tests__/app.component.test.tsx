@@ -5,6 +5,7 @@ import {App} from '@app/app.component';
 
 it('renders app correctly', async () => {
   const {baseElement, getByText} = render(<App />);
+  expect(toJSON(baseElement)).toMatchSnapshot();
   await wait(() => getByText('paragraph'));
   expect(toJSON(baseElement)).toMatchSnapshot();
 });
