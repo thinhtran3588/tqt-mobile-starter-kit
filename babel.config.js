@@ -11,6 +11,7 @@ module.exports = {
           '@core': './src/core',
           '@assets': './src/assets',
           '@settings': './src/modules/settings',
+          '@samples': './src/modules/samples',
         },
       },
     ],

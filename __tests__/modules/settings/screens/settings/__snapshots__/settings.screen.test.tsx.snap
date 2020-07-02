@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={true}
+    pointerEvents="box-none"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <SafeAreaView
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#00bcd4",
+            "elevation": 4,
+            "zIndex": 0,
+          },
+          Object {
+            "shadowColor": "#000000",
+            "shadowOffset": Object {
+              "height": 3,
+              "width": 0,
+            },
+            "shadowOpacity": 0.24,
+            "shadowRadius": 4,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#00bcd4",
+            "elevation": 0,
+            "flexDirection": "row",
+            "height": 56,
+            "marginTop": 0,
+            "paddingHorizontal": 4,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "width": 48,
+            }
+          }
+        />
+        <TouchableWithoutFeedback
+          disabled={true}
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "flex": 1,
+                  "paddingHorizontal": 12,
+                },
+                Array [
+                  false,
+                  Object {
+                    "alignItems": "center",
+                  },
+                  undefined,
+                ],
+              ]
+            }
+          >
+            <Text
+              accessibilityRole="header"
+              accessibilityTraits="header"
+              accessible={true}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#000000",
+                    "fontFamily": "System",
+                    "fontWeight": "400",
+                    "textAlign": "left",
+                  },
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                    },
+                    Object {
+                      "fontSize": 17,
+                    },
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              common:settings
+            </Text>
+          </View>
+        </TouchableWithoutFeedback>
+        <View
+          style={
+            Object {
+              "width": 48,
+            }
+          }
+        />
+      </View>
+    </SafeAreaView>
+    <Text
+      style={
+        Array [
+          undefined,
+          Object {
+            "fontSize": 12,
+          },
+        ]
+      }
+    >
+      Settings
+    </Text>
+  </View>
+</View>
+`;

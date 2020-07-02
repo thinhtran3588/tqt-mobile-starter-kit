@@ -43,7 +43,8 @@
       "@app/*": ["src/*"],
       "@core/*": ["src/core/*"],
       "@assets/*": ["src/assets/*"],
-      "@settings/*": ["src/modules/settings/*"]
+      "@settings/*": ["src/modules/settings/*"],
+      "@samples/*": ["src/modules/samples/*"]
     },
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */
