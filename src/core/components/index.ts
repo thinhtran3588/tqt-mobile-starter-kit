@@ -10,5 +10,6 @@ export {
   ActivityIndicator,
   Avatar,
   Badge,
+  Banner,
 } from 'react-native-paper';
 export {StatusBar, Alert, ScrollView} from 'react-native';

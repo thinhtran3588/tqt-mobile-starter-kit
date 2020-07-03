@@ -2,7 +2,7 @@ import React from 'react';
 import {Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {Appbar, Card, Colors, Alert, ScrollView} from '@core/components';
-import {ActivityIndicatorSample, TextSample, AvatarSample, BadgeSample} from './components';
+import {ActivityIndicatorSample, TextSample, AvatarSample, BadgeSample, BannerSample} from './components';
 import {styles} from './component-list.styles';
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
@@ -44,6 +44,7 @@ export const ComponentListScreen = (): JSX.Element => {
           }}
         />
       </Appbar.Header>
+      <BannerSample />
       <ScrollView>
         {componentList.map((component, index) => (
           <Card key={index.toString()} style={styles.card}>
