@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Avatar, Colors} from '@core/components';
 import AppIcon from '@assets/images/app-icon-128.png';
-import {styles} from './avatar.styles';
+import {styles} from './avatar-sample.styles';
 
 export const AvatarSample = (): JSX.Element => {
   return (

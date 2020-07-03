@@ -9,5 +9,6 @@ export {
   Card,
   ActivityIndicator,
   Avatar,
+  Badge,
 } from 'react-native-paper';
-export {StatusBar, Alert} from 'react-native';
+export {StatusBar, Alert, ScrollView} from 'react-native';
