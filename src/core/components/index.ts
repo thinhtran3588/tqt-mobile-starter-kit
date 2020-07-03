@@ -9,4 +9,4 @@ export {
   Card,
   ActivityIndicator,
 } from 'react-native-paper';
-export {StatusBar, View, Alert} from 'react-native';
+export {StatusBar, Alert} from 'react-native';

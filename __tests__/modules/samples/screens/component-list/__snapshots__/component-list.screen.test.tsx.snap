@@ -51,13 +51,121 @@ exports[`renders correctly 1`] = `
           }
         }
       >
-        <View
-          style={
+        <
+          accessibilityComponentType="button"
+          accessibilityLabel="Back"
+          accessibilityRole="button"
+          accessibilityStates={Array []}
+          accessibilityTraits="button"
+          centered={true}
+          disabled={false}
+          hitSlop={
             Object {
-              "width": 48,
+              "bottom": 6,
+              "left": 6,
+              "right": 6,
+              "top": 6,
             }
           }
-        />
+          style={
+            Array [
+              Object {
+                "overflow": "hidden",
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "margin": 6,
+                  "overflow": "hidden",
+                },
+                Object {
+                  "borderRadius": 18,
+                  "height": 36,
+                  "width": 36,
+                },
+                undefined,
+                undefined,
+              ],
+            ]
+          }
+          underlayColor="rgba(0, 0, 0, 0.16)"
+        >
+          <View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                  },
+                  Object {
+                    "height": 24,
+                    "width": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "opacity": 1,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": Array [
+                      Object {
+                        "rotate": "0deg",
+                      },
+                    ],
+                  }
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                      },
+                      Object {
+                        "height": 24,
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                        "width": 24,
+                      },
+                    ]
+                  }
+                >
+                  <Image
+                    source={
+                      Object {
+                        "testUri": "../../react-native-paper/lib/commonjs/assets/back-chevron.png",
+                      }
+                    }
+                    style={
+                      Array [
+                        Object {
+                          "height": 21,
+                          "resizeMode": "contain",
+                          "width": 21,
+                        },
+                        Object {
+                          "tintColor": "#000000",
+                        },
+                      ]
+                    }
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </>
         <TouchableWithoutFeedback
           disabled={true}
         >
@@ -69,7 +177,9 @@ exports[`renders correctly 1`] = `
                   "paddingHorizontal": 12,
                 },
                 Array [
-                  false,
+                  Object {
+                    "marginLeft": 8,
+                  },
                   Object {
                     "alignItems": "center",
                   },
@@ -109,13 +219,115 @@ exports[`renders correctly 1`] = `
             </Text>
           </View>
         </TouchableWithoutFeedback>
-        <View
-          style={
+        <
+          accessibilityComponentType="button"
+          accessibilityRole="button"
+          accessibilityStates={Array []}
+          accessibilityTraits="button"
+          centered={true}
+          disabled={false}
+          hitSlop={
             Object {
-              "width": 48,
+              "bottom": 6,
+              "left": 6,
+              "right": 6,
+              "top": 6,
             }
           }
-        />
+          style={
+            Array [
+              Object {
+                "overflow": "hidden",
+              },
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                  "margin": 6,
+                  "overflow": "hidden",
+                },
+                Object {
+                  "borderRadius": 18,
+                  "height": 36,
+                  "width": 36,
+                },
+                undefined,
+                undefined,
+              ],
+            ]
+          }
+          underlayColor="rgba(0, 0, 0, 0.16)"
+        >
+          <View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                  },
+                  Object {
+                    "height": 24,
+                    "width": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "opacity": 1,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": Array [
+                      Object {
+                        "rotate": "0deg",
+                      },
+                    ],
+                  }
+                }
+              >
+                <Text
+                  accessibilityElementsHidden={true}
+                  allowFontScaling={false}
+                  importantForAccessibility="no-hide-descendants"
+                  pointerEvents="none"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#000000",
+                        "fontSize": 24,
+                      },
+                      Array [
+                        Object {
+                          "transform": Array [
+                            Object {
+                              "scaleX": 1,
+                            },
+                          ],
+                        },
+                        Object {
+                          "backgroundColor": "transparent",
+                        },
+                      ],
+                      Object {
+                        "fontFamily": "Material Design Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </View>
+          </View>
+        </>
       </View>
     </SafeAreaView>
     <View
@@ -539,9 +751,12 @@ exports[`renders correctly 1`] = `
           >
             <View
               style={
-                Object {
-                  "flexDirection": "row",
-                }
+                Array [
+                  undefined,
+                  Object {
+                    "flexDirection": "row",
+                  },
+                ]
               }
             >
               <View

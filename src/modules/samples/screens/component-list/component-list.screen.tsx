@@ -1,8 +1,11 @@
 import React from 'react';
+import {Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
-import {Appbar, Card, Colors} from '@core/components';
+import {Appbar, Card, Colors, Alert} from '@core/components';
 import {ActivityIndicatorSample, TextSample} from './components';
 import {styles} from './component-list.styles';
+
+const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
 export const ComponentListScreen = (): JSX.Element => {
   const {t} = useTranslation('');
@@ -20,7 +23,18 @@ export const ComponentListScreen = (): JSX.Element => {
   return (
     <>
       <Appbar.Header style={{backgroundColor: Colors.amber500}}>
+        <Appbar.BackAction
+          onPress={() => {
+            Alert.alert('Alert', 'Press Back button');
+          }}
+        />
         <Appbar.Content title={t('common:components')} />
+        <Appbar.Action
+          icon={MORE_ICON}
+          onPress={() => {
+            Alert.alert('Alert', 'Press More button');
+          }}
+        />
       </Appbar.Header>
       {componentList.map((component, index) => (
         <Card key={index.toString()} style={styles.card}>
