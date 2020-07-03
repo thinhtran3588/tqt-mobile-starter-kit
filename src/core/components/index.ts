@@ -8,5 +8,6 @@ export {
   Appbar,
   Card,
   ActivityIndicator,
+  Avatar,
 } from 'react-native-paper';
 export {StatusBar, Alert} from 'react-native';
