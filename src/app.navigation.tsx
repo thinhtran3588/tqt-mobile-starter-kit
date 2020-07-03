@@ -40,7 +40,7 @@ export const AppNavigation = (): JSX.Element => {
   ];
   return (
     <Tab.Navigator shifting>
-      {tabItems.map((tabItem) => (
+      {tabItems.map((tabItem, index) => (
         <Tab.Screen
           key={tabItem.name}
           name={tabItem.name}
@@ -52,6 +52,7 @@ export const AppNavigation = (): JSX.Element => {
               return <Icon name={focused ? tabItem.iconFocused : tabItem.icon} color={color} size={25} />;
             },
             tabBarColor: tabItem.tabBarColor,
+            tabBarBadge: index === 0 ? 10 : undefined,
           }}
         />
       ))}
