@@ -18,7 +18,6 @@ jest.mock('react-i18next', () => ({
 jest.mock('react-native-paper', () => {
   const actualModule = jest.requireActual('react-native-paper');
   const Button = require('react-native').Button;
-  const Text = require('react-native').Text;
   const Banner = actualModule.Banner;
   return {
     ...actualModule,
