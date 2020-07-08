@@ -1,3 +1,5 @@
+import React from 'react';
+
 jest.mock('i18next', () => ({
   use: () => ({
     init: () => ({
@@ -12,3 +14,38 @@ jest.mock('react-i18next', () => ({
   }),
   I18nextProvider: 'I18nextProvider',
 }));
+
+jest.mock('react-native-paper', () => {
+  const actualModule = jest.requireActual('react-native-paper');
+  const Button = require('react-native').Button;
+  const Text = require('react-native').Text;
+  const Banner = actualModule.Banner;
+  return {
+    ...actualModule,
+    Button: (props) => {
+      const {children, testID, onPress} = props;
+      return <Button onPress={onPress} testID={testID} title={typeof children === 'string' ? children : 'Button'} />;
+    },
+    Appbar: {
+      ...actualModule.Appbar,
+      BackAction: (props) => {
+        const {testID, onPress} = props;
+        return <Button onPress={onPress} testID={testID} title={'Back'} />;
+      },
+      Action: (props) => {
+        const {icon, testID, onPress} = props;
+        return <Button onPress={onPress} testID={testID} title={icon} />;
+      },
+    },
+    Banner: (props) => {
+      const {actions, children, ...other} = props;
+      return (
+        <Banner {...other} actions={[]}>
+          {children}
+          {actions &&
+            actions.map((action, index) => <Button key={index} onPress={action.onPress} title={action.label} />)}
+        </Banner>
+      );
+    },
+  };
+});

@@ -5,9 +5,8 @@ import {Appbar, Card, Colors, Alert, ScrollView} from '@core/components';
 import {ActivityIndicatorSample, TextSample, AvatarSample, BadgeSample, BannerSample, ButtonSample} from './components';
 import {styles} from './component-list.styles';
 
-const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
-
 export const ComponentListScreen = (): JSX.Element => {
+  const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
   const {t} = useTranslation('');
   const componentList = [
     {
@@ -36,12 +35,14 @@ export const ComponentListScreen = (): JSX.Element => {
     <>
       <Appbar.Header style={{backgroundColor: Colors.amber500}}>
         <Appbar.BackAction
+          testID='back-action'
           onPress={() => {
             Alert.alert('Alert', 'Press Back button');
           }}
         />
         <Appbar.Content title={t('common:components')} />
         <Appbar.Action
+          testID='more-action'
           icon={MORE_ICON}
           onPress={() => {
             Alert.alert('Alert', 'Press More button');

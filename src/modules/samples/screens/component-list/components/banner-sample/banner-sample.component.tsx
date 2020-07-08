@@ -6,10 +6,11 @@ export const BannerSample = (): JSX.Element => {
   const [visible, setVisible] = React.useState(true);
   return (
     <Banner
+      testID='banner'
       visible={visible}
       actions={[
         {
-          label: 'Close',
+          label: 'Close Banner',
           onPress: () => setVisible(false),
         },
       ]}
