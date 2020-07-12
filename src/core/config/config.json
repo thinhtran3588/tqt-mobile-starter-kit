@@ -1,0 +1,28 @@
+{
+  "android": {
+    "id": "pro.thinhtran.starterkit"
+  },
+  "appInfo": {
+    "build": "1",
+    "name": "TQT Starter Kit",
+    "version": "0.1"
+  },
+  "dateFormat": "DD/MM/YYYY",
+  "defaultLang": "vi",
+  "fb": {
+    "id": ""
+  },
+  "ios": {
+    "id": "pro.thinhtran.starterkit"
+  },
+  "languages": [
+    {
+      "id": "en",
+      "name": "English"
+    },
+    {
+      "id": "vi",
+      "name": "Tiếng Việt"
+    }
+  ]
+}

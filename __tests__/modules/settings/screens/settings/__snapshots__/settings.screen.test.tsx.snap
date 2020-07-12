@@ -128,7 +128,7 @@ exports[`renders correctly 1`] = `
         ]
       }
     >
-      Settings
+      Version: 0.1.1
     </Text>
   </View>
 </View>

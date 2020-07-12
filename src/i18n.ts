@@ -7,7 +7,7 @@ import commonVi from '@assets/json/locales/vi/common.json';
 import settingsVi from '@assets/json/locales/vi/settings.json';
 
 i18next.use(initReactI18next).init({
-  lng: config.defaultLang,
+  lng: config().defaultLang,
   debug: __DEV__,
   resources: {
     en: {

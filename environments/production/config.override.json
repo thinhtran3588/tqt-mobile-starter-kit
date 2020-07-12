@@ -1,0 +1,11 @@
+{
+  "android": {
+    "id": "pro.thinhtran.starterkit"
+  },
+  "appInfo": {
+    "name": "TQT Starter Kit"
+  },
+  "ios": {
+    "id": "pro.thinhtran.starterkit"
+  }
+}

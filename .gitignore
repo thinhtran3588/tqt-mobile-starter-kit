@@ -52,7 +52,7 @@ buck-out/
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/
 
-*/fastlane/report.xmla
+*/fastlane/report.xml
 */fastlane/screenshots
 
 # Bundle artifact
@@ -62,3 +62,6 @@ buck-out/
 /ios/Pods/
 
 coverage
+
+# credentials
+keystore.properties
