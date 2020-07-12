@@ -2,7 +2,15 @@ import React from 'react';
 import {Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {Appbar, Card, Colors, Alert, ScrollView} from '@core/components';
-import {ActivityIndicatorSample, TextSample, AvatarSample, BadgeSample, BannerSample, ButtonSample} from './components';
+import {
+  ActivityIndicatorSample,
+  TextSample,
+  AvatarSample,
+  BadgeSample,
+  BannerSample,
+  ButtonSample,
+  AnimationSample,
+} from './components';
 import {styles} from './component-list.styles';
 
 export const ComponentListScreen = (): JSX.Element => {
@@ -10,11 +18,15 @@ export const ComponentListScreen = (): JSX.Element => {
   const {t} = useTranslation('');
   const componentList = [
     {
-      title: 'Text',
+      title: 'TextSample',
       element: <TextSample />,
     },
     {
-      title: 'ActivityIndicator',
+      title: 'AnimationSample',
+      element: <AnimationSample />,
+    },
+    {
+      title: 'ActivityIndicatorSample',
       element: <ActivityIndicatorSample />,
     },
     {
