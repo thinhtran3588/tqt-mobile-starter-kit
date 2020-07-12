@@ -1775,7 +1775,7 @@ exports[`renders correctly 1`] = `
                   <Image
                     source={
                       Object {
-                        "testUri": "../../../src/assets/images/app-icon-128.png",
+                        "testUri": "../../../src/assets/images/app-icon.png",
                       }
                     }
                     style={
@@ -3955,7 +3955,7 @@ exports[`renders correctly in Android 1`] = `
                   <Image
                     source={
                       Object {
-                        "testUri": "../../../src/assets/images/app-icon-128.png",
+                        "testUri": "../../../src/assets/images/app-icon.png",
                       }
                     }
                     style={

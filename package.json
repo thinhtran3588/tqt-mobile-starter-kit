@@ -53,16 +53,17 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "env": "ts-node job.ts env",
     "ios": "react-native run-ios",
     "lint": "prettier --check . && eslint . --ext .js,.jsx,.ts,.tsx && tsc --noEmit",
     "lint-fix": "prettier --write . --ext .js,.jsx,.ts,.tsx && eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "postinstall": "npx pod-install",
     "start": "react-native start",
     "test": "jest --coverage  --detectOpenHandles",
-    "validate": "yarn lint && yarn test",
-    "env": "ts-node job.ts env",
+    "update-build": "ts-node job.ts update-build",
+    "update-icons": "./generate-icons.sh",
     "update-ver": "ts-node job.ts update-ver",
-    "update-build": "ts-node job.ts update-build"
+    "validate": "yarn lint && yarn test"
   },
   "version": "0.1.1"
 }

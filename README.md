@@ -20,3 +20,58 @@ A starter kit for React Native
 **Develop:**
 ![CI-Dev](https://github.com/thinhtran3588/tqt-mobile-starter-kit/workflows/CI-Dev/badge.svg?branch=develop)
 [![codecov](https://codecov.io/gh/thinhtran3588/tqt-mobile-starter-kit/branch/develop/graph/badge.svg)](https://codecov.io/gh/thinhtran3588/tqt-mobile-starter-kit)
+
+## Scripts
+
+- run Android:
+
+```
+yarn android
+```
+
+- run iOS:
+
+```
+yarn ios
+```
+
+- set environments (production/staging/etc), change related configurations (default is **production**):
+
+```
+yarn env production
+yarn env staging
+```
+
+- update app version, for example 1.4:
+
+```
+yarn update-ver <latest-version>
+```
+
+- update app build number, for example 5 (should be ran by Github Actions):
+
+```
+yarn update-build <latest-build-number>
+```
+
+- validate source code
+
+```
+yarn validate
+```
+
+## Update app icons
+
+- install ImageMagick
+
+```
+brew install imagemagick
+```
+
+- update `src/assets/images/app-icon-1024.png`
+
+- run
+
+```
+yarn update-icons
+```
