@@ -5,3 +5,4 @@ export * from './badge-sample/badge-sample.component';
 export * from './banner-sample/banner-sample.component';
 export * from './button-sample/button-sample.component';
 export * from './animation-sample/animation-sample.component';
+export * from './icon-sample/icon-sample.component';

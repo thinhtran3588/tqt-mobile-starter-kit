@@ -10,6 +10,7 @@ import {
   BannerSample,
   ButtonSample,
   AnimationSample,
+  IconSample,
 } from './components';
 import {styles} from './component-list.styles';
 
@@ -28,6 +29,10 @@ export const ComponentListScreen = (): JSX.Element => {
     {
       title: 'ActivityIndicatorSample',
       element: <ActivityIndicatorSample />,
+    },
+    {
+      title: 'IconSample',
+      element: <IconSample />,
     },
     {
       title: 'AvatarSample',

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {I18nextProvider} from 'react-i18next';
-import {NavigationContainer} from '@react-navigation/native';
+import RNBootSplash from 'react-native-bootsplash';
 import {sleep} from '@tqt/mobile';
 import {LoadingScreen, PaperProvider, PaperDefaultTheme} from '@core/components';
 import {i18next} from './i18n';
@@ -20,6 +20,7 @@ export const App = (): JSX.Element => {
   };
   useEffect(() => {
     (async () => {
+      RNBootSplash.hide({duration: 250});
       await sleep(1000);
       setIsBootstrapping(false);
     })();
@@ -28,12 +29,10 @@ export const App = (): JSX.Element => {
     return <LoadingScreen />;
   }
   return (
-    <NavigationContainer>
-      <I18nextProvider i18n={i18next}>
-        <PaperProvider theme={theme}>
-          <AppNavigation />
-        </PaperProvider>
-      </I18nextProvider>
-    </NavigationContainer>
+    <I18nextProvider i18n={i18next}>
+      <PaperProvider theme={theme}>
+        <AppNavigation />
+      </PaperProvider>
+    </I18nextProvider>
   );
 };

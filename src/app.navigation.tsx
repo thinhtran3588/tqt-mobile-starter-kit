@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {ComponentListScreen} from '@samples/screens';
 import {SettingsScreen} from '@settings/screens';
@@ -39,23 +40,25 @@ export const AppNavigation = (): JSX.Element => {
     },
   ];
   return (
-    <Tab.Navigator shifting>
-      {tabItems.map((tabItem, index) => (
-        <Tab.Screen
-          key={tabItem.name}
-          name={tabItem.name}
-          component={tabItem.component}
-          options={{
-            title: tabItem.title,
-            tabBarIcon: (iconProps) => {
-              const {focused, color} = iconProps;
-              return <Icon name={focused ? tabItem.iconFocused : tabItem.icon} color={color} size={25} />;
-            },
-            tabBarColor: tabItem.tabBarColor,
-            tabBarBadge: index === 0 ? 10 : undefined,
-          }}
-        />
-      ))}
-    </Tab.Navigator>
+    <NavigationContainer>
+      <Tab.Navigator shifting initialRouteName={SCREEN_NAME.COMPONENT_LIST}>
+        {tabItems.map((tabItem, index) => (
+          <Tab.Screen
+            key={tabItem.name}
+            name={tabItem.name}
+            component={tabItem.component}
+            options={{
+              title: tabItem.title,
+              tabBarIcon: (iconProps) => {
+                const {focused, color} = iconProps;
+                return <Icon name={focused ? tabItem.iconFocused : tabItem.icon} color={color} size={25} />;
+              },
+              tabBarColor: tabItem.tabBarColor,
+              tabBarBadge: index === 0 ? 10 : undefined,
+            }}
+          />
+        ))}
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 };

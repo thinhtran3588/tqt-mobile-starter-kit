@@ -60,7 +60,7 @@ yarn update-build <latest-build-number>
 yarn validate
 ```
 
-## Update app icons
+## Update app icons & splash screens
 
 - install ImageMagick
 
@@ -75,3 +75,5 @@ brew install imagemagick
 ```
 yarn update-icons
 ```
+
+- for splash screen, follow [react-native-bootsplash](https://github.com/zoontek/react-native-bootsplash)
