@@ -77,3 +77,47 @@ yarn update-icons
 ```
 
 - for splash screen, follow [react-native-bootsplash](https://github.com/zoontek/react-native-bootsplash)
+
+## Publish app to stores with Fastlane
+
+### **Android**
+
+1. Prepare credentials in the exact locations below:
+
+```
+android
+    app
+        mobile.keystore
+    fastlane
+        googlePlaySecretKey.json
+    keystore.properties
+
+```
+
+mobile.keystore: Learn how to generate keystore [here](https://reactnative.dev/docs/signed-apk-android)
+
+keystore.properties: store credentials to unlock mobile.keystore
+
+googlePlaySecretKey.json: credentials used by Fastlane to publish app to store. Learn how to generate it [here](https://docs.fastlane.tools/getting-started/android/setup/)
+
+2. build app (optional)
+
+```
+yarn android-build
+```
+
+3. build app to apk (optional)
+
+```
+yarn android-build-apk
+```
+
+4. build app & publish to Alpha channel
+
+```
+yarn android-alpha
+```
+
+## Generate Privacy Policy & Terms & Conditions
+
+https://app-privacy-policy-generator.firebaseapp.com/

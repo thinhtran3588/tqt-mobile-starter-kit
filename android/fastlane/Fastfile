@@ -1,0 +1,69 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  desc "Submit a new Beta Build to Crashlytics Beta"
+  lane :beta do
+    gradle(task: "clean bundleRelease")
+    crashlytics
+  
+    # sh "your_script.sh"
+    # You can also use other beta testing services here
+  end
+
+  desc "Clean"
+  lane :clean do
+    gradle(task: "clean")
+  end
+
+  desc "Build"
+  lane :build do
+    gradle(task: "bundleRelease")
+  end
+
+  desc "Build APK"
+  lane :build_apk do
+    gradle(task: "assembleRelease")
+  end
+
+  desc "Deploy a new version to the Google Play Alpha channel"
+  lane :alpha do
+    clean
+    build
+    upload_to_play_store(
+      track: 'alpha',
+      json_key: 'fastlane/googlePlaySecretKey.json',
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      skip_upload_changelogs: true
+    )
+  end
+
+  desc "Deploy a new version to the Google Play App Sharing"
+  lane :app_sharing do
+    gradle(task: "clean bundleRelease")
+    upload_to_play_store_internal_app_sharing(
+      json_key: 'fastlane/googlePlaySecretKey.json'
+    )
+  end
+end

@@ -1,0 +1,1 @@
+package_name(ENV["APP_ID"]) # e.g. com.krausefx.app

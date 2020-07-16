@@ -3,9 +3,9 @@
     "id": "pro.thinhtran.starterkit"
   },
   "appInfo": {
-    "build": "1",
+    "build": "2",
     "name": "TQT Starter Kit",
-    "version": "0.1"
+    "version": "0.2"
   },
   "dateFormat": "DD/MM/YYYY",
   "defaultLang": "vi",

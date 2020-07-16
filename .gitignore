@@ -65,3 +65,5 @@ coverage
 
 # credentials
 keystore.properties
+googlePlaySecretKey.json
+.env.default

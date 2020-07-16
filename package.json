@@ -54,6 +54,10 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android-alpha": "cd android && fastlane android alpha && cd ..",
+    "android-build": "cd android && fastlane android build && cd ..",
+    "android-build-apk": "cd android && fastlane android build_apk && cd ..",
+    "android-clean": "cd android && fastlane android clean && cd ..",
     "env": "ts-node job.ts env",
     "ios": "react-native run-ios",
     "lint": "prettier --check . && eslint . --ext .js,.jsx,.ts,.tsx && tsc --noEmit",
@@ -66,5 +70,5 @@
     "update-ver": "ts-node job.ts update-ver",
     "validate": "yarn lint && yarn test"
   },
-  "version": "0.1.1"
+  "version": "0.2.2"
 }
