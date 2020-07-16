@@ -59,6 +59,10 @@ jobs:
           \cp fastlane-credentials/android/fastlane/googlePlaySecretKey.json android/fastlane/googlePlaySecretKey.json
           \cp fastlane-credentials/android/keystore.properties android/keystore.properties
 
+      - name: Update build number
+        run |
+          yarn update-build ${GITHUB_RUN_NUMBER}
+
       - name: Restore package
         run: |
           npm i
