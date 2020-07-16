@@ -1,1 +1,1 @@
-package_name(ENV["APP_ID"]) # e.g. com.krausefx.app
+package_name("pro.thinhtran.starterkit") # e.g. com.krausefx.app

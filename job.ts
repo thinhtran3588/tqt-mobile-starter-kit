@@ -81,6 +81,15 @@ export const setEnv = async (environment: string = 'production'): Promise<void> 
       ],
     },
     {
+      src: path.resolve(__dirname, `./android/fastlane/Appfile`),
+      replaces: [
+        {
+          old: /package_name\("[\w, ,.,-]*"\)/,
+          new: `package_name("${config().android.id}")`,
+        },
+      ],
+    },
+    {
       src: path.resolve(__dirname, `./ios/mobile/Info.plist`),
       replaces: [
         {
