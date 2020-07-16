@@ -22,7 +22,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Slack notification
+      - name: Slack notification 8398a7/action-slack@v3
         uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
@@ -31,12 +31,13 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
         if: always() # Pick up events even if the job fails or is canceled.
 
-      - name: Slack Notification
+      - name: Slack Notification rtCamp/action-slack-notify@master
         uses: rtCamp/action-slack-notify@master
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always() # Pick up events even if the job fails or is canceled.
 
-      - name: Slack Notification
+      - name: Slack Notification voxmedia/github-action-slack-notify-build@v1
         uses: voxmedia/github-action-slack-notify-build@v1
         with:
           channel: tqt
@@ -44,3 +45,10 @@ jobs:
           color: good
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always() # Pick up events even if the job fails or is canceled.
+
+      - name: Slack Notification act10ns/slack@v1
+        uses: act10ns/slack@v1
+        with:
+          status: ${{ job.status }}
+        if: always()
