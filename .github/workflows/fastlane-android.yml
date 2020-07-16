@@ -65,15 +65,15 @@ jobs:
 
       - name: Restore package
         run: |
-          npm i
+          yarn
 
       - name: Build & publish to Alpha channel
         run: |
-          npm run android-alpha
+          yarn android-alpha
 
       - name: Build APK
         run: |
-          npm run android-build-apk
+          yarn android-build-apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v2
