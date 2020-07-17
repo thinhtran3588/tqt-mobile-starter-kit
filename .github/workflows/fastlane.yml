@@ -1,9 +1,7 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI-Fastlane
 
 # Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+# events but only for the fastlane branch
 on:
   push:
     branches: [fastlane]
@@ -83,6 +81,9 @@ jobs:
       - name: Restore package
         run: |
           yarn
+
+      - name: Validate source code
+        run: yarn validate
 
       - name: Update build number
         run: |

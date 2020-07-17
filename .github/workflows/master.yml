@@ -1,12 +1,12 @@
-name: CI-Develop
+name: CI-Master
 
 # Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the develop branch
+# events but only for the master branch
 on:
   push:
-    branches: [develop]
+    branches: [master]
   pull_request:
-    branches: [develop]
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:

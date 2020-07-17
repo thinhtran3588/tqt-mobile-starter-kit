@@ -7,9 +7,9 @@ it('update configuration correctly', async () => {
         "id": "pro.thinhtran.starterkit",
       },
       "appInfo": Object {
-        "build": "1",
+        "build": "2",
         "name": "TQT Starter Kit",
-        "version": "0.1",
+        "version": "0.2",
       },
       "dateFormat": "DD/MM/YYYY",
       "defaultLang": "vi",
@@ -48,9 +48,9 @@ it('update configuration correctly', async () => {
         "id": "pro.thinhtran.test",
       },
       "appInfo": Object {
-        "build": "1",
+        "build": "2",
         "name": "TQT Starter Kit Test",
-        "version": "0.1",
+        "version": "0.2",
       },
       "dateFormat": "DD/MM/YYYY",
       "defaultLang": "vi",
