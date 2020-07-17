@@ -11,15 +11,15 @@ A starter kit for React Native
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/thinhtran3588/tqt-mobile-starter-kit)
 
 **Master:**
-![CI](https://github.com/thinhtran3588/tqt-mobile-starter-kit/workflows/CI/badge.svg)
+![CI-Master](https://github.com/thinhtran3588/tqt-mobile-starter-kit/workflows/CI-Master/badge.svg)
 [![codecov](https://codecov.io/gh/thinhtran3588/tqt-mobile-starter-kit/branch/master/graph/badge.svg)](https://codecov.io/gh/thinhtran3588/tqt-mobile-starter-kit)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=thinhtran3588_tqt-mobile-starter-kit&metric=alert_status)](https://sonarcloud.io/dashboard?id=thinhtran3588_tqt-mobile-starter-kit)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=thinhtran3588_tqt-mobile-starter-kit&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=thinhtran3588_tqt-mobile-starter-kit)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=thinhtran3588_tqt-mobile-starter-kit&metric=security_rating)](https://sonarcloud.io/dashboard?id=thinhtran3588_tqt-mobile-starter-kit)
 
 **Develop:**
-![CI-Dev](https://github.com/thinhtran3588/tqt-mobile-starter-kit/workflows/CI-Dev/badge.svg?branch=develop)
-[![codecov](https://codecov.io/gh/thinhtran3588/tqt-mobile-starter-kit/branch/develop/graph/badge.svg)](https://codecov.io/gh/thinhtran3588/tqt-mobile-starter-kit)
+![CI-Develop](https://github.com/thinhtran3588/tqt-mobile-starter-kit/workflows/CI-Develop/badge.svg?branch=develop)
+[![codecov](https://codecov.io/gh/thinhtran3588/tqt-mobile-starter-kit/branch/develop/graph/badge.svg)](https://codecov.io/gh/thinhtran3588/tqt-mobile-starter-kit/branch/develop)
 
 ## Scripts
 
