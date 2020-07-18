@@ -33,8 +33,8 @@ export const AppNavigation = (): JSX.Element => {
     {
       name: SCREEN_NAME.SETTINGS,
       title: t('settings'),
-      icon: 'settings-outline',
-      iconFocused: 'settings',
+      icon: 'cog-outline',
+      iconFocused: 'cog',
       tabBarColor: Colors.cyan500,
       component: SettingsScreen,
     },

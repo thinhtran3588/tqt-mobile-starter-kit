@@ -108,7 +108,7 @@ exports[`presses Close Banner button 1`] = `
                   ]
                 }
               >
-                
+                󰇮
               </Text>
             </View>
             <Text
@@ -269,7 +269,7 @@ exports[`presses Close Banner button 2`] = `
                   ]
                 }
               >
-                
+                󰇮
               </Text>
             </View>
             <Text
