@@ -130,6 +130,22 @@ ios
 
 .env.default: fastlane environment variables stored here
 
+MATCH_APP_IDENTIFIER= // all app ids
+
+MATCH_GIT_URL= // match git url
+
+MATCH_PASSWORD= // match password
+
+APPLE_USERNAME= // apple username
+
+APPLE_ITC_TEAM_ID= // apple itc team id
+
+APPLE_TEAM_ID= // apple team id
+
+FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD= // apple app password
+
+FASTLANE_SESSION= // fastlane session
+
 2. run
 
 ```
@@ -138,7 +154,23 @@ cd ios && fastlane match
 
 to initialize match & populate credentials to the git repo
 
-3.
+3. (update FASTLANE_SESSION)[https://docs.fastlane.tools/best-practices/continuous-integration/] by running
+
+```
+fastlane spaceauth -u user@email.com
+```
+
+4. build app (optional)
+
+```
+yarn ios-build
+```
+
+5. build app & publish to Testflight
+
+```
+yarn ios-testflight
+```
 
 ### **Github Actions**
 
