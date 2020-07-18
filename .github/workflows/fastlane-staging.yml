@@ -1,0 +1,112 @@
+name: CI-Fastlane-Staging
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the fastlane branch
+on:
+  push:
+    branches: [fastlane-staging]
+  pull_request:
+    branches: [fastlane-staging]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Slack Notification Start
+        uses: act10ns/slack@v1
+        with:
+          status: 'START'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: always()
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Check out credentials
+        uses: actions/checkout@v2
+        with:
+          repository: thinhtran3588/fastlane-credentials
+          token: ${{ secrets.PAT }}
+          path: 'fastlane-credentials'
+
+      - name: Cache npm
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache yarn
+        uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Cache Pods
+        uses: actions/cache@v2
+        with:
+          path: ios/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
+      - name: Cache Gradle
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Copy credentials
+        run: |
+          \cp fastlane-credentials/android/app/mobile.keystore android/app/mobile.keystore
+          \cp fastlane-credentials/android/fastlane/googlePlaySecretKey.json android/fastlane/googlePlaySecretKey.json
+          \cp fastlane-credentials/android/keystore.properties android/keystore.properties
+
+      - name: Restore package
+        run: |
+          yarn
+
+      - name: Validate source code
+        run: yarn validate
+
+      - name: Update build number
+        run: |
+          yarn update-build ${GITHUB_RUN_NUMBER}
+
+      - name: Switch env to Staging
+        run: |
+          yarn env staging
+
+      - name: Build APK
+        run: |
+          yarn android-build-apk
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-release
+          path: android/app/build/outputs/apk/release/app-release.apk
+
+      - name: Slack Notification Finish
+        uses: act10ns/slack@v1
+        with:
+          status: ${{ job.status }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: always()
