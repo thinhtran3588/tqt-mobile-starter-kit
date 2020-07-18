@@ -43,22 +43,22 @@ platform :ios do
       keychain_password: keychainPassword
     )
 
-    get_certificates( # Create or get certificate, and install it
-      output_path: "./build" # Download certificate in the build folder (you don't need to create the folder)
-    )
-    get_provisioning_profile( # Create or get provisioning profile
-      output_path: "./build",  # Download provisioning profile in the build folder
-      filename: "provisioning.mobileprovision" # Rename the local provisioning profile
-    )
-    update_project_provisioning( # Set the project provisioning profile (related in Xcode to the General > Signing Release section)
-      xcodeproj: "mobile.xcodeproj",
-      target_filter: "mobile", # Name of your project
-      profile: "./build/provisioning.mobileprovision",
-      build_configuration: "Release"
-    )
-    update_project_team( # Set the right team on your project
-      teamid: CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
-    )
+    # get_certificates( # Create or get certificate, and install it
+    #   output_path: "./build" # Download certificate in the build folder (you don't need to create the folder)
+    # )
+    # get_provisioning_profile( # Create or get provisioning profile
+    #   output_path: "./build",  # Download provisioning profile in the build folder
+    #   filename: "provisioning.mobileprovision" # Rename the local provisioning profile
+    # )
+    # update_project_provisioning( # Set the project provisioning profile (related in Xcode to the General > Signing Release section)
+    #   xcodeproj: "mobile.xcodeproj",
+    #   target_filter: "mobile", # Name of your project
+    #   profile: "./build/provisioning.mobileprovision",
+    #   build_configuration: "Release"
+    # )
+    # update_project_team( # Set the right team on your project
+    #   teamid: CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
+    # )
 
     build_app(workspace: "mobile.xcworkspace", scheme: "mobile")
   
