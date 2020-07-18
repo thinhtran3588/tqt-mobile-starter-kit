@@ -1,7 +1,7 @@
 /*  eslint-disable no-console, no-control-regex  */
 import fs from 'fs';
 import path from 'path';
-import {config, updateConfig, appVersion} from './src/core/config';
+import {config, updateConfig} from './src/core/config';
 
 interface CopyFileTask {
   src: string;
@@ -161,7 +161,7 @@ export const updateVersion = (version: string): void => {
       replaces: [
         {
           old: /"version": "[\w, ,.,-]*"/,
-          new: `"version": "${appVersion()}"`,
+          new: `"version": "${config().appInfo.version}"`,
         },
       ],
     },
@@ -217,7 +217,7 @@ export const updateBuild = (build: string = process.env.APP_BUILD_NO || ''): voi
       replaces: [
         {
           old: /"version": "[\w, ,.,-]*"/,
-          new: `"version": "${appVersion()}"`,
+          new: `"version": "${config().appInfo.version}"`,
         },
       ],
     },

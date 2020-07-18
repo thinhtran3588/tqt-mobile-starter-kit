@@ -9,6 +9,6 @@ export const updateConfig = (newConfig: DeepPartial<typeof appConfig>): void => 
   merge(appConfig, newConfig);
 };
 
-export const appVersion = (): string => `${appConfig.appInfo.version}.${appConfig.appInfo.build}`;
+export const appFullVersion = (): string => `${appConfig.appInfo.version}.${appConfig.appInfo.build}`;
 
 export const config = (): typeof appConfig => appConfig;

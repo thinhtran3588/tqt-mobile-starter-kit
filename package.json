@@ -70,5 +70,5 @@
     "update-ver": "ts-node job.ts update-ver",
     "validate": "yarn lint && yarn test"
   },
-  "version": "0.2.2"
+  "version": "0.3.0"
 }

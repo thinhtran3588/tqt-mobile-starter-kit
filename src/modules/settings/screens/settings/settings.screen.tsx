@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {appVersion} from '@core/config';
+import {appFullVersion} from '@core/config';
 import {Text, Appbar, Colors} from '@core/components';
 
 export const SettingsScreen = (): JSX.Element => {
@@ -10,7 +10,7 @@ export const SettingsScreen = (): JSX.Element => {
       <Appbar.Header style={{backgroundColor: Colors.cyan500}}>
         <Appbar.Content title={t('common:settings')} />
       </Appbar.Header>
-      <Text>{`Version: ${appVersion()}`}</Text>
+      <Text>{`Version: ${appFullVersion()}`}</Text>
     </>
   );
 };
