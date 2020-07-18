@@ -63,6 +63,8 @@ buck-out/
 
 coverage
 
+*.dSYM.zip
+
 # credentials
 keystore.properties
 googlePlaySecretKey.json

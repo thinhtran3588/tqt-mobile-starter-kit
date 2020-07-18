@@ -82,7 +82,7 @@ yarn update-icons
 
 ### **Android**
 
-1. Prepare credentials in the exact locations below:
+1. prepare credentials in the exact locations below:
 
 ```
 android
@@ -117,6 +117,34 @@ yarn android-build-apk
 ```
 yarn android-alpha
 ```
+
+### **iOS**
+
+1. prepare credentials in the exact locations below:
+
+```
+ios
+    .env.default
+
+```
+
+.env.default: fastlane environment variables stored here
+
+2. run
+
+```
+cd ios && fastlane match
+```
+
+to initialize match & populate credentials to the git repo
+
+3.
+
+### **Github Actions**
+
+1. increase app version (for example 0.1.0 => 0.2.0)
+2. commit source code to the **fastlane** branch to publish the production app to Playstore Alpha channel, Appstore Testflight & get the latest production apk
+3. commit source code to the **fastlane_staging** branch to publish the staging app to Appstore Testflight & get the latest staging apk
 
 ## Generate Privacy Policy & Terms & Conditions
 

@@ -2,7 +2,11 @@
 import React, {ReactNode, ReactElement} from 'react';
 import {render, RenderResult, RenderOptions} from '@testing-library/react-native';
 
-const AllTheProviders = ({children}: {children?: ReactNode}): JSX.Element => {
+interface AllTheProvidersProps {
+  children?: ReactNode;
+}
+const AllTheProviders = (props: AllTheProvidersProps): JSX.Element => {
+  const {children} = props;
   return <>{children}</>;
 };
 

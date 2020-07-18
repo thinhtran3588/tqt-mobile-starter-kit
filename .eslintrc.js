@@ -47,6 +47,7 @@ module.exports = {
     'no-unused-vars': ['error', {argsIgnorePattern: '^_'}], // don't use unused var except with _ prefix
     '@typescript-eslint/no-explicit-any': ['error'], // forbid to use 'any' type
     'react/jsx-closing-bracket-location': 'off', // let prettier formats the code
+    'react/require-default-props': 'off',
   },
   settings: {
     'import/resolver': {
