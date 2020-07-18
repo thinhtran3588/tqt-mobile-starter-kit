@@ -61,7 +61,6 @@ platform :ios do
     # )
 
     build_app(workspace: "mobile.xcworkspace", scheme: "mobile")
-
   
   end 
 
@@ -71,6 +70,7 @@ platform :ios do
     
     upload_to_testflight(
       skip_waiting_for_build_processing: true,
+      apple_id: "pro.thinhtran.starterkit",
       username: ENV["MATCH_USERNAME"]
     )
 

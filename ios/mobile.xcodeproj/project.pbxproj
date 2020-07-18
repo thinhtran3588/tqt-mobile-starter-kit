@@ -741,7 +741,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pro.thinhtran.starterkit;
 				PRODUCT_NAME = mobile;
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore pro.thinhtran.starterkitstaging";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore pro.thinhtran.starterkit";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

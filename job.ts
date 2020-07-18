@@ -99,6 +99,15 @@ export const setEnv = async (environment: string = 'production'): Promise<void> 
       ],
     },
     {
+      src: path.resolve(__dirname, `./ios/fastlane/Fastfile`),
+      replaces: [
+        {
+          old: /apple_id: "[\w, ,.,-]*"/,
+          new: `apple_id: "${config().android.id}"`,
+        },
+      ],
+    },
+    {
       src: path.resolve(__dirname, `./ios/mobile/Info.plist`),
       replaces: [
         {
@@ -117,6 +126,10 @@ export const setEnv = async (environment: string = 'production'): Promise<void> 
         {
           old: /PRODUCT_BUNDLE_IDENTIFIER = .*;/g,
           new: `PRODUCT_BUNDLE_IDENTIFIER = ${config().ios.id};`,
+        },
+        {
+          old: /PROVISIONING_PROFILE_SPECIFIER = "match AppStore [\w, ,.,-]*";/g,
+          new: `PROVISIONING_PROFILE_SPECIFIER = "match AppStore ${config().ios.id}";`,
         },
       ],
     },
