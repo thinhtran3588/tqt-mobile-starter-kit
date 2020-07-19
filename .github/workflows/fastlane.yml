@@ -35,6 +35,17 @@ jobs:
           token: ${{ secrets.PAT }}
           path: 'fastlane-credentials'
 
+      - name: Copy credentials
+        run: |
+          \cp fastlane-credentials/android/app/mobile.keystore android/app/mobile.keystore
+          \cp fastlane-credentials/android/fastlane/googlePlaySecretKey.json android/fastlane/googlePlaySecretKey.json
+          \cp fastlane-credentials/android/keystore.properties android/keystore.properties
+          \cp fastlane-credentials/ios/.env.default ios/.env.default
+
+      - name: Build & publish to Testflight
+        run: |
+          yarn ios-testflight
+
       - name: Cache npm
         uses: actions/cache@v2
         with:
@@ -71,17 +82,6 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-
-      - name: Copy credentials
-        run: |
-          \cp fastlane-credentials/android/app/mobile.keystore android/app/mobile.keystore
-          \cp fastlane-credentials/android/fastlane/googlePlaySecretKey.json android/fastlane/googlePlaySecretKey.json
-          \cp fastlane-credentials/android/keystore.properties android/keystore.properties
-          \cp fastlane-credentials/ios/.env.default ios/.env.default
-
-      - name: Build & publish to Testflight
-        run: |
-          yarn ios-testflight
 
       - name: Restore package
         run: |

@@ -65,9 +65,7 @@ platform :ios do
 
   desc "Push a new beta build to TestFlight"
   lane :beta do 
-    # build
-    sh("echo", ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"])
-    sh("echo", ENV["FASTLANE_SESSION"])
+    build
     upload_to_testflight(
       skip_waiting_for_build_processing: true,
     )
