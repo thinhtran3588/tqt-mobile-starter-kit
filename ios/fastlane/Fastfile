@@ -18,9 +18,6 @@ default_platform(:ios)
 platform :ios do
   desc "Build app"
   lane :build do
-    sh("echo", ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"])
-    sh("echo", ENV["FASTLANE_SESSION"])
-
     # create keychain & use match to download certificates
     keychainName = "abc"
     keychainPassword = "Abc@123"
@@ -45,22 +42,22 @@ platform :ios do
       keychain_password: keychainPassword
     )
 
-    # get_certificates( # Create or get certificate, and install it
-    #   output_path: "./build" # Download certificate in the build folder (you don't need to create the folder)
-    # )
-    # get_provisioning_profile( # Create or get provisioning profile
-    #   output_path: "./build",  # Download provisioning profile in the build folder
-    #   filename: "provisioning.mobileprovision" # Rename the local provisioning profile
-    # )
-    # update_project_provisioning( # Set the project provisioning profile (related in Xcode to the General > Signing Release section)
-    #   xcodeproj: "mobile.xcodeproj",
-    #   target_filter: "mobile", # Name of your project
-    #   profile: "./build/provisioning.mobileprovision",
-    #   build_configuration: "Release"
-    # )
-    # update_project_team( # Set the right team on your project
-    #   teamid: CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
-    # )
+    get_certificates( # Create or get certificate, and install it
+      output_path: "./build" # Download certificate in the build folder (you don't need to create the folder)
+    )
+    get_provisioning_profile( # Create or get provisioning profile
+      output_path: "./build",  # Download provisioning profile in the build folder
+      filename: "provisioning.mobileprovision" # Rename the local provisioning profile
+    )
+    update_project_provisioning( # Set the project provisioning profile (related in Xcode to the General > Signing Release section)
+      xcodeproj: "mobile.xcodeproj",
+      target_filter: "mobile", # Name of your project
+      profile: "./build/provisioning.mobileprovision",
+      build_configuration: "Release"
+    )
+    update_project_team( # Set the right team on your project
+      teamid: CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
+    )
 
     build_app(workspace: "mobile.xcworkspace", scheme: "mobile")
   
@@ -68,11 +65,11 @@ platform :ios do
 
   desc "Push a new beta build to TestFlight"
   lane :beta do 
-    build
-    
+    # build
+    sh("echo", ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"])
+    sh("echo", ENV["FASTLANE_SESSION"])
     upload_to_testflight(
       skip_waiting_for_build_processing: true,
-      apple_id: ENV["MATCH_USERNAME"]
     )
 
   end

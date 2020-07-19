@@ -1,12 +1,12 @@
-name: CI-Fastlane
+name: CI-Test
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the fastlane branch
 on:
   push:
-    branches: [fastlane]
+    branches: [test]
   pull_request:
-    branches: [fastlane]
+    branches: [test]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -78,6 +78,10 @@ jobs:
           \cp fastlane-credentials/android/fastlane/googlePlaySecretKey.json android/fastlane/googlePlaySecretKey.json
           \cp fastlane-credentials/android/keystore.properties android/keystore.properties
           \cp fastlane-credentials/ios/.env.default ios/.env.default
+
+      - name: Build & publish to Testflight
+        run: |
+          yarn ios-testflight
 
       - name: Restore package
         run: |
