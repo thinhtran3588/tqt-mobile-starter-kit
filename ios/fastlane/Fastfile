@@ -44,7 +44,7 @@ platform :ios do
 
     get_certificates( # Create or get certificate, and install it
       output_path: "./build", # Download certificate in the build folder (you don't need to create the folder)
-      keychain_path: "/Users/runner/Library/Keychains/abc-db",
+      keychain_path: "/Users/thinhtran/Library/Keychains/abc-db",
       keychain_password: keychainPassword
     )
     get_provisioning_profile( # Create or get provisioning profile
@@ -69,8 +69,7 @@ platform :ios do
   lane :beta do 
     build
     upload_to_testflight(
-      skip_waiting_for_build_processing: true,
-      apple_id: ENV["FASTLANE_USER"]
+      skip_waiting_for_build_processing: true
     )
 
   end
