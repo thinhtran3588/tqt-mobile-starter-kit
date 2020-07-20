@@ -1,7 +1,7 @@
 import React from 'react';
 import {render, fireEvent, toJSON} from '@test-utils';
+import {sleep} from '@core/helpers';
 import {BannerSample} from '@samples/screens/component-list/components';
-import {sleep} from '@tqt/mobile';
 
 it('presses Close Banner button', async () => {
   const {baseElement, getByText} = render(<BannerSample />);

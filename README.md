@@ -181,3 +181,9 @@ yarn ios-testflight
 ## Generate Privacy Policy & Terms & Conditions
 
 https://app-privacy-policy-generator.firebaseapp.com/
+
+## Create a (new project)[https://github.com/react-native-community/react-native-template-typescript]
+
+```
+npx react-native init mobile --template react-native-template-typescript
+```

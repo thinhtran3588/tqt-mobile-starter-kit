@@ -1,8 +1,8 @@
 package com.mobile;
-import android.os.Bundle;
 
+import android.os.Bundle; // <- add this necessary import
 import com.facebook.react.ReactActivity;
-import com.zoontek.rnbootsplash.RNBootSplash;
+import com.zoontek.rnbootsplash.RNBootSplash; // <- add this necessary import
 
 public class MainActivity extends ReactActivity {
 

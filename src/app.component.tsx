@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {I18nextProvider} from 'react-i18next';
 import RNBootSplash from 'react-native-bootsplash';
-import {sleep} from '@tqt/mobile';
+import {sleep} from '@core/helpers';
 import {LoadingScreen, PaperProvider, PaperDefaultTheme} from '@core/components';
 import {i18next} from './i18n';
 import {AppNavigation} from './app.navigation';
@@ -20,7 +20,7 @@ export const App = (): JSX.Element => {
   };
   useEffect(() => {
     (async () => {
-      RNBootSplash.hide({duration: 250});
+      RNBootSplash.hide({duration: 500});
       await sleep(1000);
       setIsBootstrapping(false);
     })();

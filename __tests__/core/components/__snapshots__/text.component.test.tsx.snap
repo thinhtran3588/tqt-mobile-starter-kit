@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={true}
+    pointerEvents="box-none"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          undefined,
+          Object {
+            "fontSize": 12,
+          },
+        ]
+      }
+    >
+      Text
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`renders lowercase correctly 1`] = `
+<View
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={true}
+    pointerEvents="box-none"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          undefined,
+          Object {
+            "fontSize": 24,
+            "fontWeight": "bold",
+          },
+        ]
+      }
+    >
+      text
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`renders nested child correctly 1`] = `
+<View
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={true}
+    pointerEvents="box-none"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          undefined,
+          Object {
+            "fontSize": 24,
+            "fontWeight": "bold",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            undefined,
+            Object {
+              "fontSize": 12,
+            },
+          ]
+        }
+      >
+        Text
+      </Text>
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`renders type correctly 1`] = `
+<View
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={true}
+    pointerEvents="box-none"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          undefined,
+          Object {
+            "fontSize": 24,
+            "fontWeight": "bold",
+          },
+        ]
+      }
+    >
+      Text
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`renders uppercase correctly 1`] = `
+<View
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={true}
+    pointerEvents="box-none"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          undefined,
+          Object {
+            "fontSize": 24,
+            "fontWeight": "bold",
+          },
+        ]
+      }
+    >
+      TEXT
+    </Text>
+  </View>
+</View>
+`;

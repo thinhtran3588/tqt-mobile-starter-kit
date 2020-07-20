@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={true}
+    pointerEvents="box-none"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          undefined,
+          Object {},
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            undefined,
+            Object {
+              "fontSize": 12,
+            },
+          ]
+        }
+      >
+        Text
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`renders row correctly 1`] = `
+<View
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={true}
+    pointerEvents="box-none"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          undefined,
+          Object {
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            undefined,
+            Object {
+              "fontSize": 12,
+            },
+          ]
+        }
+      >
+        Text
+      </Text>
+    </View>
+  </View>
+</View>
+`;
