@@ -27,7 +27,7 @@ export const AppNavigation = (): JSX.Element => {
       title: t('components'),
       icon: 'view-dashboard-outline',
       iconFocused: 'view-dashboard',
-      tabBarColor: Colors.amber500,
+      tabBarColor: Colors.cyan500,
       component: ComponentListScreen,
     },
     {
@@ -35,7 +35,7 @@ export const AppNavigation = (): JSX.Element => {
       title: t('settings'),
       icon: 'cog-outline',
       iconFocused: 'cog',
-      tabBarColor: Colors.cyan500,
+      tabBarColor: Colors.amber500,
       component: SettingsScreen,
     },
   ];

@@ -11,6 +11,7 @@ import {
   ButtonSample,
   AnimationSample,
   IconSample,
+  CardSample,
 } from './components';
 import {styles} from './component-list.styles';
 
@@ -50,7 +51,7 @@ export const ComponentListScreen = (): JSX.Element => {
 
   return (
     <>
-      <Appbar.Header style={{backgroundColor: Colors.amber500}}>
+      <Appbar.Header style={{backgroundColor: Colors.cyan500}}>
         <Appbar.BackAction
           testID='back-action'
           onPress={() => {
@@ -68,11 +69,12 @@ export const ComponentListScreen = (): JSX.Element => {
       </Appbar.Header>
       <BannerSample />
       <ScrollView>
+        <CardSample />
         {componentList.map((component, index) => (
           <Card key={index.toString()} style={styles.card}>
             <Card.Title
               title={component.title}
-              style={[styles.cardTitle, {backgroundColor: Colors.amber500}]}
+              style={[styles.cardTitle, {backgroundColor: Colors.cyan500}]}
               titleStyle={styles.cardTitleText}
             />
             <Card.Content>{component.element}</Card.Content>
