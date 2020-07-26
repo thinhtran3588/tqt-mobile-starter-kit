@@ -1,9 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import {Text as RNText, TextProps as RNTextProps} from 'react-native';
+import {TextProps as RNTextProps, StyleProp, TextStyle} from 'react-native';
+import {Text as RNText} from 'react-native-paper';
 import {styles} from './text.styles';
 
 export type TextProps = RNTextProps & {
+  style?: StyleProp<TextStyle>;
+  theme?: ReactNativePaper.Theme;
   children?: React.ReactNode;
   type?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'label' | 'p';
   uppercase?: boolean;

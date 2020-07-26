@@ -1,7 +1,7 @@
 import React from 'react';
 import {Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
-import {Appbar, Card, Colors, Alert, ScrollView} from '@core/components';
+import {Appbar, Card, Colors, Alert, ScrollView, Layout} from '@core/components';
 import {
   ActivityIndicatorSample,
   TextSample,
@@ -50,7 +50,7 @@ export const ComponentListScreen = (): JSX.Element => {
   ];
 
   return (
-    <>
+    <Layout>
       <Appbar.Header style={{backgroundColor: Colors.cyan500}}>
         <Appbar.BackAction
           testID='back-action'
@@ -74,13 +74,13 @@ export const ComponentListScreen = (): JSX.Element => {
           <Card key={index.toString()} style={styles.card}>
             <Card.Title
               title={component.title}
-              style={[styles.cardTitle, {backgroundColor: Colors.cyan500}]}
+              style={[styles.borderTop, {backgroundColor: Colors.cyan500}]}
               titleStyle={styles.cardTitleText}
             />
-            <Card.Content>{component.element}</Card.Content>
+            <Card.Content style={styles.cardContent}>{component.element}</Card.Content>
           </Card>
         ))}
       </ScrollView>
-    </>
+    </Layout>
   );
 };

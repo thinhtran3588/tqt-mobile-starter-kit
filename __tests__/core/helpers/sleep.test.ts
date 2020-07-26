@@ -1,4 +1,3 @@
-import 'react-native';
 import {sleep} from '@core/helpers';
 
 jest.useFakeTimers();

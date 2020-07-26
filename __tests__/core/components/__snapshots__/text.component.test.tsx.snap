@@ -18,18 +18,36 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    <Text
+    <View
+      collapsable={false}
+      pointerEvents="box-none"
       style={
-        Array [
-          undefined,
-          Object {
-            "fontSize": 12,
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      Text
-    </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#000000",
+              "fontFamily": "System",
+              "fontWeight": "400",
+              "textAlign": "left",
+            },
+            Array [
+              undefined,
+              Object {
+                "fontSize": 12,
+              },
+            ],
+          ]
+        }
+      >
+        Text
+      </Text>
+    </View>
   </View>
 </View>
 `;
@@ -52,19 +70,37 @@ exports[`renders lowercase correctly 1`] = `
       }
     }
   >
-    <Text
+    <View
+      collapsable={false}
+      pointerEvents="box-none"
       style={
-        Array [
-          undefined,
-          Object {
-            "fontSize": 24,
-            "fontWeight": "bold",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      text
-    </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#000000",
+              "fontFamily": "System",
+              "fontWeight": "400",
+              "textAlign": "left",
+            },
+            Array [
+              undefined,
+              Object {
+                "fontSize": 24,
+                "fontWeight": "bold",
+              },
+            ],
+          ]
+        }
+      >
+        text
+      </Text>
+    </View>
   </View>
 </View>
 `;
@@ -87,30 +123,56 @@ exports[`renders nested child correctly 1`] = `
       }
     }
   >
-    <Text
+    <View
+      collapsable={false}
+      pointerEvents="box-none"
       style={
-        Array [
-          undefined,
-          Object {
-            "fontSize": 24,
-            "fontWeight": "bold",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
       <Text
         style={
           Array [
-            undefined,
             Object {
-              "fontSize": 12,
+              "color": "#000000",
+              "fontFamily": "System",
+              "fontWeight": "400",
+              "textAlign": "left",
             },
+            Array [
+              undefined,
+              Object {
+                "fontSize": 24,
+                "fontWeight": "bold",
+              },
+            ],
           ]
         }
       >
-        Text
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000000",
+                "fontFamily": "System",
+                "fontWeight": "400",
+                "textAlign": "left",
+              },
+              Array [
+                undefined,
+                Object {
+                  "fontSize": 12,
+                },
+              ],
+            ]
+          }
+        >
+          Text
+        </Text>
       </Text>
-    </Text>
+    </View>
   </View>
 </View>
 `;
@@ -133,19 +195,37 @@ exports[`renders type correctly 1`] = `
       }
     }
   >
-    <Text
+    <View
+      collapsable={false}
+      pointerEvents="box-none"
       style={
-        Array [
-          undefined,
-          Object {
-            "fontSize": 24,
-            "fontWeight": "bold",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      Text
-    </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#000000",
+              "fontFamily": "System",
+              "fontWeight": "400",
+              "textAlign": "left",
+            },
+            Array [
+              undefined,
+              Object {
+                "fontSize": 24,
+                "fontWeight": "bold",
+              },
+            ],
+          ]
+        }
+      >
+        Text
+      </Text>
+    </View>
   </View>
 </View>
 `;
@@ -168,19 +248,37 @@ exports[`renders uppercase correctly 1`] = `
       }
     }
   >
-    <Text
+    <View
+      collapsable={false}
+      pointerEvents="box-none"
       style={
-        Array [
-          undefined,
-          Object {
-            "fontSize": 24,
-            "fontWeight": "bold",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      TEXT
-    </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#000000",
+              "fontFamily": "System",
+              "fontWeight": "400",
+              "textAlign": "left",
+            },
+            Array [
+              undefined,
+              Object {
+                "fontSize": 24,
+                "fontWeight": "bold",
+              },
+            ],
+          ]
+        }
+      >
+        TEXT
+      </Text>
+    </View>
   </View>
 </View>
 `;

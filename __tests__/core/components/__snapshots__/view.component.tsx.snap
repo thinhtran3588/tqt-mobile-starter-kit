@@ -19,25 +19,43 @@ exports[`renders correctly 1`] = `
     }
   >
     <View
+      collapsable={false}
+      pointerEvents="box-none"
       style={
-        Array [
-          undefined,
-          Object {},
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      <Text
+      <View
         style={
           Array [
             undefined,
-            Object {
-              "fontSize": 12,
-            },
+            Object {},
           ]
         }
       >
-        Text
-      </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000000",
+                "fontFamily": "System",
+                "fontWeight": "400",
+                "textAlign": "left",
+              },
+              Array [
+                undefined,
+                Object {
+                  "fontSize": 12,
+                },
+              ],
+            ]
+          }
+        >
+          Text
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -62,27 +80,45 @@ exports[`renders row correctly 1`] = `
     }
   >
     <View
+      collapsable={false}
+      pointerEvents="box-none"
       style={
-        Array [
-          undefined,
-          Object {
-            "flexDirection": "row",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      <Text
+      <View
         style={
           Array [
             undefined,
             Object {
-              "fontSize": 12,
+              "flexDirection": "row",
             },
           ]
         }
       >
-        Text
-      </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000000",
+                "fontFamily": "System",
+                "fontWeight": "400",
+                "textAlign": "left",
+              },
+              Array [
+                undefined,
+                Object {
+                  "fontSize": 12,
+                },
+              ],
+            ]
+          }
+        >
+          Text
+        </Text>
+      </View>
     </View>
   </View>
 </View>

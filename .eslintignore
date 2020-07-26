@@ -1,2 +1,4 @@
 jest.setup-test.js
 coverage
+ios
+android

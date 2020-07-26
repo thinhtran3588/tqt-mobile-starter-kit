@@ -7,10 +7,10 @@ export const CardSample = (): JSX.Element => {
     Alert.alert('Alert', `Press ${button} button`);
   };
   return (
-    <Card key='card-sample' style={styles.card} elevation={3}>
+    <Card key='card-sample' style={styles.card} elevation={8}>
       <Card.Title
         title='CardSample'
-        style={[styles.cardTitle, {backgroundColor: Colors.cyan500}]}
+        style={[styles.borderTop, {backgroundColor: Colors.cyan500}]}
         titleStyle={styles.cardTitleText}
       />
       <Card.Cover source={{uri: 'https://picsum.photos/700'}} />
@@ -18,7 +18,7 @@ export const CardSample = (): JSX.Element => {
         <Text type='h2'>Title</Text>
         <Text type='p'>Content</Text>
       </Card.Content>
-      <Card.Actions>
+      <Card.Actions style={styles.borderBottom}>
         <Button testID='cancel-button' onPress={() => pressButton('Cancel')}>
           Cancel
         </Button>

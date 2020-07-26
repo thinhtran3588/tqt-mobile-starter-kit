@@ -5,10 +5,10 @@ import {styles} from './badge-sample.styles';
 export const BadgeSample = (): JSX.Element => {
   return (
     <View row>
-      <Badge style={styles.item} visible>
+      <Badge key='badge-1' style={styles.item} visible>
         10
       </Badge>
-      <Badge style={styles.item} size={40} visible>
+      <Badge key='badge-2' style={styles.item} size={40} visible>
         10
       </Badge>
     </View>

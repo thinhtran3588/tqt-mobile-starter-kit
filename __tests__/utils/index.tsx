@@ -1,18 +1,49 @@
 // https://testing-library.com/docs/native-testing-library/setup
 import React, {ReactNode, ReactElement} from 'react';
 import {render, RenderResult, RenderOptions} from '@testing-library/react-native';
+import {AppThemeProvider, useAppTheme} from '@app/core/contexts';
+import {PaperProvider, DefaultTheme, DarkTheme} from '@app/core/components';
+import {useColorScheme} from 'react-native';
 
-interface AllTheProvidersProps {
+interface Props {
   children?: ReactNode;
 }
-const AllTheProviders = (props: AllTheProvidersProps): JSX.Element => {
+
+const BaseApp = (props: Props): JSX.Element => {
   const {children} = props;
-  return <>{children}</>;
+  const [appTheme] = useAppTheme();
+  const colorScheme = useColorScheme();
+  let useDarkTheme = true;
+  if (appTheme.useSystemTheme) {
+    useDarkTheme = colorScheme === 'dark';
+  } else {
+    useDarkTheme = appTheme.darkMode;
+  }
+  const theme: typeof DefaultTheme = {
+    ...(useDarkTheme ? DarkTheme : DefaultTheme),
+  };
+  return <PaperProvider theme={theme}>{children}</PaperProvider>;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const customRender = (ui: ReactElement<any>, options?: Omit<RenderOptions, 'queries'>): RenderResult => {
-  return render(ui, {wrapper: AllTheProviders, ...options});
+const AllTheProviders = (props: Props): JSX.Element => {
+  const {children} = props;
+  return (
+    <AppThemeProvider>
+      <BaseApp>{children}</BaseApp>
+    </AppThemeProvider>
+  );
+};
+
+const customRender = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ui: ReactElement<any>,
+  options?: Omit<RenderOptions, 'queries'>,
+  useWrapper: boolean = true,
+): RenderResult => {
+  if (useWrapper) {
+    return render(ui, {wrapper: AllTheProviders, ...options});
+  }
+  return render(ui, options);
 };
 
 // re-export everything

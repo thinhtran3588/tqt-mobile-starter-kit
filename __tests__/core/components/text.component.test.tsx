@@ -1,4 +1,3 @@
-import 'react-native';
 import React from 'react';
 import {render, toJSON} from '@test-utils';
 import {Text} from '@core/components';
