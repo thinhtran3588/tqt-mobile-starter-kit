@@ -6,7 +6,7 @@ export const ButtonSample = (): JSX.Element => {
   const onPress = (): void => Alert.alert('Press me', 'Pressed');
   return (
     <>
-      <Button testID='button-sample' style={styles.item} onPress={onPress}>
+      <Button testID='sample-button' style={styles.item} onPress={onPress}>
         Press me
       </Button>
       <Button style={styles.item} icon='camera' onPress={onPress}>

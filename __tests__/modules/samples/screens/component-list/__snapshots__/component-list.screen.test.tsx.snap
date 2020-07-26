@@ -2779,7 +2779,7 @@ exports[`renders correctly 1`] = `
                 }
               >
                 <Button
-                  testID="button-sample"
+                  testID="sample-button"
                   title="Press me"
                 />
                 <Button
@@ -5593,7 +5593,7 @@ exports[`renders correctly in Android 1`] = `
                 }
               >
                 <Button
-                  testID="button-sample"
+                  testID="sample-button"
                   title="Press me"
                 />
                 <Button

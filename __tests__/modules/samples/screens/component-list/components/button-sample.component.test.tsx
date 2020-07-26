@@ -14,6 +14,6 @@ afterEach(() => {
 
 it('presses the sample button', async () => {
   const {getByTestId} = render(<ButtonSample />);
-  fireEvent.press(getByTestId('button-sample'));
+  fireEvent.press(getByTestId('sample-button'));
   expect(Alert.alert).toBeCalledWith('Press me', 'Pressed');
 });
