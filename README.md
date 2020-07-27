@@ -21,6 +21,14 @@ A starter kit for React Native
 ![CI-Develop](https://github.com/thinhtran3588/tqt-mobile-starter-kit/workflows/CI-Develop/badge.svg?branch=develop)
 [![codecov](https://codecov.io/gh/thinhtran3588/tqt-mobile-starter-kit/branch/develop/graph/badge.svg)](https://codecov.io/gh/thinhtran3588/tqt-mobile-starter-kit/branch/develop)
 
+**Fastlane:**
+![CI-Fastlane](https://github.com/thinhtran3588/tqt-mobile-starter-kit/workflows/CI-Fastlane/badge.svg?branch=fastlane)
+[![codecov](https://codecov.io/gh/thinhtran3588/tqt-mobile-starter-kit/branch/fastlane/graph/badge.svg)](https://codecov.io/gh/thinhtran3588/tqt-mobile-starter-kit/branch/fastlane)
+
+**Fastlane-Staging:**
+![CI-Fastlane-Staging](https://github.com/thinhtran3588/tqt-mobile-starter-kit/workflows/CI-Fastlane-Staging/badge.svg?branch=fastlane-staging)
+[![codecov](https://codecov.io/gh/thinhtran3588/tqt-mobile-starter-kit/branch/fastlane-staging/graph/badge.svg)](https://codecov.io/gh/thinhtran3588/tqt-mobile-starter-kit/branch/fastlane-staging)
+
 ## Scripts
 
 - run Android:
