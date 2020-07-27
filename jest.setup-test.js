@@ -7,6 +7,7 @@ jest.mock('i18next', () => ({
       on: () => {},
     }),
   }),
+  changeLanguage: jest.fn(),
 }));
 
 jest.mock('react-i18next', () => ({

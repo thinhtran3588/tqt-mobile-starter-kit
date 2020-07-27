@@ -28,6 +28,7 @@ exports[`renders close correctly 1`] = `
       }
     >
       <Modal
+        animated={true}
         hardwareAccelerated={false}
         supportedOrientations={
           Array [
@@ -58,16 +59,21 @@ exports[`renders close correctly 1`] = `
           }
         />
         <View
-          style={
-            Object {
-              "flex": 1,
-              "height": "100%",
-              "justifyContent": "center",
-              "position": "absolute",
-              "width": "100%",
+          accessible={true}
+          focusable={true}
+        >
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "height": "100%",
+                "justifyContent": "center",
+                "position": "absolute",
+                "width": "100%",
+              }
             }
-          }
-        />
+          />
+        </View>
       </Modal>
     </View>
   </View>
@@ -102,6 +108,7 @@ exports[`renders open correctly 1`] = `
       }
     >
       <Modal
+        animated={true}
         hardwareAccelerated={false}
         supportedOrientations={
           Array [
@@ -132,16 +139,21 @@ exports[`renders open correctly 1`] = `
           }
         />
         <View
-          style={
-            Object {
-              "flex": 1,
-              "height": "100%",
-              "justifyContent": "center",
-              "position": "absolute",
-              "width": "100%",
+          accessible={true}
+          focusable={true}
+        >
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "height": "100%",
+                "justifyContent": "center",
+                "position": "absolute",
+                "width": "100%",
+              }
             }
-          }
-        />
+          />
+        </View>
       </Modal>
     </View>
   </View>
@@ -176,6 +188,7 @@ exports[`renders with incorrect initial value correctly 1`] = `
       }
     >
       <Modal
+        animated={true}
         hardwareAccelerated={false}
         supportedOrientations={
           Array [
@@ -206,16 +219,21 @@ exports[`renders with incorrect initial value correctly 1`] = `
           }
         />
         <View
-          style={
-            Object {
-              "flex": 1,
-              "height": "100%",
-              "justifyContent": "center",
-              "position": "absolute",
-              "width": "100%",
+          accessible={true}
+          focusable={true}
+        >
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "height": "100%",
+                "justifyContent": "center",
+                "position": "absolute",
+                "width": "100%",
+              }
             }
-          }
-        />
+          />
+        </View>
       </Modal>
     </View>
   </View>

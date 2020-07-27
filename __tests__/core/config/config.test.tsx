@@ -21,16 +21,6 @@ it('update configuration correctly', async () => {
       "ios": Object {
         "id": "pro.thinhtran.starterkit",
       },
-      "languages": Array [
-        Object {
-          "id": "en",
-          "name": "English",
-        },
-        Object {
-          "id": "vi",
-          "name": "Tiếng Việt",
-        },
-      ],
     }
   `);
   updateConfig({
@@ -64,16 +54,6 @@ it('update configuration correctly', async () => {
       "ios": Object {
         "id": "pro.thinhtran.test",
       },
-      "languages": Array [
-        Object {
-          "id": "en",
-          "name": "English",
-        },
-        Object {
-          "id": "vi",
-          "name": "Tiếng Việt",
-        },
-      ],
     }
   `);
 });

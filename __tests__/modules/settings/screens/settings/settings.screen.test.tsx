@@ -26,3 +26,9 @@ it('opens primary color picker', async () => {
   fireEvent.press(getByTestId('primary-color-list-item'));
   expect(toJSON(baseElement)).toMatchSnapshot();
 });
+
+it('opens language picker', async () => {
+  const {baseElement, getByTestId} = render(<SettingsScreen />);
+  fireEvent.press(getByTestId('language-list-item'));
+  expect(toJSON(baseElement)).toMatchSnapshot();
+});

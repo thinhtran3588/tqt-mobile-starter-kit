@@ -1,7 +1,7 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {Text, Appbar, Colors, List, Layout} from '@core/components';
-import {ThemeSetting, PrimaryColorSetting, GeneralInfo} from './components';
+import {ThemeSetting, PrimaryColorSetting, GeneralInfo, LanguageSetting} from './components';
 
 export const SettingsScreen = (): JSX.Element => {
   const {t} = useTranslation('settings');
@@ -12,6 +12,7 @@ export const SettingsScreen = (): JSX.Element => {
       </Appbar.Header>
       <ThemeSetting />
       <PrimaryColorSetting />
+      <LanguageSetting />
       <List.Subheader>
         <Text type='h4'>{t('generalInfo')}</Text>
       </List.Subheader>
