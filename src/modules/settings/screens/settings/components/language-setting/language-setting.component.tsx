@@ -16,7 +16,7 @@ export const LanguageSetting = (): JSX.Element => {
         testID='language-list-item'
         title={t('language')}
         description={selectedLang}
-        leftIcon='format-color-fill'
+        leftIcon='globe-model'
         rightIcon='chevron-right'
         onPress={() => setPickerOpen(true)}
       />
