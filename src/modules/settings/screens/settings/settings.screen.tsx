@@ -6,7 +6,7 @@ import {Text, Appbar, Colors, List, Divider, Switch, View, Layout} from '@core/c
 import {styles} from './settings.styles';
 
 export const SettingsScreen = (): JSX.Element => {
-  const {t} = useTranslation('');
+  const {t} = useTranslation('settings');
   const [theme, {setDarkMode, setUseSystemTheme}] = useAppTheme();
   return (
     <Layout>
@@ -20,7 +20,7 @@ export const SettingsScreen = (): JSX.Element => {
         left={() => <List.Icon icon='theme-light-dark' />}
         right={() => (
           <View style={styles.switchContainer}>
-            <Switch value={theme.useSystemTheme} onValueChange={setUseSystemTheme} />
+            <Switch testID='system-theme-switch' value={theme.useSystemTheme} onValueChange={setUseSystemTheme} />
           </View>
         )}
       />
@@ -33,7 +33,12 @@ export const SettingsScreen = (): JSX.Element => {
         disabled={theme.useSystemTheme}
         right={() => (
           <View style={styles.switchContainer}>
-            <Switch value={theme.darkMode} onValueChange={setDarkMode} disabled={theme.useSystemTheme} />
+            <Switch
+              testID='dark-theme-switch'
+              value={theme.darkMode}
+              onValueChange={setDarkMode}
+              disabled={theme.useSystemTheme}
+            />
           </View>
         )}
       />
@@ -44,7 +49,6 @@ export const SettingsScreen = (): JSX.Element => {
         title='Primary color'
         left={() => <List.Icon icon='format-color-fill' />}
         right={() => <List.Icon icon='chevron-right' />}
-        onPress={() => {}}
       />
       <List.Subheader style={styles.header}>
         <Text type='h4'>General Info</Text>
@@ -72,7 +76,6 @@ export const SettingsScreen = (): JSX.Element => {
         description={appFullVersion()}
         left={() => <List.Icon icon='shoe-print' />}
       />
-
       <Divider />
     </Layout>
   );

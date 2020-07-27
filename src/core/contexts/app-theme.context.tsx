@@ -21,10 +21,7 @@ const DEFAULT_APP_THEME: AppThemeState = {
 };
 
 const AppThemeContext = React.createContext(DEFAULT_APP_THEME);
-const AppThemeDispatchContext = React.createContext<Dispatch>({
-  setUseSystemTheme: () => {},
-  setDarkMode: () => {},
-});
+const AppThemeDispatchContext = React.createContext<Dispatch>(undefined as never);
 
 const AppThemeProvider = (props: AppThemeProviderProps): JSX.Element => {
   const {children} = props;
@@ -51,9 +48,6 @@ const AppThemeProvider = (props: AppThemeProviderProps): JSX.Element => {
 const useAppTheme = (): [AppThemeState, Dispatch] => {
   const theme = useContext(AppThemeContext);
   const dispatch = useContext(AppThemeDispatchContext);
-  if (theme === undefined) {
-    throw new Error('useAppTheme must be used within a AppThemeProvider');
-  }
   return [theme, dispatch];
 };
 
