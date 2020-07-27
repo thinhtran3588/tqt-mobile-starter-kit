@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTheme} from 'react-native-paper';
-import {Card, Text, Colors, Button, Alert} from '@core/components';
+import {Card, Text, Button, Alert} from '@core/components';
 import {styles} from './card-sample.styles';
 
 export const CardSample = (): JSX.Element => {

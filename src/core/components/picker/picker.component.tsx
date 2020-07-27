@@ -1,7 +1,7 @@
 import React, {forwardRef} from 'react';
 import RNPicker, {PickerOptions} from 'react-native-picker';
 import colorConvert from 'color-convert';
-import {Modal, View, Platform} from 'react-native';
+import {Modal, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
 import {Blur} from '../blur/blur.component';
