@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`changes to dark theme 1`] = `
+exports[`opens primary color picker 1`] = `
 <View
   pointerEvents="box-none"
   style={
@@ -30,7 +30,7 @@ exports[`changes to dark theme 1`] = `
       <View
         style={
           Object {
-            "backgroundColor": "#272727",
+            "backgroundColor": "#ffffff",
             "flex": 1,
             "shadowColor": "#000000",
             "shadowOffset": Object {
@@ -110,7 +110,7 @@ exports[`changes to dark theme 1`] = `
                   style={
                     Array [
                       Object {
-                        "color": "#ffffff",
+                        "color": "#000000",
                         "fontFamily": "System",
                         "fontWeight": "400",
                         "textAlign": "left",
@@ -152,13 +152,16 @@ exports[`changes to dark theme 1`] = `
                 Object {
                   "padding": 8,
                 },
-                Object {
-                  "padding": 0,
-                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
               ],
             ]
           }
-          underlayColor="rgba(255, 255, 255, 0.16)"
+          underlayColor="rgba(0, 0, 0, 0.1)"
         >
           <View
             style={
@@ -190,7 +193,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontSize": 24,
                     },
                     Array [
@@ -236,7 +239,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontFamily": "System",
                       "fontWeight": "400",
                       "textAlign": "left",
@@ -246,11 +249,14 @@ exports[`changes to dark theme 1`] = `
                         "fontSize": 16,
                       },
                       Object {
-                        "color": "rgba(255, 255, 255, 0.87)",
+                        "color": "rgba(0, 0, 0, 0.87)",
                       },
-                      Object {
-                        "fontWeight": "bold",
-                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
                     ],
                   ]
                 }
@@ -275,10 +281,10 @@ exports[`changes to dark theme 1`] = `
                 trackColor={
                   Object {
                     "false": "",
-                    "true": "#03dac6",
+                    "true": "#03dac4",
                   }
                 }
-                value={false}
+                value={true}
               />
             </View>
           </View>
@@ -287,7 +293,7 @@ exports[`changes to dark theme 1`] = `
           style={
             Array [
               Object {
-                "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                "backgroundColor": "rgba(0, 0, 0, 0.12)",
                 "height": 0.5,
               },
               undefined,
@@ -305,13 +311,16 @@ exports[`changes to dark theme 1`] = `
                 Object {
                   "padding": 8,
                 },
-                Object {
-                  "padding": 0,
-                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
               ],
             ]
           }
-          underlayColor="rgba(255, 255, 255, 0.16)"
+          underlayColor="rgba(0, 0, 0, 0.1)"
         >
           <View
             style={
@@ -343,7 +352,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontSize": 24,
                     },
                     Array [
@@ -389,7 +398,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontFamily": "System",
                       "fontWeight": "400",
                       "textAlign": "left",
@@ -399,11 +408,14 @@ exports[`changes to dark theme 1`] = `
                         "fontSize": 16,
                       },
                       Object {
-                        "color": "rgba(255, 255, 255, 0.87)",
+                        "color": "rgba(0, 0, 0, 0.87)",
                       },
-                      Object {
-                        "fontWeight": "bold",
-                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
                     ],
                   ]
                 }
@@ -424,15 +436,15 @@ exports[`changes to dark theme 1`] = `
               }
             >
               <Switch
-                disabled={false}
+                disabled={true}
                 testID="dark-theme-switch"
                 trackColor={
                   Object {
                     "false": "",
-                    "true": "#03dac6",
+                    "true": "#03dac4",
                   }
                 }
-                value={true}
+                value={false}
               />
             </View>
           </View>
@@ -441,7 +453,7 @@ exports[`changes to dark theme 1`] = `
           style={
             Array [
               Object {
-                "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                "backgroundColor": "rgba(0, 0, 0, 0.12)",
                 "height": 0.5,
               },
               undefined,
@@ -451,7 +463,7 @@ exports[`changes to dark theme 1`] = `
         />
         <TouchableHighlight
           descriptionNumberOfLines={2}
-          disabled={true}
+          disabled={false}
           style={
             Array [
               false,
@@ -459,13 +471,17 @@ exports[`changes to dark theme 1`] = `
                 Object {
                   "padding": 8,
                 },
-                Object {
-                  "padding": 0,
-                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
               ],
             ]
           }
-          underlayColor="rgba(255, 255, 255, 0.16)"
+          testID="primary-color-list-item"
+          underlayColor="rgba(0, 0, 0, 0.1)"
         >
           <View
             style={
@@ -497,7 +513,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontSize": 24,
                     },
                     Array [
@@ -543,7 +559,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontFamily": "System",
                       "fontWeight": "400",
                       "textAlign": "left",
@@ -553,16 +569,43 @@ exports[`changes to dark theme 1`] = `
                         "fontSize": 16,
                       },
                       Object {
-                        "color": "rgba(255, 255, 255, 0.87)",
+                        "color": "rgba(0, 0, 0, 0.87)",
                       },
-                      Object {
-                        "fontWeight": "bold",
-                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
                     ],
                   ]
                 }
               >
                 primaryColor
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 14,
+                      },
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.54)",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                Amber
               </Text>
             </View>
             <View
@@ -588,7 +631,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontSize": 24,
                     },
                     Array [
@@ -617,12 +660,66 @@ exports[`changes to dark theme 1`] = `
             </View>
           </View>
         </TouchableHighlight>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                "height": 0.5,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        />
+        <Modal
+          hardwareAccelerated={false}
+          supportedOrientations={
+            Array [
+              "portrait",
+              "portrait-upside-down",
+              "landscape",
+              "landscape-left",
+              "landscape-right",
+            ]
+          }
+          transparent={true}
+          visible={true}
+        >
+          <BlurView
+            blurAmount={10}
+            blurType="light"
+            style={
+              Array [
+                Object {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                undefined,
+              ]
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "height": "100%",
+                "justifyContent": "center",
+                "position": "absolute",
+                "width": "100%",
+              }
+            }
+          />
+        </Modal>
         <Text
           numberOfLines={1}
           style={
             Array [
               Object {
-                "color": "#ffffff",
+                "color": "#000000",
                 "fontFamily": "System",
                 "fontWeight": "400",
                 "textAlign": "left",
@@ -633,11 +730,11 @@ exports[`changes to dark theme 1`] = `
                   "paddingVertical": 13,
                 },
                 Object {
-                  "color": "rgba(255, 255, 255, 0.54)",
+                  "color": "rgba(0, 0, 0, 0.54)",
                   "fontFamily": "System",
                   "fontWeight": "500",
                 },
-                Object {},
+                undefined,
               ],
             ]
           }
@@ -646,7 +743,7 @@ exports[`changes to dark theme 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#ffffff",
+                  "color": "#000000",
                   "fontFamily": "System",
                   "fontWeight": "400",
                   "textAlign": "left",
@@ -674,13 +771,16 @@ exports[`changes to dark theme 1`] = `
                 Object {
                   "padding": 8,
                 },
-                Object {
-                  "padding": 0,
-                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
               ],
             ]
           }
-          underlayColor="rgba(255, 255, 255, 0.16)"
+          underlayColor="rgba(0, 0, 0, 0.1)"
         >
           <View
             style={
@@ -712,7 +812,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontSize": 24,
                     },
                     Array [
@@ -758,7 +858,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontFamily": "System",
                       "fontWeight": "400",
                       "textAlign": "left",
@@ -768,11 +868,14 @@ exports[`changes to dark theme 1`] = `
                         "fontSize": 16,
                       },
                       Object {
-                        "color": "rgba(255, 255, 255, 0.87)",
+                        "color": "rgba(0, 0, 0, 0.87)",
                       },
-                      Object {
-                        "fontWeight": "bold",
-                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
                     ],
                   ]
                 }
@@ -784,7 +887,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontFamily": "System",
                       "fontWeight": "400",
                       "textAlign": "left",
@@ -794,7 +897,7 @@ exports[`changes to dark theme 1`] = `
                         "fontSize": 14,
                       },
                       Object {
-                        "color": "rgba(255, 255, 255, 0.54)",
+                        "color": "rgba(0, 0, 0, 0.54)",
                       },
                       undefined,
                     ],
@@ -810,7 +913,7 @@ exports[`changes to dark theme 1`] = `
           style={
             Array [
               Object {
-                "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                "backgroundColor": "rgba(0, 0, 0, 0.12)",
                 "height": 0.5,
               },
               undefined,
@@ -828,13 +931,16 @@ exports[`changes to dark theme 1`] = `
                 Object {
                   "padding": 8,
                 },
-                Object {
-                  "padding": 0,
-                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
               ],
             ]
           }
-          underlayColor="rgba(255, 255, 255, 0.16)"
+          underlayColor="rgba(0, 0, 0, 0.1)"
         >
           <View
             style={
@@ -866,7 +972,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontSize": 24,
                     },
                     Array [
@@ -912,7 +1018,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontFamily": "System",
                       "fontWeight": "400",
                       "textAlign": "left",
@@ -922,11 +1028,14 @@ exports[`changes to dark theme 1`] = `
                         "fontSize": 16,
                       },
                       Object {
-                        "color": "rgba(255, 255, 255, 0.87)",
+                        "color": "rgba(0, 0, 0, 0.87)",
                       },
-                      Object {
-                        "fontWeight": "bold",
-                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
                     ],
                   ]
                 }
@@ -938,7 +1047,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontFamily": "System",
                       "fontWeight": "400",
                       "textAlign": "left",
@@ -948,7 +1057,7 @@ exports[`changes to dark theme 1`] = `
                         "fontSize": 14,
                       },
                       Object {
-                        "color": "rgba(255, 255, 255, 0.54)",
+                        "color": "rgba(0, 0, 0, 0.54)",
                       },
                       undefined,
                     ],
@@ -964,7 +1073,7 @@ exports[`changes to dark theme 1`] = `
           style={
             Array [
               Object {
-                "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                "backgroundColor": "rgba(0, 0, 0, 0.12)",
                 "height": 0.5,
               },
               undefined,
@@ -982,13 +1091,16 @@ exports[`changes to dark theme 1`] = `
                 Object {
                   "padding": 8,
                 },
-                Object {
-                  "padding": 0,
-                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
               ],
             ]
           }
-          underlayColor="rgba(255, 255, 255, 0.16)"
+          underlayColor="rgba(0, 0, 0, 0.1)"
         >
           <View
             style={
@@ -1020,7 +1132,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontSize": 24,
                     },
                     Array [
@@ -1066,7 +1178,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontFamily": "System",
                       "fontWeight": "400",
                       "textAlign": "left",
@@ -1076,11 +1188,14 @@ exports[`changes to dark theme 1`] = `
                         "fontSize": 16,
                       },
                       Object {
-                        "color": "rgba(255, 255, 255, 0.87)",
+                        "color": "rgba(0, 0, 0, 0.87)",
                       },
-                      Object {
-                        "fontWeight": "bold",
-                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
                     ],
                   ]
                 }
@@ -1092,7 +1207,7 @@ exports[`changes to dark theme 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#000000",
                       "fontFamily": "System",
                       "fontWeight": "400",
                       "textAlign": "left",
@@ -1102,7 +1217,7 @@ exports[`changes to dark theme 1`] = `
                         "fontSize": 14,
                       },
                       Object {
-                        "color": "rgba(255, 255, 255, 0.54)",
+                        "color": "rgba(0, 0, 0, 0.54)",
                       },
                       undefined,
                     ],
@@ -1118,7 +1233,7 @@ exports[`changes to dark theme 1`] = `
           style={
             Array [
               Object {
-                "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                "backgroundColor": "rgba(0, 0, 0, 0.12)",
                 "height": 0.5,
               },
               undefined,
@@ -1284,9 +1399,12 @@ exports[`renders correctly 1`] = `
                 Object {
                   "padding": 8,
                 },
-                Object {
-                  "padding": 0,
-                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
               ],
             ]
           }
@@ -1380,9 +1498,12 @@ exports[`renders correctly 1`] = `
                       Object {
                         "color": "rgba(0, 0, 0, 0.87)",
                       },
-                      Object {
-                        "fontWeight": "bold",
-                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
                     ],
                   ]
                 }
@@ -1437,9 +1558,12 @@ exports[`renders correctly 1`] = `
                 Object {
                   "padding": 8,
                 },
-                Object {
-                  "padding": 0,
-                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
               ],
             ]
           }
@@ -1533,9 +1657,12 @@ exports[`renders correctly 1`] = `
                       Object {
                         "color": "rgba(0, 0, 0, 0.87)",
                       },
-                      Object {
-                        "fontWeight": "bold",
-                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
                     ],
                   ]
                 }
@@ -1583,7 +1710,7 @@ exports[`renders correctly 1`] = `
         />
         <TouchableHighlight
           descriptionNumberOfLines={2}
-          disabled={true}
+          disabled={false}
           style={
             Array [
               false,
@@ -1591,12 +1718,16 @@ exports[`renders correctly 1`] = `
                 Object {
                   "padding": 8,
                 },
-                Object {
-                  "padding": 0,
-                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
               ],
             ]
           }
+          testID="primary-color-list-item"
           underlayColor="rgba(0, 0, 0, 0.1)"
         >
           <View
@@ -1687,14 +1818,41 @@ exports[`renders correctly 1`] = `
                       Object {
                         "color": "rgba(0, 0, 0, 0.87)",
                       },
-                      Object {
-                        "fontWeight": "bold",
-                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
                     ],
                   ]
                 }
               >
                 primaryColor
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 14,
+                      },
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.54)",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                Amber
               </Text>
             </View>
             <View
@@ -1749,6 +1907,60 @@ exports[`renders correctly 1`] = `
             </View>
           </View>
         </TouchableHighlight>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                "height": 0.5,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        />
+        <Modal
+          hardwareAccelerated={false}
+          supportedOrientations={
+            Array [
+              "portrait",
+              "portrait-upside-down",
+              "landscape",
+              "landscape-left",
+              "landscape-right",
+            ]
+          }
+          transparent={true}
+          visible={false}
+        >
+          <BlurView
+            blurAmount={10}
+            blurType="light"
+            style={
+              Array [
+                Object {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                undefined,
+              ]
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "height": "100%",
+                "justifyContent": "center",
+                "position": "absolute",
+                "width": "100%",
+              }
+            }
+          />
+        </Modal>
         <Text
           numberOfLines={1}
           style={
@@ -1769,7 +1981,7 @@ exports[`renders correctly 1`] = `
                   "fontFamily": "System",
                   "fontWeight": "500",
                 },
-                Object {},
+                undefined,
               ],
             ]
           }
@@ -1806,9 +2018,12 @@ exports[`renders correctly 1`] = `
                 Object {
                   "padding": 8,
                 },
-                Object {
-                  "padding": 0,
-                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
               ],
             ]
           }
@@ -1902,9 +2117,12 @@ exports[`renders correctly 1`] = `
                       Object {
                         "color": "rgba(0, 0, 0, 0.87)",
                       },
-                      Object {
-                        "fontWeight": "bold",
-                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
                     ],
                   ]
                 }
@@ -1960,9 +2178,12 @@ exports[`renders correctly 1`] = `
                 Object {
                   "padding": 8,
                 },
-                Object {
-                  "padding": 0,
-                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
               ],
             ]
           }
@@ -2056,9 +2277,12 @@ exports[`renders correctly 1`] = `
                       Object {
                         "color": "rgba(0, 0, 0, 0.87)",
                       },
-                      Object {
-                        "fontWeight": "bold",
-                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
                     ],
                   ]
                 }
@@ -2114,9 +2338,12 @@ exports[`renders correctly 1`] = `
                 Object {
                   "padding": 8,
                 },
-                Object {
-                  "padding": 0,
-                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
               ],
             ]
           }
@@ -2210,9 +2437,2506 @@ exports[`renders correctly 1`] = `
                       Object {
                         "color": "rgba(0, 0, 0, 0.87)",
                       },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+              >
+                version
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
                       Object {
-                        "fontWeight": "bold",
+                        "fontSize": 14,
                       },
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.54)",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                0.4.0.3
+              </Text>
+            </View>
+          </View>
+        </TouchableHighlight>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                "height": 0.5,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`uses dark theme 1`] = `
+<View
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={true}
+    pointerEvents="box-none"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      pointerEvents="box-none"
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#272727",
+            "flex": 1,
+            "shadowColor": "#000000",
+            "shadowOffset": Object {
+              "height": 3,
+              "width": 0,
+            },
+            "shadowOpacity": 0.24,
+            "shadowRadius": 4,
+          }
+        }
+      >
+        <SafeAreaView
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#ffc107",
+                "elevation": 4,
+                "zIndex": 0,
+              },
+              Object {
+                "shadowColor": "#000000",
+                "shadowOffset": Object {
+                  "height": 3,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.24,
+                "shadowRadius": 4,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#ffc107",
+                "elevation": 0,
+                "flexDirection": "row",
+                "height": 56,
+                "marginTop": 0,
+                "paddingHorizontal": 4,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "width": 48,
+                }
+              }
+            />
+            <TouchableWithoutFeedback
+              disabled={true}
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flex": 1,
+                      "paddingHorizontal": 12,
+                    },
+                    Array [
+                      false,
+                      Object {
+                        "alignItems": "center",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                <Text
+                  accessibilityRole="header"
+                  accessibilityTraits="header"
+                  accessible={true}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#ffffff",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                        "textAlign": "left",
+                      },
+                      Array [
+                        Object {
+                          "color": "#000000",
+                          "fontFamily": "System",
+                          "fontWeight": "400",
+                        },
+                        Object {
+                          "fontSize": 17,
+                        },
+                        undefined,
+                      ],
+                    ]
+                  }
+                >
+                  common:settings
+                </Text>
+              </View>
+            </TouchableWithoutFeedback>
+            <View
+              style={
+                Object {
+                  "width": 48,
+                }
+              }
+            />
+          </View>
+        </SafeAreaView>
+        <TouchableHighlight
+          descriptionNumberOfLines={2}
+          disabled={true}
+          style={
+            Array [
+              false,
+              Array [
+                Object {
+                  "padding": 8,
+                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
+              ],
+            ]
+          }
+          underlayColor="rgba(255, 255, 255, 0.16)"
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              pointerEvents="box-none"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "margin": 8,
+                    "width": 40,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": 24,
+                    },
+                    Array [
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                󰔎
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 16,
+                      },
+                      Object {
+                        "color": "rgba(255, 255, 255, 0.87)",
+                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+              >
+                useSystemTheme
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "display": "flex",
+                    "justifyContent": "center",
+                    "paddingRight": 10,
+                  },
+                  Object {},
+                ]
+              }
+            >
+              <Switch
+                testID="system-theme-switch"
+                trackColor={
+                  Object {
+                    "false": "",
+                    "true": "#03dac6",
+                  }
+                }
+                value={false}
+              />
+            </View>
+          </View>
+        </TouchableHighlight>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                "height": 0.5,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        />
+        <TouchableHighlight
+          descriptionNumberOfLines={2}
+          disabled={true}
+          style={
+            Array [
+              false,
+              Array [
+                Object {
+                  "padding": 8,
+                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
+              ],
+            ]
+          }
+          underlayColor="rgba(255, 255, 255, 0.16)"
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              pointerEvents="box-none"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "margin": 8,
+                    "width": 40,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": 24,
+                    },
+                    Array [
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                󰔎
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 16,
+                      },
+                      Object {
+                        "color": "rgba(255, 255, 255, 0.87)",
+                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+              >
+                darkTheme
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "display": "flex",
+                    "justifyContent": "center",
+                    "paddingRight": 10,
+                  },
+                  Object {},
+                ]
+              }
+            >
+              <Switch
+                disabled={false}
+                testID="dark-theme-switch"
+                trackColor={
+                  Object {
+                    "false": "",
+                    "true": "#03dac6",
+                  }
+                }
+                value={true}
+              />
+            </View>
+          </View>
+        </TouchableHighlight>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                "height": 0.5,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        />
+        <TouchableHighlight
+          descriptionNumberOfLines={2}
+          disabled={false}
+          style={
+            Array [
+              false,
+              Array [
+                Object {
+                  "padding": 8,
+                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
+              ],
+            ]
+          }
+          testID="primary-color-list-item"
+          underlayColor="rgba(255, 255, 255, 0.16)"
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              pointerEvents="box-none"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "margin": 8,
+                    "width": 40,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": 24,
+                    },
+                    Array [
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                󰉦
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 16,
+                      },
+                      Object {
+                        "color": "rgba(255, 255, 255, 0.87)",
+                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+              >
+                primaryColor
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 14,
+                      },
+                      Object {
+                        "color": "rgba(255, 255, 255, 0.54)",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                Amber
+              </Text>
+            </View>
+            <View
+              pointerEvents="box-none"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "margin": 8,
+                    "width": 40,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": 24,
+                    },
+                    Array [
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                󰅂
+              </Text>
+            </View>
+          </View>
+        </TouchableHighlight>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                "height": 0.5,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        />
+        <Modal
+          hardwareAccelerated={false}
+          supportedOrientations={
+            Array [
+              "portrait",
+              "portrait-upside-down",
+              "landscape",
+              "landscape-left",
+              "landscape-right",
+            ]
+          }
+          transparent={true}
+          visible={false}
+        >
+          <BlurView
+            blurAmount={10}
+            blurType="dark"
+            style={
+              Array [
+                Object {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                undefined,
+              ]
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "height": "100%",
+                "justifyContent": "center",
+                "position": "absolute",
+                "width": "100%",
+              }
+            }
+          />
+        </Modal>
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "System",
+                "fontWeight": "400",
+                "textAlign": "left",
+              },
+              Array [
+                Object {
+                  "paddingHorizontal": 16,
+                  "paddingVertical": 13,
+                },
+                Object {
+                  "color": "rgba(255, 255, 255, 0.54)",
+                  "fontFamily": "System",
+                  "fontWeight": "500",
+                },
+                undefined,
+              ],
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "System",
+                  "fontWeight": "400",
+                  "textAlign": "left",
+                },
+                Array [
+                  undefined,
+                  Object {
+                    "fontSize": 18,
+                    "fontWeight": "bold",
+                  },
+                ],
+              ]
+            }
+          >
+            generalInfo
+          </Text>
+        </Text>
+        <TouchableHighlight
+          descriptionNumberOfLines={2}
+          disabled={true}
+          style={
+            Array [
+              false,
+              Array [
+                Object {
+                  "padding": 8,
+                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
+              ],
+            ]
+          }
+          underlayColor="rgba(255, 255, 255, 0.16)"
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              pointerEvents="box-none"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "margin": 8,
+                    "width": 40,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": 24,
+                    },
+                    Array [
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                󰙊
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 16,
+                      },
+                      Object {
+                        "color": "rgba(255, 255, 255, 0.87)",
+                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+              >
+                author
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 14,
+                      },
+                      Object {
+                        "color": "rgba(255, 255, 255, 0.54)",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                Thinh Tran
+              </Text>
+            </View>
+          </View>
+        </TouchableHighlight>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                "height": 0.5,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        />
+        <TouchableHighlight
+          descriptionNumberOfLines={2}
+          disabled={true}
+          style={
+            Array [
+              false,
+              Array [
+                Object {
+                  "padding": 8,
+                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
+              ],
+            ]
+          }
+          underlayColor="rgba(255, 255, 255, 0.16)"
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              pointerEvents="box-none"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "margin": 8,
+                    "width": 40,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": 24,
+                    },
+                    Array [
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                󰗦
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 16,
+                      },
+                      Object {
+                        "color": "rgba(255, 255, 255, 0.87)",
+                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+              >
+                copyright
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 14,
+                      },
+                      Object {
+                        "color": "rgba(255, 255, 255, 0.54)",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                Copyright © 2020 by Thinh Tran
+              </Text>
+            </View>
+          </View>
+        </TouchableHighlight>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                "height": 0.5,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        />
+        <TouchableHighlight
+          descriptionNumberOfLines={2}
+          disabled={true}
+          style={
+            Array [
+              false,
+              Array [
+                Object {
+                  "padding": 8,
+                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
+              ],
+            ]
+          }
+          underlayColor="rgba(255, 255, 255, 0.16)"
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              pointerEvents="box-none"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "margin": 8,
+                    "width": 40,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": 24,
+                    },
+                    Array [
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                󰷺
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 16,
+                      },
+                      Object {
+                        "color": "rgba(255, 255, 255, 0.87)",
+                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+              >
+                version
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#ffffff",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 14,
+                      },
+                      Object {
+                        "color": "rgba(255, 255, 255, 0.54)",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                0.4.0.3
+              </Text>
+            </View>
+          </View>
+        </TouchableHighlight>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                "height": 0.5,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`uses light theme 1`] = `
+<View
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={true}
+    pointerEvents="box-none"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      pointerEvents="box-none"
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#ffffff",
+            "flex": 1,
+            "shadowColor": "#000000",
+            "shadowOffset": Object {
+              "height": 3,
+              "width": 0,
+            },
+            "shadowOpacity": 0.24,
+            "shadowRadius": 4,
+          }
+        }
+      >
+        <SafeAreaView
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#ffc107",
+                "elevation": 4,
+                "zIndex": 0,
+              },
+              Object {
+                "shadowColor": "#000000",
+                "shadowOffset": Object {
+                  "height": 3,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.24,
+                "shadowRadius": 4,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#ffc107",
+                "elevation": 0,
+                "flexDirection": "row",
+                "height": 56,
+                "marginTop": 0,
+                "paddingHorizontal": 4,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "width": 48,
+                }
+              }
+            />
+            <TouchableWithoutFeedback
+              disabled={true}
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flex": 1,
+                      "paddingHorizontal": 12,
+                    },
+                    Array [
+                      false,
+                      Object {
+                        "alignItems": "center",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                <Text
+                  accessibilityRole="header"
+                  accessibilityTraits="header"
+                  accessible={true}
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#000000",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                        "textAlign": "left",
+                      },
+                      Array [
+                        Object {
+                          "color": "#000000",
+                          "fontFamily": "System",
+                          "fontWeight": "400",
+                        },
+                        Object {
+                          "fontSize": 17,
+                        },
+                        undefined,
+                      ],
+                    ]
+                  }
+                >
+                  common:settings
+                </Text>
+              </View>
+            </TouchableWithoutFeedback>
+            <View
+              style={
+                Object {
+                  "width": 48,
+                }
+              }
+            />
+          </View>
+        </SafeAreaView>
+        <TouchableHighlight
+          descriptionNumberOfLines={2}
+          disabled={true}
+          style={
+            Array [
+              false,
+              Array [
+                Object {
+                  "padding": 8,
+                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
+              ],
+            ]
+          }
+          underlayColor="rgba(0, 0, 0, 0.1)"
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              pointerEvents="box-none"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "margin": 8,
+                    "width": 40,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontSize": 24,
+                    },
+                    Array [
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                󰔎
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 16,
+                      },
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.87)",
+                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+              >
+                useSystemTheme
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "display": "flex",
+                    "justifyContent": "center",
+                    "paddingRight": 10,
+                  },
+                  Object {},
+                ]
+              }
+            >
+              <Switch
+                testID="system-theme-switch"
+                trackColor={
+                  Object {
+                    "false": "",
+                    "true": "#03dac4",
+                  }
+                }
+                value={false}
+              />
+            </View>
+          </View>
+        </TouchableHighlight>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                "height": 0.5,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        />
+        <TouchableHighlight
+          descriptionNumberOfLines={2}
+          disabled={true}
+          style={
+            Array [
+              false,
+              Array [
+                Object {
+                  "padding": 8,
+                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
+              ],
+            ]
+          }
+          underlayColor="rgba(0, 0, 0, 0.1)"
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              pointerEvents="box-none"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "margin": 8,
+                    "width": 40,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontSize": 24,
+                    },
+                    Array [
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                󰔎
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 16,
+                      },
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.87)",
+                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+              >
+                darkTheme
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "display": "flex",
+                    "justifyContent": "center",
+                    "paddingRight": 10,
+                  },
+                  Object {},
+                ]
+              }
+            >
+              <Switch
+                disabled={false}
+                testID="dark-theme-switch"
+                trackColor={
+                  Object {
+                    "false": "",
+                    "true": "#03dac4",
+                  }
+                }
+                value={false}
+              />
+            </View>
+          </View>
+        </TouchableHighlight>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                "height": 0.5,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        />
+        <TouchableHighlight
+          descriptionNumberOfLines={2}
+          disabled={false}
+          style={
+            Array [
+              false,
+              Array [
+                Object {
+                  "padding": 8,
+                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
+              ],
+            ]
+          }
+          testID="primary-color-list-item"
+          underlayColor="rgba(0, 0, 0, 0.1)"
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              pointerEvents="box-none"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "margin": 8,
+                    "width": 40,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontSize": 24,
+                    },
+                    Array [
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                󰉦
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 16,
+                      },
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.87)",
+                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+              >
+                primaryColor
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 14,
+                      },
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.54)",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                Amber
+              </Text>
+            </View>
+            <View
+              pointerEvents="box-none"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "margin": 8,
+                    "width": 40,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontSize": 24,
+                    },
+                    Array [
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                󰅂
+              </Text>
+            </View>
+          </View>
+        </TouchableHighlight>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                "height": 0.5,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        />
+        <Modal
+          hardwareAccelerated={false}
+          supportedOrientations={
+            Array [
+              "portrait",
+              "portrait-upside-down",
+              "landscape",
+              "landscape-left",
+              "landscape-right",
+            ]
+          }
+          transparent={true}
+          visible={false}
+        >
+          <BlurView
+            blurAmount={10}
+            blurType="light"
+            style={
+              Array [
+                Object {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                undefined,
+              ]
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "height": "100%",
+                "justifyContent": "center",
+                "position": "absolute",
+                "width": "100%",
+              }
+            }
+          />
+        </Modal>
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#000000",
+                "fontFamily": "System",
+                "fontWeight": "400",
+                "textAlign": "left",
+              },
+              Array [
+                Object {
+                  "paddingHorizontal": 16,
+                  "paddingVertical": 13,
+                },
+                Object {
+                  "color": "rgba(0, 0, 0, 0.54)",
+                  "fontFamily": "System",
+                  "fontWeight": "500",
+                },
+                undefined,
+              ],
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#000000",
+                  "fontFamily": "System",
+                  "fontWeight": "400",
+                  "textAlign": "left",
+                },
+                Array [
+                  undefined,
+                  Object {
+                    "fontSize": 18,
+                    "fontWeight": "bold",
+                  },
+                ],
+              ]
+            }
+          >
+            generalInfo
+          </Text>
+        </Text>
+        <TouchableHighlight
+          descriptionNumberOfLines={2}
+          disabled={true}
+          style={
+            Array [
+              false,
+              Array [
+                Object {
+                  "padding": 8,
+                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
+              ],
+            ]
+          }
+          underlayColor="rgba(0, 0, 0, 0.1)"
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              pointerEvents="box-none"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "margin": 8,
+                    "width": 40,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontSize": 24,
+                    },
+                    Array [
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                󰙊
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 16,
+                      },
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.87)",
+                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+              >
+                author
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 14,
+                      },
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.54)",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                Thinh Tran
+              </Text>
+            </View>
+          </View>
+        </TouchableHighlight>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                "height": 0.5,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        />
+        <TouchableHighlight
+          descriptionNumberOfLines={2}
+          disabled={true}
+          style={
+            Array [
+              false,
+              Array [
+                Object {
+                  "padding": 8,
+                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
+              ],
+            ]
+          }
+          underlayColor="rgba(0, 0, 0, 0.1)"
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              pointerEvents="box-none"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "margin": 8,
+                    "width": 40,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontSize": 24,
+                    },
+                    Array [
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                󰗦
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 16,
+                      },
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.87)",
+                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+              >
+                copyright
+              </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 14,
+                      },
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.54)",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                Copyright © 2020 by Thinh Tran
+              </Text>
+            </View>
+          </View>
+        </TouchableHighlight>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                "height": 0.5,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        />
+        <TouchableHighlight
+          descriptionNumberOfLines={2}
+          disabled={true}
+          style={
+            Array [
+              false,
+              Array [
+                Object {
+                  "padding": 8,
+                },
+                Array [
+                  Object {
+                    "padding": 0,
+                  },
+                  undefined,
+                ],
+              ],
+            ]
+          }
+          underlayColor="rgba(0, 0, 0, 0.1)"
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              pointerEvents="box-none"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                    "margin": 8,
+                    "width": 40,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessibilityElementsHidden={true}
+                allowFontScaling={false}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontSize": 24,
+                    },
+                    Array [
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                󰷺
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginVertical": 6,
+                    "paddingLeft": 8,
+                  },
+                  Object {
+                    "flex": 1,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 16,
+                      },
+                      Object {
+                        "color": "rgba(0, 0, 0, 0.87)",
+                      },
+                      Array [
+                        Object {
+                          "fontWeight": "bold",
+                        },
+                        undefined,
+                      ],
                     ],
                   ]
                 }

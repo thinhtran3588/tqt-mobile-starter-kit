@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {I18nextProvider} from 'react-i18next';
 import RNBootSplash from 'react-native-bootsplash';
-import {useColorScheme} from 'react-native';
-import {AppThemeProvider, useAppTheme} from '@core/contexts';
-import {sleep} from '@core/helpers';
+import {AppThemeProvider, useAppTheme, PrimaryColorProvider, usePrimaryColor} from '@core/contexts';
+import {sleep, merge} from '@core/helpers';
 import {LoadingScreen, PaperProvider, DefaultTheme, DarkTheme} from '@core/components';
 import {i18next} from './i18n';
 import {AppNavigation} from './app.navigation';
@@ -11,16 +10,8 @@ import {AppNavigation} from './app.navigation';
 export const BaseApp = (): JSX.Element => {
   const [isBootstrapping, setIsBootstrapping] = useState(true);
   const [appTheme] = useAppTheme();
-  const colorScheme = useColorScheme();
-  let useDarkTheme = true;
-  if (appTheme.useSystemTheme) {
-    useDarkTheme = colorScheme === 'dark';
-  } else {
-    useDarkTheme = appTheme.darkMode;
-  }
-  const theme: typeof DefaultTheme = {
-    ...(useDarkTheme ? DarkTheme : DefaultTheme),
-  };
+  const [primaryColor] = usePrimaryColor();
+  const theme = merge({}, appTheme.theme === 'dark' ? DarkTheme : DefaultTheme, {colors: {primary: primaryColor}});
   useEffect(() => {
     (async () => {
       RNBootSplash.hide({duration: 500});
@@ -43,7 +34,9 @@ export const BaseApp = (): JSX.Element => {
 export const App = (): JSX.Element => {
   return (
     <AppThemeProvider>
-      <BaseApp />
+      <PrimaryColorProvider>
+        <BaseApp />
+      </PrimaryColorProvider>
     </AppThemeProvider>
   );
 };

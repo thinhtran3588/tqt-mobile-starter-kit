@@ -315,7 +315,7 @@ exports[`renders correctly 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -364,7 +364,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -381,7 +383,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -576,7 +580,7 @@ exports[`renders correctly 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -625,7 +629,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -642,7 +648,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -928,7 +936,7 @@ exports[`renders correctly 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -977,7 +985,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -994,7 +1004,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -1104,7 +1116,7 @@ exports[`renders correctly 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -1153,7 +1165,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -1170,7 +1184,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -1988,7 +2004,7 @@ exports[`renders correctly 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -2037,7 +2053,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -2054,7 +2072,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -2188,7 +2208,7 @@ exports[`renders correctly 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -2237,7 +2257,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -2254,7 +2276,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -2577,7 +2601,7 @@ exports[`renders correctly 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -2626,7 +2650,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -2643,7 +2669,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -2783,7 +2811,7 @@ exports[`renders correctly 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -2832,7 +2860,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -2849,7 +2879,9 @@ exports[`renders correctly 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -3229,7 +3261,7 @@ exports[`renders correctly in Android 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -3278,7 +3310,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -3295,7 +3329,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -3490,7 +3526,7 @@ exports[`renders correctly in Android 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -3539,7 +3575,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -3556,7 +3594,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -3842,7 +3882,7 @@ exports[`renders correctly in Android 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -3891,7 +3931,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -3908,7 +3950,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -4018,7 +4062,7 @@ exports[`renders correctly in Android 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -4067,7 +4111,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -4084,7 +4130,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -4902,7 +4950,7 @@ exports[`renders correctly in Android 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -4951,7 +4999,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -4968,7 +5018,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -5102,7 +5154,7 @@ exports[`renders correctly in Android 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -5151,7 +5203,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -5168,7 +5222,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -5491,7 +5547,7 @@ exports[`renders correctly in Android 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -5540,7 +5596,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -5557,7 +5615,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],
@@ -5697,7 +5757,7 @@ exports[`renders correctly in Android 1`] = `
                             "borderTopLeftRadius": 20,
                           },
                           Object {
-                            "backgroundColor": "#00bcd4",
+                            "backgroundColor": "#6200ee",
                           },
                         ],
                       ]
@@ -5746,7 +5806,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                               Array [
@@ -5763,7 +5825,9 @@ exports[`renders correctly in Android 1`] = `
                                   Object {
                                     "marginBottom": 2,
                                   },
-                                  Object {},
+                                  Object {
+                                    "color": "#fff",
+                                  },
                                 ],
                               ],
                             ],

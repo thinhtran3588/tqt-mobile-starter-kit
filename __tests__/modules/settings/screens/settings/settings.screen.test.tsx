@@ -8,9 +8,21 @@ it('renders correctly', async () => {
   expect(toJSON(baseElement)).toMatchSnapshot();
 });
 
-it('changes to dark theme', async () => {
+it('uses light theme', async () => {
+  const {baseElement, getByTestId} = render(<SettingsScreen />);
+  fireEvent.valueChange(getByTestId('system-theme-switch'), false);
+  expect(toJSON(baseElement)).toMatchSnapshot();
+});
+
+it('uses dark theme', async () => {
   const {baseElement, getByTestId} = render(<SettingsScreen />);
   fireEvent.valueChange(getByTestId('system-theme-switch'), false);
   fireEvent.valueChange(getByTestId('dark-theme-switch'), true);
+  expect(toJSON(baseElement)).toMatchSnapshot();
+});
+
+it('opens primary color picker', async () => {
+  const {baseElement, getByTestId} = render(<SettingsScreen />);
+  fireEvent.press(getByTestId('primary-color-list-item'));
   expect(toJSON(baseElement)).toMatchSnapshot();
 });

@@ -7,7 +7,9 @@ it('update configuration correctly', async () => {
         "id": "pro.thinhtran.starterkit",
       },
       "appInfo": Object {
+        "author": "Thinh Tran",
         "build": "3",
+        "copyright": "Copyright © 2020 by Thinh Tran",
         "name": "TQT Starter Kit",
         "version": "0.4.0",
       },
@@ -48,7 +50,9 @@ it('update configuration correctly', async () => {
         "id": "pro.thinhtran.test",
       },
       "appInfo": Object {
+        "author": "Thinh Tran",
         "build": "3",
+        "copyright": "Copyright © 2020 by Thinh Tran",
         "name": "TQT Starter Kit Test",
         "version": "0.4.0",
       },

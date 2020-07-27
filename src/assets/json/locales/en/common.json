@@ -1,6 +1,8 @@
 {
   "back": "Back",
+  "cancel": "Cancel",
   "components": "Components",
   "noInternetConnection": "No Internet Connection",
+  "select": "Select",
   "settings": "Settings"
 }

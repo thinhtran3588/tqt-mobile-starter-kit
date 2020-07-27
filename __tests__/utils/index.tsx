@@ -1,7 +1,7 @@
 // https://testing-library.com/docs/native-testing-library/setup
 import React, {ReactNode, ReactElement} from 'react';
 import {render, RenderResult, RenderOptions} from '@testing-library/react-native';
-import {AppThemeProvider, useAppTheme} from '@app/core/contexts';
+import {AppThemeProvider, useAppTheme, PrimaryColorProvider} from '@app/core/contexts';
 import {PaperProvider, DefaultTheme, DarkTheme} from '@app/core/components';
 import {useColorScheme} from 'react-native';
 
@@ -28,9 +28,11 @@ const BaseApp = (props: Props): JSX.Element => {
 const AllTheProviders = (props: Props): JSX.Element => {
   const {children} = props;
   return (
-    <AppThemeProvider>
-      <BaseApp>{children}</BaseApp>
-    </AppThemeProvider>
+    <PrimaryColorProvider>
+      <AppThemeProvider>
+        <BaseApp>{children}</BaseApp>
+      </AppThemeProvider>
+    </PrimaryColorProvider>
   );
 };
 

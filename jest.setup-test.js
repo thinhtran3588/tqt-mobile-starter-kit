@@ -8,6 +8,7 @@ jest.mock('i18next', () => ({
     }),
   }),
 }));
+
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
     t: (key) => key,
@@ -48,3 +49,13 @@ jest.mock('react-native-paper', () => {
     },
   };
 });
+
+jest.mock('@react-native-community/blur', () => ({
+  BlurView: 'BlurView',
+}));
+
+jest.mock('react-native-picker', () => ({
+  init: jest.fn(),
+  show: jest.fn(),
+  hide: jest.fn(),
+}));

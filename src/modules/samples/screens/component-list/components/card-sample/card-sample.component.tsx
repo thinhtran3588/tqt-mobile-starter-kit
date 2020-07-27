@@ -1,8 +1,10 @@
 import React from 'react';
+import {useTheme} from 'react-native-paper';
 import {Card, Text, Colors, Button, Alert} from '@core/components';
 import {styles} from './card-sample.styles';
 
 export const CardSample = (): JSX.Element => {
+  const theme = useTheme();
   const pressButton = (button: string): void => {
     Alert.alert('Alert', `Press ${button} button`);
   };
@@ -10,7 +12,7 @@ export const CardSample = (): JSX.Element => {
     <Card key='card-sample' style={styles.card} elevation={8}>
       <Card.Title
         title='CardSample'
-        style={[styles.borderTop, {backgroundColor: Colors.cyan500}]}
+        style={[styles.borderTop, {backgroundColor: theme.colors.primary}]}
         titleStyle={styles.cardTitleText}
       />
       <Card.Cover source={{uri: 'https://picsum.photos/700'}} />

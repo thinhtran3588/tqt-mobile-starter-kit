@@ -17,7 +17,9 @@ export const styles = StyleSheet.create({
   cardContent: {
     paddingTop: 10,
   },
-  cardTitleText: {},
+  cardTitleText: {
+    color: '#fff',
+  },
   item: {
     marginRight: 10,
   },

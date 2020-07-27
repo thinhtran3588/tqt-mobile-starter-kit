@@ -5,7 +5,9 @@
   "appInfo": {
     "build": "3",
     "name": "TQT Starter Kit",
-    "version": "0.4.0"
+    "version": "0.4.0",
+    "author": "Thinh Tran",
+    "copyright": "Copyright © 2020 by Thinh Tran"
   },
   "dateFormat": "DD/MM/YYYY",
   "defaultLang": "vi",

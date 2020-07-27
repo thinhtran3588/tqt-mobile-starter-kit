@@ -1,6 +1,7 @@
 import React from 'react';
 import {Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
+import {useTheme} from 'react-native-paper';
 import {Appbar, Card, Colors, Alert, ScrollView, Layout} from '@core/components';
 import {
   ActivityIndicatorSample,
@@ -18,6 +19,7 @@ import {styles} from './component-list.styles';
 export const ComponentListScreen = (): JSX.Element => {
   const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
   const {t} = useTranslation('');
+  const theme = useTheme();
   const componentList = [
     {
       title: 'TextSample',
@@ -74,7 +76,7 @@ export const ComponentListScreen = (): JSX.Element => {
           <Card key={index.toString()} style={styles.card}>
             <Card.Title
               title={component.title}
-              style={[styles.borderTop, {backgroundColor: Colors.cyan500}]}
+              style={[styles.borderTop, {backgroundColor: theme.colors.primary}]}
               titleStyle={styles.cardTitleText}
             />
             <Card.Content style={styles.cardContent}>{component.element}</Card.Content>
