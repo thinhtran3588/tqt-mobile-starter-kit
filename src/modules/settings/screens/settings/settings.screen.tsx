@@ -16,7 +16,7 @@ export const SettingsScreen = (): JSX.Element => {
       <List.Item
         style={styles.item}
         titleStyle={styles.itemTitle}
-        title='Use system theme'
+        title={t('useSystemTheme')}
         left={() => <List.Icon icon='theme-light-dark' />}
         right={() => (
           <View style={styles.switchContainer}>
@@ -28,7 +28,7 @@ export const SettingsScreen = (): JSX.Element => {
       <List.Item
         style={styles.item}
         titleStyle={styles.itemTitle}
-        title='Dark theme'
+        title={t('darkTheme')}
         left={() => <List.Icon icon='theme-light-dark' />}
         disabled={theme.useSystemTheme}
         right={() => (
@@ -46,17 +46,17 @@ export const SettingsScreen = (): JSX.Element => {
       <List.Item
         style={styles.item}
         titleStyle={styles.itemTitle}
-        title='Primary color'
+        title={t('primaryColor')}
         left={() => <List.Icon icon='format-color-fill' />}
         right={() => <List.Icon icon='chevron-right' />}
       />
       <List.Subheader style={styles.header}>
-        <Text type='h4'>General Info</Text>
+        <Text type='h4'>{t('generalInfo')}</Text>
       </List.Subheader>
       <List.Item
         style={styles.item}
         titleStyle={styles.itemTitle}
-        title='Author'
+        title={t('author')}
         description='Thinh Tran'
         left={() => <List.Icon icon='human-greeting' />}
       />
@@ -64,7 +64,7 @@ export const SettingsScreen = (): JSX.Element => {
       <List.Item
         style={styles.item}
         titleStyle={styles.itemTitle}
-        title='Copyright'
+        title={t('copyright')}
         description='Copyright © 2020 by Thinh Tran'
         left={() => <List.Icon icon='copyright' />}
       />
@@ -72,7 +72,7 @@ export const SettingsScreen = (): JSX.Element => {
       <List.Item
         style={styles.item}
         titleStyle={styles.itemTitle}
-        title='Version'
+        title={t('version')}
         description={appFullVersion()}
         left={() => <List.Icon icon='shoe-print' />}
       />

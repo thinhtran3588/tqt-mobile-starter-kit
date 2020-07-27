@@ -1,5 +1,9 @@
 {
-  "darkTheme": "Dark mode",
-  "darkThemeDesc": "Toggle between Dark/Light mode",
-  "language": "Language"
+  "author": "Author",
+  "copyright": "Copyright",
+  "darkTheme": "Dark theme",
+  "generalInfo": "General info",
+  "primaryColor": "Primary color",
+  "useSystemTheme": "Use system theme",
+  "version": "Version"
 }

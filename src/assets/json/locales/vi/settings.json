@@ -1,5 +1,9 @@
 {
-  "darkTheme": "Chế độ tối",
-  "darkThemeDesc": "Chuyển chế độ sáng/tối",
-  "language": "Ngôn ngữ"
+  "author": "Tác giả",
+  "copyright": "Bản quyền",
+  "darkTheme": "Theme tối",
+  "generalInfo": "Thông tin chung",
+  "primaryColor": "Màu chính",
+  "useSystemTheme": "Dùng theme hệ thống",
+  "version": "Phiên bản"
 }
