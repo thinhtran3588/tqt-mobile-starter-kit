@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {I18nextProvider} from 'react-i18next';
 import RNBootSplash from 'react-native-bootsplash';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {
   AppThemeProvider,
   useAppTheme,
@@ -38,7 +39,9 @@ export const BaseApp = (): JSX.Element => {
   return (
     <I18nextProvider i18n={i18next}>
       <PaperProvider theme={theme}>
-        <AppNavigation />
+        <SafeAreaProvider>
+          <AppNavigation />
+        </SafeAreaProvider>
       </PaperProvider>
     </I18nextProvider>
   );

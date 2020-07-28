@@ -7,7 +7,9 @@ interface PrimaryColorProviderProps {
 
 type Dispatch = (primaryColor: string) => void;
 
-const DEFAULT_PRIMARY_COLOR: string = Colors.amber500;
+export const DEFAULT_PRIMARY_COLOR = Colors.amber500;
+export const LIGHT_BACKGROUND_COLOR = '#fff';
+export const DARK_BACKGROUND_COLOR = '#272727';
 
 export const COLORS = [
   {

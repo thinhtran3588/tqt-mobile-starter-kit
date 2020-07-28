@@ -2,7 +2,7 @@ import React from 'react';
 import {Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
-import {Appbar, Card, Colors, Alert, ScrollView, Layout} from '@core/components';
+import {Card, Colors, Alert, ScrollView, Layout} from '@core/components';
 import {
   ActivityIndicatorSample,
   TextSample,
@@ -52,23 +52,24 @@ export const ComponentListScreen = (): JSX.Element => {
   ];
 
   return (
-    <Layout>
-      <Appbar.Header style={{backgroundColor: Colors.cyan500}}>
-        <Appbar.BackAction
-          testID='back-action'
-          onPress={() => {
-            Alert.alert('Alert', 'Press Back button');
-          }}
-        />
-        <Appbar.Content title={t('common:components')} />
-        <Appbar.Action
-          testID='more-action'
-          icon={MORE_ICON}
-          onPress={() => {
+    <Layout
+      header
+      headerTitle={t('common:components')}
+      headerBackButton
+      headerBackButtonTestID='back-action'
+      headerBackButtonOnPress={() => {
+        Alert.alert('Alert', 'Press Back button');
+      }}
+      headerRightActions={[
+        {
+          icon: MORE_ICON,
+          onPress: () => {
             Alert.alert('Alert', 'Press More button');
-          }}
-        />
-      </Appbar.Header>
+          },
+          testID: 'more-action',
+        },
+      ]}
+      headerColor={Colors.cyan500}>
       <BannerSample />
       <ScrollView>
         <CardSample />
