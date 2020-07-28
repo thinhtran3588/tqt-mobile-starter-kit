@@ -30,18 +30,22 @@ convert "$base" -resize "128x128" -unsharp 1x4 "$appIcon"
 echo "Wrote ${appIcon}"
 
 iosIconNames=(
-  'icon-1024@1x' 
-  'icon-20@2x' 'icon-20@3x' 
-  'icon-29@2x' 'icon-29@3x' 
-  'icon-40@2x' 'icon-40@3x' 
+  'icon-1024' 
+  'icon-20' 'icon-20@2x' 'icon-20@3x' 
+  'icon-29' 'icon-29@2x' 'icon-29@3x' 
+  'icon-40' 'icon-40@2x' 'icon-40@3x' 
   'icon-60@2x' 'icon-60@3x' 
+  'icon-76' 'icon-76@2x' 
+  'icon-83.5@2x' 
 )
 iosIconResolutions=(
   '1024' 
-  '40' '60' 
-  '58' '87' 
-  '80' '120' 
+  '20' '40' '60' 
+  '29' '58' '87' 
+  '40' '80' '120' 
   '120' '180' 
+  '76' '152' 
+  '167' 
 )
 for (( i = 0; i < ${#iosIconNames[@]}; ++i )); do
   convert "$noAlphaIcon" -resize "${iosIconResolutions[i]}x${iosIconResolutions[i]}" -unsharp 1x4 "${iosIconFolder}/${iosIconNames[i]}.png"
