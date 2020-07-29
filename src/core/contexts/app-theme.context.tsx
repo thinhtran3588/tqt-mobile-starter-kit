@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react';
 import {useImmer} from 'use-immer';
 import {useColorScheme} from 'react-native';
-import {usePersistence, usePersistenceImmer} from '@core/hooks';
+import {usePersistenceImmer} from '@core/hooks';
 
 interface AppThemeProviderProps {
   children?: React.ReactNode;

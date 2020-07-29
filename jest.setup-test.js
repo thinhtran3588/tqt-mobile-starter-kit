@@ -69,3 +69,9 @@ jest.mock('@react-navigation/native', () => {
     useIsFocused,
   };
 });
+
+jest.mock('@react-native-community/async-storage', () => ({
+  setItem: jest.fn(),
+  getItem: jest.fn(),
+  removeItem: jest.fn(),
+}));
