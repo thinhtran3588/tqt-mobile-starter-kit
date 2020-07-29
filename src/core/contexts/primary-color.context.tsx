@@ -1,5 +1,6 @@
 import React, {useState, useContext} from 'react';
 import {Colors} from 'react-native-paper';
+import {usePersistence} from '@core/hooks';
 
 interface PrimaryColorProviderProps {
   children?: React.ReactNode;
@@ -10,6 +11,7 @@ type Dispatch = (primaryColor: string) => void;
 export const DEFAULT_PRIMARY_COLOR = Colors.amber500;
 export const LIGHT_BACKGROUND_COLOR = '#fff';
 export const DARK_BACKGROUND_COLOR = '#272727';
+export const PRIMARY_COLOR_KEY = 'PRIMARY_COLOR';
 
 export const COLORS = [
   {
@@ -96,9 +98,12 @@ const PrimaryColorDispatchContext = React.createContext<Dispatch>(undefined as n
 const PrimaryColorProvider = (props: PrimaryColorProviderProps): JSX.Element => {
   const {children} = props;
   const [primaryColor, setPrimaryColor] = useState(DEFAULT_PRIMARY_COLOR);
+  const [setPrimaryColorPersistence] = usePersistence(primaryColor, setPrimaryColor, PRIMARY_COLOR_KEY, false);
   return (
     <PrimaryColorContext.Provider value={primaryColor}>
-      <PrimaryColorDispatchContext.Provider value={setPrimaryColor}>{children}</PrimaryColorDispatchContext.Provider>
+      <PrimaryColorDispatchContext.Provider value={setPrimaryColorPersistence}>
+        {children}
+      </PrimaryColorDispatchContext.Provider>
     </PrimaryColorContext.Provider>
   );
 };

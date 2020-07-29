@@ -1,4 +1,5 @@
 import React, {useState, useContext} from 'react';
+import {usePersistence} from '@core/hooks';
 
 interface LanguageProviderProps {
   children?: React.ReactNode;
@@ -7,6 +8,7 @@ interface LanguageProviderProps {
 type Dispatch = (Language: string) => void;
 
 export const DEFAULT_LANGUAGE = 'en';
+const LANGUAGE_STORAGE_KEY = 'LANGUAGE';
 
 export const LANGUAGES = [
   {
@@ -25,9 +27,10 @@ const LanguageDispatchContext = React.createContext<Dispatch>(undefined as never
 const LanguageProvider = (props: LanguageProviderProps): JSX.Element => {
   const {children} = props;
   const [language, setLanguage] = useState(DEFAULT_LANGUAGE);
+  const [setLanguagePersistence] = usePersistence(language, setLanguage, LANGUAGE_STORAGE_KEY, false);
   return (
     <LanguageContext.Provider value={language}>
-      <LanguageDispatchContext.Provider value={setLanguage}>{children}</LanguageDispatchContext.Provider>
+      <LanguageDispatchContext.Provider value={setLanguagePersistence}>{children}</LanguageDispatchContext.Provider>
     </LanguageContext.Provider>
   );
 };

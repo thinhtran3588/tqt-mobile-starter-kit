@@ -1,6 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react';
 import {useImmer} from 'use-immer';
 import {useColorScheme} from 'react-native';
+import {usePersistence, usePersistenceImmer} from '@core/hooks';
 
 interface AppThemeProviderProps {
   children?: React.ReactNode;
@@ -22,6 +23,7 @@ const DEFAULT_APP_THEME: AppThemeState = {
   darkMode: false,
   theme: 'light',
 };
+const APP_THEME_KEY = 'APP_THEME';
 
 const AppThemeContext = React.createContext(DEFAULT_APP_THEME);
 const AppThemeDispatchContext = React.createContext<Dispatch>(undefined as never);
@@ -29,6 +31,7 @@ const AppThemeDispatchContext = React.createContext<Dispatch>(undefined as never
 const AppThemeProvider = (props: AppThemeProviderProps): JSX.Element => {
   const {children} = props;
   const [appTheme, setAppTheme] = useImmer(DEFAULT_APP_THEME);
+  const [setAppThemePersistence] = usePersistenceImmer(appTheme, setAppTheme, APP_THEME_KEY);
   const colorScheme = useColorScheme();
 
   const updateTheme = (draft: AppThemeState): void => {
@@ -40,7 +43,7 @@ const AppThemeProvider = (props: AppThemeProviderProps): JSX.Element => {
   };
 
   useEffect(() => {
-    setAppTheme((draft) => {
+    setAppThemePersistence((draft) => {
       updateTheme(draft);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,13 +51,13 @@ const AppThemeProvider = (props: AppThemeProviderProps): JSX.Element => {
 
   const [dispatch] = useState<Dispatch>({
     setUseSystemTheme: (useSystemTheme) => {
-      setAppTheme((draft) => {
+      setAppThemePersistence((draft) => {
         draft.useSystemTheme = useSystemTheme;
         updateTheme(draft);
       });
     },
     setDarkMode: (dark) => {
-      setAppTheme((draft) => {
+      setAppThemePersistence((draft) => {
         draft.darkMode = dark;
         updateTheme(draft);
       });
