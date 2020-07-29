@@ -1,7 +1,7 @@
 import React, {forwardRef} from 'react';
 import RNPicker, {PickerOptions} from 'react-native-picker';
 import colorConvert from 'color-convert';
-import {Modal, View, Pressable} from 'react-native';
+import {Modal, View, Pressable, Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
 import {Blur} from '../blur/blur.component';
@@ -44,7 +44,7 @@ export const Picker = forwardRef((props: PickerProps, ref: any) => {
     const primaryColorHexArr = [...colorConvert.hex.rgb(theme.colors.primary), 1];
     const whiteColorHexArr = [...colorConvert.hex.rgb('#fff'), 1];
     const pickerTextColorHexArr = [...colorConvert.hex.rgb(theme.colors.text), 1];
-    const pickerBackgroundHexArr = [...colorConvert.hex.rgb(theme.colors.background), 0];
+    const pickerBackgroundHexArr = [...colorConvert.hex.rgb(theme.colors.background), Platform.OS === 'ios' ? 0 : 0.9];
     const pickerData = dataSources.map((data) => data.label);
     const pickerOptions: PickerOptions = {
       pickerConfirmBtnText: t('select'),
