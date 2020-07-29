@@ -3,9 +3,9 @@
     "id": "pro.thinhtran.starterkit"
   },
   "appInfo": {
-    "build": "3",
+    "build": "4",
     "name": "TQT Starter Kit",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "author": "Thinh Tran",
     "copyright": "Copyright © 2020 by Thinh Tran"
   },
