@@ -60,25 +60,25 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "android-alpha": "npx jetify && cd android && fastlane android alpha && cd ..",
-    "android-build": "npx jetify && cd android && fastlane android build && cd ..",
-    "android-build-apk": "npx jetify && cd android && fastlane android build_apk && cd ..",
+    "android-alpha": "cd android && fastlane android alpha && cd ..",
+    "android-build": "cd android && fastlane android build && cd ..",
+    "android-build-apk": "cd android && fastlane android build_apk && cd ..",
     "android-clean": "cd android && fastlane android clean && cd ..",
     "env": "ts-node job.ts env",
     "ios": "react-native run-ios",
     "ios-build": "cd ios && fastlane ios build && cd ..",
     "ios-testflight": "cd ios && fastlane ios beta && cd ..",
-    "ios-pod-install": "cd ios && pod update && pod install && cd ..",
     "lint": "prettier --check . && eslint . --ext .js,.jsx,.ts,.tsx && tsc --noEmit",
     "lint-fix": "prettier --write . --ext .js,.jsx,.ts,.tsx && eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "postinstall": "yarn ios-pod-install",
+    "postinstall": "yarn patches && npx jetify && npx pod-install",
     "start": "react-native start",
     "test": "jest  --detectOpenHandles",
     "test-coverage": "jest --coverage  --detectOpenHandles",
     "update-build": "ts-node job.ts update-build",
     "update-icons": "./generate-icons.sh",
     "update-ver": "ts-node job.ts update-ver",
-    "validate": "yarn lint && yarn test-coverage"
+    "validate": "yarn lint && yarn test-coverage",
+    "patches": "sh ./patches/patches.sh"
   },
   "version": "0.4.0"
 }
