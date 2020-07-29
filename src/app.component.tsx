@@ -9,6 +9,7 @@ import {
   usePrimaryColor,
   LanguageProvider,
   useLanguage,
+  InternetConnectionProvider,
 } from '@core/contexts';
 import {sleep, merge} from '@core/helpers';
 import {LoadingScreen, PaperProvider, DefaultTheme, DarkTheme} from '@core/components';
@@ -49,12 +50,14 @@ export const BaseApp = (): JSX.Element => {
 
 export const App = (): JSX.Element => {
   return (
-    <LanguageProvider>
-      <AppThemeProvider>
-        <PrimaryColorProvider>
-          <BaseApp />
-        </PrimaryColorProvider>
-      </AppThemeProvider>
-    </LanguageProvider>
+    <InternetConnectionProvider>
+      <LanguageProvider>
+        <AppThemeProvider>
+          <PrimaryColorProvider>
+            <BaseApp />
+          </PrimaryColorProvider>
+        </AppThemeProvider>
+      </LanguageProvider>
+    </InternetConnectionProvider>
   );
 };

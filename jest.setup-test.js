@@ -75,3 +75,7 @@ jest.mock('@react-native-community/async-storage', () => ({
   getItem: jest.fn(),
   removeItem: jest.fn(),
 }));
+
+jest.mock('@react-native-community/netinfo', () => ({
+  addEventListener: () => () => {},
+}));

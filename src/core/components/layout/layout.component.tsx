@@ -3,6 +3,7 @@ import {SafeAreaView, StatusBar} from 'react-native';
 import {Surface, useTheme, Appbar} from 'react-native-paper';
 import {useIsFocused} from '@react-navigation/native';
 import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@app/core/contexts';
+import {InternetConnection} from '../internet-connection/internet-connection.component';
 import {styles} from './layout.styles';
 
 export interface LayoutProps {
@@ -15,6 +16,7 @@ export interface LayoutProps {
   headerLeftActions?: {icon: string; onPress?: () => void; testID?: string; color?: string}[];
   headerRightActions?: {icon: string; onPress?: () => void; testID?: string; color?: string}[];
   headerColor?: string;
+  showInternetConnection?: boolean;
 }
 
 export const Layout = (props: LayoutProps): JSX.Element => {
@@ -30,6 +32,7 @@ export const Layout = (props: LayoutProps): JSX.Element => {
     headerColor,
     header,
     children,
+    showInternetConnection = true,
   } = props;
   const isFocused = useIsFocused();
   const appHeaderColor = headerColor || theme.colors.primary;
@@ -83,6 +86,7 @@ export const Layout = (props: LayoutProps): JSX.Element => {
         ]}>
         <Surface style={styles.flex}>{children}</Surface>
       </SafeAreaView>
+      {showInternetConnection && <InternetConnection />}
     </>
   );
 };

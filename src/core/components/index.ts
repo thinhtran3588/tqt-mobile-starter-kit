@@ -25,6 +25,7 @@ export * from './loading/loading.component';
 export * from './loading-screen/loading-screen.component';
 export * from './blur/blur.component';
 export * from './picker/picker.component';
+export * from './internet-connection/internet-connection.component';
 
 export {StatusBar, Alert, ScrollView, Pressable} from 'react-native';
 

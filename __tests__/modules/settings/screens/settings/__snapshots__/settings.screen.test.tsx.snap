@@ -1424,6 +1424,17 @@ exports[`opens language picker 1`] = `
           </RCTScrollView>
         </View>
       </SafeAreaView>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#B00020",
+            "bottom": 0,
+            "height": 0,
+            "position": "absolute",
+            "width": "100%",
+          }
+        }
+      />
     </View>
   </View>
 </View>
@@ -2853,6 +2864,17 @@ exports[`opens primary color picker 1`] = `
           </RCTScrollView>
         </View>
       </SafeAreaView>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#B00020",
+            "bottom": 0,
+            "height": 0,
+            "position": "absolute",
+            "width": "100%",
+          }
+        }
+      />
     </View>
   </View>
 </View>
@@ -4282,6 +4304,17 @@ exports[`renders correctly 1`] = `
           </RCTScrollView>
         </View>
       </SafeAreaView>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#B00020",
+            "bottom": 0,
+            "height": 0,
+            "position": "absolute",
+            "width": "100%",
+          }
+        }
+      />
     </View>
   </View>
 </View>
@@ -5711,6 +5744,17 @@ exports[`uses dark theme 1`] = `
           </RCTScrollView>
         </View>
       </SafeAreaView>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#CF6679",
+            "bottom": 0,
+            "height": 0,
+            "position": "absolute",
+            "width": "100%",
+          }
+        }
+      />
     </View>
   </View>
 </View>
@@ -7140,6 +7184,17 @@ exports[`uses light theme 1`] = `
           </RCTScrollView>
         </View>
       </SafeAreaView>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#B00020",
+            "bottom": 0,
+            "height": 0,
+            "position": "absolute",
+            "width": "100%",
+          }
+        }
+      />
     </View>
   </View>
 </View>

@@ -2956,6 +2956,17 @@ exports[`renders correctly 1`] = `
           </RCTScrollView>
         </View>
       </SafeAreaView>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#B00020",
+            "bottom": 0,
+            "height": 0,
+            "position": "absolute",
+            "width": "100%",
+          }
+        }
+      />
     </View>
   </View>
 </View>
@@ -5915,6 +5926,17 @@ exports[`renders correctly in Android 1`] = `
           </RCTScrollView>
         </View>
       </SafeAreaView>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#B00020",
+            "bottom": 0,
+            "height": 0,
+            "position": "absolute",
+            "width": "100%",
+          }
+        }
+      />
     </View>
   </View>
 </View>
