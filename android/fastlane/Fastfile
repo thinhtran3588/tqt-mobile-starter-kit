@@ -42,6 +42,7 @@ platform :android do
 
   desc "Build APK"
   lane :build_apk do
+    clean
     gradle(task: "assembleRelease")
   end
 
