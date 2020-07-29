@@ -60,9 +60,9 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "android-alpha": "cd android && fastlane android alpha && cd ..",
-    "android-build": "cd android && fastlane android build && cd ..",
-    "android-build-apk": "cd android && fastlane android build_apk && cd ..",
+    "android-alpha": "npx jetify && cd android && fastlane android alpha && cd ..",
+    "android-build": "npx jetify && cd android && fastlane android build && cd ..",
+    "android-build-apk": "npx jetify && cd android && fastlane android build_apk && cd ..",
     "android-clean": "cd android && fastlane android clean && cd ..",
     "env": "ts-node job.ts env",
     "ios": "react-native run-ios",
