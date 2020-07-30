@@ -29,6 +29,8 @@ export * from './internet-connection/internet-connection.component';
 
 export {StatusBar, Alert, ScrollView, Pressable} from 'react-native';
 
+export {WebView} from 'react-native-webview';
+
 export {
   PaperProvider,
   DefaultTheme,

@@ -7,7 +7,9 @@
     "name": "TQT Starter Kit",
     "version": "0.5.0",
     "author": "Thinh Tran",
-    "copyright": "Copyright © 2020 by Thinh Tran"
+    "copyright": "Copyright © 2020 by Thinh Tran",
+    "privacyPolicyUrl": "https://thinhtran.pro/tqt-mobile-starter-kit/privacypolicy.html",
+    "tosUrl": "https://thinhtran.pro/tqt-mobile-starter-kit/termsandconditions.html"
   },
   "dateFormat": "DD/MM/YYYY",
   "defaultLang": "vi",

@@ -1,4 +1,6 @@
 export const SCREEN_NAME = Object.freeze({
-  COMPONENT_LIST: 'component-list',
-  SETTINGS: 'settings',
+  WEB_VIEW: 'WEB_VIEW',
+  MAIN_TABS: 'MAIN_TABS',
+  COMPONENT_LIST: 'COMPONENT_LIST',
+  SETTINGS: 'SETTINGS',
 });

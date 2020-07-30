@@ -1,13 +1,16 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {createStackNavigator} from '@react-navigation/stack';
+import {useTranslation} from 'react-i18next';
+import {WebViewScreen} from '@core/screens';
 import {ComponentListScreen} from '@samples/screens';
 import {SettingsScreen} from '@settings/screens';
 import {Colors, Icon} from '@core/components';
-import {useTranslation} from 'react-i18next';
 import {SCREEN_NAME} from '@app/app.constants';
 
 const Tab = createMaterialBottomTabNavigator();
+const Stack = createStackNavigator();
 
 interface TabItem {
   name: string;
@@ -19,7 +22,13 @@ interface TabItem {
   component: React.FunctionComponent<any>;
 }
 
-export const AppNavigation = (): JSX.Element => {
+interface StackItem {
+  name: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  component: React.FunctionComponent<any>;
+}
+
+const MainTabs = (): JSX.Element => {
   const {t} = useTranslation('common');
   const tabItems: TabItem[] = [
     {
@@ -40,25 +49,50 @@ export const AppNavigation = (): JSX.Element => {
     },
   ];
   return (
+    <Tab.Navigator shifting initialRouteName={SCREEN_NAME.COMPONENT_LIST}>
+      {tabItems.map((tabItem, index) => (
+        <Tab.Screen
+          key={tabItem.name}
+          name={tabItem.name}
+          component={tabItem.component}
+          options={{
+            title: tabItem.title,
+            tabBarIcon: (iconProps) => {
+              const {focused, color} = iconProps;
+              return <Icon name={focused ? tabItem.iconFocused : tabItem.icon} color={color} size={25} />;
+            },
+            tabBarColor: tabItem.tabBarColor,
+            tabBarBadge: index === 0 ? 10 : undefined,
+          }}
+        />
+      ))}
+    </Tab.Navigator>
+  );
+};
+
+export const AppNavigation = (): JSX.Element => {
+  const stackItems: StackItem[] = [
+    {
+      name: SCREEN_NAME.MAIN_TABS,
+      component: MainTabs,
+    },
+    {
+      name: SCREEN_NAME.WEB_VIEW,
+      component: WebViewScreen,
+    },
+  ];
+  return (
     <NavigationContainer>
-      <Tab.Navigator shifting initialRouteName={SCREEN_NAME.COMPONENT_LIST}>
-        {tabItems.map((tabItem, index) => (
-          <Tab.Screen
-            key={tabItem.name}
-            name={tabItem.name}
-            component={tabItem.component}
-            options={{
-              title: tabItem.title,
-              tabBarIcon: (iconProps) => {
-                const {focused, color} = iconProps;
-                return <Icon name={focused ? tabItem.iconFocused : tabItem.icon} color={color} size={25} />;
-              },
-              tabBarColor: tabItem.tabBarColor,
-              tabBarBadge: index === 0 ? 10 : undefined,
-            }}
+      <Stack.Navigator initialRouteName={SCREEN_NAME.COMPONENT_LIST}>
+        {stackItems.map((stackItem) => (
+          <Stack.Screen
+            key={stackItem.name}
+            name={stackItem.name}
+            component={stackItem.component}
+            options={{header: () => <></>}}
           />
         ))}
-      </Tab.Navigator>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };

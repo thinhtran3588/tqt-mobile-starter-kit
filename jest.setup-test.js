@@ -64,9 +64,13 @@ jest.mock('react-native-picker', () => ({
 jest.mock('@react-navigation/native', () => {
   const actualModule = jest.requireActual('@react-navigation/native');
   const useIsFocused = jest.fn().mockReturnValue(true);
+  const navigation = {
+    navigate: jest.fn(),
+  };
   return {
     ...actualModule,
     useIsFocused,
+    useNavigation: () => navigation,
   };
 });
 

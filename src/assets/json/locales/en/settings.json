@@ -5,6 +5,8 @@
   "generalInfo": "General info",
   "language": "Language",
   "primaryColor": "Primary color",
+  "privacyPolicy": "Privacy Policy",
+  "tos": "Terms Of Service",
   "useSystemTheme": "Use system theme",
   "version": "Version"
 }
