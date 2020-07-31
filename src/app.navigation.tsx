@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import {useTranslation} from 'react-i18next';
+import {useTheme} from 'react-native-paper';
 import {WebViewScreen} from '@core/screens';
 import {ComponentListScreen} from '@samples/screens';
 import {SettingsScreen} from '@settings/screens';
@@ -30,13 +31,14 @@ interface StackItem {
 
 const MainTabs = (): JSX.Element => {
   const {t} = useTranslation('common');
+  const theme = useTheme();
   const tabItems: TabItem[] = [
     {
       name: SCREEN_NAME.COMPONENT_LIST,
       title: t('components'),
       icon: 'view-dashboard-outline',
       iconFocused: 'view-dashboard',
-      tabBarColor: Colors.cyan500,
+      tabBarColor: theme.colors.primary,
       component: ComponentListScreen,
     },
     {
@@ -44,7 +46,7 @@ const MainTabs = (): JSX.Element => {
       title: t('settings'),
       icon: 'cog-outline',
       iconFocused: 'cog',
-      tabBarColor: Colors.amber500,
+      tabBarColor: Colors.deepOrange500,
       component: SettingsScreen,
     },
   ];

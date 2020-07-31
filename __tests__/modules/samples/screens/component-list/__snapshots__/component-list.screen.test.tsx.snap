@@ -31,7 +31,7 @@ exports[`renders correctly 1`] = `
         style={
           Array [
             Object {
-              "backgroundColor": "#00bcd4",
+              "backgroundColor": "#6200ee",
               "elevation": 4,
               "zIndex": 0,
             },
@@ -51,7 +51,7 @@ exports[`renders correctly 1`] = `
           style={
             Object {
               "alignItems": "center",
-              "backgroundColor": "#00bcd4",
+              "backgroundColor": "#6200ee",
               "elevation": 0,
               "flexDirection": "row",
               "height": 56,
@@ -3003,7 +3003,7 @@ exports[`renders correctly in Android 1`] = `
         style={
           Array [
             Object {
-              "backgroundColor": "#00bcd4",
+              "backgroundColor": "#6200ee",
               "elevation": 4,
               "zIndex": 0,
             },
@@ -3023,7 +3023,7 @@ exports[`renders correctly in Android 1`] = `
           style={
             Object {
               "alignItems": "center",
-              "backgroundColor": "#00bcd4",
+              "backgroundColor": "#6200ee",
               "elevation": 0,
               "flexDirection": "row",
               "height": 56,

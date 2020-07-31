@@ -2,7 +2,7 @@ import React from 'react';
 import {Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
-import {Card, Colors, Alert, ScrollView, Layout} from '@core/components';
+import {Card, Alert, ScrollView, Layout} from '@core/components';
 import {
   ActivityIndicatorSample,
   TextSample,
@@ -69,7 +69,7 @@ export const ComponentListScreen = (): JSX.Element => {
           testID: 'more-action',
         },
       ]}
-      headerColor={Colors.cyan500}>
+      headerColor={theme.colors.primary}>
       <BannerSample />
       <ScrollView>
         <CardSample />
