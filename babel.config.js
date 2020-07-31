@@ -10,6 +10,7 @@ module.exports = {
           '@app': './src',
           '@core': './src/core',
           '@assets': './src/assets',
+          '@auth': './src/modules/auth',
           '@settings': './src/modules/settings',
           '@samples': './src/modules/samples',
         },

@@ -10,6 +10,7 @@ import {
   InternetConnectionProvider,
   COLORS_LOOKUP,
 } from '@core/contexts';
+import {AuthProvider} from '@auth/contexts';
 import {sleep, merge} from '@core/helpers';
 import {LoadingScreen, PaperProvider, DefaultTheme, DarkTheme} from '@core/components';
 import {i18next} from './i18n';
@@ -54,12 +55,14 @@ export const BaseApp = (): JSX.Element => {
 
 export const App = (): JSX.Element => {
   return (
-    <InternetConnectionProvider>
-      <LanguageProvider>
-        <AppThemeProvider>
-          <BaseApp />
-        </AppThemeProvider>
-      </LanguageProvider>
-    </InternetConnectionProvider>
+    <AuthProvider>
+      <InternetConnectionProvider>
+        <LanguageProvider>
+          <AppThemeProvider>
+            <BaseApp />
+          </AppThemeProvider>
+        </LanguageProvider>
+      </InternetConnectionProvider>
+    </AuthProvider>
   );
 };

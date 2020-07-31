@@ -3,4 +3,5 @@ export const SCREEN_NAME = Object.freeze({
   MAIN_TABS: 'MAIN_TABS',
   COMPONENT_LIST: 'COMPONENT_LIST',
   SETTINGS: 'SETTINGS',
+  SIGN_IN: 'SIGN_IN',
 });

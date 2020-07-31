@@ -7,9 +7,11 @@ import {useTheme} from 'react-native-paper';
 import {WebViewScreen} from '@core/screens';
 import {ComponentListScreen} from '@samples/screens';
 import {SettingsScreen} from '@settings/screens';
+import {SignInScreen} from '@auth/screens';
 import {Colors, Icon} from '@core/components';
+import {useAppTheme} from '@core/contexts';
+import {useAuth} from '@auth/contexts';
 import {SCREEN_NAME} from '@app/app.constants';
-import {useAppTheme} from './core/contexts';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -75,6 +77,7 @@ const MainTabs = (): JSX.Element => {
 };
 
 export const AppNavigation = (): JSX.Element => {
+  const [auth] = useAuth();
   const stackItems: StackItem[] = [
     {
       name: SCREEN_NAME.MAIN_TABS,
@@ -84,10 +87,14 @@ export const AppNavigation = (): JSX.Element => {
       name: SCREEN_NAME.WEB_VIEW,
       component: WebViewScreen,
     },
+    {
+      name: SCREEN_NAME.SIGN_IN,
+      component: SignInScreen,
+    },
   ];
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={SCREEN_NAME.COMPONENT_LIST}>
+      <Stack.Navigator initialRouteName={auth.isSignedIn ? SCREEN_NAME.MAIN_TABS : SCREEN_NAME.SIGN_IN}>
         {stackItems.map((stackItem) => (
           <Stack.Screen
             key={stackItem.name}

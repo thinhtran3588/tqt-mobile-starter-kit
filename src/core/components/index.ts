@@ -3,7 +3,6 @@ import {
   DefaultTheme,
   DarkTheme,
   Colors,
-  Button,
   Appbar,
   Card,
   ActivityIndicator,
@@ -17,6 +16,8 @@ import {
 } from 'react-native-paper';
 
 export * from './icon/icon.component';
+export * from './icon-button/icon-button.component';
+export * from './button/button.component';
 export * from './text/text.component';
 export * from './view/view.component';
 export * from './layout/layout.component';
@@ -27,7 +28,7 @@ export * from './blur/blur.component';
 export * from './picker/picker.component';
 export * from './internet-connection/internet-connection.component';
 
-export {StatusBar, Alert, ScrollView, Pressable} from 'react-native';
+export {StatusBar, Alert, ScrollView, Pressable, Image} from 'react-native';
 
 export {WebView} from 'react-native-webview';
 
@@ -36,7 +37,6 @@ export {
   DefaultTheme,
   DarkTheme,
   Colors,
-  Button,
   Appbar,
   Card,
   ActivityIndicator,
