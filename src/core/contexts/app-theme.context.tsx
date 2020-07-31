@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useMemo} from 'react';
 import {useImmer} from 'use-immer';
 import {useColorScheme} from 'react-native';
 import {usePersistenceImmer} from '@core/hooks';
@@ -49,20 +49,24 @@ const AppThemeProvider = (props: AppThemeProviderProps): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorScheme]);
 
-  const [dispatch] = useState<Dispatch>({
-    setUseSystemTheme: (useSystemTheme) => {
-      setAppThemePersistence((draft) => {
-        draft.useSystemTheme = useSystemTheme;
-        updateTheme(draft);
-      });
-    },
-    setDarkMode: (dark) => {
-      setAppThemePersistence((draft) => {
-        draft.darkMode = dark;
-        updateTheme(draft);
-      });
-    },
-  });
+  const dispatch = useMemo(
+    (): Dispatch => ({
+      setUseSystemTheme: (useSystemTheme) => {
+        setAppThemePersistence((draft) => {
+          draft.useSystemTheme = useSystemTheme;
+          updateTheme(draft);
+        });
+      },
+      setDarkMode: (dark) => {
+        setAppThemePersistence((draft) => {
+          draft.darkMode = dark;
+          updateTheme(draft);
+        });
+      },
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
   return (
     <AppThemeContext.Provider value={appTheme}>
       <AppThemeDispatchContext.Provider value={dispatch}>{children}</AppThemeDispatchContext.Provider>
