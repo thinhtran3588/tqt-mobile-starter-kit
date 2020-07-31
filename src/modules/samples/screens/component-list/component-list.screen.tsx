@@ -68,8 +68,7 @@ export const ComponentListScreen = (): JSX.Element => {
           },
           testID: 'more-action',
         },
-      ]}
-      headerColor={theme.colors.primary}>
+      ]}>
       <BannerSample />
       <ScrollView>
         <CardSample />

@@ -35,7 +35,7 @@ export const Layout = (props: LayoutProps): JSX.Element => {
     showInternetConnection = true,
   } = props;
   const isFocused = useIsFocused();
-  const appHeaderColor = headerColor || theme.colors.primary;
+  const appHeaderColor = headerColor || (appTheme.theme === 'dark' ? theme.colors.surface : theme.colors.primary);
   return (
     <>
       {isFocused && (

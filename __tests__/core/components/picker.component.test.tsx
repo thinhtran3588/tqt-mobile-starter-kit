@@ -5,7 +5,7 @@ import {render, toJSON, fireEvent, act} from '@test-utils';
 import {Picker, Colors, Button, PickerDataItem} from '@core/components';
 import {COLORS} from '@app/core/contexts';
 
-const colors: PickerDataItem[] = COLORS.map((c) => ({value: c.code, label: c.text}));
+const colors: PickerDataItem[] = COLORS.map((c) => ({value: c.id, label: c.text}));
 
 it('renders close correctly', async () => {
   const setPickerOpen = jest.fn();
@@ -90,7 +90,7 @@ it('opens picker and pick a value', async () => {
     (RNPicker.init as jest.Mock).mock.calls[0][0].onPickerConfirm(['Cyan']);
   });
   expect(RNPicker.hide).toHaveBeenCalled();
-  expect(setPrimaryColor).toHaveBeenCalledWith(Colors.cyan500);
+  expect(setPrimaryColor).toHaveBeenCalledWith('CYAN');
 });
 
 it('opens picker and do nothing if pick the same value', async () => {

@@ -5,11 +5,10 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {
   AppThemeProvider,
   useAppTheme,
-  PrimaryColorProvider,
-  usePrimaryColor,
   LanguageProvider,
   useLanguage,
   InternetConnectionProvider,
+  COLORS_LOOKUP,
 } from '@core/contexts';
 import {sleep, merge} from '@core/helpers';
 import {LoadingScreen, PaperProvider, DefaultTheme, DarkTheme} from '@core/components';
@@ -19,9 +18,14 @@ import {AppNavigation} from './app.navigation';
 export const BaseApp = (): JSX.Element => {
   const [isBootstrapping, setIsBootstrapping] = useState(true);
   const [appTheme] = useAppTheme();
-  const [primaryColor] = usePrimaryColor();
   const [language] = useLanguage();
-  const theme = merge({}, appTheme.theme === 'dark' ? DarkTheme : DefaultTheme, {colors: {primary: primaryColor}});
+  const themedPrimaryColor = (COLORS_LOOKUP[appTheme.primaryColorId] || COLORS_LOOKUP.CYAN)[
+    appTheme.theme === 'dark' ? 'darkColor' : 'color'
+  ];
+  const theme: typeof DarkTheme = merge({}, appTheme.theme === 'dark' ? DarkTheme : DefaultTheme, {
+    colors: {primary: themedPrimaryColor},
+  });
+
   useEffect(() => {
     (async () => {
       RNBootSplash.hide({duration: 500});
@@ -53,9 +57,7 @@ export const App = (): JSX.Element => {
     <InternetConnectionProvider>
       <LanguageProvider>
         <AppThemeProvider>
-          <PrimaryColorProvider>
-            <BaseApp />
-          </PrimaryColorProvider>
+          <BaseApp />
         </AppThemeProvider>
       </LanguageProvider>
     </InternetConnectionProvider>

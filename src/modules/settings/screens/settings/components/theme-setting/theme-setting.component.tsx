@@ -1,13 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {useAppTheme} from '@core/contexts';
-import {ListItem} from '@core/components';
+import {useTheme} from 'react-native-paper';
+import {useAppTheme, COLORS} from '@core/contexts';
+import {ListItem, View, Picker, PickerDataItem} from '@core/components';
+import {styles} from './theme-setting.styles';
+
+const colors: PickerDataItem[] = COLORS.map((c) => ({value: c.id, label: c.text}));
 
 export const ThemeSetting = (): JSX.Element => {
   const {t} = useTranslation('settings');
-  const [appTheme, {setDarkMode, setUseSystemTheme}] = useAppTheme();
+  const [colorPickerOpen, setColorPickerOpen] = useState(false);
+  const theme = useTheme();
+  const [appTheme, {setDarkMode, setUseSystemTheme, setPrimaryColor}] = useAppTheme();
+  const selectedColor = COLORS.find((c) => c.id === appTheme.primaryColorId)?.text;
   return (
-    <>
+    <View>
       <ListItem
         title={t('useSystemTheme')}
         leftIcon='theme-light-dark'
@@ -25,6 +32,23 @@ export const ThemeSetting = (): JSX.Element => {
         switchRightDisabled={appTheme.useSystemTheme}
         switchRightTestID='dark-theme-switch'
       />
-    </>
+      <ListItem
+        testID='primary-color-list-item'
+        title={t('primaryColor')}
+        description={selectedColor}
+        leftIcon='format-color-fill'
+        rightIcon='chevron-right'
+        onPress={() => setColorPickerOpen(true)}
+      />
+      <View style={[styles.colorBox, {backgroundColor: theme.colors.primary}]} />
+      <Picker
+        key='primary-color-picker'
+        initialValue={appTheme.primaryColorId}
+        open={colorPickerOpen}
+        setOpen={setColorPickerOpen}
+        dataSources={colors}
+        onChangeValue={setPrimaryColor}
+      />
+    </View>
   );
 };

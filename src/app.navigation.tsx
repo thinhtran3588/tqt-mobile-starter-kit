@@ -9,6 +9,7 @@ import {ComponentListScreen} from '@samples/screens';
 import {SettingsScreen} from '@settings/screens';
 import {Colors, Icon} from '@core/components';
 import {SCREEN_NAME} from '@app/app.constants';
+import {useAppTheme} from './core/contexts';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -32,6 +33,7 @@ interface StackItem {
 const MainTabs = (): JSX.Element => {
   const {t} = useTranslation('common');
   const theme = useTheme();
+  const [appTheme] = useAppTheme();
   const tabItems: TabItem[] = [
     {
       name: SCREEN_NAME.COMPONENT_LIST,
@@ -63,7 +65,7 @@ const MainTabs = (): JSX.Element => {
               const {focused, color} = iconProps;
               return <Icon name={focused ? tabItem.iconFocused : tabItem.icon} color={color} size={25} />;
             },
-            tabBarColor: tabItem.tabBarColor,
+            tabBarColor: appTheme.theme === 'dark' ? theme.colors.surface : tabItem.tabBarColor,
             tabBarBadge: index === 0 ? 10 : undefined,
           }}
         />
