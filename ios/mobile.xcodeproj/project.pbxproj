@@ -15,7 +15,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* mobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* mobileTests.m */; };
-		4A62FEC024D40123006A9AF5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A62FEBF24D40123006A9AF5 /* GoogleService-Info.plist */; };
+		4A26FF3F24D6305200C902C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A26FF3E24D6305200C902C6 /* GoogleService-Info.plist */; };
 		4AB499C124C5348600B0F9BC /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AB499C024C5348600B0F9BC /* BootSplash.storyboard */; };
 		6DE1035BF7DE317FE9E328C2 /* libPods-mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B32E30124374EF66F22F144 /* libPods-mobile.a */; };
 		C5A2E9E15985BB9A5A338FCD /* libPods-mobile-mobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F36FD6641BD6D81442298FE /* libPods-mobile-mobileTests.a */; };
@@ -53,7 +53,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = mobile/main.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* mobile-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* mobile-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mobile-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A62FEBF24D40123006A9AF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4A26FF3E24D6305200C902C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4AB499C024C5348600B0F9BC /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = mobile/BootSplash.storyboard; sourceTree = "<group>"; };
 		4AE856B024D0ECAF00ED3920 /* mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = mobile.entitlements; path = mobile/mobile.entitlements; sourceTree = "<group>"; };
 		920AE01196CF291853BA329C /* Pods-mobile-mobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-mobileTests.release.xcconfig"; path = "Target Support Files/Pods-mobile-mobileTests/Pods-mobile-mobileTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +118,7 @@
 		13B07FAE1A68108700A75B9A /* mobile */ = {
 			isa = PBXGroup;
 			children = (
+				4A26FF3E24D6305200C902C6 /* GoogleService-Info.plist */,
 				4AE856B024D0ECAF00ED3920 /* mobile.entitlements */,
 				4AB499C024C5348600B0F9BC /* BootSplash.storyboard */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -151,7 +152,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				4A62FEBF24D40123006A9AF5 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* mobile */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* mobileTests */,
@@ -278,6 +278,7 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = BB37Q3GL4U;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
@@ -287,10 +288,12 @@
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = BB37Q3GL4U;
 						ProvisioningStyle = Automatic;
 					};
 					2D02E48F1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = BB37Q3GL4U;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
 					};
@@ -331,7 +334,7 @@
 			files = (
 				4AB499C124C5348600B0F9BC /* BootSplash.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				4A62FEC024D40123006A9AF5 /* GoogleService-Info.plist in Resources */,
+				4A26FF3F24D6305200C902C6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,7 +692,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = mobile/mobile.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BB37Q3GL4U;
@@ -702,7 +704,6 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pro.thinhtran.starterkit;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = pro.thinhtran.starterkit.macos;
 				PRODUCT_NAME = mobile;
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore pro.thinhtran.starterkit";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -734,7 +735,6 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pro.thinhtran.starterkit;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = pro.thinhtran.starterkit.macos;
 				PRODUCT_NAME = mobile;
 				PROVISIONING_PROFILE = "3a6a3d45-9ef6-41e0-810b-a9c4e10dd7e6";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore pro.thinhtran.starterkit";
