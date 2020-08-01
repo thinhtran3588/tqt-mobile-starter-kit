@@ -639,6 +639,7 @@
 			baseConfigurationReference = D5B2C53165757B8DB1E88994 /* Pods-mobile-mobileTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = BB37Q3GL4U;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -663,6 +664,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = BB37Q3GL4U;
 				INFOPLIST_FILE = mobileTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -673,6 +675,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pro.thinhtran.starterkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3a6a3d45-9ef6-41e0-810b-a9c4e10dd7e6";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore pro.thinhtran.starterkit";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mobile.app/mobile";
 			};
 			name = Release;
@@ -732,6 +736,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = pro.thinhtran.starterkit;
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = pro.thinhtran.starterkit.macos;
 				PRODUCT_NAME = mobile;
+				PROVISIONING_PROFILE = "3a6a3d45-9ef6-41e0-810b-a9c4e10dd7e6";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore pro.thinhtran.starterkit";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = NO;
@@ -751,6 +756,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = BB37Q3GL4U;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "mobile-tvOS/Info.plist";
@@ -779,6 +785,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = BB37Q3GL4U;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "mobile-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -789,6 +796,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pro.thinhtran.starterkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3a6a3d45-9ef6-41e0-810b-a9c4e10dd7e6";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore pro.thinhtran.starterkit";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
@@ -804,6 +813,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = BB37Q3GL4U;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "mobile-tvOSTests/Info.plist";
@@ -831,6 +841,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = BB37Q3GL4U;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "mobile-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -841,6 +852,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pro.thinhtran.starterkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3a6a3d45-9ef6-41e0-810b-a9c4e10dd7e6";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore pro.thinhtran.starterkit";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mobile-tvOS.app/mobile-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
