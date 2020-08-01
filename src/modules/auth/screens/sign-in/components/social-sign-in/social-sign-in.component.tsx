@@ -36,9 +36,9 @@ export const SocialSignIn = (): JSX.Element => {
   };
   return (
     <View style={styles.container}>
-      <IconButton name='facebook' color={Colors.blue500} size={30} onPress={() => signIn('FACEBOOK')} />
-      <IconButton name='google' color={Colors.red500} size={30} onPress={() => signIn('GOOGLE')} />
-      {Platform.OS === 'ios' && <IconButton name='apple' size={30} onPress={() => signIn('APPLE')} />}
+      <IconButton icon='facebook' color={Colors.blue500} size={40} onPress={() => signIn('FACEBOOK')} />
+      <IconButton icon='google' color={Colors.red500} size={40} onPress={() => signIn('GOOGLE')} />
+      {Platform.OS === 'ios' && <IconButton icon='apple' size={40} onPress={() => signIn('APPLE')} />}
     </View>
   );
 };

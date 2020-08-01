@@ -13,10 +13,10 @@ import {
   List,
   Divider,
   Switch,
+  IconButton,
 } from 'react-native-paper';
 
 export * from './icon/icon.component';
-export * from './icon-button/icon-button.component';
 export * from './button/button.component';
 export * from './text/text.component';
 export * from './view/view.component';
@@ -47,4 +47,5 @@ export {
   List,
   Divider,
   Switch,
+  IconButton,
 };
