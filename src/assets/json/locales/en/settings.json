@@ -6,6 +6,8 @@
   "language": "Language",
   "primaryColor": "Primary color",
   "privacyPolicy": "Privacy Policy",
+  "signIn": "Sign in",
+  "signOut": "Sign out",
   "tos": "Terms Of Service",
   "useSystemTheme": "Use system theme",
   "version": "Version"

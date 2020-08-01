@@ -12,9 +12,6 @@ export const styles = StyleSheet.create({
     height: 100,
     alignSelf: 'center',
   },
-  skipButtonLabel: {
-    textTransform: 'none',
-  },
   socialButtonsContainer: {
     flexDirection: 'row',
     width: 250,

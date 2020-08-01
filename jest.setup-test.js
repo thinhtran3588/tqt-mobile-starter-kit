@@ -83,3 +83,7 @@ jest.mock('@react-native-community/async-storage', () => ({
 jest.mock('@react-native-community/netinfo', () => ({
   addEventListener: () => () => {},
 }));
+
+jest.mock('@react-native-firebase/auth', () => () => ({
+  onAuthStateChanged: jest.fn(),
+}));

@@ -68,6 +68,12 @@ yarn update-build <latest-build-number>
 yarn validate
 ```
 
+- get SHA1 of keystores
+
+```
+yarn android-signing
+```
+
 ## Update app icons & splash screens
 
 - install ImageMagick
@@ -85,6 +91,10 @@ yarn update-icons
 ```
 
 - for splash screen, follow [react-native-bootsplash](https://github.com/zoontek/react-native-bootsplash)
+
+## Sign in with Firebase
+
+Follow [rnfirebase](https://rnfirebase.io/)
 
 ## Publish app to stores with Fastlane
 

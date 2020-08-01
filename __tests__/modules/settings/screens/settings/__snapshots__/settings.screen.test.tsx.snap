@@ -59,6 +59,94 @@ exports[`opens language picker 1`] = `
               <View
                 style={
                   Array [
+                    Object {
+                      "alignItems": "center",
+                      "padding": 20,
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#6200ee",
+                        "borderRadius": 60,
+                        "height": 120,
+                        "width": 120,
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  <Image
+                    source={
+                      Object {
+                        "uri": undefined,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 60,
+                        "height": 120,
+                        "width": 120,
+                      }
+                    }
+                  />
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#000000",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                        "textAlign": "left",
+                      },
+                      Array [
+                        Object {
+                          "marginTop": 20,
+                        },
+                        Object {
+                          "fontSize": 16,
+                          "fontWeight": "bold",
+                        },
+                      ],
+                    ]
+                  }
+                />
+                <Button
+                  title="signIn"
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                        "height": 0.5,
+                      },
+                      undefined,
+                      undefined,
+                    ]
+                  }
+                />
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
                     undefined,
                     Object {},
                   ]
@@ -968,6 +1056,18 @@ exports[`opens language picker 1`] = `
                   generalInfo
                 </Text>
               </Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
               <TouchableHighlight
                 descriptionNumberOfLines={2}
                 disabled={true}
@@ -1899,6 +1999,94 @@ exports[`opens primary color picker 1`] = `
               <View
                 style={
                   Array [
+                    Object {
+                      "alignItems": "center",
+                      "padding": 20,
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#6200ee",
+                        "borderRadius": 60,
+                        "height": 120,
+                        "width": 120,
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  <Image
+                    source={
+                      Object {
+                        "uri": undefined,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 60,
+                        "height": 120,
+                        "width": 120,
+                      }
+                    }
+                  />
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#000000",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                        "textAlign": "left",
+                      },
+                      Array [
+                        Object {
+                          "marginTop": 20,
+                        },
+                        Object {
+                          "fontSize": 16,
+                          "fontWeight": "bold",
+                        },
+                      ],
+                    ]
+                  }
+                />
+                <Button
+                  title="signIn"
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                        "height": 0.5,
+                      },
+                      undefined,
+                      undefined,
+                    ]
+                  }
+                />
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
                     undefined,
                     Object {},
                   ]
@@ -2808,6 +2996,18 @@ exports[`opens primary color picker 1`] = `
                   generalInfo
                 </Text>
               </Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
               <TouchableHighlight
                 descriptionNumberOfLines={2}
                 disabled={true}
@@ -3739,6 +3939,94 @@ exports[`renders correctly 1`] = `
               <View
                 style={
                   Array [
+                    Object {
+                      "alignItems": "center",
+                      "padding": 20,
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#6200ee",
+                        "borderRadius": 60,
+                        "height": 120,
+                        "width": 120,
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  <Image
+                    source={
+                      Object {
+                        "uri": undefined,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 60,
+                        "height": 120,
+                        "width": 120,
+                      }
+                    }
+                  />
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#000000",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                        "textAlign": "left",
+                      },
+                      Array [
+                        Object {
+                          "marginTop": 20,
+                        },
+                        Object {
+                          "fontSize": 16,
+                          "fontWeight": "bold",
+                        },
+                      ],
+                    ]
+                  }
+                />
+                <Button
+                  title="signIn"
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                        "height": 0.5,
+                      },
+                      undefined,
+                      undefined,
+                    ]
+                  }
+                />
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
                     undefined,
                     Object {},
                   ]
@@ -4648,6 +4936,18 @@ exports[`renders correctly 1`] = `
                   generalInfo
                 </Text>
               </Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
               <TouchableHighlight
                 descriptionNumberOfLines={2}
                 disabled={true}
@@ -5579,6 +5879,94 @@ exports[`uses dark theme 1`] = `
               <View
                 style={
                   Array [
+                    Object {
+                      "alignItems": "center",
+                      "padding": 20,
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#BB86FC",
+                        "borderRadius": 60,
+                        "height": 120,
+                        "width": 120,
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  <Image
+                    source={
+                      Object {
+                        "uri": undefined,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 60,
+                        "height": 120,
+                        "width": 120,
+                      }
+                    }
+                  />
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#ffffff",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                        "textAlign": "left",
+                      },
+                      Array [
+                        Object {
+                          "marginTop": 20,
+                        },
+                        Object {
+                          "fontSize": 16,
+                          "fontWeight": "bold",
+                        },
+                      ],
+                    ]
+                  }
+                />
+                <Button
+                  title="signIn"
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                        "height": 0.5,
+                      },
+                      undefined,
+                      undefined,
+                    ]
+                  }
+                />
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
                     undefined,
                     Object {},
                   ]
@@ -6488,6 +6876,18 @@ exports[`uses dark theme 1`] = `
                   generalInfo
                 </Text>
               </Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
               <TouchableHighlight
                 descriptionNumberOfLines={2}
                 disabled={true}
@@ -7419,6 +7819,94 @@ exports[`uses light theme 1`] = `
               <View
                 style={
                   Array [
+                    Object {
+                      "alignItems": "center",
+                      "padding": 20,
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#6200ee",
+                        "borderRadius": 60,
+                        "height": 120,
+                        "width": 120,
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  <Image
+                    source={
+                      Object {
+                        "uri": undefined,
+                      }
+                    }
+                    style={
+                      Object {
+                        "borderRadius": 60,
+                        "height": 120,
+                        "width": 120,
+                      }
+                    }
+                  />
+                </View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#000000",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                        "textAlign": "left",
+                      },
+                      Array [
+                        Object {
+                          "marginTop": 20,
+                        },
+                        Object {
+                          "fontSize": 16,
+                          "fontWeight": "bold",
+                        },
+                      ],
+                    ]
+                  }
+                />
+                <Button
+                  title="signIn"
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                        "height": 0.5,
+                      },
+                      undefined,
+                      undefined,
+                    ]
+                  }
+                />
+              </View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
+              <View
+                style={
+                  Array [
                     undefined,
                     Object {},
                   ]
@@ -8328,6 +8816,18 @@ exports[`uses light theme 1`] = `
                   generalInfo
                 </Text>
               </Text>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
               <TouchableHighlight
                 descriptionNumberOfLines={2}
                 disabled={true}

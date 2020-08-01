@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>460761628098-tbm75hbrsmlgs07saish5bjjo14u3uuf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.460761628098-tbm75hbrsmlgs07saish5bjjo14u3uuf</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>460761628098-kua79cavoufq51a91oluk2ft6osvfml2.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCLb5xTWQnGfYc7ly8hBhhcUziccb03HVM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>460761628098</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>pro.thinhtran.starterkit</string>
+	<key>PROJECT_ID</key>
+	<string>tqt-apps</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tqt-apps.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:460761628098:ios:77dc6db2f0b4b14f4a2a5b</string>
+	<key>DATABASE_URL</key>
+	<string>https://tqt-apps.firebaseio.com</string>
+</dict>
+</plist>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "460761628098",
+    "firebase_url": "https://tqt-apps.firebaseio.com",
+    "project_id": "tqt-apps",
+    "storage_bucket": "tqt-apps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460761628098:android:d341644b5db941984a2a5b",
+        "android_client_info": {
+          "package_name": "pro.thinhtran.starterkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460761628098-kua79cavoufq51a91oluk2ft6osvfml2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pro.thinhtran.starterkit",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "460761628098-g87fmrh182l040smb00ng28ps0svb5r7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCabcKEv4eeDmfkEEWXZI9xt-wiYepg_rA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460761628098-g87fmrh182l040smb00ng28ps0svb5r7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "460761628098-tbm75hbrsmlgs07saish5bjjo14u3uuf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "pro.thinhtran.starterkit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

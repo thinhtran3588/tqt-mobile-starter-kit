@@ -1,9 +1,10 @@
 // https://testing-library.com/docs/native-testing-library/setup
 import React, {ReactNode, ReactElement} from 'react';
-import {render, RenderResult, RenderOptions} from '@testing-library/react-native';
-import {AppThemeProvider, useAppTheme, LanguageProvider} from '@app/core/contexts';
-import {PaperProvider, DefaultTheme, DarkTheme} from '@app/core/components';
 import {useColorScheme} from 'react-native';
+import {render, RenderResult, RenderOptions} from '@testing-library/react-native';
+import {AppThemeProvider, useAppTheme, LanguageProvider, InternetConnectionProvider} from '@core/contexts';
+import {PaperProvider, DefaultTheme, DarkTheme} from '@app/core/components';
+import {AuthProvider} from '@auth/contexts';
 
 interface Props {
   children?: ReactNode;
@@ -22,17 +23,22 @@ const BaseApp = (props: Props): JSX.Element => {
   const theme: typeof DefaultTheme = {
     ...(useDarkTheme ? DarkTheme : DefaultTheme),
   };
+
   return <PaperProvider theme={theme}>{children}</PaperProvider>;
 };
 
 const AllTheProviders = (props: Props): JSX.Element => {
   const {children} = props;
   return (
-    <LanguageProvider>
-      <AppThemeProvider>
-        <BaseApp>{children}</BaseApp>
-      </AppThemeProvider>
-    </LanguageProvider>
+    <AuthProvider>
+      <InternetConnectionProvider>
+        <LanguageProvider>
+          <AppThemeProvider>
+            <BaseApp>{children}</BaseApp>
+          </AppThemeProvider>
+        </LanguageProvider>
+      </InternetConnectionProvider>
+    </AuthProvider>
   );
 };
 

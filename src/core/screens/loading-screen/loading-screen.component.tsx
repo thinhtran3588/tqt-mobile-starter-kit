@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import {styles} from './loading-screen.styles';
-import {Loading} from '../loading/loading.component';
+import {Loading} from '../../components/loading/loading.component';
 
 export interface LoadingScreenProps {
   backgroundColor?: string;

@@ -23,7 +23,7 @@ export * from './view/view.component';
 export * from './layout/layout.component';
 export * from './list-item/list-item.component';
 export * from './loading/loading.component';
-export * from './loading-screen/loading-screen.component';
+export * from '../screens/loading-screen/loading-screen.component';
 export * from './blur/blur.component';
 export * from './picker/picker.component';
 export * from './internet-connection/internet-connection.component';
