@@ -6,25 +6,31 @@ import {useAuth, SignInType} from '@auth/contexts';
 import {styles} from './social-sign-in.styles';
 
 export const SocialSignIn = (): JSX.Element => {
-  const [auth, {signInFacebook}] = useAuth();
+  const [auth, {signInFacebook, signInGoogle}] = useAuth();
   const navigation = useNavigation();
   const signIn = async (signInType: SignInType): Promise<void> => {
     if (auth.isSignedIn) {
       return;
     }
 
+    let isSignedIn = false;
+
     switch (signInType) {
       case 'APPLE':
         break;
       case 'GOOGLE':
+        isSignedIn = await signInGoogle();
         break;
       case 'FACEBOOK':
-        await signInFacebook();
+        isSignedIn = await signInFacebook();
         break;
       default:
         return;
     }
-    navigation.navigate(SCREEN_NAME.MAIN_TABS);
+
+    if (isSignedIn) {
+      navigation.navigate(SCREEN_NAME.MAIN_TABS);
+    }
   };
   return (
     <View style={styles.container}>

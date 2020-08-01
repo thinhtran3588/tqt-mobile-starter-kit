@@ -5,6 +5,12 @@
   "appInfo": {
     "name": "TQT Starter Kit"
   },
+  "fb": {
+    "id": "284064976159443"
+  },
+  "google": {
+    "webClientId": "460761628098-kua79cavoufq51a91oluk2ft6osvfml2.apps.googleusercontent.com"
+  },
   "ios": {
     "id": "pro.thinhtran.starterkit"
   }

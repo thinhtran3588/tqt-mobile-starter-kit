@@ -87,3 +87,10 @@ jest.mock('@react-native-community/netinfo', () => ({
 jest.mock('@react-native-firebase/auth', () => () => ({
   onAuthStateChanged: jest.fn(),
 }));
+
+jest.mock('@react-native-community/google-signin', () => ({
+  GoogleSignin: {
+    configure: jest.fn(),
+  },
+  statusCodes: {},
+}));

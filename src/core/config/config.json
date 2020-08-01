@@ -3,18 +3,21 @@
     "id": "pro.thinhtran.starterkit"
   },
   "appInfo": {
-    "build": "4",
-    "name": "TQT Starter Kit",
-    "version": "0.5.0",
     "author": "Thinh Tran",
+    "build": "4",
     "copyright": "Copyright © 2020 by Thinh Tran",
+    "name": "TQT Starter Kit",
     "privacyPolicyUrl": "https://thinhtran.pro/tqt-mobile-starter-kit/privacypolicy.html",
-    "tosUrl": "https://thinhtran.pro/tqt-mobile-starter-kit/termsandconditions.html"
+    "tosUrl": "https://thinhtran.pro/tqt-mobile-starter-kit/termsandconditions.html",
+    "version": "0.5.0"
   },
   "dateFormat": "DD/MM/YYYY",
   "defaultLang": "vi",
   "fb": {
     "id": ""
+  },
+  "google": {
+    "webClientId": ""
   },
   "ios": {
     "id": "pro.thinhtran.starterkit"

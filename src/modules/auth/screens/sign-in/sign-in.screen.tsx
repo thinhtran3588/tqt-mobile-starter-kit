@@ -20,7 +20,9 @@ export const SignInScreen = (): JSX.Element => {
       <View style={styles.container}>
         <Image style={styles.logo} source={Logo} />
         <SocialSignIn />
-        <Button onPress={navigateToMainApp}>{t('skipSignIn')}</Button>
+        <Button onPress={navigateToMainApp} uppercase={false}>
+          {t('skipSignIn')}
+        </Button>
       </View>
     </Layout>
   );

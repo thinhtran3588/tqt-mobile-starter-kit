@@ -18,7 +18,10 @@ it('update configuration correctly', async () => {
       "dateFormat": "DD/MM/YYYY",
       "defaultLang": "vi",
       "fb": Object {
-        "id": "",
+        "id": "284064976159443",
+      },
+      "google": Object {
+        "webClientId": "460761628098-g87fmrh182l040smb00ng28ps0svb5r7.apps.googleusercontent.com",
       },
       "ios": Object {
         "id": "pro.thinhtran.starterkit",
@@ -53,7 +56,10 @@ it('update configuration correctly', async () => {
       "dateFormat": "DD/MM/YYYY",
       "defaultLang": "vi",
       "fb": Object {
-        "id": "",
+        "id": "284064976159443",
+      },
+      "google": Object {
+        "webClientId": "460761628098-g87fmrh182l040smb00ng28ps0svb5r7.apps.googleusercontent.com",
       },
       "ios": Object {
         "id": "pro.thinhtran.test",

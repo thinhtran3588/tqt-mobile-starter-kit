@@ -1,7 +1,9 @@
 import React, {useContext, useEffect, useMemo, useState, useCallback} from 'react';
 import firebaseAuth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import {usePersistence} from '@core/hooks';
+import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {LoginManager, AccessToken} from 'react-native-fbsdk';
+import {usePersistence} from '@core/hooks';
+import {config} from '@core/config';
 
 interface AuthProviderProps {
   children?: React.ReactNode;
@@ -22,9 +24,9 @@ interface AuthState {
 }
 
 interface Dispatch {
-  signInFacebook: () => Promise<void>;
-  signInGoogle: () => Promise<void>;
-  signInApple: () => Promise<void>;
+  signInFacebook: () => Promise<boolean>;
+  signInGoogle: () => Promise<boolean>;
+  signInApple: () => Promise<boolean>;
   signOut: () => Promise<void>;
 }
 
@@ -49,14 +51,15 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
     if (!user) {
       setAuthPersistence(DEFAULT_AUTH);
     } else {
-      let avatarUrl = user.photoURL || 'undefined';
+      let avatarUrl = user.photoURL || '';
       let signInType: SignInType = 'EMAIL';
       if (user.providerData && user.providerData.length >= 1) {
         if (user.providerData[0].providerId === 'facebook.com') {
           signInType = 'FACEBOOK';
-          if (avatarUrl) {
-            avatarUrl = `${avatarUrl}?width=300`;
-          }
+          avatarUrl = `${avatarUrl}?type=large`;
+        } else if (user.providerData[0].providerId === 'google.com') {
+          signInType = 'GOOGLE';
+          avatarUrl = avatarUrl.replace('s96-c', 's400-c');
         }
       }
       setAuthPersistence({
@@ -77,38 +80,71 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
 
   useEffect(() => {
     const subscriber = firebaseAuth().onAuthStateChanged(onAuthStateChanged);
+    GoogleSignin.configure({
+      webClientId: config().google.webClientId,
+    });
+
     return subscriber; // unsubscribe
   }, [onAuthStateChanged]);
 
-  const signInFacebook = async (): Promise<void> => {
+  const signInFacebook = async (): Promise<boolean> => {
+    const loginResult = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+
+    if (loginResult.isCancelled) {
+      return false;
+    }
+
+    const data = await AccessToken.getCurrentAccessToken();
+    if (!data) {
+      throw new Error('Something went wrong obtaining access token');
+    }
+
+    // Create a Firebase credential with the AccessToken
+    const facebookCredential = firebaseAuth.FacebookAuthProvider.credential(data.accessToken);
+
+    // Sign-in the user with the credential
+    await firebaseAuth().signInWithCredential(facebookCredential);
+
+    return true;
+  };
+
+  const signInGoogle = async (): Promise<boolean> => {
     try {
-      const loginResult = await LoginManager.logInWithPermissions(['public_profile', 'email']);
-
-      if (loginResult.isCancelled) {
-        return;
-      }
-
-      const data = await AccessToken.getCurrentAccessToken();
-      if (!data) {
-        throw new Error('Something went wrong obtaining access token');
-      }
-
-      // Create a Firebase credential with the AccessToken
-      const facebookCredential = firebaseAuth.FacebookAuthProvider.credential(data.accessToken);
+      await GoogleSignin.hasPlayServices();
+      const {idToken} = await GoogleSignin.signIn();
+      // Create a Google credential with the token
+      const googleCredential = firebaseAuth.GoogleAuthProvider.credential(idToken);
 
       // Sign-in the user with the credential
-      await firebaseAuth().signInWithCredential(facebookCredential);
+      await firebaseAuth().signInWithCredential(googleCredential);
     } catch (err) {
-      // ignore
+      if (
+        err.code === statusCodes.SIGN_IN_CANCELLED ||
+        err.code === statusCodes.IN_PROGRESS ||
+        err.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE
+      ) {
+        // user cancelled the login flow
+        return false;
+      }
+
+      throw err;
     }
+    return true;
   };
-  const signInGoogle = async (): Promise<void> => {};
-  const signInApple = async (): Promise<void> => {};
+  const signInApple = async (): Promise<boolean> => {
+    return false;
+  };
 
   const signOut = async (): Promise<void> => {
     setAuthPersistence(DEFAULT_AUTH);
     if (firebaseAuth().currentUser) {
       await firebaseAuth().signOut();
+    }
+    try {
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+    } catch (err) {
+      // ignore err
     }
   };
 

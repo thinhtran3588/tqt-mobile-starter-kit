@@ -9,6 +9,7 @@ target 'mobile' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
+  pod 'GoogleSignIn', '~> 5.0.2'
 
   use_react_native!(:path => config["reactNativePath"])
   
