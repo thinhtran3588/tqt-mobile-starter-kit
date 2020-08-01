@@ -69,3 +69,5 @@ coverage
 keystore.properties
 googlePlaySecretKey.json
 .env.default
+google-services.json
+GoogleService-Info.plist
