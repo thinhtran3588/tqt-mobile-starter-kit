@@ -72,7 +72,7 @@ export const ListItem = (props: ListItemProps): JSX.Element => {
   return (
     <>
       <List.Item
-        style={[styles.item, style]}
+        style={[styles.listItem, style]}
         titleStyle={[styles.title, titleStyle]}
         left={LeftComponent}
         right={RightComponent}

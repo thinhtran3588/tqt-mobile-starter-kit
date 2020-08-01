@@ -19,6 +19,6 @@ export const Blur = (props: BlueProps): JSX.Element => {
   const {style, blurType = appTheme.theme, blurAmount = 10, ...other} = props;
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <BlurView style={[styles.root, style]} {...other} blurType={blurType} blurAmount={blurAmount} />
+    <BlurView style={[styles.blur, style]} {...other} blurType={blurType} blurAmount={blurAmount} />
   );
 };
