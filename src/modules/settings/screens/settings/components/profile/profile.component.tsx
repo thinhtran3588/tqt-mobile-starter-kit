@@ -17,7 +17,8 @@ export const Profile = (): JSX.Element => {
 
   return (
     <View style={styles.container}>
-      <Avatar.Image style={{}} source={{uri: auth.avatarUrl}} size={120} />
+      {!auth.avatarUrl && <Avatar.Icon icon='face' size={120} color='#fff' />}
+      {Boolean(auth.avatarUrl) && <Avatar.Image style={{}} source={{uri: auth.avatarUrl}} size={120} />}
       <Text style={styles.name} type='h5'>
         {auth.displayName}
       </Text>

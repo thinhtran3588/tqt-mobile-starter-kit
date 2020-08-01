@@ -68,6 +68,7 @@ exports[`opens language picker 1`] = `
                 }
               >
                 <View
+                  color="#fff"
                   style={
                     Array [
                       Object {
@@ -76,24 +77,48 @@ exports[`opens language picker 1`] = `
                         "height": 120,
                         "width": 120,
                       },
+                      Object {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                      },
                       Object {},
                     ]
                   }
                 >
-                  <Image
-                    source={
-                      Object {
-                        "uri": undefined,
-                      }
-                    }
+                  <Text
+                    accessibilityElementsHidden={true}
+                    allowFontScaling={false}
+                    importantForAccessibility="no-hide-descendants"
+                    pointerEvents="none"
                     style={
-                      Object {
-                        "borderRadius": 60,
-                        "height": 120,
-                        "width": 120,
-                      }
+                      Array [
+                        Object {
+                          "color": "#fff",
+                          "fontSize": 72,
+                        },
+                        Array [
+                          Object {
+                            "transform": Array [
+                              Object {
+                                "scaleX": 1,
+                              },
+                            ],
+                          },
+                          Object {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                        Object {
+                          "fontFamily": "Material Design Icons",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                        Object {},
+                      ]
                     }
-                  />
+                  >
+                    󰙃
+                  </Text>
                 </View>
                 <Text
                   style={
@@ -2008,6 +2033,7 @@ exports[`opens primary color picker 1`] = `
                 }
               >
                 <View
+                  color="#fff"
                   style={
                     Array [
                       Object {
@@ -2016,24 +2042,48 @@ exports[`opens primary color picker 1`] = `
                         "height": 120,
                         "width": 120,
                       },
+                      Object {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                      },
                       Object {},
                     ]
                   }
                 >
-                  <Image
-                    source={
-                      Object {
-                        "uri": undefined,
-                      }
-                    }
+                  <Text
+                    accessibilityElementsHidden={true}
+                    allowFontScaling={false}
+                    importantForAccessibility="no-hide-descendants"
+                    pointerEvents="none"
                     style={
-                      Object {
-                        "borderRadius": 60,
-                        "height": 120,
-                        "width": 120,
-                      }
+                      Array [
+                        Object {
+                          "color": "#fff",
+                          "fontSize": 72,
+                        },
+                        Array [
+                          Object {
+                            "transform": Array [
+                              Object {
+                                "scaleX": 1,
+                              },
+                            ],
+                          },
+                          Object {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                        Object {
+                          "fontFamily": "Material Design Icons",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                        Object {},
+                      ]
                     }
-                  />
+                  >
+                    󰙃
+                  </Text>
                 </View>
                 <Text
                   style={
@@ -3948,6 +3998,7 @@ exports[`renders correctly 1`] = `
                 }
               >
                 <View
+                  color="#fff"
                   style={
                     Array [
                       Object {
@@ -3956,24 +4007,48 @@ exports[`renders correctly 1`] = `
                         "height": 120,
                         "width": 120,
                       },
+                      Object {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                      },
                       Object {},
                     ]
                   }
                 >
-                  <Image
-                    source={
-                      Object {
-                        "uri": undefined,
-                      }
-                    }
+                  <Text
+                    accessibilityElementsHidden={true}
+                    allowFontScaling={false}
+                    importantForAccessibility="no-hide-descendants"
+                    pointerEvents="none"
                     style={
-                      Object {
-                        "borderRadius": 60,
-                        "height": 120,
-                        "width": 120,
-                      }
+                      Array [
+                        Object {
+                          "color": "#fff",
+                          "fontSize": 72,
+                        },
+                        Array [
+                          Object {
+                            "transform": Array [
+                              Object {
+                                "scaleX": 1,
+                              },
+                            ],
+                          },
+                          Object {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                        Object {
+                          "fontFamily": "Material Design Icons",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                        Object {},
+                      ]
                     }
-                  />
+                  >
+                    󰙃
+                  </Text>
                 </View>
                 <Text
                   style={
@@ -5888,6 +5963,7 @@ exports[`uses dark theme 1`] = `
                 }
               >
                 <View
+                  color="#fff"
                   style={
                     Array [
                       Object {
@@ -5896,24 +5972,48 @@ exports[`uses dark theme 1`] = `
                         "height": 120,
                         "width": 120,
                       },
+                      Object {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                      },
                       Object {},
                     ]
                   }
                 >
-                  <Image
-                    source={
-                      Object {
-                        "uri": undefined,
-                      }
-                    }
+                  <Text
+                    accessibilityElementsHidden={true}
+                    allowFontScaling={false}
+                    importantForAccessibility="no-hide-descendants"
+                    pointerEvents="none"
                     style={
-                      Object {
-                        "borderRadius": 60,
-                        "height": 120,
-                        "width": 120,
-                      }
+                      Array [
+                        Object {
+                          "color": "#fff",
+                          "fontSize": 72,
+                        },
+                        Array [
+                          Object {
+                            "transform": Array [
+                              Object {
+                                "scaleX": 1,
+                              },
+                            ],
+                          },
+                          Object {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                        Object {
+                          "fontFamily": "Material Design Icons",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                        Object {},
+                      ]
                     }
-                  />
+                  >
+                    󰙃
+                  </Text>
                 </View>
                 <Text
                   style={
@@ -7828,6 +7928,7 @@ exports[`uses light theme 1`] = `
                 }
               >
                 <View
+                  color="#fff"
                   style={
                     Array [
                       Object {
@@ -7836,24 +7937,48 @@ exports[`uses light theme 1`] = `
                         "height": 120,
                         "width": 120,
                       },
+                      Object {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                      },
                       Object {},
                     ]
                   }
                 >
-                  <Image
-                    source={
-                      Object {
-                        "uri": undefined,
-                      }
-                    }
+                  <Text
+                    accessibilityElementsHidden={true}
+                    allowFontScaling={false}
+                    importantForAccessibility="no-hide-descendants"
+                    pointerEvents="none"
                     style={
-                      Object {
-                        "borderRadius": 60,
-                        "height": 120,
-                        "width": 120,
-                      }
+                      Array [
+                        Object {
+                          "color": "#fff",
+                          "fontSize": 72,
+                        },
+                        Array [
+                          Object {
+                            "transform": Array [
+                              Object {
+                                "scaleX": 1,
+                              },
+                            ],
+                          },
+                          Object {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                        Object {
+                          "fontFamily": "Material Design Icons",
+                          "fontStyle": "normal",
+                          "fontWeight": "normal",
+                        },
+                        Object {},
+                      ]
                     }
-                  />
+                  >
+                    󰙃
+                  </Text>
                 </View>
                 <Text
                   style={

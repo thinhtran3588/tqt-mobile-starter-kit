@@ -94,3 +94,5 @@ jest.mock('@react-native-community/google-signin', () => ({
   },
   statusCodes: {},
 }));
+
+jest.mock('@invertase/react-native-apple-authentication', () => ({}));

@@ -2,6 +2,10 @@ import React, {useContext, useEffect, useMemo, useState, useCallback} from 'reac
 import firebaseAuth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {LoginManager, AccessToken} from 'react-native-fbsdk';
+import appleAuth, {
+  AppleAuthRequestScope,
+  AppleAuthRequestOperation,
+} from '@invertase/react-native-apple-authentication';
 import {usePersistence} from '@core/hooks';
 import {config} from '@core/config';
 
@@ -53,6 +57,7 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
     } else {
       let avatarUrl = user.photoURL || '';
       let signInType: SignInType = 'EMAIL';
+      let displayName = user.displayName || undefined;
       if (user.providerData && user.providerData.length >= 1) {
         if (user.providerData[0].providerId === 'facebook.com') {
           signInType = 'FACEBOOK';
@@ -60,11 +65,14 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
         } else if (user.providerData[0].providerId === 'google.com') {
           signInType = 'GOOGLE';
           avatarUrl = avatarUrl.replace('s96-c', 's400-c');
+        } else if (user.providerData[0].providerId === 'apple.com') {
+          signInType = 'APPLE';
+          displayName = displayName || user.providerData[0].email;
         }
       }
       setAuthPersistence({
         userId: user.uid,
-        displayName: user.displayName || undefined,
+        displayName,
         firstName: user.displayName || undefined,
         avatarUrl,
         isSignedIn: true,
@@ -131,8 +139,26 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
     }
     return true;
   };
+
   const signInApple = async (): Promise<boolean> => {
-    return false;
+    // Start the sign-in request
+    const appleAuthRequestResponse = await appleAuth.performRequest({
+      requestedOperation: AppleAuthRequestOperation.LOGIN,
+      requestedScopes: [AppleAuthRequestScope.EMAIL, AppleAuthRequestScope.FULL_NAME],
+    });
+
+    // Ensure Apple returned a user identityToken
+    if (!appleAuthRequestResponse.identityToken) {
+      throw new Error('Apple Sign-In failed - no identify token returned');
+    }
+
+    // Create a Firebase credential from the response
+    const {identityToken, nonce} = appleAuthRequestResponse;
+    const appleCredential = firebaseAuth.AppleAuthProvider.credential(identityToken, nonce);
+
+    // Sign the user in with the credential
+    await firebaseAuth().signInWithCredential(appleCredential);
+    return true;
   };
 
   const signOut = async (): Promise<void> => {

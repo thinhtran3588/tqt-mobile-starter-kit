@@ -1,12 +1,13 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {Platform} from 'react-native';
 import {SCREEN_NAME} from '@app/app.constants';
 import {View, Colors, IconButton} from '@app/core/components';
 import {useAuth, SignInType} from '@auth/contexts';
 import {styles} from './social-sign-in.styles';
 
 export const SocialSignIn = (): JSX.Element => {
-  const [auth, {signInFacebook, signInGoogle}] = useAuth();
+  const [auth, {signInFacebook, signInGoogle, signInApple}] = useAuth();
   const navigation = useNavigation();
   const signIn = async (signInType: SignInType): Promise<void> => {
     if (auth.isSignedIn) {
@@ -17,6 +18,7 @@ export const SocialSignIn = (): JSX.Element => {
 
     switch (signInType) {
       case 'APPLE':
+        isSignedIn = await signInApple();
         break;
       case 'GOOGLE':
         isSignedIn = await signInGoogle();
@@ -36,7 +38,7 @@ export const SocialSignIn = (): JSX.Element => {
     <View style={styles.container}>
       <IconButton name='facebook' color={Colors.blue500} size={30} onPress={() => signIn('FACEBOOK')} />
       <IconButton name='google' color={Colors.red500} size={30} onPress={() => signIn('GOOGLE')} />
-      <IconButton name='apple' size={30} onPress={() => signIn('APPLE')} />
+      {Platform.OS === 'ios' && <IconButton name='apple' size={30} onPress={() => signIn('APPLE')} />}
     </View>
   );
 };
