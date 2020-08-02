@@ -17,7 +17,7 @@ export type TextProps = RNTextProps & {
 export const Text = (props: TextProps): JSX.Element => {
   const theme = useTheme();
   const {children, uppercase, lowercase, type, style, error, ...other} = props;
-  const color = error ? theme.colors.error : undefined;
+  const color = error ? theme.colors.error : theme.colors.text;
   let childrenNode = children;
   if (typeof children === 'string') {
     if (uppercase) {
