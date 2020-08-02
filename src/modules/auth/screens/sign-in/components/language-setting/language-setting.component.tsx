@@ -1,20 +1,27 @@
-import React from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {Platform} from 'react-native';
-import {SCREEN_NAME} from '@app/app.constants';
-import {View, Colors, IconButton} from '@app/core/components';
-import {useAuth, SignInType} from '@auth/contexts';
+import React, {useState} from 'react';
+import {Button, Picker, PickerDataItem} from '@app/core/components';
+import {LANGUAGES, useLanguage} from '@app/core/contexts';
 import {styles} from './language-setting.styles';
 
+const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, label: lang.text}));
+
 export const LanguageSetting = (): JSX.Element => {
-  const [auth, {signInFacebook, signInGoogle, signInApple}] = useAuth();
-  const navigation = useNavigation();
-  const signIn = async (signInType: SignInType): Promise<void> => {};
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const [language, setLanguage] = useLanguage();
+  const selectedLang = LANGUAGES.find((lang) => lang.code === language)?.text;
   return (
-    <View style={styles.container}>
-      <Button onPress={navigateToMainApp} uppercase={false}>
-        {t('skipSignIn')}
+    <>
+      <Button icon='globe-model' onPress={() => setPickerOpen(true)} style={styles.button}>
+        {selectedLang}
       </Button>
-    </View>
+      <Picker
+        key='language-picker'
+        initialValue={language}
+        open={pickerOpen}
+        setOpen={setPickerOpen}
+        dataSources={languages}
+        onChangeValue={setLanguage}
+      />
+    </>
   );
 };

@@ -8,7 +8,7 @@ import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@app/c
 import {useDimensions} from '@app/core/hooks';
 import {SCREEN_NAME} from '@app/app.constants';
 import Logo from '@assets/images/app-logo.png';
-import {SocialSignIn, EmailSignIn, EmailSignUp} from './components';
+import {SocialSignIn, EmailSignIn, EmailSignUp, LanguageSetting} from './components';
 import {styles} from './sign-in.styles';
 
 export const SignInScreen = (): JSX.Element => {
@@ -56,6 +56,7 @@ export const SignInScreen = (): JSX.Element => {
         <Button onPress={navigateToMainApp} uppercase={false}>
           {t('skipSignIn')}
         </Button>
+        <LanguageSetting />
       </ScrollView>
     </Layout>
   );
