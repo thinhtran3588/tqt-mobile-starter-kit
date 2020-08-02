@@ -5,4 +5,5 @@ module.exports = {
   setupFilesAfterEnv: ['./jest.setup-test.js'],
   collectCoverageFrom: ['src/**/*.{ts,tsx}'],
   testEnvironment: 'jsdom',
+  transformIgnorePatterns: ['node_modules/(?!react-native)/'],
 };

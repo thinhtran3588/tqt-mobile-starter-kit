@@ -53,7 +53,7 @@ export const EmailSignIn = (): JSX.Element => {
             onChangeText={handleChange('email')}
             onBlur={handleBlur('email')}
             value={values.email}
-            error={errors.email}
+            errorMessage={errors.email}
           />
           <TextInput
             label={t('password')}
@@ -61,7 +61,7 @@ export const EmailSignIn = (): JSX.Element => {
             onBlur={handleBlur('password')}
             value={values.password}
             secureTextEntry
-            error={errors.password}
+            errorMessage={errors.password}
           />
           <Button style={styles.button} onPress={handleSubmit} mode='contained'>
             {t('signIn')}

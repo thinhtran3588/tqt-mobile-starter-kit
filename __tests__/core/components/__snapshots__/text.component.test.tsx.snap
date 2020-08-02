@@ -37,6 +37,9 @@ exports[`renders correctly 1`] = `
               "textAlign": "left",
             },
             Array [
+              Object {
+                "color": "#000000",
+              },
               undefined,
               Object {
                 "fontSize": 12,
@@ -89,6 +92,9 @@ exports[`renders lowercase correctly 1`] = `
               "textAlign": "left",
             },
             Array [
+              Object {
+                "color": "#000000",
+              },
               undefined,
               Object {
                 "fontSize": 24,
@@ -142,6 +148,9 @@ exports[`renders nested child correctly 1`] = `
               "textAlign": "left",
             },
             Array [
+              Object {
+                "color": "#000000",
+              },
               undefined,
               Object {
                 "fontSize": 24,
@@ -161,6 +170,9 @@ exports[`renders nested child correctly 1`] = `
                 "textAlign": "left",
               },
               Array [
+                Object {
+                  "color": "#000000",
+                },
                 undefined,
                 Object {
                   "fontSize": 12,
@@ -214,6 +226,9 @@ exports[`renders type correctly 1`] = `
               "textAlign": "left",
             },
             Array [
+              Object {
+                "color": "#000000",
+              },
               undefined,
               Object {
                 "fontSize": 24,
@@ -267,6 +282,9 @@ exports[`renders uppercase correctly 1`] = `
               "textAlign": "left",
             },
             Array [
+              Object {
+                "color": "#000000",
+              },
               undefined,
               Object {
                 "fontSize": 24,

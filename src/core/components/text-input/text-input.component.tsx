@@ -7,23 +7,24 @@ import {View} from '../view/view.component';
 import {styles} from './text-input.styles';
 
 export type TextInputProps = React.ComponentProps<typeof RNTextInput> & {
-  error?: string;
+  errorMessage?: string;
 };
 
 export const TextInput = (props: TextInputProps): JSX.Element => {
+  const {style, secureTextEntry, error, errorMessage, ...other} = props;
   const [appTheme] = useAppTheme();
   const backgroundColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
-  const {style, secureTextEntry, error, ...other} = props;
   const [showPassword, setShowPassword] = useState(false);
   return (
     <View>
       <RNTextInput
         secureTextEntry={secureTextEntry && !showPassword}
         style={[styles.textInput, {backgroundColor}, style]}
+        error={error || Boolean(errorMessage)}
         {...other}
       />
-      <Text style={styles.error} error={Boolean(error)}>
-        {error}
+      <Text style={styles.error} error={Boolean(errorMessage)}>
+        {errorMessage}
       </Text>
       {secureTextEntry && (
         <IconButton

@@ -32,7 +32,6 @@ export const handleGlobalException = (t: TFunction): void => {
 
   // Global catch of unhandled Promise rejections:
   (global as any).onunhandledrejection = (err: AppError): void => {
-    console.log(err, 'shiot');
     // Warning: when running in "remote debug" mode (JS environment is Chrome browser),
     // this handler is called a second time by Bluebird with a custom "dom-event".
     // We need to filter this case out:

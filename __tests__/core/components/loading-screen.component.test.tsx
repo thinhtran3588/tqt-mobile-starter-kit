@@ -1,8 +1,8 @@
 import React from 'react';
 import {render, toJSON} from '@test-utils';
-import {LoadingScreen} from '@core/components';
+import {LoadingModal} from '@core/components';
 
 it('renders correctly', async () => {
-  const {baseElement} = render(<LoadingScreen />);
+  const {baseElement} = render(<LoadingModal loading />);
   expect(toJSON(baseElement)).toMatchSnapshot();
 });

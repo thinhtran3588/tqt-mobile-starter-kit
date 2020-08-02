@@ -131,6 +131,9 @@ exports[`opens language picker 1`] = `
                       },
                       Array [
                         Object {
+                          "color": "#000000",
+                        },
+                        Object {
                           "marginTop": 20,
                         },
                         Object {
@@ -1069,6 +1072,9 @@ exports[`opens language picker 1`] = `
                         "textAlign": "left",
                       },
                       Array [
+                        Object {
+                          "color": "#000000",
+                        },
                         undefined,
                         Object {
                           "fontSize": 18,
@@ -2096,6 +2102,9 @@ exports[`opens primary color picker 1`] = `
                       },
                       Array [
                         Object {
+                          "color": "#000000",
+                        },
+                        Object {
                           "marginTop": 20,
                         },
                         Object {
@@ -3034,6 +3043,9 @@ exports[`opens primary color picker 1`] = `
                         "textAlign": "left",
                       },
                       Array [
+                        Object {
+                          "color": "#000000",
+                        },
                         undefined,
                         Object {
                           "fontSize": 18,
@@ -4061,6 +4073,9 @@ exports[`renders correctly 1`] = `
                       },
                       Array [
                         Object {
+                          "color": "#000000",
+                        },
+                        Object {
                           "marginTop": 20,
                         },
                         Object {
@@ -4999,6 +5014,9 @@ exports[`renders correctly 1`] = `
                         "textAlign": "left",
                       },
                       Array [
+                        Object {
+                          "color": "#000000",
+                        },
                         undefined,
                         Object {
                           "fontSize": 18,
@@ -6026,6 +6044,9 @@ exports[`uses dark theme 1`] = `
                       },
                       Array [
                         Object {
+                          "color": "#ffffff",
+                        },
+                        Object {
                           "marginTop": 20,
                         },
                         Object {
@@ -6964,6 +6985,9 @@ exports[`uses dark theme 1`] = `
                         "textAlign": "left",
                       },
                       Array [
+                        Object {
+                          "color": "#ffffff",
+                        },
                         undefined,
                         Object {
                           "fontSize": 18,
@@ -7991,6 +8015,9 @@ exports[`uses light theme 1`] = `
                       },
                       Array [
                         Object {
+                          "color": "#000000",
+                        },
+                        Object {
                           "marginTop": 20,
                         },
                         Object {
@@ -8929,6 +8956,9 @@ exports[`uses light theme 1`] = `
                         "textAlign": "left",
                       },
                       Array [
+                        Object {
+                          "color": "#000000",
+                        },
                         undefined,
                         Object {
                           "fontSize": 18,

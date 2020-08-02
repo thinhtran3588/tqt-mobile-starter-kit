@@ -96,3 +96,10 @@ jest.mock('@react-native-community/google-signin', () => ({
 }));
 
 jest.mock('@invertase/react-native-apple-authentication', () => ({}));
+
+jest.mock('react-native-tab-view', () => ({TabView: () => 'TabView', TabBar: () => 'TabBar', SceneMap: () => ({})}));
+
+jest.mock('react-native-exception-handler', () => ({
+  setJSExceptionHandler: jest.fn(),
+  setNativeExceptionHandler: jest.fn(),
+}));
