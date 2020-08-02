@@ -101,5 +101,5 @@
     "update-ver": "ts-node job.ts update-ver",
     "validate": "yarn lint && yarn test-coverage"
   },
-  "version": "0.5.0"
+  "version": "0.6.0"
 }
