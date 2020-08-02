@@ -1,3 +1,18 @@
 {
-  "skipSignIn": "Skip sign in"
+  "email": "Email",
+  "emailAlreadyInUse": "Email already in use",
+  "forgotPassword": "Forgot password?",
+  "invalidEmail": "Invalid email",
+  "password": "Password",
+  "passwordConfirmation": "Password confirmation",
+  "passwordDigitRequired": "Require at least one digit",
+  "passwordLowerCaseRequired": "Require at least one lower case character",
+  "passwordMinLengthRequired": "Require at least {{minLength}} characters",
+  "passwordMustMatch": "Password must match",
+  "passwordSpecialCharacterRequired": "Require at least one special character (#, ?, !, @, $, %, ^, &, *, -)",
+  "passwordUpperCaseRequired": "Require at least one upper case character",
+  "signIn": "Sign in",
+  "signUp": "Sign up",
+  "skipSignIn": "Skip sign in",
+  "wrongCredential": "Wrong credential"
 }

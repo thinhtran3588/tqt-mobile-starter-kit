@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {I18nextProvider} from 'react-i18next';
 import RNBootSplash from 'react-native-bootsplash';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
@@ -11,13 +11,13 @@ import {
   COLORS_LOOKUP,
 } from '@core/contexts';
 import {AuthProvider} from '@auth/contexts';
-import {sleep, merge} from '@core/helpers';
-import {LoadingScreen, PaperProvider, DefaultTheme, DarkTheme} from '@core/components';
+import {merge, setNotificationTheme} from '@core/helpers';
+import {PaperProvider, DefaultTheme, DarkTheme} from '@core/components';
 import {i18next} from './i18n';
 import {AppNavigation} from './app.navigation';
+import {handleGlobalException} from './core/exceptions/handle-global-exception';
 
 export const BaseApp = (): JSX.Element => {
-  const [isBootstrapping, setIsBootstrapping] = useState(true);
   const [appTheme] = useAppTheme();
   const [language] = useLanguage();
   const themedPrimaryColor = (COLORS_LOOKUP[appTheme.primaryColorId] || COLORS_LOOKUP.CYAN)[
@@ -30,8 +30,7 @@ export const BaseApp = (): JSX.Element => {
   useEffect(() => {
     (async () => {
       RNBootSplash.hide({duration: 500});
-      await sleep(1000);
-      setIsBootstrapping(false);
+      handleGlobalException(i18next.t);
     })();
   }, []);
 
@@ -39,17 +38,16 @@ export const BaseApp = (): JSX.Element => {
     i18next.changeLanguage(language);
   }, [language]);
 
-  if (isBootstrapping) {
-    return <LoadingScreen />;
-  }
+  useEffect(() => {
+    setNotificationTheme(appTheme.theme);
+  }, [appTheme]);
+
   return (
-    <I18nextProvider i18n={i18next}>
-      <PaperProvider theme={theme}>
-        <SafeAreaProvider>
-          <AppNavigation />
-        </SafeAreaProvider>
-      </PaperProvider>
-    </I18nextProvider>
+    <PaperProvider theme={theme}>
+      <SafeAreaProvider>
+        <AppNavigation />
+      </SafeAreaProvider>
+    </PaperProvider>
   );
 };
 
@@ -59,7 +57,9 @@ export const App = (): JSX.Element => {
       <InternetConnectionProvider>
         <LanguageProvider>
           <AppThemeProvider>
-            <BaseApp />
+            <I18nextProvider i18n={i18next}>
+              <BaseApp />
+            </I18nextProvider>
           </AppThemeProvider>
         </LanguageProvider>
       </InternetConnectionProvider>

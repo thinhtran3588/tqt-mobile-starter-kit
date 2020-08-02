@@ -1,3 +1,18 @@
 {
-  "skipSignIn": "Bỏ qua đăng nhập"
+  "email": "Email",
+  "forgotPassword": "Quên mật khẩu?",
+  "invalidEmail": "Email không hợp lệ",
+  "password": "Mật khẩu",
+  "passwordConfirmation": "Xác nhận mật khẩu",
+  "passwordDigitRequired": "Bắt buộc ít nhất 1 chữ số",
+  "passwordLowerCaseRequired": "Bắt buộc ít nhất 1 kí tự thường",
+  "passwordMinLengthRequired": "Bắt buộc tối thiểu {{minLength}} kí tự",
+  "passwordMustMatch": "Mật khẩu không trùng khớp",
+  "passwordSpecialCharacterRequired": "Bắt buộc ít nhất 1 kí tự đặc biệt (#, ?, !, @, $, %, ^, &, *, -)",
+  "passwordUpperCaseRequired": "Bắt buộc ít nhất 1 kí tự hoa",
+  "signIn": "Đăng nhập",
+  "signUp": "Đăng kí",
+  "skipSignIn": "Bỏ qua đăng nhập",
+  "emailAlreadyInUse": "Email đã được sử dụng",
+  "wrongCredential": "Thông tin đăng nhập sai"
 }

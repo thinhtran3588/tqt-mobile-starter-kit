@@ -7,3 +7,4 @@ export * from './button-sample/button-sample.component';
 export * from './animation-sample/animation-sample.component';
 export * from './icon-sample/icon-sample.component';
 export * from './card-sample/card-sample.component';
+export * from './notification-sample/notification-sample.component';

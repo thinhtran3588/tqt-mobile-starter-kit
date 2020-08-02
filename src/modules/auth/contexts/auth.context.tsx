@@ -8,6 +8,7 @@ import appleAuth, {
 } from '@invertase/react-native-apple-authentication';
 import {usePersistence} from '@core/hooks';
 import {config} from '@core/config';
+import {AppError} from '@app/core/exceptions';
 
 interface AuthProviderProps {
   children?: React.ReactNode;
@@ -27,10 +28,19 @@ interface AuthState {
   initializing: boolean;
 }
 
+interface SignUpEmailParams {
+  email: string;
+  password: string;
+}
+
+interface SignInEmailParams extends SignUpEmailParams {}
+
 interface Dispatch {
   signInFacebook: () => Promise<boolean>;
   signInGoogle: () => Promise<boolean>;
   signInApple: () => Promise<boolean>;
+  signUpEmail: (params: SignUpEmailParams) => Promise<boolean>;
+  signInEmail: (params: SignInEmailParams) => Promise<boolean>;
   signOut: () => Promise<void>;
 }
 
@@ -67,6 +77,9 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
           avatarUrl = avatarUrl.replace('s96-c', 's400-c');
         } else if (user.providerData[0].providerId === 'apple.com') {
           signInType = 'APPLE';
+          displayName = displayName || user.providerData[0].email;
+        } else {
+          signInType = 'EMAIL';
           displayName = displayName || user.providerData[0].email;
         }
       }
@@ -161,6 +174,37 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
     return true;
   };
 
+  const signUpEmail = async (params: SignUpEmailParams): Promise<boolean> => {
+    try {
+      const {email, password} = params;
+      // Create a new user in with the credential
+      await firebaseAuth().createUserWithEmailAndPassword(email, password);
+    } catch (err) {
+      if (err.code === 'auth/email-already-in-use') {
+        throw new AppError('EMAIL_ALREADY_IN_USE', 'signIn:emailAlreadyInUse');
+      } else {
+        throw err;
+      }
+    }
+    return true;
+  };
+
+  const signInEmail = async (params: SignInEmailParams): Promise<boolean> => {
+    try {
+      const {email, password} = params;
+      // Sign the user in with the credential
+      await firebaseAuth().signInWithEmailAndPassword(email, password);
+    } catch (err) {
+      console.log(err);
+      if (err.code === 'auth/wrong-password') {
+        throw new AppError('WRONG_CREDENTIAL', 'signIn:wrongCredential');
+      } else {
+        throw err;
+      }
+    }
+    return true;
+  };
+
   const signOut = async (): Promise<void> => {
     setAuthPersistence(DEFAULT_AUTH);
     if (firebaseAuth().currentUser) {
@@ -179,6 +223,8 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       signInFacebook,
       signInGoogle,
       signInApple,
+      signUpEmail,
+      signInEmail,
       signOut,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps

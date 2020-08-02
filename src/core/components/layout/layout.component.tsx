@@ -84,7 +84,7 @@ export const Layout = (props: LayoutProps): JSX.Element => {
             backgroundColor: appTheme.theme === 'light' ? LIGHT_BACKGROUND_COLOR : DARK_BACKGROUND_COLOR,
           },
         ]}>
-        <Surface style={styles.flex}>{children}</Surface>
+        <Surface style={[styles.flex]}>{children}</Surface>
       </SafeAreaView>
       {showInternetConnection && <InternetConnection />}
     </>
