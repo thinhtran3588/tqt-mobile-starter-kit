@@ -5,6 +5,13 @@
   "appInfo": {
     "name": "TQT Starter Kit Staging"
   },
+  "fb": {
+    "id": "423713055255816"
+  },
+  "google": {
+    "webClientId": "216990881783-f9cj5f23uucg28enbc9nro32tnbhh7k4.apps.googleusercontent.com",
+    "reverseClientId": "com.googleusercontent.apps.216990881783-amroin01m6u5298j3q7hljqakdrel0qd"
+  },
   "ios": {
     "id": "pro.thinhtran.starterkitstaging"
   }

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /*  eslint-disable no-console, no-control-regex  */
 import fs from 'fs';
 import path from 'path';
@@ -47,6 +48,14 @@ export const setEnv = async (environment: string = 'production'): Promise<void> 
       des: path.resolve(__dirname, `android/keystore.properties`),
     },
     {
+      src: path.resolve(__dirname, `${envFolder}/android/app/google-services.json`),
+      des: path.resolve(__dirname, `android/app/google-services.json`),
+    },
+    {
+      src: path.resolve(__dirname, `${envFolder}/ios/GoogleService-Info.plist`),
+      des: path.resolve(__dirname, `ios/GoogleService-Info.plist`),
+    },
+    {
       src: path.resolve(__dirname, `${envFolder}/config.override.json`),
       des: path.resolve(__dirname, `src/core/config/config.override.json`),
     },
@@ -77,6 +86,10 @@ export const setEnv = async (environment: string = 'production'): Promise<void> 
         {
           old: /<string name="app_name">.*<\/string>/,
           new: `<string name="app_name">${config().appInfo.name}</string>`,
+        },
+        {
+          old: /<string name="facebook_app_id">.*<\/string>/,
+          new: `<string name="facebook_app_id">${config().fb.id}</string>`,
         },
       ],
     },
@@ -117,6 +130,26 @@ export const setEnv = async (environment: string = 'production'): Promise<void> 
         {
           old: /<key>CFBundleDisplayName<\/key>[\n,	, ]*<string>.*<\/string>/,
           new: `<key>CFBundleDisplayName</key>\n	<string>${config().appInfo.name}</string>`,
+        },
+        {
+          old: /<string>fb_url<\/string>[\n,	, ]*<key>CFBundleURLSchemes<\/key>[\n,	, ]*<array>[\n,	, ]*<string>\w+<\/string>[\n,	, ]*<\/array>/,
+          new: `<string>fb_url</string>\n			<key>CFBundleURLSchemes</key>\n			<array>\n				<string>fb${
+            config().fb.id
+          }</string>\n			</array>`,
+        },
+        {
+          old: /<key>FacebookAppID<\/key>[\n,	, ]*<string>[\w, ,.,-]*<\/string>/,
+          new: `<key>FacebookAppID</key>\n	<string>${config().fb.id}</string>`,
+        },
+        {
+          old: /<key>FacebookDisplayName<\/key>[\n,	, ]*<string>[\w, ,.,-,.]*<\/string>/,
+          new: `<key>FacebookDisplayName</key>\n	<string>${config().appInfo.name}</string>`,
+        },
+        {
+          old: /<string>google_url<\/string>[\n,	, ]*<key>CFBundleURLSchemes<\/key>[\n,	, ]*<array>[\n,	, ]*<string>[\w,.,-]*<\/string>[\n,	, ]*<\/array>/,
+          new: `<string>google_url</string>\n			<key>CFBundleURLSchemes</key>\n			<array>\n				<string>${
+            config().google.reverseClientId
+          }</string>\n			</array>`,
         },
       ],
     },

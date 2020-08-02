@@ -17,7 +17,8 @@
     "id": ""
   },
   "google": {
-    "webClientId": ""
+    "webClientId": "",
+    "reverseClientId": ""
   },
   "ios": {
     "id": "pro.thinhtran.starterkit"
