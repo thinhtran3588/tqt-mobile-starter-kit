@@ -92,6 +92,7 @@ export const AppNavigation = (): JSX.Element => {
       component: SignInScreen,
     },
   ];
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName={auth.isSignedIn ? SCREEN_NAME.MAIN_TABS : SCREEN_NAME.SIGN_IN}>

@@ -9,10 +9,12 @@ import {
   useLanguage,
   InternetConnectionProvider,
   COLORS_LOOKUP,
+  LoadingProvider,
+  useLoading,
 } from '@core/contexts';
 import {AuthProvider} from '@auth/contexts';
 import {merge, setNotificationTheme} from '@core/helpers';
-import {PaperProvider, DefaultTheme, DarkTheme} from '@core/components';
+import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal} from '@core/components';
 import {i18next} from './i18n';
 import {AppNavigation} from './app.navigation';
 import {handleGlobalException} from './core/exceptions/handle-global-exception';
@@ -20,6 +22,7 @@ import {handleGlobalException} from './core/exceptions/handle-global-exception';
 export const BaseApp = (): JSX.Element => {
   const [appTheme] = useAppTheme();
   const [language] = useLanguage();
+  const [loading] = useLoading();
   const themedPrimaryColor = (COLORS_LOOKUP[appTheme.primaryColorId] || COLORS_LOOKUP.CYAN)[
     appTheme.theme === 'dark' ? 'darkColor' : 'color'
   ];
@@ -43,11 +46,14 @@ export const BaseApp = (): JSX.Element => {
   }, [appTheme]);
 
   return (
-    <PaperProvider theme={theme}>
-      <SafeAreaProvider>
-        <AppNavigation />
-      </SafeAreaProvider>
-    </PaperProvider>
+    <>
+      <PaperProvider theme={theme}>
+        <SafeAreaProvider>
+          <AppNavigation />
+        </SafeAreaProvider>
+      </PaperProvider>
+      <LoadingModal loading={loading} />
+    </>
   );
 };
 
@@ -57,9 +63,11 @@ export const App = (): JSX.Element => {
       <InternetConnectionProvider>
         <LanguageProvider>
           <AppThemeProvider>
-            <I18nextProvider i18n={i18next}>
-              <BaseApp />
-            </I18nextProvider>
+            <LoadingProvider>
+              <I18nextProvider i18n={i18next}>
+                <BaseApp />
+              </I18nextProvider>
+            </LoadingProvider>
           </AppThemeProvider>
         </LanguageProvider>
       </InternetConnectionProvider>

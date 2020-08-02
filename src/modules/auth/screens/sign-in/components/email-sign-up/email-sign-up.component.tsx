@@ -7,6 +7,7 @@ import {View, TextInput, Button} from '@app/core/components';
 import {useAuth} from '@auth/contexts';
 import {SCREEN_NAME} from '@app/app.constants';
 import {handleError} from '@app/core/exceptions';
+import {useLoading} from '@app/core/contexts';
 import {styles} from './email-sign-up.styles';
 
 interface FormData {
@@ -19,6 +20,7 @@ export const EmailSignUp = (): JSX.Element => {
   const {t} = useTranslation('signIn');
   const navigation = useNavigation();
   const [, {signUpEmail}] = useAuth();
+  const [, setLoading] = useLoading();
 
   const initialValues: FormData = {
     email: '',
@@ -42,6 +44,7 @@ export const EmailSignUp = (): JSX.Element => {
 
   const onSubmit = async (values: typeof initialValues): Promise<void> => {
     try {
+      setLoading(true);
       const isSignedIn = await signUpEmail({
         email: values.email,
         password: values.password,
@@ -51,6 +54,8 @@ export const EmailSignUp = (): JSX.Element => {
       }
     } catch (err) {
       handleError(err, t);
+    } finally {
+      setLoading(false);
     }
   };
 

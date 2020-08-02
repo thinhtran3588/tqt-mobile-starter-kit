@@ -195,7 +195,6 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       // Sign the user in with the credential
       await firebaseAuth().signInWithEmailAndPassword(email, password);
     } catch (err) {
-      console.log(err);
       if (err.code === 'auth/wrong-password') {
         throw new AppError('WRONG_CREDENTIAL', 'signIn:wrongCredential');
       } else {

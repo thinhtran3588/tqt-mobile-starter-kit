@@ -4,6 +4,7 @@ import {Formik} from 'formik';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {View, TextInput, Button} from '@app/core/components';
+import {useLoading} from '@app/core/contexts';
 import {useAuth} from '@auth/contexts';
 import {handleError} from '@core/exceptions';
 import {SCREEN_NAME} from '@app/app.constants';
@@ -18,6 +19,7 @@ export const EmailSignIn = (): JSX.Element => {
   const {t} = useTranslation('signIn');
   const navigation = useNavigation();
   const [, {signInEmail}] = useAuth();
+  const [, setLoading] = useLoading();
 
   const initialValues: FormData = {email: '', password: ''};
 
@@ -28,6 +30,7 @@ export const EmailSignIn = (): JSX.Element => {
 
   const onSubmit = async (values: typeof initialValues): Promise<void> => {
     try {
+      setLoading(true);
       const isSignedIn = await signInEmail({
         email: values.email,
         password: values.password,
@@ -37,6 +40,8 @@ export const EmailSignIn = (): JSX.Element => {
       }
     } catch (err) {
       handleError(err, t);
+    } finally {
+      setLoading(false);
     }
   };
   return (
