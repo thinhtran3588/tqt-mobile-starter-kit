@@ -147,30 +147,37 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
         // user cancelled the login flow
         return false;
       }
-
       throw err;
     }
     return true;
   };
 
   const signInApple = async (): Promise<boolean> => {
-    // Start the sign-in request
-    const appleAuthRequestResponse = await appleAuth.performRequest({
-      requestedOperation: AppleAuthRequestOperation.LOGIN,
-      requestedScopes: [AppleAuthRequestScope.EMAIL, AppleAuthRequestScope.FULL_NAME],
-    });
+    try {
+      // Start the sign-in request
+      const appleAuthRequestResponse = await appleAuth.performRequest({
+        requestedOperation: AppleAuthRequestOperation.LOGIN,
+        requestedScopes: [AppleAuthRequestScope.EMAIL, AppleAuthRequestScope.FULL_NAME],
+      });
 
-    // Ensure Apple returned a user identityToken
-    if (!appleAuthRequestResponse.identityToken) {
-      throw new Error('Apple Sign-In failed - no identify token returned');
+      // Ensure Apple returned a user identityToken
+      if (!appleAuthRequestResponse.identityToken) {
+        throw new Error('Apple Sign-In failed - no identify token returned');
+      }
+
+      // Create a Firebase credential from the response
+      const {identityToken, nonce} = appleAuthRequestResponse;
+      const appleCredential = firebaseAuth.AppleAuthProvider.credential(identityToken, nonce);
+
+      // Sign the user in with the credential
+      await firebaseAuth().signInWithCredential(appleCredential);
+    } catch (err) {
+      if (err.code === '1001') {
+        // user cancelled the login flow
+        return false;
+      }
+      throw err;
     }
-
-    // Create a Firebase credential from the response
-    const {identityToken, nonce} = appleAuthRequestResponse;
-    const appleCredential = firebaseAuth.AppleAuthProvider.credential(identityToken, nonce);
-
-    // Sign the user in with the credential
-    await firebaseAuth().signInWithCredential(appleCredential);
     return true;
   };
 
