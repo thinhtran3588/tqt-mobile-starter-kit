@@ -189,6 +189,8 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
     } catch (err) {
       if (err.code === 'auth/email-already-in-use') {
         throw new AppError('EMAIL_ALREADY_IN_USE', 'signIn:emailAlreadyInUse');
+      } else if (err.code === 'auth/too-many-requests') {
+        throw new AppError('TOO_MANY_REQUESTS', 'signIn:tooManyRequests');
       } else {
         throw err;
       }
@@ -202,8 +204,10 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       // Sign the user in with the credential
       await firebaseAuth().signInWithEmailAndPassword(email, password);
     } catch (err) {
-      if (err.code === 'auth/wrong-password') {
+      if (err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found') {
         throw new AppError('WRONG_CREDENTIAL', 'signIn:wrongCredential');
+      } else if (err.code === 'auth/too-many-requests') {
+        throw new AppError('TOO_MANY_REQUESTS', 'signIn:tooManyRequests');
       } else {
         throw err;
       }

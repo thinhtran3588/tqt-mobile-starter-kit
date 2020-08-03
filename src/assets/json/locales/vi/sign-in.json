@@ -1,5 +1,6 @@
 {
   "email": "Email",
+  "emailAlreadyInUse": "Email đã được sử dụng",
   "forgotPassword": "Quên mật khẩu?",
   "invalidEmail": "Email không hợp lệ",
   "password": "Mật khẩu",
@@ -13,6 +14,6 @@
   "signIn": "Đăng nhập",
   "signUp": "Đăng kí",
   "skipSignIn": "Bỏ qua đăng nhập",
-  "emailAlreadyInUse": "Email đã được sử dụng",
+  "tooManyRequests": "Quá nhiều yêu cầu được gửi đi. Vui lòng thử lại sau",
   "wrongCredential": "Thông tin đăng nhập sai"
 }

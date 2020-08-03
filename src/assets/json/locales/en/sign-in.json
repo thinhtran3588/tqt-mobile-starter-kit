@@ -14,5 +14,6 @@
   "signIn": "Sign in",
   "signUp": "Sign up",
   "skipSignIn": "Skip sign in",
+  "tooManyRequests": "Too many requests. Please try again later",
   "wrongCredential": "Wrong credential"
 }
