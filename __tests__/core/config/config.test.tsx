@@ -22,7 +22,7 @@ it('update configuration correctly', async () => {
       },
       "google": Object {
         "reverseClientId": "com.googleusercontent.apps.460761628098-tbm75hbrsmlgs07saish5bjjo14u3uuf",
-        "webClientId": "460761628098-kua79cavoufq51a91oluk2ft6osvfml2.apps.googleusercontent.com",
+        "webClientId": "460761628098-g87fmrh182l040smb00ng28ps0svb5r7.apps.googleusercontent.com",
       },
       "ios": Object {
         "id": "pro.thinhtran.starterkit",
@@ -61,7 +61,7 @@ it('update configuration correctly', async () => {
       },
       "google": Object {
         "reverseClientId": "com.googleusercontent.apps.460761628098-tbm75hbrsmlgs07saish5bjjo14u3uuf",
-        "webClientId": "460761628098-kua79cavoufq51a91oluk2ft6osvfml2.apps.googleusercontent.com",
+        "webClientId": "460761628098-g87fmrh182l040smb00ng28ps0svb5r7.apps.googleusercontent.com",
       },
       "ios": Object {
         "id": "pro.thinhtran.test",
