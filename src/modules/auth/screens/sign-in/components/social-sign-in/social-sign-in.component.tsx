@@ -4,13 +4,15 @@ import {Platform} from 'react-native';
 import {SCREEN_NAME} from '@app/app.constants';
 import {View, Colors, IconButton} from '@app/core/components';
 import {useLoading} from '@app/core/contexts';
-import {useAuth, SignInType} from '@auth/contexts';
+import {useAuth, SignInType, useSignInToggleClearForm} from '@auth/contexts';
 import {styles} from './social-sign-in.styles';
 
 export const SocialSignIn = (): JSX.Element => {
   const [auth, {signInFacebook, signInGoogle, signInApple}] = useAuth();
   const navigation = useNavigation();
   const [, setLoading] = useLoading();
+  const [toggleClearForm, setToggleClearForm] = useSignInToggleClearForm();
+
   const signIn = async (signInType: SignInType): Promise<void> => {
     try {
       if (auth.isSignedIn) {
@@ -34,6 +36,7 @@ export const SocialSignIn = (): JSX.Element => {
       }
 
       if (isSignedIn) {
+        setToggleClearForm(!toggleClearForm);
         navigation.navigate(SCREEN_NAME.MAIN_TABS);
       }
     } finally {

@@ -8,8 +8,9 @@ import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@app/c
 import {useDimensions} from '@app/core/hooks';
 import {SCREEN_NAME} from '@app/app.constants';
 import Logo from '@assets/images/app-logo.png';
-import {SocialSignIn, EmailSignIn, EmailSignUp, LanguageSetting} from './components';
+import {SocialSignIn, LanguageSetting, EmailSignIn, EmailSignUp} from './components';
 import {styles} from './sign-in.styles';
+import {SignInToggleClearFormProvider} from '../../contexts';
 
 export const SignInScreen = (): JSX.Element => {
   const {t} = useTranslation('signIn');
@@ -26,38 +27,40 @@ export const SignInScreen = (): JSX.Element => {
   const CONTAINER_HEIGHT = 650;
   const marginTop = dimensions.window.height < CONTAINER_HEIGHT ? 0 : (dimensions.window.height - CONTAINER_HEIGHT) / 2;
 
+  const navigateToMainApp = (): void => {
+    navigation.navigate(SCREEN_NAME.MAIN_TABS);
+  };
+
   const renderScene = SceneMap({
     signIn: EmailSignIn,
     signUp: EmailSignUp,
   });
 
-  const navigateToMainApp = (): void => {
-    navigation.navigate(SCREEN_NAME.MAIN_TABS);
-  };
-
   return (
-    <Layout>
-      <ScrollView contentContainerStyle={styles.container}>
-        <Image style={[styles.logo, {marginTop}]} source={Logo} />
-        <TabView
-          navigationState={{index: tabIndex, routes}}
-          renderScene={renderScene}
-          onIndexChange={setTabIndex}
-          renderTabBar={(tabProps) => (
-            <TabBar
-              {...tabProps}
-              style={{backgroundColor}}
-              labelStyle={[styles.tabBarLabel, {color: theme.colors.text}]}
-              indicatorStyle={{backgroundColor: theme.colors.primary}}
-            />
-          )}
-        />
-        <SocialSignIn />
-        <Button onPress={navigateToMainApp} uppercase={false}>
-          {t('skipSignIn')}
-        </Button>
-        <LanguageSetting />
-      </ScrollView>
-    </Layout>
+    <SignInToggleClearFormProvider>
+      <Layout>
+        <ScrollView contentContainerStyle={styles.container}>
+          <Image style={[styles.logo, {marginTop}]} source={Logo} />
+          <TabView
+            navigationState={{index: tabIndex, routes}}
+            renderScene={renderScene}
+            onIndexChange={setTabIndex}
+            renderTabBar={(tabProps) => (
+              <TabBar
+                {...tabProps}
+                style={{backgroundColor}}
+                labelStyle={[styles.tabBarLabel, {color: theme.colors.text}]}
+                indicatorStyle={{backgroundColor: theme.colors.primary}}
+              />
+            )}
+          />
+          <SocialSignIn />
+          <Button onPress={navigateToMainApp} uppercase={false}>
+            {t('skipSignIn')}
+          </Button>
+          <LanguageSetting />
+        </ScrollView>
+      </Layout>
+    </SignInToggleClearFormProvider>
   );
 };
