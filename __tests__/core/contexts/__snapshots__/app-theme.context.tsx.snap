@@ -599,35 +599,29 @@ exports[`renders with system dark theme 1`] = `
           transparent={true}
           visible={false}
         >
-          <BlurView
-            blurAmount={10}
-            blurType="dark"
-            style={
-              Array [
-                Object {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                },
-                undefined,
-              ]
-            }
-          />
           <View
             accessible={true}
             focusable={true}
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
           >
-            <View
+            <BlurView
+              blurAmount={10}
+              blurType="dark"
               style={
-                Object {
-                  "flex": 1,
-                  "height": "100%",
-                  "justifyContent": "center",
-                  "position": "absolute",
-                  "width": "100%",
-                }
+                Array [
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  },
+                  undefined,
+                ]
               }
             />
           </View>
@@ -1237,35 +1231,29 @@ exports[`renders with system light theme 1`] = `
           transparent={true}
           visible={false}
         >
-          <BlurView
-            blurAmount={10}
-            blurType="light"
-            style={
-              Array [
-                Object {
-                  "bottom": 0,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                },
-                undefined,
-              ]
-            }
-          />
           <View
             accessible={true}
             focusable={true}
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
           >
-            <View
+            <BlurView
+              blurAmount={10}
+              blurType="light"
               style={
-                Object {
-                  "flex": 1,
-                  "height": "100%",
-                  "justifyContent": "center",
-                  "position": "absolute",
-                  "width": "100%",
-                }
+                Array [
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  },
+                  undefined,
+                ]
               }
             />
           </View>

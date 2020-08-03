@@ -1,7 +1,7 @@
 import React, {forwardRef} from 'react';
 import RNPicker, {PickerOptions} from 'react-native-picker';
 import colorConvert from 'color-convert';
-import {Modal, View, Pressable, Platform} from 'react-native';
+import {Modal, Pressable, Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
 import {Blur} from '../blur/blur.component';
@@ -75,9 +75,8 @@ export const Picker = forwardRef((props: PickerProps, ref: any) => {
       onRequestClose={onClose}
       supportedOrientations={['portrait', 'portrait-upside-down', 'landscape', 'landscape-left', 'landscape-right']}>
       <>
-        <Blur />
-        <Pressable onPress={onClose}>
-          <View style={styles.modalBackground} />
+        <Pressable onPress={onClose} style={styles.flex}>
+          <Blur />
         </Pressable>
       </>
     </Modal>

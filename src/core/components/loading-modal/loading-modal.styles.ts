@@ -16,7 +16,5 @@ export const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#fff',
-    opacity: 0.5,
   },
 });

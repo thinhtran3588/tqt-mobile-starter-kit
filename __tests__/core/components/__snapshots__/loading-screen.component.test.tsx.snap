@@ -27,6 +27,30 @@ exports[`renders correctly 1`] = `
         }
       }
     >
+      <BlurView
+        blurAmount={10}
+        blurType="light"
+        style={
+          Array [
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            Array [
+              Object {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+            ],
+          ]
+        }
+      />
       <View
         style={
           Array [
@@ -45,24 +69,6 @@ exports[`renders correctly 1`] = `
           ]
         }
       >
-        <View
-          style={
-            Array [
-              Array [
-                Object {
-                  "backgroundColor": "#fff",
-                  "bottom": 0,
-                  "left": 0,
-                  "opacity": 0.5,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                },
-              ],
-              Object {},
-            ]
-          }
-        />
         <View
           style={
             Array [
