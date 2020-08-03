@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {I18nextProvider} from 'react-i18next';
 import RNBootSplash from 'react-native-bootsplash';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {RootSiblingParent} from 'react-native-root-siblings';
 import {
   AppThemeProvider,
   useAppTheme,
@@ -59,18 +60,20 @@ export const BaseApp = (): JSX.Element => {
 
 export const App = (): JSX.Element => {
   return (
-    <AuthProvider>
-      <InternetConnectionProvider>
-        <LanguageProvider>
-          <AppThemeProvider>
-            <LoadingProvider>
-              <I18nextProvider i18n={i18next}>
-                <BaseApp />
-              </I18nextProvider>
-            </LoadingProvider>
-          </AppThemeProvider>
-        </LanguageProvider>
-      </InternetConnectionProvider>
-    </AuthProvider>
+    <RootSiblingParent>
+      <AuthProvider>
+        <InternetConnectionProvider>
+          <LanguageProvider>
+            <AppThemeProvider>
+              <LoadingProvider>
+                <I18nextProvider i18n={i18next}>
+                  <BaseApp />
+                </I18nextProvider>
+              </LoadingProvider>
+            </AppThemeProvider>
+          </LanguageProvider>
+        </InternetConnectionProvider>
+      </AuthProvider>
+    </RootSiblingParent>
   );
 };
