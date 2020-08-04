@@ -6,5 +6,6 @@
   "noInternetConnection": "No Internet Connection",
   "required": "Required",
   "select": "Select",
-  "settings": "Settings"
+  "settings": "Settings",
+  "unknownError": "Something wrong happened"
 }

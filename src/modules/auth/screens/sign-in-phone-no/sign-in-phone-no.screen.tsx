@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import {useFormik} from 'formik';
 import {useImmer} from 'use-immer';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
@@ -8,8 +7,8 @@ import {TextInput, Button, Layout, View} from '@core/components';
 import {useAuth} from '@auth/contexts';
 import {config} from '@core/config';
 import {SCREEN_NAME} from '@app/app.constants';
-import {handleError} from '@core/exceptions';
 import {useLoading} from '@core/contexts';
+import {useForm} from '@core/hooks';
 import {styles} from './sign-in-phone-no.styles';
 
 interface FormData {
@@ -67,53 +66,41 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
   });
 
   const sendCode = async (formValues: FormData): Promise<void> => {
-    try {
-      setLoading(true);
-      const phoneNo = `${formValues.countryCode}${formValues.phoneNo}`;
-      await sendPhoneNoVerificationCode(phoneNo);
+    const phoneNo = `${formValues.countryCode}${formValues.phoneNo}`;
+    await sendPhoneNoVerificationCode(phoneNo);
 
+    setVerificationStatus((draft) => {
+      draft.waitTime = 30;
+      draft.codeSent = true;
+      draft.phoneNo = phoneNo;
+    });
+
+    intervalCountSendTime = setInterval(() => {
       setVerificationStatus((draft) => {
-        draft.waitTime = 30;
-        draft.codeSent = true;
-        draft.phoneNo = phoneNo;
+        if (draft.waitTime > 0) {
+          draft.waitTime -= 1;
+          return;
+        }
+        if (draft.waitTime < 0) {
+          draft.waitTime = 0;
+        }
+        clearInterval(intervalCountSendTime);
       });
-      intervalCountSendTime = setInterval(() => {
-        setVerificationStatus((draft) => {
-          if (draft.waitTime > 0) {
-            draft.waitTime -= 1;
-            return;
-          }
-          if (draft.waitTime < 0) {
-            draft.waitTime = 0;
-          }
-          clearInterval(intervalCountSendTime);
-        });
-      }, 1000);
-    } catch (err) {
-      handleError(err, t);
-    } finally {
-      setLoading(false);
-    }
+    }, 1000);
   };
 
-  const {handleChange, handleBlur, handleSubmit, values, errors} = useFormik<FormData>({
+  const {handleChange, handleBlur, submitForm, values, errors} = useForm<FormData>({
     initialValues,
     validationSchema,
     onSubmit: sendCode,
   });
 
   const signIn = async (formValues: {code: string}): Promise<void> => {
-    try {
-      setLoading(true);
-      await verifyCode(formValues.code);
-    } catch (err) {
-      handleError(err, t);
-    } finally {
-      setLoading(false);
-    }
+    setLoading(true);
+    await verifyCode(formValues.code);
   };
 
-  const codeForm = useFormik<{code: string}>({
+  const codeForm = useForm<{code: string}>({
     initialValues: {code: ''},
     validationSchema: Yup.object().shape({
       code: Yup.string().required(t('common:required')),
@@ -145,11 +132,7 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
           />
         </View>
       </View>
-      <Button
-        style={styles.button}
-        onPress={handleSubmit}
-        mode='contained'
-        disabled={verificationStatus.waitTime !== 0}>
+      <Button style={styles.button} onPress={submitForm} mode='contained' disabled={verificationStatus.waitTime !== 0}>
         {`${t('sendVerificationCode')}${verificationStatus.waitTime !== 0 ? `(${verificationStatus.waitTime})` : ''}`}
       </Button>
       {verificationStatus.codeSent && (
@@ -162,7 +145,7 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
             errorMessage={codeForm.errors.code}
             keyboardType='number-pad'
           />
-          <Button style={styles.button} onPress={codeForm.handleSubmit} mode='contained'>
+          <Button style={styles.button} onPress={codeForm.submitForm} mode='contained'>
             {t('signIn')}
           </Button>
         </>

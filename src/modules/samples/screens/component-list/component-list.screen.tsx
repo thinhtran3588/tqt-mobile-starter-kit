@@ -14,6 +14,7 @@ import {
   IconSample,
   CardSample,
   NotificationSample,
+  ErrorHandlerSample,
 } from './components';
 import {styles} from './component-list.styles';
 
@@ -22,6 +23,10 @@ export const ComponentListScreen = (): JSX.Element => {
   const {t} = useTranslation('');
   const theme = useTheme();
   const componentList = [
+    {
+      title: 'ErrorHandlerSample',
+      element: <ErrorHandlerSample />,
+    },
     {
       title: 'NotificationSample',
       element: <NotificationSample />,

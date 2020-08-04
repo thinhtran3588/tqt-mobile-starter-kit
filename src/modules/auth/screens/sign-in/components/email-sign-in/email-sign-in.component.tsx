@@ -1,12 +1,10 @@
 import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {View, TextInput, Button} from '@core/components';
-import {useLoading} from '@core/contexts';
+import {useForm} from '@core/hooks';
 import {useAuth, useSignInToggleClearForm} from '@auth/contexts';
-import {handleError} from '@core/exceptions';
 import {SCREEN_NAME} from '@app/app.constants';
 import {styles} from './email-sign-in.styles';
 
@@ -19,7 +17,6 @@ export const EmailSignIn = (): JSX.Element => {
   const {t} = useTranslation('auth');
   const navigation = useNavigation();
   const [, {signInEmail}] = useAuth();
-  const [, setLoading] = useLoading();
   const [toggleClearForm, setToggleClearForm] = useSignInToggleClearForm();
 
   const initialValues: FormData = {
@@ -32,24 +29,18 @@ export const EmailSignIn = (): JSX.Element => {
   });
 
   const onSubmit = async (formValues: FormData): Promise<void> => {
-    try {
-      setLoading(true);
-      const isSignedIn = await signInEmail({
-        email: formValues.email,
-        password: formValues.password,
-      });
-      if (isSignedIn) {
-        setToggleClearForm(!toggleClearForm);
-        navigation.navigate(SCREEN_NAME.MAIN_TABS);
-      }
-    } catch (err) {
-      handleError(err, t);
-    } finally {
-      setLoading(false);
+    const {email, password} = formValues;
+    const isSignedIn = await signInEmail({
+      email,
+      password,
+    });
+    if (isSignedIn) {
+      setToggleClearForm(!toggleClearForm);
+      setTimeout(() => navigation.navigate(SCREEN_NAME.MAIN_TABS), 100);
     }
   };
 
-  const {handleChange, handleBlur, handleSubmit, values, errors, setValues} = useFormik<FormData>({
+  const {handleChange, handleBlur, values, errors, setValues, submitForm} = useForm<FormData>({
     initialValues,
     validationSchema,
     onSubmit,
@@ -77,7 +68,7 @@ export const EmailSignIn = (): JSX.Element => {
         secureTextEntry
         errorMessage={errors.password}
       />
-      <Button style={styles.button} onPress={handleSubmit} mode='contained'>
+      <Button style={styles.button} onPress={submitForm} mode='contained'>
         {t('signIn')}
       </Button>
       <Button style={styles.button} onPress={() => navigation.navigate(SCREEN_NAME.SIGN_IN_PHONE_NO)} mode='contained'>

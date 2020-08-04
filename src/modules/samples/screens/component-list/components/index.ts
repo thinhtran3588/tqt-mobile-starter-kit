@@ -8,3 +8,4 @@ export * from './animation-sample/animation-sample.component';
 export * from './icon-sample/icon-sample.component';
 export * from './card-sample/card-sample.component';
 export * from './notification-sample/notification-sample.component';
+export * from './error-handler-sample/error-handler-sample.component';

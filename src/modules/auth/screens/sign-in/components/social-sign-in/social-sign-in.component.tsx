@@ -14,34 +14,31 @@ export const SocialSignIn = (): JSX.Element => {
   const [toggleClearForm, setToggleClearForm] = useSignInToggleClearForm();
 
   const signIn = async (signInType: SignInType): Promise<void> => {
-    try {
-      if (auth.isSignedIn) {
-        return;
-      }
-      setLoading(true);
-      let isSignedIn = false;
-
-      switch (signInType) {
-        case 'APPLE':
-          isSignedIn = await signInApple();
-          break;
-        case 'GOOGLE':
-          isSignedIn = await signInGoogle();
-          break;
-        case 'FACEBOOK':
-          isSignedIn = await signInFacebook();
-          break;
-        default:
-          return;
-      }
-
-      if (isSignedIn) {
-        setToggleClearForm(!toggleClearForm);
-        navigation.navigate(SCREEN_NAME.MAIN_TABS);
-      }
-    } finally {
-      setLoading(false);
+    if (auth.isSignedIn) {
+      return;
     }
+    setLoading(true);
+    let isSignedIn = false;
+
+    switch (signInType) {
+      case 'APPLE':
+        isSignedIn = await signInApple();
+        break;
+      case 'GOOGLE':
+        isSignedIn = await signInGoogle();
+        break;
+      case 'FACEBOOK':
+        isSignedIn = await signInFacebook();
+        break;
+      default:
+        return;
+    }
+
+    if (isSignedIn) {
+      setToggleClearForm(!toggleClearForm);
+      setTimeout(() => navigation.navigate(SCREEN_NAME.MAIN_TABS), 100);
+    }
+    setLoading(false);
   };
   return (
     <View style={styles.container}>

@@ -1,13 +1,11 @@
 import React from 'react';
-import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
 import {TextInput, Button, Layout, View} from '@core/components';
 import {useAuth} from '@auth/contexts';
 import {showNotification} from '@core/helpers';
-import {handleError} from '@core/exceptions';
-import {useLoading} from '@core/contexts';
+import {useForm} from '@core/hooks';
 import {styles} from './forgot-password.styles';
 
 interface FormData {
@@ -15,10 +13,9 @@ interface FormData {
 }
 
 export const ForgotPasswordScreen = (): JSX.Element => {
-  const {t} = useTranslation('forgotPassword');
+  const {t} = useTranslation('auth');
   const navigation = useNavigation();
   const [, {sendPasswordResetEmail}] = useAuth();
-  const [, setLoading] = useLoading();
 
   const initialValues: FormData = {
     email: '',
@@ -29,19 +26,12 @@ export const ForgotPasswordScreen = (): JSX.Element => {
   });
 
   const onSubmit = async (formValues: FormData): Promise<void> => {
-    try {
-      setLoading(true);
-      await sendPasswordResetEmail(formValues.email);
-      showNotification({message: t('requestHasBeenSent', {email: formValues.email})});
-      navigation.goBack();
-    } catch (err) {
-      handleError(err, t);
-    } finally {
-      setLoading(false);
-    }
+    await sendPasswordResetEmail(formValues.email);
+    showNotification({message: t('requestHasBeenSent', {email: formValues.email})});
+    navigation.goBack();
   };
 
-  const {handleChange, handleBlur, handleSubmit, values, errors} = useFormik<FormData>({
+  const {handleChange, handleBlur, values, errors, submitForm} = useForm<FormData>({
     initialValues,
     validationSchema,
     onSubmit,
@@ -57,7 +47,7 @@ export const ForgotPasswordScreen = (): JSX.Element => {
           value={values.email}
           errorMessage={errors.email}
         />
-        <Button style={styles.button} onPress={handleSubmit} mode='contained'>
+        <Button style={styles.button} onPress={submitForm} mode='contained'>
           {t('send')}
         </Button>
       </View>

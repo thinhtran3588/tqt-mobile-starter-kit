@@ -14,7 +14,7 @@ export const handleGlobalException = (t: TFunction): void => {
     // You do stuff like show an error dialog
     // or hit google analytics to track crashes
     // or hit a custom api to inform the dev team.
-  });
+  }, true);
 
   // For most use cases:
   setNativeExceptionHandler((_exceptionString) => {

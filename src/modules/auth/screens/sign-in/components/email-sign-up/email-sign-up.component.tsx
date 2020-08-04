@@ -1,13 +1,11 @@
 import React, {useEffect} from 'react';
-import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
 import {TextInput, Button} from '@core/components';
 import {useAuth, useSignInToggleClearForm} from '@auth/contexts';
 import {SCREEN_NAME} from '@app/app.constants';
-import {handleError} from '@core/exceptions';
-import {useLoading} from '@core/contexts';
+import {useForm} from '@core/hooks';
 import {styles} from './email-sign-up.styles';
 
 interface FormData {
@@ -20,7 +18,6 @@ export const EmailSignUp = (): JSX.Element => {
   const {t} = useTranslation('auth');
   const navigation = useNavigation();
   const [, {signUpEmail}] = useAuth();
-  const [, setLoading] = useLoading();
   const [toggleClearForm, setToggleClearForm] = useSignInToggleClearForm();
 
   const initialValues: FormData = {
@@ -44,24 +41,18 @@ export const EmailSignUp = (): JSX.Element => {
   });
 
   const onSubmit = async (formValues: FormData): Promise<void> => {
-    try {
-      setLoading(true);
-      const isSignedIn = await signUpEmail({
-        email: formValues.email,
-        password: formValues.password,
-      });
-      if (isSignedIn) {
-        setToggleClearForm(!toggleClearForm);
-        navigation.navigate(SCREEN_NAME.MAIN_TABS);
-      }
-    } catch (err) {
-      handleError(err, t);
-    } finally {
-      setLoading(false);
+    const {email, password} = formValues;
+    const isSignedIn = await signUpEmail({
+      email,
+      password,
+    });
+    if (isSignedIn) {
+      setToggleClearForm(!toggleClearForm);
+      setTimeout(() => navigation.navigate(SCREEN_NAME.MAIN_TABS), 100);
     }
   };
 
-  const {handleChange, handleBlur, handleSubmit, values, errors, setValues} = useFormik<FormData>({
+  const {handleChange, handleBlur, values, errors, setValues, submitForm} = useForm<FormData>({
     initialValues,
     validationSchema,
     onSubmit,
@@ -97,7 +88,7 @@ export const EmailSignUp = (): JSX.Element => {
         secureTextEntry
         errorMessage={errors.passwordConfirmation}
       />
-      <Button style={styles.button} onPress={handleSubmit} mode='contained'>
+      <Button style={styles.button} onPress={submitForm} mode='contained'>
         {t('signUp')}
       </Button>
     </>

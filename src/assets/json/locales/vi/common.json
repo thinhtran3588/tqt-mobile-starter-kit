@@ -6,5 +6,6 @@
   "noInternetConnection": "Không có kết nối mạng",
   "required": "Bắt buộc",
   "select": "Chọn",
-  "settings": "Cài đặt"
+  "settings": "Cài đặt",
+  "unknownError": "Có lỗi xảy ra"
 }

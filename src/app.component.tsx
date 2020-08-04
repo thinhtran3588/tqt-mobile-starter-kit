@@ -12,13 +12,13 @@ import {
   COLORS_LOOKUP,
   LoadingProvider,
   useLoading,
+  ErrorHandlerProvider,
 } from '@core/contexts';
 import {AuthProvider} from '@auth/contexts';
 import {merge, setNotificationTheme} from '@core/helpers';
 import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal} from '@core/components';
 import {i18next} from './i18n';
 import {AppNavigation} from './app.navigation';
-import {handleGlobalException} from './core/exceptions/handle-global-exception';
 
 export const BaseApp = (): JSX.Element => {
   const [appTheme] = useAppTheme();
@@ -34,7 +34,6 @@ export const BaseApp = (): JSX.Element => {
   useEffect(() => {
     (async () => {
       RNBootSplash.hide({duration: 500});
-      handleGlobalException(i18next.t);
     })();
   }, []);
 
@@ -49,9 +48,7 @@ export const BaseApp = (): JSX.Element => {
   return (
     <>
       <PaperProvider theme={theme}>
-        <SafeAreaProvider>
-          <AppNavigation />
-        </SafeAreaProvider>
+        <AppNavigation />
       </PaperProvider>
       <LoadingModal loading={loading} />
     </>
@@ -61,19 +58,23 @@ export const BaseApp = (): JSX.Element => {
 export const App = (): JSX.Element => {
   return (
     <RootSiblingParent>
-      <LanguageProvider>
-        <AuthProvider>
-          <InternetConnectionProvider>
-            <AppThemeProvider>
-              <LoadingProvider>
-                <I18nextProvider i18n={i18next}>
-                  <BaseApp />
-                </I18nextProvider>
-              </LoadingProvider>
-            </AppThemeProvider>
-          </InternetConnectionProvider>
-        </AuthProvider>
-      </LanguageProvider>
+      <LoadingProvider>
+        <LanguageProvider>
+          <I18nextProvider i18n={i18next}>
+            <ErrorHandlerProvider>
+              <AuthProvider>
+                <InternetConnectionProvider>
+                  <AppThemeProvider>
+                    <SafeAreaProvider>
+                      <BaseApp />
+                    </SafeAreaProvider>
+                  </AppThemeProvider>
+                </InternetConnectionProvider>
+              </AuthProvider>
+            </ErrorHandlerProvider>
+          </I18nextProvider>
+        </LanguageProvider>
+      </LoadingProvider>
     </RootSiblingParent>
   );
 };
