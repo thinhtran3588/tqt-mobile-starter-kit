@@ -59,7 +59,7 @@ const DEFAULT_AUTH: AuthState = {
 const AuthContext = React.createContext(DEFAULT_AUTH);
 const AuthDispatchContext = React.createContext<Dispatch>(undefined as never);
 
-let confirmationResult: FirebaseAuthTypes.ConfirmationResult;
+let confirmationResult: FirebaseAuthTypes.ConfirmationResult | undefined;
 
 const AuthProvider = (props: AuthProviderProps): JSX.Element => {
   const {children} = props;
@@ -292,6 +292,7 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
     try {
       if (confirmationResult) {
         await confirmationResult.confirm(verificationCode);
+        confirmationResult = undefined;
       }
     } catch (err) {
       if (err.code === 'auth/invalid-verification-code') {
