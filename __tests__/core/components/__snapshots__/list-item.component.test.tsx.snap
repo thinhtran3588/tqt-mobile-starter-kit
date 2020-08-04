@@ -488,12 +488,13 @@ exports[`renders with switch correctly 1`] = `
           <View
             style={
               Array [
+                Object {},
+                Object {},
                 Object {
                   "display": "flex",
                   "justifyContent": "center",
                   "paddingRight": 10,
                 },
-                Object {},
               ]
             }
           >

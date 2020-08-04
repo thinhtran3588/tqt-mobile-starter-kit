@@ -54,6 +54,8 @@ exports[`renders correctly 1`] = `
       <View
         style={
           Array [
+            Object {},
+            Object {},
             Array [
               Object {
                 "alignItems": "center",
@@ -65,7 +67,6 @@ exports[`renders correctly 1`] = `
                 "top": 0,
               },
             ],
-            Object {},
           ]
         }
       >

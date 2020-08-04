@@ -30,8 +30,9 @@ exports[`renders correctly 1`] = `
       <View
         style={
           Array [
-            undefined,
             Object {},
+            Object {},
+            undefined,
           ]
         }
       >
@@ -94,10 +95,11 @@ exports[`renders row correctly 1`] = `
       <View
         style={
           Array [
-            undefined,
             Object {
               "flexDirection": "row",
             },
+            Object {},
+            undefined,
           ]
         }
       >

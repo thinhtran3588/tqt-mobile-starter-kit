@@ -16,6 +16,7 @@ it('update configuration correctly', async () => {
         "version": "0.6.0",
       },
       "dateFormat": "DD/MM/YYYY",
+      "defaultCountryCode": "+84",
       "defaultLang": "vi",
       "fb": Object {
         "id": "284064976159443",
@@ -55,6 +56,7 @@ it('update configuration correctly', async () => {
         "version": "0.6.0",
       },
       "dateFormat": "DD/MM/YYYY",
+      "defaultCountryCode": "+84",
       "defaultLang": "vi",
       "fb": Object {
         "id": "284064976159443",

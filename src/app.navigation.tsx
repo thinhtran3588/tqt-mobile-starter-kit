@@ -7,7 +7,7 @@ import {useTheme} from 'react-native-paper';
 import {WebViewScreen} from '@core/screens';
 import {ComponentListScreen} from '@samples/screens';
 import {SettingsScreen} from '@settings/screens';
-import {SignInScreen, ForgotPassword} from '@auth/screens';
+import {SignInScreen, ForgotPasswordScreen, SignInPhoneNoScreen} from '@auth/screens';
 import {Colors, Icon} from '@core/components';
 import {useAppTheme} from '@core/contexts';
 import {useAuth} from '@auth/contexts';
@@ -93,7 +93,11 @@ export const AppNavigation = (): JSX.Element => {
     },
     {
       name: SCREEN_NAME.FORGOT_PASSWORD,
-      component: ForgotPassword,
+      component: ForgotPasswordScreen,
+    },
+    {
+      name: SCREEN_NAME.SIGN_IN_PHONE_NO,
+      component: SignInPhoneNoScreen,
     },
   ];
 

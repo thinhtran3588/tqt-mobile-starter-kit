@@ -1425,10 +1425,11 @@ exports[`renders correctly 1`] = `
                       <View
                         style={
                           Array [
-                            undefined,
                             Object {
                               "flexDirection": "row",
                             },
+                            Object {},
+                            undefined,
                           ]
                         }
                       >
@@ -2313,10 +2314,11 @@ exports[`renders correctly 1`] = `
                       <View
                         style={
                           Array [
-                            undefined,
                             Object {
                               "flexDirection": "row",
                             },
+                            Object {},
+                            undefined,
                           ]
                         }
                       >
@@ -2517,10 +2519,11 @@ exports[`renders correctly 1`] = `
                       <View
                         style={
                           Array [
-                            undefined,
                             Object {
                               "flexDirection": "row",
                             },
+                            Object {},
+                            undefined,
                           ]
                         }
                       >
@@ -2910,10 +2913,11 @@ exports[`renders correctly 1`] = `
                       <View
                         style={
                           Array [
-                            undefined,
                             Object {
                               "flexDirection": "row",
                             },
+                            Object {},
+                            undefined,
                           ]
                         }
                       >
@@ -4592,10 +4596,11 @@ exports[`renders correctly in Android 1`] = `
                       <View
                         style={
                           Array [
-                            undefined,
                             Object {
                               "flexDirection": "row",
                             },
+                            Object {},
+                            undefined,
                           ]
                         }
                       >
@@ -5480,10 +5485,11 @@ exports[`renders correctly in Android 1`] = `
                       <View
                         style={
                           Array [
-                            undefined,
                             Object {
                               "flexDirection": "row",
                             },
+                            Object {},
+                            undefined,
                           ]
                         }
                       >
@@ -5684,10 +5690,11 @@ exports[`renders correctly in Android 1`] = `
                       <View
                         style={
                           Array [
-                            undefined,
                             Object {
                               "flexDirection": "row",
                             },
+                            Object {},
+                            undefined,
                           ]
                         }
                       >
@@ -6077,10 +6084,11 @@ exports[`renders correctly in Android 1`] = `
                       <View
                         style={
                           Array [
-                            undefined,
                             Object {
                               "flexDirection": "row",
                             },
+                            Object {},
+                            undefined,
                           ]
                         }
                       >

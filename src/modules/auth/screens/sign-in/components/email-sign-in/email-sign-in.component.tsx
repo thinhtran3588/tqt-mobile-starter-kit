@@ -16,7 +16,7 @@ interface FormData {
 }
 
 export const EmailSignIn = (): JSX.Element => {
-  const {t} = useTranslation('signIn');
+  const {t} = useTranslation('auth');
   const navigation = useNavigation();
   const [, {signInEmail}] = useAuth();
   const [, setLoading] = useLoading();
@@ -27,7 +27,7 @@ export const EmailSignIn = (): JSX.Element => {
     password: '',
   };
   const validationSchema = Yup.object().shape<FormData>({
-    email: Yup.string().email(t('invalidEmail')).required(t('common:required')),
+    email: Yup.string().email(t('common:invalid')).required(t('common:required')),
     password: Yup.string().required(t('common:required')),
   });
 
@@ -79,6 +79,9 @@ export const EmailSignIn = (): JSX.Element => {
       />
       <Button style={styles.button} onPress={handleSubmit} mode='contained'>
         {t('signIn')}
+      </Button>
+      <Button style={styles.button} onPress={() => navigation.navigate(SCREEN_NAME.SIGN_IN_PHONE_NO)} mode='contained'>
+        {t('signInWithPhoneNo')}
       </Button>
       <Button style={styles.button} onPress={() => navigation.navigate(SCREEN_NAME.FORGOT_PASSWORD)}>
         {t('forgotPassword')}

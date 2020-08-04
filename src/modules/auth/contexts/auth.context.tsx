@@ -44,6 +44,8 @@ interface Dispatch {
   signInEmail: (params: SignInEmailParams) => Promise<boolean>;
   signOut: () => Promise<void>;
   sendPasswordResetEmail: (email: string) => Promise<void>;
+  sendPhoneNoVerificationCode: (phoneNo: string) => Promise<void>;
+  verifyCode: (verificationCode: string) => Promise<void>;
 }
 
 const AUTH_KEY = 'AUTH';
@@ -56,6 +58,8 @@ const DEFAULT_AUTH: AuthState = {
 
 const AuthContext = React.createContext(DEFAULT_AUTH);
 const AuthDispatchContext = React.createContext<Dispatch>(undefined as never);
+
+let confirmationResult: FirebaseAuthTypes.ConfirmationResult;
 
 const AuthProvider = (props: AuthProviderProps): JSX.Element => {
   const {children} = props;
@@ -85,6 +89,9 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
         } else if (user.providerData[0].providerId === 'apple.com') {
           signInType = 'APPLE';
           displayName = displayName || user.providerData[0].email;
+        } else if (user.providerData[0].providerId === 'phone') {
+          signInType = 'PHONE_NO';
+          displayName = displayName || user.providerData[0].phoneNumber;
         } else {
           signInType = 'EMAIL';
           displayName = displayName || user.providerData[0].email;
@@ -116,23 +123,29 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
   }, [onAuthStateChanged]);
 
   const signInFacebook = async (): Promise<boolean> => {
-    const loginResult = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+    try {
+      const loginResult = await LoginManager.logInWithPermissions(['public_profile', 'email']);
 
-    if (loginResult.isCancelled) {
-      return false;
+      if (loginResult.isCancelled) {
+        return false;
+      }
+
+      const data = await AccessToken.getCurrentAccessToken();
+      if (!data) {
+        throw new Error('Something went wrong obtaining access token');
+      }
+
+      // Create a Firebase credential with the AccessToken
+      const facebookCredential = firebaseAuth.FacebookAuthProvider.credential(data.accessToken);
+
+      // Sign-in the user with the credential
+      await firebaseAuth().signInWithCredential(facebookCredential);
+    } catch (err) {
+      if (err.code === 'auth/user-disabled') {
+        throw new AppError('USER_DISABLED', 'auth:userDisabledError');
+      }
+      throw err;
     }
-
-    const data = await AccessToken.getCurrentAccessToken();
-    if (!data) {
-      throw new Error('Something went wrong obtaining access token');
-    }
-
-    // Create a Firebase credential with the AccessToken
-    const facebookCredential = firebaseAuth.FacebookAuthProvider.credential(data.accessToken);
-
-    // Sign-in the user with the credential
-    await firebaseAuth().signInWithCredential(facebookCredential);
-
     return true;
   };
 
@@ -146,6 +159,9 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       // Sign-in the user with the credential
       await firebaseAuth().signInWithCredential(googleCredential);
     } catch (err) {
+      if (err.code === 'auth/user-disabled') {
+        throw new AppError('USER_DISABLED', 'auth:userDisabledError');
+      }
       if (
         err.code === statusCodes.SIGN_IN_CANCELLED ||
         err.code === statusCodes.IN_PROGRESS ||
@@ -179,6 +195,9 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       // Sign the user in with the credential
       await firebaseAuth().signInWithCredential(appleCredential);
     } catch (err) {
+      if (err.code === 'auth/user-disabled') {
+        throw new AppError('USER_DISABLED', 'auth:userDisabledError');
+      }
       if (err.code === '1001') {
         // user cancelled the login flow
         return false;
@@ -194,13 +213,16 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       // Create a new user in with the credential
       await firebaseAuth().createUserWithEmailAndPassword(email, password);
     } catch (err) {
-      if (err.code === 'auth/email-already-in-use') {
-        throw new AppError('EMAIL_ALREADY_IN_USE', 'signIn:emailAlreadyInUse');
-      } else if (err.code === 'auth/too-many-requests') {
-        throw new AppError('TOO_MANY_REQUESTS', 'signIn:tooManyRequests');
-      } else {
-        throw err;
+      if (err.code === 'auth/user-disabled') {
+        throw new AppError('USER_DISABLED', 'auth:userDisabledError');
       }
+      if (err.code === 'auth/email-already-in-use') {
+        throw new AppError('EMAIL_ALREADY_IN_USE', 'auth:emailAlreadyInUseError');
+      }
+      if (err.code === 'auth/too-many-requests') {
+        throw new AppError('TOO_MANY_REQUESTS', 'auth:tooManyRequestsError');
+      }
+      throw err;
     }
     return true;
   };
@@ -211,13 +233,16 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       // Sign the user in with the credential
       await firebaseAuth().signInWithEmailAndPassword(email, password);
     } catch (err) {
-      if (err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found') {
-        throw new AppError('WRONG_CREDENTIAL', 'signIn:wrongCredential');
-      } else if (err.code === 'auth/too-many-requests') {
-        throw new AppError('TOO_MANY_REQUESTS', 'signIn:tooManyRequests');
-      } else {
-        throw err;
+      if (err.code === 'auth/user-disabled') {
+        throw new AppError('USER_DISABLED', 'auth:userDisabledError');
       }
+      if (err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found') {
+        throw new AppError('WRONG_CREDENTIAL', 'auth:wrongCredentialError');
+      }
+      if (err.code === 'auth/too-many-requests') {
+        throw new AppError('TOO_MANY_REQUESTS', 'auth:tooManyRequestsError');
+      }
+      throw err;
     }
     return true;
   };
@@ -246,6 +271,35 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
     }
   };
 
+  const sendPhoneNoVerificationCode = async (phoneNo: string): Promise<void> => {
+    try {
+      confirmationResult = await firebaseAuth().signInWithPhoneNumber(phoneNo);
+    } catch (err) {
+      if (err.code === 'auth/user-disabled') {
+        throw new AppError('USER_DISABLED', 'auth:userDisabledError');
+      }
+      if (err.code === 'auth/quota-exceeded') {
+        throw new AppError('SMS_QUOTA_EXCEEDED', 'auth:smsQuotaExceedError');
+      }
+      if (err.code === 'auth/invalid-phone-number') {
+        throw new AppError('INVALID_PHONE_NO', 'auth:invalidPhoneNumberError');
+      }
+
+      throw err;
+    }
+  };
+  const verifyCode = async (verificationCode: string): Promise<void> => {
+    try {
+      if (confirmationResult) {
+        await confirmationResult.confirm(verificationCode);
+      }
+    } catch (err) {
+      if (err.code === 'auth/invalid-verification-code') {
+        throw new AppError('INVALID_PHONE_NO', 'auth:invalidVerificationCodeError');
+      }
+      throw err;
+    }
+  };
   const dispatch = useMemo(
     (): Dispatch => ({
       signInFacebook,
@@ -255,6 +309,8 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       signInEmail,
       signOut,
       sendPasswordResetEmail,
+      sendPhoneNoVerificationCode,
+      verifyCode,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],

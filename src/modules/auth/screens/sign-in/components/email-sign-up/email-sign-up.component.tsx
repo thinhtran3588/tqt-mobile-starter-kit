@@ -17,7 +17,7 @@ interface FormData {
 }
 
 export const EmailSignUp = (): JSX.Element => {
-  const {t} = useTranslation('signIn');
+  const {t} = useTranslation('auth');
   const navigation = useNavigation();
   const [, {signUpEmail}] = useAuth();
   const [, setLoading] = useLoading();
@@ -30,7 +30,7 @@ export const EmailSignUp = (): JSX.Element => {
   };
 
   const validationSchema = Yup.object().shape<FormData>({
-    email: Yup.string().email(t('invalidEmail')).required(t('common:required')),
+    email: Yup.string().email(t('common:invalid')).required(t('common:required')),
     password: Yup.string()
       .required(t('common:required'))
       .min(8, t('passwordMinLengthRequired', {minLength: 8}))

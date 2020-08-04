@@ -3,7 +3,7 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
-import {TextInput, Button, Layout, Text, View} from '@core/components';
+import {TextInput, Button, Layout, View} from '@core/components';
 import {useAuth} from '@auth/contexts';
 import {showNotification} from '@core/helpers';
 import {handleError} from '@core/exceptions';
@@ -14,7 +14,7 @@ interface FormData {
   email: string;
 }
 
-export const ForgotPassword = (): JSX.Element => {
+export const ForgotPasswordScreen = (): JSX.Element => {
   const {t} = useTranslation('forgotPassword');
   const navigation = useNavigation();
   const [, {sendPasswordResetEmail}] = useAuth();
@@ -25,7 +25,7 @@ export const ForgotPassword = (): JSX.Element => {
   };
 
   const validationSchema = Yup.object().shape<FormData>({
-    email: Yup.string().email(t('invalidEmail')).required(t('common:required')),
+    email: Yup.string().email(t('common:invalid')).required(t('common:required')),
   });
 
   const onSubmit = async (formValues: FormData): Promise<void> => {
@@ -48,11 +48,8 @@ export const ForgotPassword = (): JSX.Element => {
   });
 
   return (
-    <Layout header headerBackButton headerTitle={t('forgotPassword')} style={styles.container}>
+    <Layout header headerBackButton headerTitle={t('recoverPassword')} style={styles.container}>
       <View>
-        <Text style={styles.text} type='h6'>
-          {t('recoverPassword')}
-        </Text>
         <TextInput
           label={t('email')}
           onChangeText={handleChange('email')}

@@ -59,11 +59,12 @@ exports[`opens language picker 1`] = `
               <View
                 style={
                   Array [
+                    Object {},
+                    Object {},
                     Object {
                       "alignItems": "center",
                       "padding": 20,
                     },
-                    Object {},
                   ]
                 }
               >
@@ -175,8 +176,9 @@ exports[`opens language picker 1`] = `
               <View
                 style={
                   Array [
-                    undefined,
                     Object {},
+                    Object {},
+                    undefined,
                   ]
                 }
               >
@@ -305,12 +307,13 @@ exports[`opens language picker 1`] = `
                     <View
                       style={
                         Array [
+                          Object {},
+                          Object {},
                           Object {
                             "display": "flex",
                             "justifyContent": "center",
                             "paddingRight": 10,
                           },
-                          Object {},
                         ]
                       }
                     >
@@ -464,12 +467,13 @@ exports[`opens language picker 1`] = `
                     <View
                       style={
                         Array [
+                          Object {},
+                          Object {},
                           Object {
                             "display": "flex",
                             "justifyContent": "center",
                             "paddingRight": 10,
                           },
-                          Object {},
                         ]
                       }
                     >
@@ -713,6 +717,8 @@ exports[`opens language picker 1`] = `
                 <View
                   style={
                     Array [
+                      Object {},
+                      Object {},
                       Array [
                         Object {
                           "height": 20,
@@ -725,7 +731,6 @@ exports[`opens language picker 1`] = `
                           "backgroundColor": "#6200ee",
                         },
                       ],
-                      Object {},
                     ]
                   }
                 />
@@ -2018,11 +2023,12 @@ exports[`opens primary color picker 1`] = `
               <View
                 style={
                   Array [
+                    Object {},
+                    Object {},
                     Object {
                       "alignItems": "center",
                       "padding": 20,
                     },
-                    Object {},
                   ]
                 }
               >
@@ -2134,8 +2140,9 @@ exports[`opens primary color picker 1`] = `
               <View
                 style={
                   Array [
-                    undefined,
                     Object {},
+                    Object {},
+                    undefined,
                   ]
                 }
               >
@@ -2264,12 +2271,13 @@ exports[`opens primary color picker 1`] = `
                     <View
                       style={
                         Array [
+                          Object {},
+                          Object {},
                           Object {
                             "display": "flex",
                             "justifyContent": "center",
                             "paddingRight": 10,
                           },
-                          Object {},
                         ]
                       }
                     >
@@ -2423,12 +2431,13 @@ exports[`opens primary color picker 1`] = `
                     <View
                       style={
                         Array [
+                          Object {},
+                          Object {},
                           Object {
                             "display": "flex",
                             "justifyContent": "center",
                             "paddingRight": 10,
                           },
-                          Object {},
                         ]
                       }
                     >
@@ -2672,6 +2681,8 @@ exports[`opens primary color picker 1`] = `
                 <View
                   style={
                     Array [
+                      Object {},
+                      Object {},
                       Array [
                         Object {
                           "height": 20,
@@ -2684,7 +2695,6 @@ exports[`opens primary color picker 1`] = `
                           "backgroundColor": "#6200ee",
                         },
                       ],
-                      Object {},
                     ]
                   }
                 />
@@ -3977,11 +3987,12 @@ exports[`renders correctly 1`] = `
               <View
                 style={
                   Array [
+                    Object {},
+                    Object {},
                     Object {
                       "alignItems": "center",
                       "padding": 20,
                     },
-                    Object {},
                   ]
                 }
               >
@@ -4093,8 +4104,9 @@ exports[`renders correctly 1`] = `
               <View
                 style={
                   Array [
-                    undefined,
                     Object {},
+                    Object {},
+                    undefined,
                   ]
                 }
               >
@@ -4223,12 +4235,13 @@ exports[`renders correctly 1`] = `
                     <View
                       style={
                         Array [
+                          Object {},
+                          Object {},
                           Object {
                             "display": "flex",
                             "justifyContent": "center",
                             "paddingRight": 10,
                           },
-                          Object {},
                         ]
                       }
                     >
@@ -4382,12 +4395,13 @@ exports[`renders correctly 1`] = `
                     <View
                       style={
                         Array [
+                          Object {},
+                          Object {},
                           Object {
                             "display": "flex",
                             "justifyContent": "center",
                             "paddingRight": 10,
                           },
-                          Object {},
                         ]
                       }
                     >
@@ -4631,6 +4645,8 @@ exports[`renders correctly 1`] = `
                 <View
                   style={
                     Array [
+                      Object {},
+                      Object {},
                       Array [
                         Object {
                           "height": 20,
@@ -4643,7 +4659,6 @@ exports[`renders correctly 1`] = `
                           "backgroundColor": "#6200ee",
                         },
                       ],
-                      Object {},
                     ]
                   }
                 />
@@ -5936,11 +5951,12 @@ exports[`uses dark theme 1`] = `
               <View
                 style={
                   Array [
+                    Object {},
+                    Object {},
                     Object {
                       "alignItems": "center",
                       "padding": 20,
                     },
-                    Object {},
                   ]
                 }
               >
@@ -6052,8 +6068,9 @@ exports[`uses dark theme 1`] = `
               <View
                 style={
                   Array [
-                    undefined,
                     Object {},
+                    Object {},
+                    undefined,
                   ]
                 }
               >
@@ -6182,12 +6199,13 @@ exports[`uses dark theme 1`] = `
                     <View
                       style={
                         Array [
+                          Object {},
+                          Object {},
                           Object {
                             "display": "flex",
                             "justifyContent": "center",
                             "paddingRight": 10,
                           },
-                          Object {},
                         ]
                       }
                     >
@@ -6341,12 +6359,13 @@ exports[`uses dark theme 1`] = `
                     <View
                       style={
                         Array [
+                          Object {},
+                          Object {},
                           Object {
                             "display": "flex",
                             "justifyContent": "center",
                             "paddingRight": 10,
                           },
-                          Object {},
                         ]
                       }
                     >
@@ -6590,6 +6609,8 @@ exports[`uses dark theme 1`] = `
                 <View
                   style={
                     Array [
+                      Object {},
+                      Object {},
                       Array [
                         Object {
                           "height": 20,
@@ -6602,7 +6623,6 @@ exports[`uses dark theme 1`] = `
                           "backgroundColor": "#BB86FC",
                         },
                       ],
-                      Object {},
                     ]
                   }
                 />
@@ -7895,11 +7915,12 @@ exports[`uses light theme 1`] = `
               <View
                 style={
                   Array [
+                    Object {},
+                    Object {},
                     Object {
                       "alignItems": "center",
                       "padding": 20,
                     },
-                    Object {},
                   ]
                 }
               >
@@ -8011,8 +8032,9 @@ exports[`uses light theme 1`] = `
               <View
                 style={
                   Array [
-                    undefined,
                     Object {},
+                    Object {},
+                    undefined,
                   ]
                 }
               >
@@ -8141,12 +8163,13 @@ exports[`uses light theme 1`] = `
                     <View
                       style={
                         Array [
+                          Object {},
+                          Object {},
                           Object {
                             "display": "flex",
                             "justifyContent": "center",
                             "paddingRight": 10,
                           },
-                          Object {},
                         ]
                       }
                     >
@@ -8300,12 +8323,13 @@ exports[`uses light theme 1`] = `
                     <View
                       style={
                         Array [
+                          Object {},
+                          Object {},
                           Object {
                             "display": "flex",
                             "justifyContent": "center",
                             "paddingRight": 10,
                           },
-                          Object {},
                         ]
                       }
                     >
@@ -8549,6 +8573,8 @@ exports[`uses light theme 1`] = `
                 <View
                   style={
                     Array [
+                      Object {},
+                      Object {},
                       Array [
                         Object {
                           "height": 20,
@@ -8561,7 +8587,6 @@ exports[`uses light theme 1`] = `
                           "backgroundColor": "#6200ee",
                         },
                       ],
-                      Object {},
                     ]
                   }
                 />

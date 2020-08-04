@@ -13,7 +13,7 @@ import {styles} from './sign-in.styles';
 import {SignInToggleClearFormProvider} from '../../contexts';
 
 export const SignInScreen = (): JSX.Element => {
-  const {t} = useTranslation('signIn');
+  const {t} = useTranslation('auth');
   const navigation = useNavigation();
   const theme = useTheme();
   const [appTheme] = useAppTheme();

@@ -12,13 +12,14 @@
     "version": "0.6.0"
   },
   "dateFormat": "DD/MM/YYYY",
+  "defaultCountryCode": "+84",
   "defaultLang": "vi",
   "fb": {
     "id": ""
   },
   "google": {
-    "webClientId": "",
-    "reverseClientId": ""
+    "reverseClientId": "",
+    "webClientId": ""
   },
   "ios": {
     "id": "pro.thinhtran.starterkit"
