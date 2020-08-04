@@ -27,10 +27,6 @@ export const SignInScreen = (): JSX.Element => {
   const CONTAINER_HEIGHT = 650;
   const marginTop = dimensions.window.height < CONTAINER_HEIGHT ? 0 : (dimensions.window.height - CONTAINER_HEIGHT) / 2;
 
-  const navigateToMainApp = (): void => {
-    navigation.navigate(SCREEN_NAME.MAIN_TABS);
-  };
-
   const renderScene = SceneMap({
     signIn: EmailSignIn,
     signUp: EmailSignUp,
@@ -55,7 +51,7 @@ export const SignInScreen = (): JSX.Element => {
             )}
           />
           <SocialSignIn />
-          <Button onPress={navigateToMainApp} uppercase={false}>
+          <Button onPress={() => navigation.navigate(SCREEN_NAME.MAIN_TABS)} uppercase={false}>
             {t('skipSignIn')}
           </Button>
           <LanguageSetting />

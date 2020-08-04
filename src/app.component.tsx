@@ -61,9 +61,9 @@ export const BaseApp = (): JSX.Element => {
 export const App = (): JSX.Element => {
   return (
     <RootSiblingParent>
-      <AuthProvider>
-        <InternetConnectionProvider>
-          <LanguageProvider>
+      <LanguageProvider>
+        <AuthProvider>
+          <InternetConnectionProvider>
             <AppThemeProvider>
               <LoadingProvider>
                 <I18nextProvider i18n={i18next}>
@@ -71,9 +71,9 @@ export const App = (): JSX.Element => {
                 </I18nextProvider>
               </LoadingProvider>
             </AppThemeProvider>
-          </LanguageProvider>
-        </InternetConnectionProvider>
-      </AuthProvider>
+          </InternetConnectionProvider>
+        </AuthProvider>
+      </LanguageProvider>
     </RootSiblingParent>
   );
 };

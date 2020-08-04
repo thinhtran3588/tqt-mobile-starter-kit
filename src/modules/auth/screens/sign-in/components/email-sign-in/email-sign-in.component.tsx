@@ -80,7 +80,7 @@ export const EmailSignIn = (): JSX.Element => {
       <Button style={styles.button} onPress={handleSubmit} mode='contained'>
         {t('signIn')}
       </Button>
-      <Button style={styles.button} onPress={() => {}}>
+      <Button style={styles.button} onPress={() => navigation.navigate(SCREEN_NAME.FORGOT_PASSWORD)}>
         {t('forgotPassword')}
       </Button>
     </View>

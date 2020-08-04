@@ -1,7 +1,7 @@
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import {SafeAreaView, StatusBar, ViewStyle} from 'react-native';
 import {Surface, useTheme, Appbar} from 'react-native-paper';
-import {useIsFocused} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@app/core/contexts';
 import {InternetConnection} from '../internet-connection/internet-connection.component';
 import {styles} from './layout.styles';
@@ -17,10 +17,12 @@ export interface LayoutProps {
   headerRightActions?: {icon: string; onPress?: () => void; testID?: string; color?: string}[];
   headerColor?: string;
   showInternetConnection?: boolean;
+  style?: ViewStyle;
 }
 
 export const Layout = (props: LayoutProps): JSX.Element => {
   const [appTheme] = useAppTheme();
+  const navigation = useNavigation();
   const theme = useTheme();
   const {
     headerTitle,
@@ -33,9 +35,17 @@ export const Layout = (props: LayoutProps): JSX.Element => {
     header,
     children,
     showInternetConnection = true,
+    style,
   } = props;
   const isFocused = useIsFocused();
   const appHeaderColor = headerColor || (appTheme.theme === 'dark' ? theme.colors.surface : theme.colors.primary);
+
+  const goBack = (): void => {
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    }
+  };
+
   return (
     <>
       {isFocused && (
@@ -50,7 +60,7 @@ export const Layout = (props: LayoutProps): JSX.Element => {
           {headerBackButton && (
             <Appbar.BackAction
               testID={headerBackButtonTestID}
-              onPress={headerBackButtonOnPress}
+              onPress={headerBackButtonOnPress || goBack}
               color={LIGHT_BACKGROUND_COLOR}
             />
           )}
@@ -84,7 +94,7 @@ export const Layout = (props: LayoutProps): JSX.Element => {
             backgroundColor: appTheme.theme === 'light' ? LIGHT_BACKGROUND_COLOR : DARK_BACKGROUND_COLOR,
           },
         ]}>
-        <Surface style={[styles.flex]}>{children}</Surface>
+        <Surface style={[styles.flex, style]}>{children}</Surface>
       </SafeAreaView>
       {showInternetConnection && <InternetConnection />}
     </>

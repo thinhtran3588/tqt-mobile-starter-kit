@@ -49,7 +49,7 @@ export const setNotificationTheme = (theme: 'dark' | 'light'): void => {
 export const showNotification = (params: NotificationParams): void => {
   const {
     message,
-    type = 'INFO',
+    type = 'SUCCESS',
     duration = Toast.durations.SHORT,
     position = Toast.positions.TOP,
     delay = 0,

@@ -9,6 +9,7 @@ import appleAuth, {
 import {usePersistence} from '@core/hooks';
 import {config} from '@core/config';
 import {AppError} from '@app/core/exceptions';
+import {useLanguage} from '@app/core/contexts';
 
 interface AuthProviderProps {
   children?: React.ReactNode;
@@ -42,6 +43,7 @@ interface Dispatch {
   signUpEmail: (params: SignUpEmailParams) => Promise<boolean>;
   signInEmail: (params: SignInEmailParams) => Promise<boolean>;
   signOut: () => Promise<void>;
+  sendPasswordResetEmail: (email: string) => Promise<void>;
 }
 
 const AUTH_KEY = 'AUTH';
@@ -60,6 +62,11 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
   const [auth, setAuth] = useState(DEFAULT_AUTH);
   const [initializing, setInitializing] = useState(true);
   const [setAuthPersistence] = usePersistence(auth, setAuth, AUTH_KEY);
+  const [language] = useLanguage();
+
+  useEffect(() => {
+    firebaseAuth().languageCode = language;
+  }, [language]);
 
   const onAuthStateChanged: FirebaseAuthTypes.AuthListenerCallback = useCallback((user): void => {
     if (!user) {
@@ -228,6 +235,17 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
     }
   };
 
+  const sendPasswordResetEmail = async (email: string): Promise<void> => {
+    try {
+      await firebaseAuth().sendPasswordResetEmail(email);
+    } catch (err) {
+      if (err.code === 'auth/user-not-found') {
+        return;
+      }
+      throw err;
+    }
+  };
+
   const dispatch = useMemo(
     (): Dispatch => ({
       signInFacebook,
@@ -236,6 +254,7 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       signUpEmail,
       signInEmail,
       signOut,
+      sendPasswordResetEmail,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
