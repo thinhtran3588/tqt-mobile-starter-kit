@@ -1,4 +1,4 @@
-import {config, updateConfig} from '@app/core/config';
+import {config, updateConfig} from '@core/config';
 
 it('update configuration correctly', async () => {
   expect(config()).toMatchInlineSnapshot(`

@@ -3,11 +3,11 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
-import {TextInput, Button} from '@app/core/components';
+import {TextInput, Button} from '@core/components';
 import {useAuth, useSignInToggleClearForm} from '@auth/contexts';
 import {SCREEN_NAME} from '@app/app.constants';
-import {handleError} from '@app/core/exceptions';
-import {useLoading} from '@app/core/contexts';
+import {handleError} from '@core/exceptions';
+import {useLoading} from '@core/contexts';
 import {styles} from './email-sign-up.styles';
 
 interface FormData {

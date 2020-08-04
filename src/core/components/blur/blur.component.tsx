@@ -1,6 +1,6 @@
 import React from 'react';
 import {BlurViewProperties, BlurView} from '@react-native-community/blur';
-import {useAppTheme} from '@app/core/contexts';
+import {useAppTheme} from '@core/contexts';
 import {styles} from './blur.styles';
 
 export type BlueProps = Omit<BlurViewProperties, 'blurType'> & {

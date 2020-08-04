@@ -8,8 +8,8 @@ import appleAuth, {
 } from '@invertase/react-native-apple-authentication';
 import {usePersistence} from '@core/hooks';
 import {config} from '@core/config';
-import {AppError} from '@app/core/exceptions';
-import {useLanguage} from '@app/core/contexts';
+import {AppError} from '@core/exceptions';
+import {useLanguage} from '@core/contexts';
 
 interface AuthProviderProps {
   children?: React.ReactNode;

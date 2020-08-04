@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Animated} from 'react-native';
 import {useTheme} from 'react-native-paper';
-import {useInternetConnection} from '@app/core/contexts';
+import {useInternetConnection} from '@core/contexts';
 import {Text} from '../text/text.component';
 import {styles} from './internet-connection.styles';
 

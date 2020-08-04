@@ -2,8 +2,8 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Platform} from 'react-native';
 import {SCREEN_NAME} from '@app/app.constants';
-import {View, Colors, IconButton} from '@app/core/components';
-import {useLoading} from '@app/core/contexts';
+import {View, Colors, IconButton} from '@core/components';
+import {useLoading} from '@core/contexts';
 import {useAuth, SignInType, useSignInToggleClearForm} from '@auth/contexts';
 import {styles} from './social-sign-in.styles';
 

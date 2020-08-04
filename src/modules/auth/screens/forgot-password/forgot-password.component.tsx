@@ -3,11 +3,11 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
-import {TextInput, Button, Layout, Text, View} from '@app/core/components';
+import {TextInput, Button, Layout, Text, View} from '@core/components';
 import {useAuth} from '@auth/contexts';
-import {showNotification} from '@app/core/helpers';
-import {handleError} from '@app/core/exceptions';
-import {useLoading} from '@app/core/contexts';
+import {showNotification} from '@core/helpers';
+import {handleError} from '@core/exceptions';
+import {useLoading} from '@core/contexts';
 import {styles} from './forgot-password.styles';
 
 interface FormData {

@@ -3,7 +3,7 @@ import React, {ReactNode, ReactElement} from 'react';
 import {useColorScheme} from 'react-native';
 import {render, RenderResult, RenderOptions} from '@testing-library/react-native';
 import {AppThemeProvider, useAppTheme, LanguageProvider, InternetConnectionProvider} from '@core/contexts';
-import {PaperProvider, DefaultTheme, DarkTheme} from '@app/core/components';
+import {PaperProvider, DefaultTheme, DarkTheme} from '@core/components';
 import {AuthProvider} from '@auth/contexts';
 
 interface Props {

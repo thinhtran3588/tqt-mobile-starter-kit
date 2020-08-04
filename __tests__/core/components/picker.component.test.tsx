@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import RNPicker from 'react-native-picker';
 import {render, toJSON, fireEvent, act} from '@test-utils';
 import {Picker, Colors, Button, PickerDataItem} from '@core/components';
-import {COLORS} from '@app/core/contexts';
+import {COLORS} from '@core/contexts';
 
 const colors: PickerDataItem[] = COLORS.map((c) => ({value: c.id, label: c.text}));
 

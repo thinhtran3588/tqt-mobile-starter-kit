@@ -1,6 +1,6 @@
 import React from 'react';
 import {render, toJSON} from '@test-utils';
-import {ThemeSetting} from '@app/modules/settings/screens/settings/components';
+import {ThemeSetting} from '@settings/screens/settings/components';
 
 it('renders with system light theme', async () => {
   const {baseElement} = render(<ThemeSetting />);

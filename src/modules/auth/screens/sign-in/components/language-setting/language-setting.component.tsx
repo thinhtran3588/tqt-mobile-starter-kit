@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Button, Picker, PickerDataItem} from '@app/core/components';
-import {LANGUAGES, useLanguage} from '@app/core/contexts';
+import {Button, Picker, PickerDataItem} from '@core/components';
+import {LANGUAGES, useLanguage} from '@core/contexts';
 import {styles} from './language-setting.styles';
 
 const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, label: lang.text}));

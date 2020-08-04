@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from '@core/components';
-import {showNotification} from '@app/core/helpers';
+import {showNotification} from '@core/helpers';
 import {styles} from './notification-sample.styles';
 
 export const NotificationSample = (): JSX.Element => {
