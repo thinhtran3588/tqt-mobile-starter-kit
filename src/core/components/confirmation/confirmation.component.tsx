@@ -24,7 +24,6 @@ export const Confirmation = (props: ConfirmationProps): JSX.Element => {
   const {confirmation, animationType = 'slide', closeConfirmation, ...other} = props;
   const theme = useTheme();
   const [appTheme] = useAppTheme();
-  const buttonColor = appTheme.theme === 'dark' ? theme.colors.onSurface : theme.colors.surface;
   return (
     <Modal
       visible={confirmation.open}
