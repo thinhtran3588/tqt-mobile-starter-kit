@@ -1,5 +1,5 @@
 import Toast, {ToastOptions} from 'react-native-root-toast';
-import {COLORS_LOOKUP, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '../contexts';
+import {COLORS_LOOKUP, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '../contexts/app-theme.context';
 
 type NotificationType = 'SUCCESS' | 'WARNING' | 'ERROR' | 'INFO';
 
