@@ -6,7 +6,9 @@
   "invalid": "Invalid",
   "noInternetConnection": "No Internet Connection",
   "required": "Required",
+  "restart": "Restart",
   "select": "Select",
   "settings": "Settings",
-  "unknownError": "Something wrong happened"
+  "unknownError": "Something wrong happened",
+  "updateRestartConfirmation": "A new update has been installed. Please restart for the changes to take effect"
 }

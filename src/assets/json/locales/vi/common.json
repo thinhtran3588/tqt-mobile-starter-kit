@@ -1,12 +1,14 @@
 {
   "back": "Quay lại",
-  "cancel": "Huỷ",
+  "cancel": "Bỏ qua",
   "components": "Components",
   "confirm": "Xác nhận",
   "invalid": "Không hợp lệ",
   "noInternetConnection": "Không có kết nối mạng",
   "required": "Bắt buộc",
+  "restart": "Khởi động lại",
   "select": "Chọn",
   "settings": "Cài đặt",
-  "unknownError": "Có lỗi xảy ra"
+  "unknownError": "Có lỗi xảy ra",
+  "updateRestartConfirmation": "Bản cập nhật mới vừa được cài đặt. Vui lòng khởi động lại để cập nhật"
 }

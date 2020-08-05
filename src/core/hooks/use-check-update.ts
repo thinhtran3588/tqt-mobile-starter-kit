@@ -27,10 +27,10 @@ export const useCheckUpdate = (): void => {
         message: t('common:updateRestartConfirmation'),
         buttons: [
           {
-            text: 'Close',
+            text: t('common:cancel'),
           },
           {
-            text: 'Restart',
+            text: t('common:restart'),
             onPress: () => codepush.restartApp(),
             type: 'PRIMARY',
           },
