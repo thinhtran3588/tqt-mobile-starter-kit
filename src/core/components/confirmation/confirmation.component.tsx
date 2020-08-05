@@ -24,9 +24,7 @@ export const Confirmation = (props: ConfirmationProps): JSX.Element => {
   const {confirmation, animationType = 'slide', closeConfirmation, ...other} = props;
   const theme = useTheme();
   const [appTheme] = useAppTheme();
-  const backgroundColor = appTheme.theme === 'dark' ? theme.colors.onSurface : theme.colors.surface;
-  const textColor = appTheme.theme === 'dark' ? theme.colors.surface : theme.colors.onSurface;
-
+  const buttonColor = appTheme.theme === 'dark' ? theme.colors.onSurface : theme.colors.surface;
   return (
     <Modal
       visible={confirmation.open}
@@ -38,8 +36,8 @@ export const Confirmation = (props: ConfirmationProps): JSX.Element => {
       <>
         <View style={styles.container}>
           <Blur />
-          <Surface style={[styles.messageBox, {backgroundColor}]}>
-            <Text style={[styles.message, {color: textColor}]} type='p'>
+          <Surface style={[styles.messageBox]}>
+            <Text style={[styles.message]} type='p'>
               {confirmation.message}
             </Text>
             <Divider />
@@ -55,7 +53,7 @@ export const Confirmation = (props: ConfirmationProps): JSX.Element => {
                       styles.button,
                       {
                         backgroundColor:
-                          (button.type || 'INFO') === 'INFO' ? backgroundColor : getColor(button.type, appTheme),
+                          (button.type || 'INFO') === 'INFO' ? undefined : getColor(button.type, appTheme),
                       },
                       index === 0 ? styles.firstButton : {},
                       index === confirmation.buttons.length - 1 ? styles.lastButton : {},
@@ -63,7 +61,7 @@ export const Confirmation = (props: ConfirmationProps): JSX.Element => {
                     <Text
                       style={[
                         styles.buttonText,
-                        {color: (button.type || 'INFO') === 'INFO' ? textColor : backgroundColor},
+                        !button.type || button.type === 'INFO' ? {} : {color: theme.colors.surface},
                       ]}>
                       {button.text}
                     </Text>

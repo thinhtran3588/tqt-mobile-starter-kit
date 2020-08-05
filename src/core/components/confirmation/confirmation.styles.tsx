@@ -31,4 +31,7 @@ export const styles = StyleSheet.create({
   lastButton: {
     borderBottomRightRadius: 10,
   },
+  divider: {
+    backgroundColor: '#D4D4D6',
+  },
 });
