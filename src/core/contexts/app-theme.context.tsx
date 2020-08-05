@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useMemo} from 'react';
 import {useImmer} from 'use-immer';
 import {useColorScheme} from 'react-native';
-import {usePersistenceImmer} from '@core/hooks';
+import {usePersistenceImmer} from '@core/hooks/use-persistence';
 import {Colors} from 'react-native-paper';
 
 interface AppThemeProviderProps {

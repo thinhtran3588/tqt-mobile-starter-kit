@@ -4,7 +4,7 @@ import {useTranslation} from 'react-i18next';
 import codepush from 'react-native-code-push';
 import {config} from '@core/config';
 import {useAuth} from '@auth/contexts';
-import {useConfirmation} from '../contexts';
+import {useConfirmation} from '@core/contexts/confirmation.context';
 
 export const useCheckUpdate = (): void => {
   const {

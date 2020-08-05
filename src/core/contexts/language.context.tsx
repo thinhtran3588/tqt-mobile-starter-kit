@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {usePersistence} from '@core/hooks';
+import {usePersistence} from '@core/hooks/use-persistence';
 
 interface LanguageProviderProps {
   children?: React.ReactNode;

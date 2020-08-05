@@ -6,10 +6,10 @@ import appleAuth, {
   AppleAuthRequestScope,
   AppleAuthRequestOperation,
 } from '@invertase/react-native-apple-authentication';
-import {usePersistenceImmer} from '@core/hooks';
+import {usePersistenceImmer} from '@core/hooks/use-persistence';
 import {config} from '@core/config';
 import {AppError} from '@core/exceptions';
-import {useLanguage} from '@core/contexts';
+import {useLanguage} from '@core/contexts/language.context';
 import {useImmer} from 'use-immer';
 
 interface AuthProviderProps {
