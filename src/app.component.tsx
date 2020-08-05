@@ -14,8 +14,8 @@ import {
   useLoading,
   ErrorHandlerProvider,
 } from '@core/contexts';
-import {AuthProvider} from '@auth/contexts';
-import {merge, setNotificationTheme} from '@core/helpers';
+import {AuthProvider, useAuth} from '@auth/contexts';
+import {merge, setNotificationTheme, checkUpdate} from '@core/helpers';
 import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal} from '@core/components';
 import {i18next} from './i18n';
 import {AppNavigation} from './app.navigation';
@@ -24,12 +24,17 @@ export const BaseApp = (): JSX.Element => {
   const [appTheme] = useAppTheme();
   const [language] = useLanguage();
   const [loading] = useLoading();
+  const [auth] = useAuth();
   const themedPrimaryColor = (COLORS_LOOKUP[appTheme.primaryColorId] || COLORS_LOOKUP.CYAN)[
     appTheme.theme === 'dark' ? 'darkColor' : 'color'
   ];
   const theme: typeof DarkTheme = merge({}, appTheme.theme === 'dark' ? DarkTheme : DefaultTheme, {
     colors: {primary: themedPrimaryColor},
   });
+
+  useEffect(() => {
+    checkUpdate(auth.isTester);
+  }, [auth.isTester]);
 
   useEffect(() => {
     (async () => {

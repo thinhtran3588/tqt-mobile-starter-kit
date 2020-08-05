@@ -125,31 +125,31 @@ export const setEnv = async (environment: string = 'production'): Promise<void> 
       replaces: [
         {
           old: /<key>CFBundleName<\/key>[\n,	, ]*<string>.*<\/string>/,
-          new: `<key>CFBundleName</key>\n	<string>${config().appInfo.name}</string>`,
+          new: `<key>CFBundleName</key>\n		<string>${config().appInfo.name}</string>`,
         },
         {
           old: /<key>CFBundleDisplayName<\/key>[\n,	, ]*<string>.*<\/string>/,
-          new: `<key>CFBundleDisplayName</key>\n	<string>${config().appInfo.name}</string>`,
+          new: `<key>CFBundleDisplayName</key>\n		<string>${config().appInfo.name}</string>`,
         },
         {
           old: /<string>fb_url<\/string>[\n,	, ]*<key>CFBundleURLSchemes<\/key>[\n,	, ]*<array>[\n,	, ]*<string>\w+<\/string>[\n,	, ]*<\/array>/,
-          new: `<string>fb_url</string>\n			<key>CFBundleURLSchemes</key>\n			<array>\n				<string>fb${
+          new: `<string>fb_url</string>\n				<key>CFBundleURLSchemes</key>\n				<array>\n					<string>fb${
             config().fb.id
-          }</string>\n			</array>`,
+          }</string>\n				</array>`,
         },
         {
           old: /<key>FacebookAppID<\/key>[\n,	, ]*<string>[\w, ,.,-]*<\/string>/,
-          new: `<key>FacebookAppID</key>\n	<string>${config().fb.id}</string>`,
+          new: `<key>FacebookAppID</key>\n		<string>${config().fb.id}</string>`,
         },
         {
           old: /<key>FacebookDisplayName<\/key>[\n,	, ]*<string>[\w, ,.,-,.]*<\/string>/,
-          new: `<key>FacebookDisplayName</key>\n	<string>${config().appInfo.name}</string>`,
+          new: `<key>FacebookDisplayName</key>\n		<string>${config().appInfo.name}</string>`,
         },
         {
           old: /<string>google_url<\/string>[\n,	, ]*<key>CFBundleURLSchemes<\/key>[\n,	, ]*<array>[\n,	, ]*<string>[\w,.,-]*<\/string>[\n,	, ]*<\/array>/,
-          new: `<string>google_url</string>\n			<key>CFBundleURLSchemes</key>\n			<array>\n				<string>${
+          new: `<string>google_url</string>\n				<key>CFBundleURLSchemes</key>\n				<array>\n					<string>${
             config().google.reverseClientId
-          }</string>\n			</array>`,
+          }</string>\n				</array>`,
         },
       ],
     },
@@ -176,10 +176,8 @@ export const updateVersion = (version: string): void => {
     return;
   }
 
-  const nextBuild = +config().appInfo.build + 1;
   updateConfig({
     appInfo: {
-      build: nextBuild.toString(),
       version,
     },
   });
@@ -188,10 +186,6 @@ export const updateVersion = (version: string): void => {
     {
       src: path.resolve(__dirname, `./android/app/build.gradle`),
       replaces: [
-        {
-          old: /versionCode [0-9]*/,
-          new: `versionCode ${nextBuild}`,
-        },
         {
           old: /versionName "[0-9,.]*"/,
           new: `versionName "${version}"`,
@@ -202,12 +196,8 @@ export const updateVersion = (version: string): void => {
       src: path.resolve(__dirname, `./ios/mobile/Info.plist`),
       replaces: [
         {
-          old: /<key>CFBundleVersion<\/key>[\n,	, ]*<string>[\w, ,.,-]*<\/string>/,
-          new: `<key>CFBundleVersion</key>\n	<string>${nextBuild}</string>`,
-        },
-        {
           old: /<key>CFBundleShortVersionString<\/key>[\n,	, ]*<string>[\w, ,.,-]*<\/string>/,
-          new: `<key>CFBundleShortVersionString</key>\n	<string>${version}</string>`,
+          new: `<key>CFBundleShortVersionString</key>\n		<string>${version}</string>`,
         },
       ],
     },
@@ -226,10 +216,6 @@ export const updateVersion = (version: string): void => {
         {
           old: /"version": ".*"/,
           new: `"version": "${version}"`,
-        },
-        {
-          old: /"build": ".*"/,
-          new: `"build": "${nextBuild}"`,
         },
       ],
     },
@@ -263,7 +249,7 @@ export const updateBuild = (build: string = process.env.APP_BUILD_NO || ''): voi
       replaces: [
         {
           old: /<key>CFBundleVersion<\/key>[\n,	, ]*<string>[\w, ,.,-]*<\/string>/,
-          new: `<key>CFBundleVersion</key>\n	<string>${build}</string>`,
+          new: `<key>CFBundleVersion</key>\n		<string>${build}</string>`,
         },
       ],
     },

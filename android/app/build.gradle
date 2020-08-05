@@ -134,8 +134,8 @@ android {
         applicationId "pro.thinhtran.starterkit"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 5
-        versionName "0.6.0"
+        versionCode 1
+        versionName "0.7.0"
         multiDexEnabled true
     }
     splits {
@@ -218,6 +218,8 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+    
+    apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 }
 
 // Run this once to be able to run the application with BUCK

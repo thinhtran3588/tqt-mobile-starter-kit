@@ -27,6 +27,7 @@ interface AuthState {
   signInType: SignInType;
   isSignedIn: boolean;
   initializing: boolean;
+  isTester: boolean;
 }
 
 interface SignUpEmailParams {
@@ -54,6 +55,7 @@ const DEFAULT_AUTH: AuthState = {
   signInType: 'EMAIL',
   isSignedIn: false,
   initializing: true,
+  isTester: false,
 };
 
 const AuthContext = React.createContext(DEFAULT_AUTH);
@@ -105,6 +107,7 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
         isSignedIn: true,
         signInType,
         initializing: false,
+        isTester: false,
       });
     }
     if (initializing) {

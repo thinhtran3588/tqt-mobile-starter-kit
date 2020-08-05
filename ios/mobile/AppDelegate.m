@@ -4,10 +4,11 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
-#import "RNBootSplash.h" // <- add the header import
+#import <RNBootSplash.h>
 #import <Firebase.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <RNGoogleSignin/RNGoogleSignin.h>
+#import <CodePush/CodePush.h>
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -70,8 +71,9 @@ static void InitializeFlipper(UIApplication *application) {
       [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"
                                                      fallbackResource:nil];
 #else
-  return [[NSBundle mainBundle] URLForResource:@"main"
-                                 withExtension:@"jsbundle"];
+  // return [[NSBundle mainBundle] URLForResource:@"main"
+  //                                withExtension:@"jsbundle"];
+  return [CodePush bundleURL];
 #endif
 }
 

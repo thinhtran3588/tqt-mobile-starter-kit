@@ -190,6 +190,37 @@ yarn ios-build
 yarn ios-testflight
 ```
 
+### Use code-push for OTA update
+
+- register a new account in [https://appcenter.ms](https://appcenter.ms), create a new organization
+- create 1 app for Android & 1 app for iOS using [appcenter cli](https://github.com/microsoft/appcenter-cli) under the newly created organization
+- run below commands to create Staging and Production deployments (read [this guideline](https://github.com/microsoft/react-native-code-push/blob/master/README.md#multi-deployment-testing))
+
+```
+appcenter codepush deployment add Staging -a your-organization/your-app-android
+appcenter codepush deployment add Production -a your-organization/your-app-android
+appcenter codepush deployment add Staging -a your-organization/your-app-ios
+appcenter codepush deployment add Production -a your-organization/your-app-ios
+```
+
+- run `appcenter codepush deployment list -a your-organization/your-app-android -k` to get deployments keys (same for ios app)
+- run below commands to release Staging version and promote it to Production:
+
+```
+appcenter codepush release-react -a your-organization/your-app-android --description "deployment message"
+appcenter codepush release-react -a your-organization/your-app-ios --description "deployment message"
+appcenter codepush promote -a your-organization/your-app-android -s Staging -d Production
+appcenter codepush promote -a your-organization/your-app-ios -s Staging -d Production
+```
+
+- to get deployment history, run
+
+```
+appcenter codepush deployment history Staging -a your-organization/your-app-android
+```
+
+- make another environment for the staging app (if you have a separate one)
+
 ### **Github Actions**
 
 1. increase app version (for example 0.1.0 => 0.2.0)

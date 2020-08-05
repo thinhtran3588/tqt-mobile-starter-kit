@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TQT Starter Kit</string>
     <string name="facebook_app_id">284064976159443</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">runtime-key</string>
 </resources>
