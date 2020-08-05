@@ -83,9 +83,15 @@
     "android-build": "cd android && fastlane android build && cd ..",
     "android-build-apk": "cd android && fastlane android build_apk && cd ..",
     "android-clean": "cd android && fastlane android clean && cd ..",
+    "android-hashkey": "keytool -exportcert -alias mobile -keystore android/app/mobile.keystore | openssl sha1 -binary | openssl base64",
     "android-release": "react-native run-android --variant=release",
     "android-signing": "cd android && ./gradlew signingReport && cd ..",
-    "android-hashkey": "keytool -exportcert -alias mobile -keystore android/app/mobile.keystore | openssl sha1 -binary | openssl base64",
+    "codepush_android": "yarn env production && source '.env' && appcenter codepush release-react -a $CODEPUSH_ANDROID_APP && yarn conf",
+    "codepush_android_production": "yarn env production && source '.env' && appcenter codepush promote -a $CODEPUSH_ANDROID_APP -s Staging -d Production && yarn conf",
+    "codepush_history": "source '.env' && echo Android && echo Staging && appcenter codepush deployment history Staging -a $CODEPUSH_ANDROID_APP && echo Production && appcenter codepush deployment history Production -a $CODEPUSH_ANDROID_APP && echo iOS && echo Staging && appcenter codepush deployment history Staging -a $CODEPUSH_IOS_APP && echo Production && appcenter codepush deployment history Production -a $CODEPUSH_IOS_APP",
+    "codepush_ios": "yarn env production && source '.env' && appcenter codepush release-react -a $CODEPUSH_IOS_APP && yarn conf",
+    "codepush_ios_production": "yarn env production && source '.env' && appcenter codepush promote -a tqt-apps/tqt-mobile-starter-kit-ios -s Staging -d Production && yarn conf",
+    "codepush_login": "yarn env production && source '.env' && appcenter login --token $CODEPUSH_TOKEN && yarn conf",
     "env": "ts-node job.ts env",
     "ios": "react-native run-ios",
     "ios-build": "cd ios && fastlane ios build && cd ..",
@@ -103,5 +109,5 @@
     "update-ver": "ts-node job.ts update-ver",
     "validate": "yarn lint && yarn test-coverage"
   },
-  "version": "0.7.0"
+  "version": "0.8.0"
 }
