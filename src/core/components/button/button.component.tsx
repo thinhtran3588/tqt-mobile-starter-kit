@@ -8,12 +8,12 @@ import {styles} from './button.styles';
 const Button = (props: React.ComponentProps<typeof RNButton>): JSX.Element => {
   const {style, labelStyle, uppercase = false, ...other} = props;
   const [appTheme] = useAppTheme();
-  let labelColorStyle: TextStyle = {
-    color: appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR,
-  };
-  if (!other.mode || other.mode === 'text') {
-    labelColorStyle = {};
-  }
+  const labelColorStyle: TextStyle =
+    other.mode === 'contained'
+      ? {
+          color: appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR,
+        }
+      : {};
   return (
     <RNButton
       style={[styles.button, style]}
