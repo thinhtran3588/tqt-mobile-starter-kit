@@ -13,28 +13,32 @@ import {
   LoadingProvider,
   useLoading,
   ErrorHandlerProvider,
+  ConfirmationProvider,
+  useConfirmation,
 } from '@core/contexts';
-import {AuthProvider, useAuth} from '@auth/contexts';
-import {merge, setNotificationTheme, checkUpdate} from '@core/helpers';
-import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal} from '@core/components';
+import {AuthProvider} from '@auth/contexts';
+import {merge} from '@core/helpers';
+import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal, Confirmation} from '@core/components';
 import {i18next} from './i18n';
 import {AppNavigation} from './app.navigation';
+import {useCheckUpdate} from './core/hooks/use-check-update';
 
 export const BaseApp = (): JSX.Element => {
   const [appTheme] = useAppTheme();
   const [language] = useLanguage();
   const [loading] = useLoading();
-  const [auth] = useAuth();
+  useCheckUpdate();
+
+  const {
+    confirmation,
+    dispatch: {closeConfirmation},
+  } = useConfirmation();
   const themedPrimaryColor = (COLORS_LOOKUP[appTheme.primaryColorId] || COLORS_LOOKUP.CYAN)[
     appTheme.theme === 'dark' ? 'darkColor' : 'color'
   ];
   const theme: typeof DarkTheme = merge({}, appTheme.theme === 'dark' ? DarkTheme : DefaultTheme, {
     colors: {primary: themedPrimaryColor},
   });
-
-  useEffect(() => {
-    checkUpdate(auth.isTester);
-  }, [auth.isTester]);
 
   useEffect(() => {
     (async () => {
@@ -46,17 +50,12 @@ export const BaseApp = (): JSX.Element => {
     i18next.changeLanguage(language);
   }, [language]);
 
-  useEffect(() => {
-    setNotificationTheme(appTheme.theme);
-  }, [appTheme]);
-
   return (
-    <>
-      <PaperProvider theme={theme}>
-        <AppNavigation />
-      </PaperProvider>
+    <PaperProvider theme={theme}>
+      <AppNavigation />
       <LoadingModal loading={loading} />
-    </>
+      <Confirmation confirmation={confirmation} closeConfirmation={closeConfirmation} />
+    </PaperProvider>
   );
 };
 
@@ -64,21 +63,23 @@ export const App = (): JSX.Element => {
   return (
     <RootSiblingParent>
       <LoadingProvider>
-        <LanguageProvider>
-          <I18nextProvider i18n={i18next}>
-            <ErrorHandlerProvider>
-              <AuthProvider>
-                <InternetConnectionProvider>
-                  <AppThemeProvider>
-                    <SafeAreaProvider>
-                      <BaseApp />
-                    </SafeAreaProvider>
-                  </AppThemeProvider>
-                </InternetConnectionProvider>
-              </AuthProvider>
-            </ErrorHandlerProvider>
-          </I18nextProvider>
-        </LanguageProvider>
+        <ConfirmationProvider>
+          <LanguageProvider>
+            <I18nextProvider i18n={i18next}>
+              <AppThemeProvider>
+                <ErrorHandlerProvider>
+                  <AuthProvider>
+                    <InternetConnectionProvider>
+                      <SafeAreaProvider>
+                        <BaseApp />
+                      </SafeAreaProvider>
+                    </InternetConnectionProvider>
+                  </AuthProvider>
+                </ErrorHandlerProvider>
+              </AppThemeProvider>
+            </I18nextProvider>
+          </LanguageProvider>
+        </ConfirmationProvider>
       </LoadingProvider>
     </RootSiblingParent>
   );

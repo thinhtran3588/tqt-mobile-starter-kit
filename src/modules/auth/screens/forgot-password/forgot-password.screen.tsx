@@ -4,8 +4,7 @@ import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
 import {TextInput, Button, Layout, View} from '@core/components';
 import {useAuth} from '@auth/contexts';
-import {showNotification} from '@core/helpers';
-import {useForm} from '@core/hooks';
+import {useForm, useNotification} from '@core/hooks';
 import {styles} from './forgot-password.styles';
 
 interface FormData {
@@ -16,6 +15,7 @@ export const ForgotPasswordScreen = (): JSX.Element => {
   const {t} = useTranslation('auth');
   const navigation = useNavigation();
   const [, {sendPasswordResetEmail}] = useAuth();
+  const {showNotification} = useNotification();
 
   const initialValues: FormData = {
     email: '',

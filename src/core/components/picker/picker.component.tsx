@@ -74,11 +74,9 @@ export const Picker = forwardRef((props: PickerProps, ref: any) => {
       onShow={onShow}
       onRequestClose={onClose}
       supportedOrientations={['portrait', 'portrait-upside-down', 'landscape', 'landscape-left', 'landscape-right']}>
-      <>
-        <Pressable onPress={onClose} style={styles.flex}>
-          <Blur />
-        </Pressable>
-      </>
+      <Pressable onPress={onClose} style={styles.flex}>
+        <Blur />
+      </Pressable>
     </Modal>
   );
 });

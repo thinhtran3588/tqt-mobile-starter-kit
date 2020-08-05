@@ -8,12 +8,18 @@ interface AppThemeProviderProps {
   children?: React.ReactNode;
 }
 
-interface AppThemeState {
+export interface AppThemeState {
   useSystemTheme: boolean;
   darkMode: boolean;
   theme: 'light' | 'dark';
   primaryColorId: string;
-  primaryColor: string;
+  colors: {
+    primary: string;
+    warning: string;
+    error: string;
+    success: string;
+    info: string;
+  };
 }
 
 interface Dispatch {
@@ -140,16 +146,23 @@ export const COLORS_LOOKUP: {[id: string]: Color} = {
   },
 };
 export const COLORS = Object.keys(COLORS_LOOKUP).map((key: string) => COLORS_LOOKUP[key]);
+export const LIGHT_BACKGROUND_COLOR = '#fff';
+export const DARK_BACKGROUND_COLOR = '#272727';
+export type ColorType = 'SUCCESS' | 'WARNING' | 'ERROR' | 'INFO' | 'PRIMARY';
 
-const DEFAULT_APP_THEME: AppThemeState = {
+export const DEFAULT_APP_THEME: AppThemeState = {
   useSystemTheme: true,
   darkMode: false,
   theme: 'light',
   primaryColorId: COLORS_LOOKUP.CYAN.id,
-  primaryColor: COLORS_LOOKUP.CYAN.color,
+  colors: {
+    primary: COLORS_LOOKUP.CYAN.color,
+    warning: COLORS_LOOKUP.ORANGE.color,
+    error: COLORS_LOOKUP.RED.color,
+    success: COLORS_LOOKUP.GREEN.color,
+    info: DARK_BACKGROUND_COLOR,
+  },
 };
-export const LIGHT_BACKGROUND_COLOR = '#fff';
-export const DARK_BACKGROUND_COLOR = '#272727';
 
 const APP_THEME_KEY = 'APP_THEME';
 
@@ -167,6 +180,17 @@ const AppThemeProvider = (props: AppThemeProviderProps): JSX.Element => {
       draft.theme = colorScheme === 'dark' ? 'dark' : 'light';
     } else {
       draft.theme = draft.darkMode ? 'dark' : 'light';
+    }
+    if (draft.theme === 'light') {
+      draft.colors.success = COLORS_LOOKUP.GREEN.color;
+      draft.colors.warning = COLORS_LOOKUP.ORANGE.color;
+      draft.colors.error = COLORS_LOOKUP.RED.color;
+      draft.colors.info = DARK_BACKGROUND_COLOR;
+    } else {
+      draft.colors.success = COLORS_LOOKUP.GREEN.darkColor;
+      draft.colors.warning = COLORS_LOOKUP.ORANGE.darkColor;
+      draft.colors.error = COLORS_LOOKUP.RED.darkColor;
+      draft.colors.info = LIGHT_BACKGROUND_COLOR;
     }
   };
 

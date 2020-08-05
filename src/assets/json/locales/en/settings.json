@@ -1,9 +1,12 @@
 {
   "author": "Author",
+  "betaUser": "Beta user",
   "copyright": "Copyright",
   "darkTheme": "Dark theme",
   "generalInfo": "General info",
+  "joinBetaUserConfirmation": "Do you want to be a beta user & get update more frequently?",
   "language": "Language",
+  "leaveBetaUserConfirmation": "Do you want to leave beta program?",
   "primaryColor": "Primary color",
   "privacyPolicy": "Privacy Policy",
   "signIn": "Sign in",

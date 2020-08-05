@@ -2,7 +2,15 @@
 import React, {ReactNode, ReactElement} from 'react';
 import {useColorScheme} from 'react-native';
 import {render, RenderResult, RenderOptions} from '@testing-library/react-native';
-import {AppThemeProvider, useAppTheme, LanguageProvider, InternetConnectionProvider} from '@core/contexts';
+import {
+  AppThemeProvider,
+  useAppTheme,
+  LanguageProvider,
+  InternetConnectionProvider,
+  LoadingProvider,
+  ConfirmationProvider,
+  ErrorHandlerProvider,
+} from '@core/contexts';
 import {PaperProvider, DefaultTheme, DarkTheme} from '@core/components';
 import {AuthProvider} from '@auth/contexts';
 
@@ -30,15 +38,21 @@ const BaseApp = (props: Props): JSX.Element => {
 const AllTheProviders = (props: Props): JSX.Element => {
   const {children} = props;
   return (
-    <AuthProvider>
-      <InternetConnectionProvider>
+    <LoadingProvider>
+      <ConfirmationProvider>
         <LanguageProvider>
           <AppThemeProvider>
-            <BaseApp>{children}</BaseApp>
+            <ErrorHandlerProvider>
+              <AuthProvider>
+                <InternetConnectionProvider>
+                  <BaseApp>{children}</BaseApp>
+                </InternetConnectionProvider>
+              </AuthProvider>
+            </ErrorHandlerProvider>
           </AppThemeProvider>
         </LanguageProvider>
-      </InternetConnectionProvider>
-    </AuthProvider>
+      </ConfirmationProvider>
+    </LoadingProvider>
   );
 };
 

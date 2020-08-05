@@ -1,9 +1,12 @@
 {
   "author": "Tác giả",
+  "betaUser": "Người dùng thử nghiệm",
   "copyright": "Bản quyền",
   "darkTheme": "Theme tối",
   "generalInfo": "Thông tin chung",
+  "joinBetaUserConfirmation": "Bạn có muốn trở thành người dùng thử nghiệm và cập nhật phần mềm thường xuyên hơn?",
   "language": "Ngôn ngữ",
+  "leaveBetaUserConfirmation": "Bạn có muốn rời khỏi chương trình thử nghiệm?",
   "primaryColor": "Màu chính",
   "privacyPolicy": "Chính sách bảo mật",
   "signIn": "Đăng nhập",

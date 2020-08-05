@@ -6,10 +6,11 @@ import appleAuth, {
   AppleAuthRequestScope,
   AppleAuthRequestOperation,
 } from '@invertase/react-native-apple-authentication';
-import {usePersistence} from '@core/hooks';
+import {usePersistenceImmer} from '@core/hooks';
 import {config} from '@core/config';
 import {AppError} from '@core/exceptions';
 import {useLanguage} from '@core/contexts';
+import {useImmer} from 'use-immer';
 
 interface AuthProviderProps {
   children?: React.ReactNode;
@@ -20,9 +21,6 @@ export type SignInType = 'EMAIL' | 'PHONE_NO' | 'FACEBOOK' | 'GOOGLE' | 'APPLE';
 interface AuthState {
   userId: string;
   displayName?: string;
-  lastName?: string;
-  firstName?: string;
-  middleName?: string;
   avatarUrl?: string;
   signInType: SignInType;
   isSignedIn: boolean;
@@ -47,11 +45,14 @@ interface Dispatch {
   sendPasswordResetEmail: (email: string) => Promise<void>;
   sendPhoneNoVerificationCode: (phoneNo: string) => Promise<void>;
   verifyCode: (verificationCode: string) => Promise<void>;
+  setIsTester: (isTester: boolean) => Promise<void>;
 }
 
 const AUTH_KEY = 'AUTH';
 const DEFAULT_AUTH: AuthState = {
   userId: '',
+  avatarUrl: '',
+  displayName: '',
   signInType: 'EMAIL',
   isSignedIn: false,
   initializing: true,
@@ -65,9 +66,9 @@ let confirmationResult: FirebaseAuthTypes.ConfirmationResult | undefined;
 
 const AuthProvider = (props: AuthProviderProps): JSX.Element => {
   const {children} = props;
-  const [auth, setAuth] = useState(DEFAULT_AUTH);
+  const [auth, setAuth] = useImmer(DEFAULT_AUTH);
   const [initializing, setInitializing] = useState(true);
-  const [setAuthPersistence] = usePersistence(auth, setAuth, AUTH_KEY);
+  const [setAuthPersistence] = usePersistenceImmer(auth, setAuth, AUTH_KEY);
   const [language] = useLanguage();
 
   useEffect(() => {
@@ -76,7 +77,7 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
 
   const onAuthStateChanged: FirebaseAuthTypes.AuthListenerCallback = useCallback((user): void => {
     if (!user) {
-      setAuthPersistence(DEFAULT_AUTH);
+      setAuthPersistence((draft) => Object.assign(draft, DEFAULT_AUTH, {isTester: draft.isTester}));
     } else {
       let avatarUrl = user.photoURL || '';
       let signInType: SignInType = 'EMAIL';
@@ -99,15 +100,13 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
           displayName = displayName || user.providerData[0].email;
         }
       }
-      setAuthPersistence({
-        userId: user.uid,
-        displayName,
-        firstName: user.displayName || undefined,
-        avatarUrl,
-        isSignedIn: true,
-        signInType,
-        initializing: false,
-        isTester: false,
+      setAuthPersistence((draft) => {
+        draft.userId = user.uid;
+        draft.displayName = displayName;
+        draft.avatarUrl = avatarUrl;
+        draft.isSignedIn = true;
+        draft.signInType = signInType;
+        draft.initializing = false;
       });
     }
     if (initializing) {
@@ -251,7 +250,7 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
   };
 
   const signOut = async (): Promise<void> => {
-    setAuthPersistence(DEFAULT_AUTH);
+    setAuthPersistence((draft) => Object.assign(draft, DEFAULT_AUTH, {isTester: draft.isTester}));
     if (firebaseAuth().currentUser) {
       await firebaseAuth().signOut();
     }
@@ -304,6 +303,13 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       throw err;
     }
   };
+
+  const setIsTester = async (isTester: boolean): Promise<void> => {
+    setAuthPersistence((draft) => {
+      draft.isTester = isTester;
+    });
+  };
+
   const dispatch = useMemo(
     (): Dispatch => ({
       signInFacebook,
@@ -315,9 +321,10 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       sendPasswordResetEmail,
       sendPhoneNoVerificationCode,
       verifyCode,
+      setIsTester,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+    [auth],
   );
   const authState = useMemo(() => ({...auth, initializing}), [auth, initializing]);
   return (

@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, {useEffect} from 'react';
+import React, {useEffect, useCallback} from 'react';
 import {setJSExceptionHandler, setNativeExceptionHandler} from 'react-native-exception-handler';
 import Promise from 'bluebird';
 import {useTranslation} from 'react-i18next';
-import {handleError, AppError} from '../exceptions';
+import {useNotification} from '@core/hooks/use-notification';
+import {AppError} from '@core/exceptions';
 import {useLoading} from './loading.context';
 
 interface ErrorHandlerProviderProps {
@@ -15,13 +16,26 @@ const ErrorHandlerContext = React.createContext(undefined);
 const ErrorHandlerProvider = (props: ErrorHandlerProviderProps): JSX.Element => {
   const {children} = props;
   const {t} = useTranslation();
+  const {showNotification} = useNotification();
   const [, setLoading] = useLoading();
+
+  const handleError = useCallback(
+    (err: AppError): void => {
+      const {code, messageCode, messageData} = err;
+
+      showNotification({
+        message: messageCode ? t(messageCode, messageData) : code || t('common:unknownError'),
+        type: 'ERROR',
+      });
+    },
+    [t, showNotification],
+  );
 
   useEffect(() => {
     // For most use cases:
     // registering the error handler (maybe u can do this in the index.android.js or index.ios.js)
     setJSExceptionHandler((err: Error, _isFatal) => {
-      handleError(err as AppError, t);
+      handleError(err as AppError);
       // This is your custom global error handler
       // You do stuff like show an error dialog
       // or hit google analytics to track crashes
@@ -48,9 +62,9 @@ const ErrorHandlerProvider = (props: ErrorHandlerProviderProps): JSX.Element => 
       // Warning: when running in "remote debug" mode (JS environment is Chrome browser),
       // this handler is called a second time by Bluebird with a custom "dom-event".
       // We need to filter this case out:
-      handleError(err, t);
+      handleError(err);
     };
-  }, [t, setLoading]);
+  }, [handleError, setLoading]);
 
   return <ErrorHandlerContext.Provider value={undefined}>{children}</ErrorHandlerContext.Provider>;
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import {Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
+import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/contexts';
 import {Card, Alert, ScrollView, Layout} from '@core/components';
 import {
   ActivityIndicatorSample,
@@ -22,6 +23,8 @@ export const ComponentListScreen = (): JSX.Element => {
   const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
   const {t} = useTranslation('');
   const theme = useTheme();
+  const [appTheme] = useAppTheme();
+  const textColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const componentList = [
     {
       title: 'ErrorHandlerSample',
@@ -87,7 +90,7 @@ export const ComponentListScreen = (): JSX.Element => {
             <Card.Title
               title={component.title}
               style={[styles.borderTop, {backgroundColor: theme.colors.primary}]}
-              titleStyle={styles.cardTitleText}
+              titleStyle={{color: textColor}}
             />
             <Card.Content style={styles.cardContent}>{component.element}</Card.Content>
           </Card>

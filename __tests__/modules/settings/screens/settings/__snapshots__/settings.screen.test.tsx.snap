@@ -144,7 +144,9 @@ exports[`opens language picker 1`] = `
                       ],
                     ]
                   }
-                />
+                >
+                  
+                </Text>
                 <Button
                   title="signIn"
                 />
@@ -1030,6 +1032,166 @@ exports[`opens language picker 1`] = `
                   />
                 </View>
               </Modal>
+              <TouchableHighlight
+                descriptionNumberOfLines={2}
+                disabled={true}
+                style={
+                  Array [
+                    false,
+                    Array [
+                      Object {
+                        "padding": 8,
+                      },
+                      Array [
+                        Object {
+                          "padding": 0,
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+                underlayColor="rgba(0, 0, 0, 0.1)"
+              >
+                <View
+                  style={
+                    Object {
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    pointerEvents="box-none"
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "height": 40,
+                          "justifyContent": "center",
+                          "margin": 8,
+                          "width": 40,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      accessibilityElementsHidden={true}
+                      allowFontScaling={false}
+                      importantForAccessibility="no-hide-descendants"
+                      pointerEvents="none"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#000000",
+                            "fontSize": 24,
+                          },
+                          Array [
+                            Object {
+                              "transform": Array [
+                                Object {
+                                  "scaleX": 1,
+                                },
+                              ],
+                            },
+                            Object {
+                              "backgroundColor": "transparent",
+                            },
+                          ],
+                          Object {
+                            "fontFamily": "Material Design Icons",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          Object {},
+                        ]
+                      }
+                    >
+                      󰂡
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "marginVertical": 6,
+                          "paddingLeft": 8,
+                        },
+                        Object {
+                          "flex": 1,
+                          "justifyContent": "center",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#000000",
+                            "fontFamily": "System",
+                            "fontWeight": "400",
+                            "textAlign": "left",
+                          },
+                          Array [
+                            Object {
+                              "fontSize": 16,
+                            },
+                            Object {
+                              "color": "rgba(0, 0, 0, 0.87)",
+                            },
+                            Array [
+                              Object {
+                                "fontWeight": "bold",
+                              },
+                              undefined,
+                            ],
+                          ],
+                        ]
+                      }
+                    >
+                      betaUser
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {},
+                        Object {},
+                        Object {
+                          "display": "flex",
+                          "justifyContent": "center",
+                          "paddingRight": 10,
+                        },
+                      ]
+                    }
+                  >
+                    <Switch
+                      testID="beta-user-switch"
+                      trackColor={
+                        Object {
+                          "false": "",
+                          "true": "#03dac4",
+                        }
+                      }
+                      value={false}
+                    />
+                  </View>
+                </View>
+              </TouchableHighlight>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
               <Text
                 numberOfLines={1}
                 style={
@@ -1555,7 +1717,7 @@ exports[`opens language picker 1`] = `
                         ]
                       }
                     >
-                      0.6.0.5
+                      0.7.0.1
                     </Text>
                   </View>
                 </View>
@@ -2108,7 +2270,9 @@ exports[`opens primary color picker 1`] = `
                       ],
                     ]
                   }
-                />
+                >
+                  
+                </Text>
                 <Button
                   title="signIn"
                 />
@@ -2994,6 +3158,166 @@ exports[`opens primary color picker 1`] = `
                   />
                 </View>
               </Modal>
+              <TouchableHighlight
+                descriptionNumberOfLines={2}
+                disabled={true}
+                style={
+                  Array [
+                    false,
+                    Array [
+                      Object {
+                        "padding": 8,
+                      },
+                      Array [
+                        Object {
+                          "padding": 0,
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+                underlayColor="rgba(0, 0, 0, 0.1)"
+              >
+                <View
+                  style={
+                    Object {
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    pointerEvents="box-none"
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "height": 40,
+                          "justifyContent": "center",
+                          "margin": 8,
+                          "width": 40,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      accessibilityElementsHidden={true}
+                      allowFontScaling={false}
+                      importantForAccessibility="no-hide-descendants"
+                      pointerEvents="none"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#000000",
+                            "fontSize": 24,
+                          },
+                          Array [
+                            Object {
+                              "transform": Array [
+                                Object {
+                                  "scaleX": 1,
+                                },
+                              ],
+                            },
+                            Object {
+                              "backgroundColor": "transparent",
+                            },
+                          ],
+                          Object {
+                            "fontFamily": "Material Design Icons",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          Object {},
+                        ]
+                      }
+                    >
+                      󰂡
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "marginVertical": 6,
+                          "paddingLeft": 8,
+                        },
+                        Object {
+                          "flex": 1,
+                          "justifyContent": "center",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#000000",
+                            "fontFamily": "System",
+                            "fontWeight": "400",
+                            "textAlign": "left",
+                          },
+                          Array [
+                            Object {
+                              "fontSize": 16,
+                            },
+                            Object {
+                              "color": "rgba(0, 0, 0, 0.87)",
+                            },
+                            Array [
+                              Object {
+                                "fontWeight": "bold",
+                              },
+                              undefined,
+                            ],
+                          ],
+                        ]
+                      }
+                    >
+                      betaUser
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {},
+                        Object {},
+                        Object {
+                          "display": "flex",
+                          "justifyContent": "center",
+                          "paddingRight": 10,
+                        },
+                      ]
+                    }
+                  >
+                    <Switch
+                      testID="beta-user-switch"
+                      trackColor={
+                        Object {
+                          "false": "",
+                          "true": "#03dac4",
+                        }
+                      }
+                      value={false}
+                    />
+                  </View>
+                </View>
+              </TouchableHighlight>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
               <Text
                 numberOfLines={1}
                 style={
@@ -3519,7 +3843,7 @@ exports[`opens primary color picker 1`] = `
                         ]
                       }
                     >
-                      0.6.0.5
+                      0.7.0.1
                     </Text>
                   </View>
                 </View>
@@ -4072,7 +4396,9 @@ exports[`renders correctly 1`] = `
                       ],
                     ]
                   }
-                />
+                >
+                  
+                </Text>
                 <Button
                   title="signIn"
                 />
@@ -4958,6 +5284,166 @@ exports[`renders correctly 1`] = `
                   />
                 </View>
               </Modal>
+              <TouchableHighlight
+                descriptionNumberOfLines={2}
+                disabled={true}
+                style={
+                  Array [
+                    false,
+                    Array [
+                      Object {
+                        "padding": 8,
+                      },
+                      Array [
+                        Object {
+                          "padding": 0,
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+                underlayColor="rgba(0, 0, 0, 0.1)"
+              >
+                <View
+                  style={
+                    Object {
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    pointerEvents="box-none"
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "height": 40,
+                          "justifyContent": "center",
+                          "margin": 8,
+                          "width": 40,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      accessibilityElementsHidden={true}
+                      allowFontScaling={false}
+                      importantForAccessibility="no-hide-descendants"
+                      pointerEvents="none"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#000000",
+                            "fontSize": 24,
+                          },
+                          Array [
+                            Object {
+                              "transform": Array [
+                                Object {
+                                  "scaleX": 1,
+                                },
+                              ],
+                            },
+                            Object {
+                              "backgroundColor": "transparent",
+                            },
+                          ],
+                          Object {
+                            "fontFamily": "Material Design Icons",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          Object {},
+                        ]
+                      }
+                    >
+                      󰂡
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "marginVertical": 6,
+                          "paddingLeft": 8,
+                        },
+                        Object {
+                          "flex": 1,
+                          "justifyContent": "center",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#000000",
+                            "fontFamily": "System",
+                            "fontWeight": "400",
+                            "textAlign": "left",
+                          },
+                          Array [
+                            Object {
+                              "fontSize": 16,
+                            },
+                            Object {
+                              "color": "rgba(0, 0, 0, 0.87)",
+                            },
+                            Array [
+                              Object {
+                                "fontWeight": "bold",
+                              },
+                              undefined,
+                            ],
+                          ],
+                        ]
+                      }
+                    >
+                      betaUser
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {},
+                        Object {},
+                        Object {
+                          "display": "flex",
+                          "justifyContent": "center",
+                          "paddingRight": 10,
+                        },
+                      ]
+                    }
+                  >
+                    <Switch
+                      testID="beta-user-switch"
+                      trackColor={
+                        Object {
+                          "false": "",
+                          "true": "#03dac4",
+                        }
+                      }
+                      value={false}
+                    />
+                  </View>
+                </View>
+              </TouchableHighlight>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
               <Text
                 numberOfLines={1}
                 style={
@@ -5483,7 +5969,7 @@ exports[`renders correctly 1`] = `
                         ]
                       }
                     >
-                      0.6.0.5
+                      0.7.0.1
                     </Text>
                   </View>
                 </View>
@@ -6036,7 +6522,9 @@ exports[`uses dark theme 1`] = `
                       ],
                     ]
                   }
-                />
+                >
+                  
+                </Text>
                 <Button
                   title="signIn"
                 />
@@ -6922,6 +7410,166 @@ exports[`uses dark theme 1`] = `
                   />
                 </View>
               </Modal>
+              <TouchableHighlight
+                descriptionNumberOfLines={2}
+                disabled={true}
+                style={
+                  Array [
+                    false,
+                    Array [
+                      Object {
+                        "padding": 8,
+                      },
+                      Array [
+                        Object {
+                          "padding": 0,
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+                underlayColor="rgba(255, 255, 255, 0.16)"
+              >
+                <View
+                  style={
+                    Object {
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    pointerEvents="box-none"
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "height": 40,
+                          "justifyContent": "center",
+                          "margin": 8,
+                          "width": 40,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      accessibilityElementsHidden={true}
+                      allowFontScaling={false}
+                      importantForAccessibility="no-hide-descendants"
+                      pointerEvents="none"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#ffffff",
+                            "fontSize": 24,
+                          },
+                          Array [
+                            Object {
+                              "transform": Array [
+                                Object {
+                                  "scaleX": 1,
+                                },
+                              ],
+                            },
+                            Object {
+                              "backgroundColor": "transparent",
+                            },
+                          ],
+                          Object {
+                            "fontFamily": "Material Design Icons",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          Object {},
+                        ]
+                      }
+                    >
+                      󰂡
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "marginVertical": 6,
+                          "paddingLeft": 8,
+                        },
+                        Object {
+                          "flex": 1,
+                          "justifyContent": "center",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#ffffff",
+                            "fontFamily": "System",
+                            "fontWeight": "400",
+                            "textAlign": "left",
+                          },
+                          Array [
+                            Object {
+                              "fontSize": 16,
+                            },
+                            Object {
+                              "color": "rgba(255, 255, 255, 0.87)",
+                            },
+                            Array [
+                              Object {
+                                "fontWeight": "bold",
+                              },
+                              undefined,
+                            ],
+                          ],
+                        ]
+                      }
+                    >
+                      betaUser
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {},
+                        Object {},
+                        Object {
+                          "display": "flex",
+                          "justifyContent": "center",
+                          "paddingRight": 10,
+                        },
+                      ]
+                    }
+                  >
+                    <Switch
+                      testID="beta-user-switch"
+                      trackColor={
+                        Object {
+                          "false": "",
+                          "true": "#03dac6",
+                        }
+                      }
+                      value={false}
+                    />
+                  </View>
+                </View>
+              </TouchableHighlight>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(255, 255, 255, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
               <Text
                 numberOfLines={1}
                 style={
@@ -7447,7 +8095,7 @@ exports[`uses dark theme 1`] = `
                         ]
                       }
                     >
-                      0.6.0.5
+                      0.7.0.1
                     </Text>
                   </View>
                 </View>
@@ -8000,7 +8648,9 @@ exports[`uses light theme 1`] = `
                       ],
                     ]
                   }
-                />
+                >
+                  
+                </Text>
                 <Button
                   title="signIn"
                 />
@@ -8886,6 +9536,166 @@ exports[`uses light theme 1`] = `
                   />
                 </View>
               </Modal>
+              <TouchableHighlight
+                descriptionNumberOfLines={2}
+                disabled={true}
+                style={
+                  Array [
+                    false,
+                    Array [
+                      Object {
+                        "padding": 8,
+                      },
+                      Array [
+                        Object {
+                          "padding": 0,
+                        },
+                        undefined,
+                      ],
+                    ],
+                  ]
+                }
+                underlayColor="rgba(0, 0, 0, 0.1)"
+              >
+                <View
+                  style={
+                    Object {
+                      "flexDirection": "row",
+                    }
+                  }
+                >
+                  <View
+                    pointerEvents="box-none"
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "height": 40,
+                          "justifyContent": "center",
+                          "margin": 8,
+                          "width": 40,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    <Text
+                      accessibilityElementsHidden={true}
+                      allowFontScaling={false}
+                      importantForAccessibility="no-hide-descendants"
+                      pointerEvents="none"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#000000",
+                            "fontSize": 24,
+                          },
+                          Array [
+                            Object {
+                              "transform": Array [
+                                Object {
+                                  "scaleX": 1,
+                                },
+                              ],
+                            },
+                            Object {
+                              "backgroundColor": "transparent",
+                            },
+                          ],
+                          Object {
+                            "fontFamily": "Material Design Icons",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          Object {},
+                        ]
+                      }
+                    >
+                      󰂡
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "marginVertical": 6,
+                          "paddingLeft": 8,
+                        },
+                        Object {
+                          "flex": 1,
+                          "justifyContent": "center",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#000000",
+                            "fontFamily": "System",
+                            "fontWeight": "400",
+                            "textAlign": "left",
+                          },
+                          Array [
+                            Object {
+                              "fontSize": 16,
+                            },
+                            Object {
+                              "color": "rgba(0, 0, 0, 0.87)",
+                            },
+                            Array [
+                              Object {
+                                "fontWeight": "bold",
+                              },
+                              undefined,
+                            ],
+                          ],
+                        ]
+                      }
+                    >
+                      betaUser
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {},
+                        Object {},
+                        Object {
+                          "display": "flex",
+                          "justifyContent": "center",
+                          "paddingRight": 10,
+                        },
+                      ]
+                    }
+                  >
+                    <Switch
+                      testID="beta-user-switch"
+                      trackColor={
+                        Object {
+                          "false": "",
+                          "true": "#03dac4",
+                        }
+                      }
+                      value={false}
+                    />
+                  </View>
+                </View>
+              </TouchableHighlight>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                      "height": 0.5,
+                    },
+                    undefined,
+                    undefined,
+                  ]
+                }
+              />
               <Text
                 numberOfLines={1}
                 style={
@@ -9411,7 +10221,7 @@ exports[`uses light theme 1`] = `
                         ]
                       }
                     >
-                      0.6.0.5
+                      0.7.0.1
                     </Text>
                   </View>
                 </View>

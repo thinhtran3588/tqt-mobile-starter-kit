@@ -4,16 +4,20 @@ it('update configuration correctly', async () => {
   expect(config()).toMatchInlineSnapshot(`
     Object {
       "android": Object {
+        "codepush": Object {
+          "productionKey": "8vdSCmDvLeSpO6Er2UG6xbv0om3XgXx8Ve95t",
+          "stagingKey": "s3bYcJA6YvaJrDQwuWhbVFi5EV5NXHYwao3Os",
+        },
         "id": "pro.thinhtran.starterkit",
       },
       "appInfo": Object {
         "author": "Thinh Tran",
-        "build": "5",
+        "build": "1",
         "copyright": "Copyright © 2020 by Thinh Tran",
         "name": "TQT Starter Kit",
         "privacyPolicyUrl": "https://thinhtran.pro/tqt-mobile-starter-kit/privacypolicy.html",
         "tosUrl": "https://thinhtran.pro/tqt-mobile-starter-kit/termsandconditions.html",
-        "version": "0.6.0",
+        "version": "0.7.0",
       },
       "dateFormat": "DD/MM/YYYY",
       "defaultCountryCode": "+84",
@@ -26,6 +30,10 @@ it('update configuration correctly', async () => {
         "webClientId": "460761628098-g87fmrh182l040smb00ng28ps0svb5r7.apps.googleusercontent.com",
       },
       "ios": Object {
+        "codepush": Object {
+          "productionKey": "7J9BCHEdnWDkV6k90ch3sr7vZGjpzcpKOVn5F",
+          "stagingKey": "1YgrCzumnKpHTA5a17B_LGHhhA5bGNqEXQfcE",
+        },
         "id": "pro.thinhtran.starterkit",
       },
     }
@@ -44,16 +52,20 @@ it('update configuration correctly', async () => {
   expect(config()).toMatchInlineSnapshot(`
     Object {
       "android": Object {
+        "codepush": Object {
+          "productionKey": "8vdSCmDvLeSpO6Er2UG6xbv0om3XgXx8Ve95t",
+          "stagingKey": "s3bYcJA6YvaJrDQwuWhbVFi5EV5NXHYwao3Os",
+        },
         "id": "pro.thinhtran.test",
       },
       "appInfo": Object {
         "author": "Thinh Tran",
-        "build": "5",
+        "build": "1",
         "copyright": "Copyright © 2020 by Thinh Tran",
         "name": "TQT Starter Kit Test",
         "privacyPolicyUrl": "https://thinhtran.pro/tqt-mobile-starter-kit/privacypolicy.html",
         "tosUrl": "https://thinhtran.pro/tqt-mobile-starter-kit/termsandconditions.html",
-        "version": "0.6.0",
+        "version": "0.7.0",
       },
       "dateFormat": "DD/MM/YYYY",
       "defaultCountryCode": "+84",
@@ -66,6 +78,10 @@ it('update configuration correctly', async () => {
         "webClientId": "460761628098-g87fmrh182l040smb00ng28ps0svb5r7.apps.googleusercontent.com",
       },
       "ios": Object {
+        "codepush": Object {
+          "productionKey": "7J9BCHEdnWDkV6k90ch3sr7vZGjpzcpKOVn5F",
+          "stagingKey": "1YgrCzumnKpHTA5a17B_LGHhhA5bGNqEXQfcE",
+        },
         "id": "pro.thinhtran.test",
       },
     }

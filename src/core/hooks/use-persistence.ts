@@ -1,15 +1,23 @@
 import {storage} from '@core/storages';
-import {useEffect} from 'react';
+import {useEffect, Dispatch, SetStateAction} from 'react';
 
 export const usePersistence = <T>(
   state: T,
-  setState: (newState: T) => void,
+  setState: Dispatch<SetStateAction<T>>,
   key: string,
   needDeserialized: boolean = true,
-): [(state: T) => void] => {
-  const setStatePersistence = (newState: T): void => {
-    setState(newState);
-    storage.set(key, newState);
+): [Dispatch<SetStateAction<T>>] => {
+  const setStatePersistence: Dispatch<SetStateAction<T>> = (newStateOrSetState) => {
+    if (typeof newStateOrSetState === 'function') {
+      setState((prevState) => {
+        const newState = (newStateOrSetState as (prevState: T) => T)(prevState);
+        storage.set(key, newState);
+        return newState;
+      });
+    } else {
+      setState(newStateOrSetState);
+      storage.set(key, newStateOrSetState);
+    }
   };
   useEffect(() => {
     (async () => {

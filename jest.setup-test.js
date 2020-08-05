@@ -103,3 +103,5 @@ jest.mock('react-native-exception-handler', () => ({
   setJSExceptionHandler: jest.fn(),
   setNativeExceptionHandler: jest.fn(),
 }));
+
+jest.mock('react-native-code-push', () => ({sync: jest.fn(), SyncStatus: {}}));
