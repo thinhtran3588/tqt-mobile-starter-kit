@@ -1,5 +1,7 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useCallback} from 'react';
 import {usePersistence} from '@core/hooks/use-persistence';
+import {EVENT_NAME} from '@app/app.constants';
+import {logEvent} from '../analytics';
 
 interface LanguageProviderProps {
   children?: React.ReactNode;
@@ -28,9 +30,18 @@ const LanguageProvider = (props: LanguageProviderProps): JSX.Element => {
   const {children} = props;
   const [language, setLanguage] = useState(DEFAULT_LANGUAGE);
   const [setLanguagePersistence] = usePersistence(language, setLanguage, LANGUAGE_STORAGE_KEY, false);
+
+  const changeLanguage = useCallback(
+    (newLanguage: string) => {
+      setLanguagePersistence(newLanguage);
+      logEvent(EVENT_NAME.CHANGE_LANGUAGE, {language: newLanguage});
+    },
+    [setLanguagePersistence],
+  );
+
   return (
     <LanguageContext.Provider value={language}>
-      <LanguageDispatchContext.Provider value={setLanguagePersistence}>{children}</LanguageDispatchContext.Provider>
+      <LanguageDispatchContext.Provider value={changeLanguage}>{children}</LanguageDispatchContext.Provider>
     </LanguageContext.Provider>
   );
 };

@@ -4,7 +4,7 @@ import {setJSExceptionHandler, setNativeExceptionHandler} from 'react-native-exc
 import Promise from 'bluebird';
 import {useTranslation} from 'react-i18next';
 import {useNotification} from '@core/hooks/use-notification';
-import {AppError} from '@core/exceptions';
+import {AppError, recordError} from '@core/exceptions';
 import {useLoading} from './loading.context';
 
 interface ErrorHandlerProviderProps {
@@ -27,6 +27,8 @@ const ErrorHandlerProvider = (props: ErrorHandlerProviderProps): JSX.Element => 
         message: messageCode ? t(messageCode, messageData) : code || t('common:unknownError'),
         type: 'ERROR',
       });
+
+      recordError(err);
     },
     [t, showNotification],
   );

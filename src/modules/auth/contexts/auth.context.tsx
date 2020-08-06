@@ -8,9 +8,11 @@ import appleAuth, {
 } from '@invertase/react-native-apple-authentication';
 import {usePersistenceImmer} from '@core/hooks/use-persistence';
 import {config} from '@core/config';
-import {AppError} from '@core/exceptions';
+import {AppError, configError} from '@core/exceptions';
 import {useLanguage} from '@core/contexts/language.context';
 import {useImmer} from 'use-immer';
+import {logEvent} from '@app/core/analytics';
+import {EVENT_NAME} from '@app/app.constants';
 
 interface AuthProviderProps {
   children?: React.ReactNode;
@@ -109,6 +111,10 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
         draft.initializing = false;
       });
     }
+
+    // config error
+    configError({userId: user?.uid || ''});
+
     if (initializing) {
       setInitializing(false);
     }
@@ -142,6 +148,7 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
 
       // Sign-in the user with the credential
       await firebaseAuth().signInWithCredential(facebookCredential);
+      logEvent(EVENT_NAME.SIGN_IN_FACEBOOK);
     } catch (err) {
       if (err.code === 'auth/user-disabled') {
         throw new AppError('USER_DISABLED', 'auth:userDisabledError');
@@ -160,6 +167,7 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
 
       // Sign-in the user with the credential
       await firebaseAuth().signInWithCredential(googleCredential);
+      logEvent(EVENT_NAME.SIGN_IN_GOOGLE);
     } catch (err) {
       if (err.code === 'auth/user-disabled') {
         throw new AppError('USER_DISABLED', 'auth:userDisabledError');
@@ -196,6 +204,7 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
 
       // Sign the user in with the credential
       await firebaseAuth().signInWithCredential(appleCredential);
+      logEvent(EVENT_NAME.SIGN_IN_APPLE);
     } catch (err) {
       if (err.code === 'auth/user-disabled') {
         throw new AppError('USER_DISABLED', 'auth:userDisabledError');
@@ -234,6 +243,8 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       const {email, password} = params;
       // Sign the user in with the credential
       await firebaseAuth().signInWithEmailAndPassword(email, password);
+
+      logEvent(EVENT_NAME.SIGN_IN_EMAIL);
     } catch (err) {
       if (err.code === 'auth/user-disabled') {
         throw new AppError('USER_DISABLED', 'auth:userDisabledError');
@@ -265,6 +276,7 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
   const sendPasswordResetEmail = async (email: string): Promise<void> => {
     try {
       await firebaseAuth().sendPasswordResetEmail(email);
+      logEvent(EVENT_NAME.RECOVER_PASSWORD);
     } catch (err) {
       if (err.code === 'auth/user-not-found') {
         return;
@@ -295,6 +307,7 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       if (confirmationResult) {
         await confirmationResult.confirm(verificationCode);
         confirmationResult = undefined;
+        logEvent(EVENT_NAME.SIGN_IN_PHONE_NO);
       }
     } catch (err) {
       if (err.code === 'auth/invalid-verification-code') {

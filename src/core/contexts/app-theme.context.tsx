@@ -1,8 +1,10 @@
 import React, {useContext, useEffect, useMemo, useCallback} from 'react';
 import {useImmer} from 'use-immer';
 import {useColorScheme} from 'react-native';
+import {EVENT_NAME} from '@app/app.constants';
 import {usePersistenceImmer} from '@core/hooks/use-persistence';
 import {Colors} from 'react-native-paper';
+import {logEvent} from '../analytics';
 
 interface AppThemeProviderProps {
   children?: React.ReactNode;
@@ -207,20 +209,30 @@ const AppThemeProvider = (props: AppThemeProviderProps): JSX.Element => {
     (): Dispatch => ({
       setUseSystemTheme: (useSystemTheme) => {
         setAppThemePersistence((draft) => {
+          if (draft.useSystemTheme === useSystemTheme) {
+            return;
+          }
           draft.useSystemTheme = useSystemTheme;
           updateTheme(draft);
         });
       },
       setDarkMode: (dark) => {
         setAppThemePersistence((draft) => {
+          if (draft.darkMode === dark) {
+            return;
+          }
           draft.darkMode = dark;
           updateTheme(draft);
         });
       },
       setPrimaryColor: (primaryColor) => {
         setAppThemePersistence((draft) => {
+          if (draft.primaryColorId === primaryColor) {
+            return;
+          }
           draft.primaryColorId = primaryColor;
           updateTheme(draft);
+          logEvent(EVENT_NAME.CHANGE_PRIMARY_COLOR, {primaryColorId: primaryColor});
         });
       },
     }),

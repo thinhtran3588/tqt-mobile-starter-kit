@@ -105,3 +105,7 @@ jest.mock('react-native-exception-handler', () => ({
 }));
 
 jest.mock('react-native-code-push', () => ({sync: jest.fn(), SyncStatus: {}}));
+
+jest.mock('@react-native-firebase/analytics', () => () => ({}));
+
+jest.mock('@react-native-firebase/crashlytics', () => () => ({}));

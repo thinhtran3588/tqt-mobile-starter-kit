@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
@@ -12,6 +13,7 @@ import {Colors, Icon} from '@core/components';
 import {useAppTheme} from '@core/contexts';
 import {useAuth} from '@auth/contexts';
 import {SCREEN_NAME} from '@app/app.constants';
+import {trackScreen} from './core/analytics';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -76,6 +78,9 @@ const MainTabs = (): JSX.Element => {
 
 export const AppNavigation = (): JSX.Element => {
   const {auth} = useAuth();
+  const routeNameRef = React.useRef();
+  const navigationRef = React.useRef();
+
   const stackItems: StackItem[] = [
     {
       name: SCREEN_NAME.MAIN_TABS,
@@ -100,7 +105,22 @@ export const AppNavigation = (): JSX.Element => {
   ];
 
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      ref={navigationRef as any}
+      onReady={() => {
+        routeNameRef.current = (navigationRef.current as any).getCurrentRoute().name;
+      }}
+      onStateChange={() => {
+        const previousRouteName = routeNameRef.current;
+        const currentRouteName = (navigationRef.current as any).getCurrentRoute().name;
+
+        if (previousRouteName !== currentRouteName) {
+          trackScreen(currentRouteName);
+        }
+
+        // Save the current route name for later comparison
+        routeNameRef.current = currentRouteName;
+      }}>
       <Stack.Navigator initialRouteName={auth.isSignedIn ? SCREEN_NAME.MAIN_TABS : SCREEN_NAME.SIGN_IN}>
         {stackItems.map((stackItem) => (
           <Stack.Screen
