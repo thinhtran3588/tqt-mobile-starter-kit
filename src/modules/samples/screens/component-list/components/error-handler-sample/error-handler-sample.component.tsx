@@ -5,7 +5,7 @@ import {useLoading} from '@core/contexts';
 import {styles} from './error-handler-sample.styles';
 
 export const ErrorHandlerSample = (): JSX.Element => {
-  const [, setLoading] = useLoading();
+  const {setLoading} = useLoading();
   const createError = (): void => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (undefined as any).test();

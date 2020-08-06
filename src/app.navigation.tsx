@@ -35,7 +35,7 @@ interface StackItem {
 const MainTabs = (): JSX.Element => {
   const {t} = useTranslation('common');
   const theme = useTheme();
-  const [appTheme] = useAppTheme();
+  const {appTheme} = useAppTheme();
   const tabItems: TabItem[] = [
     {
       name: SCREEN_NAME.COMPONENT_LIST,
@@ -77,7 +77,7 @@ const MainTabs = (): JSX.Element => {
 };
 
 export const AppNavigation = (): JSX.Element => {
-  const [auth] = useAuth();
+  const {auth} = useAuth();
   const stackItems: StackItem[] = [
     {
       name: SCREEN_NAME.MAIN_TABS,

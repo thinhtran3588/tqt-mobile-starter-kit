@@ -24,9 +24,9 @@ import {AppNavigation} from './app.navigation';
 import {useCheckUpdate} from './core/hooks/use-check-update';
 
 export const BaseApp = (): JSX.Element => {
-  const [appTheme] = useAppTheme();
-  const [language] = useLanguage();
-  const [loading] = useLoading();
+  const {appTheme} = useAppTheme();
+  const {language} = useLanguage();
+  const {loading} = useLoading();
   useCheckUpdate();
 
   const {

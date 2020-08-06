@@ -1,32 +1,37 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useCallback} from 'react';
 
-interface SignInToggleClearFormProviderProps {
+interface ClearSignInFormProviderProps {
   children?: React.ReactNode;
 }
 
-type Dispatch = (SignInToggleClearForm: boolean) => void;
+type Dispatch = () => void;
 
-export const DEFAULT_SIGN_IN_TOGGLE_CLEAR_FORM = false;
+export const DEFAULT_TOGGLE = false;
 
-const SignInToggleClearFormContext = React.createContext(DEFAULT_SIGN_IN_TOGGLE_CLEAR_FORM);
-const SignInToggleClearFormDispatchContext = React.createContext<Dispatch>(undefined as never);
+const ClearSignInFormContext = React.createContext(DEFAULT_TOGGLE);
+const ClearSignInFormDispatchContext = React.createContext<Dispatch>(undefined as never);
 
-const SignInToggleClearFormProvider = (props: SignInToggleClearFormProviderProps): JSX.Element => {
+const ClearSignInFormProvider = (props: ClearSignInFormProviderProps): JSX.Element => {
   const {children} = props;
-  const [SignInToggleClearForm, setSignInToggleClearForm] = useState(DEFAULT_SIGN_IN_TOGGLE_CLEAR_FORM);
+  const [toggle, setToggle] = useState(DEFAULT_TOGGLE);
+
+  const clearSignInForm = useCallback(() => {
+    setToggle((prevValue) => !prevValue);
+  }, []);
+
   return (
-    <SignInToggleClearFormContext.Provider value={SignInToggleClearForm}>
-      <SignInToggleClearFormDispatchContext.Provider value={setSignInToggleClearForm}>
+    <ClearSignInFormContext.Provider value={toggle}>
+      <ClearSignInFormDispatchContext.Provider value={clearSignInForm}>
         {children}
-      </SignInToggleClearFormDispatchContext.Provider>
-    </SignInToggleClearFormContext.Provider>
+      </ClearSignInFormDispatchContext.Provider>
+    </ClearSignInFormContext.Provider>
   );
 };
 
-const useSignInToggleClearForm = (): [boolean, Dispatch] => {
-  const SignInToggleClearForm = useContext(SignInToggleClearFormContext);
-  const setSignInToggleClearForm = useContext(SignInToggleClearFormDispatchContext);
-  return [SignInToggleClearForm, setSignInToggleClearForm];
+const useClearSignInForm = (): {toggleClearSignInForm: boolean; clearSignInForm: Dispatch} => {
+  const toggleClearSignInForm = useContext(ClearSignInFormContext);
+  const clearSignInForm = useContext(ClearSignInFormDispatchContext);
+  return {toggleClearSignInForm, clearSignInForm};
 };
 
-export {SignInToggleClearFormProvider, useSignInToggleClearForm};
+export {ClearSignInFormProvider, useClearSignInForm};

@@ -232,10 +232,10 @@ const AppThemeProvider = (props: AppThemeProviderProps): JSX.Element => {
   );
 };
 
-const useAppTheme = (): [AppThemeState, Dispatch] => {
-  const theme = useContext(AppThemeContext);
+const useAppTheme = (): {appTheme: AppThemeState; dispatch: Dispatch} => {
+  const appTheme = useContext(AppThemeContext);
   const dispatch = useContext(AppThemeDispatchContext);
-  return [theme, dispatch];
+  return {appTheme, dispatch};
 };
 
 export {AppThemeProvider, useAppTheme};

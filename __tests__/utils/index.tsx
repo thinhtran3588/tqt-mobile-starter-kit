@@ -20,7 +20,7 @@ interface Props {
 
 const BaseApp = (props: Props): JSX.Element => {
   const {children} = props;
-  const [appTheme] = useAppTheme();
+  const {appTheme} = useAppTheme();
   const colorScheme = useColorScheme();
   let useDarkTheme = true;
   if (appTheme.useSystemTheme) {

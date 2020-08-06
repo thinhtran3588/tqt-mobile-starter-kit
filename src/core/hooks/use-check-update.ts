@@ -10,8 +10,9 @@ export const useCheckUpdate = (): void => {
   const {
     dispatch: {openConfirmation},
   } = useConfirmation();
-  const [auth] = useAuth();
+  const {auth} = useAuth();
   const {t} = useTranslation();
+
   useEffect(() => {
     let deploymentKey = '';
     if (Platform.OS === 'android') {

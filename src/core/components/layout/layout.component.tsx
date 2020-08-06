@@ -21,7 +21,7 @@ export interface LayoutProps {
 }
 
 export const Layout = (props: LayoutProps): JSX.Element => {
-  const [appTheme] = useAppTheme();
+  const {appTheme} = useAppTheme();
   const navigation = useNavigation();
   const theme = useTheme();
   const {

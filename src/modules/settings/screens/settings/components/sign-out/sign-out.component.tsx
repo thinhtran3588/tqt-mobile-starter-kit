@@ -6,7 +6,10 @@ import {styles} from './sign-out.styles';
 
 export const SignOut = (): JSX.Element => {
   const {t} = useTranslation('settings');
-  const [auth, {signOut}] = useAuth();
+  const {
+    auth,
+    dispatch: {signOut},
+  } = useAuth();
   return (
     <>
       {auth.isSignedIn && (

@@ -23,7 +23,7 @@ export const ComponentListScreen = (): JSX.Element => {
   const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
   const {t} = useTranslation('');
   const theme = useTheme();
-  const [appTheme] = useAppTheme();
+  const {appTheme} = useAppTheme();
   const textColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const componentList = [
     {

@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {View, TextInput, Button} from '@core/components';
 import {useForm} from '@core/hooks';
-import {useAuth, useSignInToggleClearForm} from '@auth/contexts';
+import {useAuth, useClearSignInForm} from '@auth/contexts';
 import {SCREEN_NAME} from '@app/app.constants';
 import {styles} from './email-sign-in.styles';
 
@@ -16,13 +16,14 @@ interface FormData {
 export const EmailSignIn = (): JSX.Element => {
   const {t} = useTranslation('auth');
   const navigation = useNavigation();
-  const [, {signInEmail}] = useAuth();
-  const [toggleClearForm, setToggleClearForm] = useSignInToggleClearForm();
-
-  const initialValues: FormData = {
+  const {
+    dispatch: {signInEmail},
+  } = useAuth();
+  const {toggleClearSignInForm, clearSignInForm} = useClearSignInForm();
+  const [initialValues] = useState<FormData>({
     email: '',
     password: '',
-  };
+  });
   const validationSchema = Yup.object().shape<FormData>({
     email: Yup.string().email(t('common:invalid')).required(t('common:required')),
     password: Yup.string().required(t('common:required')),
@@ -35,7 +36,7 @@ export const EmailSignIn = (): JSX.Element => {
       password,
     });
     if (isSignedIn) {
-      setToggleClearForm(!toggleClearForm);
+      clearSignInForm();
       setTimeout(() => navigation.navigate(SCREEN_NAME.MAIN_TABS), 100);
     }
   };
@@ -48,8 +49,7 @@ export const EmailSignIn = (): JSX.Element => {
 
   useEffect(() => {
     setValues(initialValues, false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [toggleClearForm]);
+  }, [toggleClearSignInForm, setValues, initialValues]);
 
   return (
     <View>

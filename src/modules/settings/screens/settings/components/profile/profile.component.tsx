@@ -9,7 +9,7 @@ import {styles} from './profile.styles';
 export const Profile = (): JSX.Element => {
   const {t} = useTranslation('settings');
   const navigation = useNavigation();
-  const [auth] = useAuth();
+  const {auth} = useAuth();
 
   const signIn = (): void => {
     navigation.navigate(SCREEN_NAME.SIGN_IN);

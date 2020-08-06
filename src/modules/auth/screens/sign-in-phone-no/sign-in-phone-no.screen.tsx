@@ -24,10 +24,12 @@ interface VerificationStatus {
 
 export const SignInPhoneNoScreen = (): JSX.Element => {
   const {t} = useTranslation('auth');
-  const [auth] = useAuth();
   const navigation = useNavigation();
-  const [, {sendPhoneNoVerificationCode, verifyCode}] = useAuth();
-  const [, setLoading] = useLoading();
+  const {
+    auth,
+    dispatch: {sendPhoneNoVerificationCode, verifyCode},
+  } = useAuth();
+  const {setLoading} = useLoading();
   const [verificationStatus, setVerificationStatus] = useImmer<VerificationStatus>({
     codeSent: false,
     waitTime: 0,

@@ -62,7 +62,7 @@ export const useForm = <Values>(
   submitCount: number;
 } => {
   const form = useFormik<Values>(config);
-  const [, setLoading] = useLoading();
+  const {setLoading} = useLoading();
 
   const submitForm = async (): Promise<void> => {
     const validation = await form.validateForm();

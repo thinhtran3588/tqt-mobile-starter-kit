@@ -7,7 +7,7 @@ import {styles} from './button.styles';
 
 const Button = (props: React.ComponentProps<typeof RNButton>): JSX.Element => {
   const {style, labelStyle, uppercase = false, ...other} = props;
-  const [appTheme] = useAppTheme();
+  const {appTheme} = useAppTheme();
   const labelColorStyle: TextStyle =
     other.mode === 'contained'
       ? {

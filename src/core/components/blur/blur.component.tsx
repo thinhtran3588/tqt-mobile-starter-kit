@@ -15,7 +15,7 @@ export type BlueProps = Omit<BlurViewProperties, 'blurType'> & {
     | 'extraDark';
 };
 export const Blur = (props: BlueProps): JSX.Element => {
-  const [appTheme] = useAppTheme();
+  const {appTheme} = useAppTheme();
   const {style, blurType = appTheme.theme, blurAmount = 10, ...other} = props;
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading

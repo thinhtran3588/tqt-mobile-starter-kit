@@ -6,7 +6,10 @@ import {useAuth} from '@auth/contexts';
 
 export const BetaUserSetting = (): JSX.Element => {
   const {t} = useTranslation('settings');
-  const [{isTester}, {setIsTester}] = useAuth();
+  const {
+    auth: {isTester},
+    dispatch: {setIsTester},
+  } = useAuth();
   const {
     dispatch: {openConfirmation},
   } = useConfirmation();

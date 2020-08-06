@@ -8,7 +8,7 @@ const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, 
 export const LanguageSetting = (): JSX.Element => {
   const {t} = useTranslation('settings');
   const [pickerOpen, setPickerOpen] = useState(false);
-  const [language, setLanguage] = useLanguage();
+  const {language, setLanguage} = useLanguage();
   const selectedLang = LANGUAGES.find((lang) => lang.code === language)?.text;
   return (
     <>

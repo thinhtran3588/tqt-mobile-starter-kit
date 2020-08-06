@@ -6,7 +6,7 @@ import {styles} from './card-sample.styles';
 
 export const CardSample = (): JSX.Element => {
   const theme = useTheme();
-  const [appTheme] = useAppTheme();
+  const {appTheme} = useAppTheme();
   const textColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const pressButton = (button: string): void => {
     Alert.alert('Alert', `Press ${button} button`);

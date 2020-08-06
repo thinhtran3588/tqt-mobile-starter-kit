@@ -9,7 +9,7 @@ export interface NotificationParams extends ToastOptions {
 }
 
 export const useNotification = (): {showNotification: (params: NotificationParams) => void} => {
-  const [appTheme] = useAppTheme();
+  const {appTheme} = useAppTheme();
   const showNotification = useCallback(
     (params: NotificationParams): void => {
       const {

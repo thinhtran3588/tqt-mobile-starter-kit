@@ -14,7 +14,9 @@ interface FormData {
 export const ForgotPasswordScreen = (): JSX.Element => {
   const {t} = useTranslation('auth');
   const navigation = useNavigation();
-  const [, {sendPasswordResetEmail}] = useAuth();
+  const {
+    dispatch: {sendPasswordResetEmail},
+  } = useAuth();
   const {showNotification} = useNotification();
 
   const initialValues: FormData = {

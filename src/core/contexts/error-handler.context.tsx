@@ -17,7 +17,7 @@ const ErrorHandlerProvider = (props: ErrorHandlerProviderProps): JSX.Element => 
   const {children} = props;
   const {t} = useTranslation();
   const {showNotification} = useNotification();
-  const [, setLoading] = useLoading();
+  const {setLoading} = useLoading();
 
   const handleError = useCallback(
     (err: AppError): void => {

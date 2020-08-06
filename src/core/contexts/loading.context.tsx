@@ -13,18 +13,18 @@ const LoadingDispatchContext = React.createContext<Dispatch>(undefined as never)
 
 const LoadingProvider = (props: LoadingProviderProps): JSX.Element => {
   const {children} = props;
-  const [Loading, setLoading] = useState(DEFAULT_LOADING);
+  const [loading, setLoading] = useState(DEFAULT_LOADING);
   return (
-    <LoadingContext.Provider value={Loading}>
+    <LoadingContext.Provider value={loading}>
       <LoadingDispatchContext.Provider value={setLoading}>{children}</LoadingDispatchContext.Provider>
     </LoadingContext.Provider>
   );
 };
 
-const useLoading = (): [boolean, Dispatch] => {
+const useLoading = (): {loading: boolean; setLoading: Dispatch} => {
   const loading = useContext(LoadingContext);
   const setLoading = useContext(LoadingDispatchContext);
-  return [loading, setLoading];
+  return {loading, setLoading};
 };
 
 export {LoadingProvider, useLoading};

@@ -11,8 +11,12 @@ export const ThemeSetting = (): JSX.Element => {
   const {t} = useTranslation('settings');
   const [colorPickerOpen, setColorPickerOpen] = useState(false);
   const theme = useTheme();
-  const [appTheme, {setDarkMode, setUseSystemTheme, setPrimaryColor}] = useAppTheme();
+  const {
+    appTheme,
+    dispatch: {setDarkMode, setUseSystemTheme, setPrimaryColor},
+  } = useAppTheme();
   const selectedColor = COLORS.find((c) => c.id === appTheme.primaryColorId)?.text;
+
   return (
     <View>
       <ListItem

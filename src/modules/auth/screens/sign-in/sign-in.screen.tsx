@@ -8,15 +8,15 @@ import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/
 import {useDimensions} from '@core/hooks';
 import {SCREEN_NAME} from '@app/app.constants';
 import Logo from '@assets/images/app-logo.png';
+import {ClearSignInFormProvider} from '@auth/contexts';
 import {SocialSignIn, LanguageSetting, EmailSignIn, EmailSignUp} from './components';
 import {styles} from './sign-in.styles';
-import {SignInToggleClearFormProvider} from '../../contexts';
 
 export const SignInScreen = (): JSX.Element => {
   const {t} = useTranslation('auth');
   const navigation = useNavigation();
   const theme = useTheme();
-  const [appTheme] = useAppTheme();
+  const {appTheme} = useAppTheme();
   const backgroundColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const [tabIndex, setTabIndex] = React.useState(0);
   const [routes] = React.useState([
@@ -33,7 +33,7 @@ export const SignInScreen = (): JSX.Element => {
   });
 
   return (
-    <SignInToggleClearFormProvider>
+    <ClearSignInFormProvider>
       <Layout>
         <ScrollView contentContainerStyle={styles.container}>
           <Image style={[styles.logo, {marginTop}]} source={Logo} />
@@ -57,6 +57,6 @@ export const SignInScreen = (): JSX.Element => {
           <LanguageSetting />
         </ScrollView>
       </Layout>
-    </SignInToggleClearFormProvider>
+    </ClearSignInFormProvider>
   );
 };

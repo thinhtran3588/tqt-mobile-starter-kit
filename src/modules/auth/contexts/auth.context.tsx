@@ -66,10 +66,10 @@ let confirmationResult: FirebaseAuthTypes.ConfirmationResult | undefined;
 
 const AuthProvider = (props: AuthProviderProps): JSX.Element => {
   const {children} = props;
+  const {language} = useLanguage();
   const [auth, setAuth] = useImmer(DEFAULT_AUTH);
   const [initializing, setInitializing] = useState(true);
   const [setAuthPersistence] = usePersistenceImmer(auth, setAuth, AUTH_KEY);
-  const [language] = useLanguage();
 
   useEffect(() => {
     firebaseAuth().languageCode = language;
@@ -334,10 +334,10 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
   );
 };
 
-const useAuth = (): [AuthState, Dispatch] => {
+const useAuth = (): {auth: AuthState; dispatch: Dispatch} => {
   const auth = useContext(AuthContext);
   const dispatch = useContext(AuthDispatchContext);
-  return [auth, dispatch];
+  return {auth, dispatch};
 };
 
 export {AuthProvider, useAuth};

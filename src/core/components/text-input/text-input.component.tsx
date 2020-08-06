@@ -12,7 +12,7 @@ export type TextInputProps = React.ComponentProps<typeof RNTextInput> & {
 
 export const TextInput = (props: TextInputProps): JSX.Element => {
   const {style, secureTextEntry, error, errorMessage, ...other} = props;
-  const [appTheme] = useAppTheme();
+  const {appTheme} = useAppTheme();
   const backgroundColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const [showPassword, setShowPassword] = useState(false);
   return (

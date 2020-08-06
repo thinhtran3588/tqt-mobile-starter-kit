@@ -5,7 +5,7 @@ interface LanguageProviderProps {
   children?: React.ReactNode;
 }
 
-type Dispatch = (Language: string) => void;
+type Dispatch = (language: string) => void;
 
 export const DEFAULT_LANGUAGE = 'en';
 const LANGUAGE_STORAGE_KEY = 'LANGUAGE';
@@ -35,10 +35,10 @@ const LanguageProvider = (props: LanguageProviderProps): JSX.Element => {
   );
 };
 
-const useLanguage = (): [string, Dispatch] => {
-  const Language = useContext(LanguageContext);
+const useLanguage = (): {language: string; setLanguage: Dispatch} => {
+  const language = useContext(LanguageContext);
   const setLanguage = useContext(LanguageDispatchContext);
-  return [Language, setLanguage];
+  return {language, setLanguage};
 };
 
 export {LanguageProvider, useLanguage};

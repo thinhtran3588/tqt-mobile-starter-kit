@@ -23,7 +23,7 @@ export interface ConfirmationProps extends ModalProps {
 export const Confirmation = (props: ConfirmationProps): JSX.Element => {
   const {confirmation, animationType = 'slide', closeConfirmation, ...other} = props;
   const theme = useTheme();
-  const [appTheme] = useAppTheme();
+  const {appTheme} = useAppTheme();
   return (
     <Modal
       visible={confirmation.open}
