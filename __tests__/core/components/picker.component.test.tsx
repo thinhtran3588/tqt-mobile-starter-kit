@@ -87,7 +87,7 @@ it('opens picker and pick a value', async () => {
   expect(RNPicker.show).toHaveBeenCalled();
 
   act(() => {
-    (RNPicker.init as jest.Mock).mock.calls[0][0].onPickerConfirm(['Cyan']);
+    ((RNPicker.init as unknown) as jest.Mock).mock.calls[0][0].onPickerConfirm(['Cyan']);
   });
   expect(RNPicker.hide).toHaveBeenCalled();
   expect(setPrimaryColor).toHaveBeenCalledWith('CYAN');
@@ -125,7 +125,7 @@ it('opens picker and do nothing if pick the same value', async () => {
   expect(RNPicker.show).toHaveBeenCalled();
 
   act(() => {
-    (RNPicker.init as jest.Mock).mock.calls[0][0].onPickerConfirm(['Amber']);
+    ((RNPicker.init as unknown) as jest.Mock).mock.calls[0][0].onPickerConfirm(['Amber']);
   });
   expect(RNPicker.hide).toHaveBeenCalled();
   expect(setPrimaryColor).not.toHaveBeenCalled();
