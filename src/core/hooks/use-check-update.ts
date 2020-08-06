@@ -38,6 +38,5 @@ export const useCheckUpdate = (): void => {
         ],
       });
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [auth.isTester]);
+  }, [auth.isTester, openConfirmation, t]);
 };

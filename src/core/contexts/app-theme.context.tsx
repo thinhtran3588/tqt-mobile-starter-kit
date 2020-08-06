@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useMemo} from 'react';
+import React, {useContext, useEffect, useMemo, useCallback} from 'react';
 import {useImmer} from 'use-immer';
 import {useColorScheme} from 'react-native';
 import {usePersistenceImmer} from '@core/hooks/use-persistence';
@@ -175,31 +175,33 @@ const AppThemeProvider = (props: AppThemeProviderProps): JSX.Element => {
   const [setAppThemePersistence] = usePersistenceImmer(appTheme, setAppTheme, APP_THEME_KEY);
   const colorScheme = useColorScheme();
 
-  const updateTheme = (draft: AppThemeState): void => {
-    if (draft.useSystemTheme) {
-      draft.theme = colorScheme === 'dark' ? 'dark' : 'light';
-    } else {
-      draft.theme = draft.darkMode ? 'dark' : 'light';
-    }
-    if (draft.theme === 'light') {
-      draft.colors.success = COLORS_LOOKUP.GREEN.color;
-      draft.colors.warning = COLORS_LOOKUP.ORANGE.color;
-      draft.colors.error = COLORS_LOOKUP.RED.color;
-      draft.colors.info = DARK_BACKGROUND_COLOR;
-    } else {
-      draft.colors.success = COLORS_LOOKUP.GREEN.darkColor;
-      draft.colors.warning = COLORS_LOOKUP.ORANGE.darkColor;
-      draft.colors.error = COLORS_LOOKUP.RED.darkColor;
-      draft.colors.info = LIGHT_BACKGROUND_COLOR;
-    }
-  };
+  const updateTheme = useCallback(
+    (draft: AppThemeState): void => {
+      if (draft.useSystemTheme) {
+        draft.theme = colorScheme === 'dark' ? 'dark' : 'light';
+      } else {
+        draft.theme = draft.darkMode ? 'dark' : 'light';
+      }
+      if (draft.theme === 'light') {
+        draft.colors.success = COLORS_LOOKUP.GREEN.color;
+        draft.colors.warning = COLORS_LOOKUP.ORANGE.color;
+        draft.colors.error = COLORS_LOOKUP.RED.color;
+        draft.colors.info = DARK_BACKGROUND_COLOR;
+      } else {
+        draft.colors.success = COLORS_LOOKUP.GREEN.darkColor;
+        draft.colors.warning = COLORS_LOOKUP.ORANGE.darkColor;
+        draft.colors.error = COLORS_LOOKUP.RED.darkColor;
+        draft.colors.info = LIGHT_BACKGROUND_COLOR;
+      }
+    },
+    [colorScheme],
+  );
 
   useEffect(() => {
     setAppThemePersistence((draft) => {
       updateTheme(draft);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [colorScheme]);
+  }, [colorScheme, setAppThemePersistence, updateTheme]);
 
   const dispatch = useMemo(
     (): Dispatch => ({
@@ -222,8 +224,7 @@ const AppThemeProvider = (props: AppThemeProviderProps): JSX.Element => {
         });
       },
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+    [setAppThemePersistence, updateTheme],
   );
   return (
     <AppThemeContext.Provider value={appTheme}>

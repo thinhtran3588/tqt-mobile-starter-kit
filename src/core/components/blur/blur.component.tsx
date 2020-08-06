@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import {BlurViewProperties, BlurView} from '@react-native-community/blur';
 import {useAppTheme} from '@core/contexts';
@@ -17,8 +18,5 @@ export type BlueProps = Omit<BlurViewProperties, 'blurType'> & {
 export const Blur = (props: BlueProps): JSX.Element => {
   const {appTheme} = useAppTheme();
   const {style, blurType = appTheme.theme, blurAmount = 10, ...other} = props;
-  return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <BlurView style={[styles.blur, style]} {...other} blurType={blurType} blurAmount={blurAmount} />
-  );
+  return <BlurView style={[styles.blur, style]} {...other} blurType={blurType} blurAmount={blurAmount} />;
 };

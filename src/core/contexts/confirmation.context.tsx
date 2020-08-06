@@ -53,8 +53,7 @@ const ConfirmationProvider = (props: ConfirmationProviderProps): JSX.Element => 
         setConfirmation((draft) => Object.assign(draft, DEFAULT_CONFIRMATION));
       },
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+    [setConfirmation],
   );
   return (
     <ConfirmationContext.Provider value={confirmation}>

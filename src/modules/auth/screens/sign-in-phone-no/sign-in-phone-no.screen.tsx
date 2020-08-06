@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useImmer} from 'use-immer';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
@@ -35,7 +35,7 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
     waitTime: 0,
     phoneNo: '',
   });
-  let intervalCountSendTime: NodeJS.Timeout;
+  const [intervalCountSendTime, setIntervalCountSendTime] = useState<NodeJS.Timeout>();
 
   useEffect(() => {
     if (auth.isSignedIn) {
@@ -50,8 +50,7 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
         clearInterval(intervalCountSendTime);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [intervalCountSendTime]);
 
   const initialValues: FormData = {
     countryCode: config().defaultCountryCode,
@@ -77,18 +76,22 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
       draft.phoneNo = phoneNo;
     });
 
-    intervalCountSendTime = setInterval(() => {
-      setVerificationStatus((draft) => {
-        if (draft.waitTime > 0) {
-          draft.waitTime -= 1;
-          return;
-        }
-        if (draft.waitTime < 0) {
-          draft.waitTime = 0;
-        }
-        clearInterval(intervalCountSendTime);
-      });
-    }, 1000);
+    setIntervalCountSendTime(
+      setInterval(() => {
+        setVerificationStatus((draft) => {
+          if (draft.waitTime > 0) {
+            draft.waitTime -= 1;
+            return;
+          }
+          if (draft.waitTime < 0) {
+            draft.waitTime = 0;
+          }
+          if (intervalCountSendTime) {
+            clearInterval(intervalCountSendTime);
+          }
+        });
+      }, 1000),
+    );
   };
 
   const {handleChange, handleBlur, submitForm, values, errors} = useForm<FormData>({

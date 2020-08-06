@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-/*  eslint-disable no-console, no-control-regex  */
+/* eslint-disable no-console, no-control-regex */
 import fs from 'fs';
 import path from 'path';
 import {config, updateConfig} from './src/core/config';

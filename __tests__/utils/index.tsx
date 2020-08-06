@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // https://testing-library.com/docs/native-testing-library/setup
 import React, {ReactNode, ReactElement} from 'react';
 import {useColorScheme} from 'react-native';
@@ -57,7 +58,6 @@ const AllTheProviders = (props: Props): JSX.Element => {
 };
 
 const customRender = (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ui: ReactElement<any>,
   options?: Omit<RenderOptions, 'queries'>,
   useWrapper: boolean = true,

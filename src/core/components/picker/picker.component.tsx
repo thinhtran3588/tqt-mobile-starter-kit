@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, {forwardRef} from 'react';
 import RNPicker, {PickerOptions} from 'react-native-picker';
 import colorConvert from 'color-convert';
@@ -19,7 +20,6 @@ export interface PickerProps {
   onChangeValue: (value: string) => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Picker = forwardRef((props: PickerProps, ref: any) => {
   const {t} = useTranslation('common');
   const theme = useTheme();

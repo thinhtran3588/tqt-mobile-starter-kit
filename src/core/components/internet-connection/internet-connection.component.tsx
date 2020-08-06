@@ -18,8 +18,7 @@ export const InternetConnection = (): JSX.Element => {
       duration: 500,
       useNativeDriver: false,
     }).start();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isConnected]);
+  }, [isConnected, slideAnim]);
 
   return (
     <Animated.View style={[styles.container, {backgroundColor: theme.colors.error, height: slideAnim}]}>

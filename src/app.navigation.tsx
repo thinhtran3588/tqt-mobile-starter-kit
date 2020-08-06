@@ -22,14 +22,12 @@ interface TabItem {
   icon: string;
   iconFocused: string;
   tabBarColor: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  component: React.FunctionComponent<any>;
+  component: React.FunctionComponent;
 }
 
 interface StackItem {
   name: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  component: React.FunctionComponent<any>;
+  component: React.FunctionComponent;
 }
 
 const MainTabs = (): JSX.Element => {
