@@ -52,12 +52,24 @@ export const setEnv = async (environment: string = 'production'): Promise<void> 
       des: path.resolve(__dirname, `android/app/google-services.json`),
     },
     {
+      src: path.resolve(__dirname, `${envFolder}/sentry.properties`),
+      des: path.resolve(__dirname, `android/sentry.properties`),
+    },
+    {
       src: path.resolve(__dirname, `${envFolder}/ios/GoogleService-Info.plist`),
       des: path.resolve(__dirname, `ios/GoogleService-Info.plist`),
     },
     {
+      src: path.resolve(__dirname, `${envFolder}/sentry.properties`),
+      des: path.resolve(__dirname, `ios/sentry.properties`),
+    },
+    {
       src: path.resolve(__dirname, `${envFolder}/config.override.json`),
       des: path.resolve(__dirname, `src/core/config/config.override.json`),
+    },
+    {
+      src: path.resolve(__dirname, `${envFolder}/.env`),
+      des: path.resolve(__dirname, `.env`),
     },
   ];
   copyTasks.forEach((copyTask) => {

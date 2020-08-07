@@ -1,4 +1,4 @@
-import crashlytics from '@react-native-firebase/crashlytics';
+import * as Sentry from '@sentry/react-native';
 
 export interface ConfigErrorParams {
   userId: string;
@@ -6,11 +6,12 @@ export interface ConfigErrorParams {
 
 export const configError = (params: ConfigErrorParams): void => {
   const {userId} = params;
-  crashlytics().setUserId(userId);
+  Sentry.setUser({id: userId});
 };
 
 export const recordError = async (err: Error): Promise<void> => {
-  crashlytics().recordError(err);
+  Sentry.captureException(err);
+
   // eslint-disable-next-line no-console
   console.log('record err', err);
 };

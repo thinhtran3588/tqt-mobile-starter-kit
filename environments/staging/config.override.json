@@ -22,5 +22,8 @@
       "stagingKey": "TyAgbr_3mpaNASn-ghp3yl_tno6glyt-DB5gu-TbcHMm"
     },
     "id": "pro.thinhtran.starterkitstaging"
+  },
+  "sentry": {
+    "dns": "https://00262f19375e49c8abb8fae8117c4855@o430974.ingest.sentry.io/5380804"
   }
 }

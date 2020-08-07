@@ -104,8 +104,14 @@ jest.mock('react-native-exception-handler', () => ({
   setNativeExceptionHandler: jest.fn(),
 }));
 
-jest.mock('react-native-code-push', () => ({sync: jest.fn(), SyncStatus: {}}));
+jest.mock('react-native-code-push', () => ({
+  sync: jest.fn(),
+  SyncStatus: {},
+}));
 
 jest.mock('@react-native-firebase/analytics', () => () => ({}));
 
-jest.mock('@react-native-firebase/crashlytics', () => () => ({}));
+jest.mock('@sentry/react-native', () => ({
+  setUser: jest.fn(),
+  captureException: jest.fn(),
+}));

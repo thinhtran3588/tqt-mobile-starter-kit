@@ -71,3 +71,5 @@ googlePlaySecretKey.json
 .env.default
 google-services.json
 GoogleService-Info.plist
+sentry.properties
+.env

@@ -31,5 +31,8 @@
       "productionKey": "",
       "stagingKey": ""
     }
+  },
+  "sentry": {
+    "dns": ""
   }
 }

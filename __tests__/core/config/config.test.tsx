@@ -36,6 +36,9 @@ it('update configuration correctly', async () => {
         },
         "id": "pro.thinhtran.starterkit",
       },
+      "sentry": Object {
+        "dns": "https://fb6b09b4e69340159611ffd2563898c6@o430974.ingest.sentry.io/5380662",
+      },
     }
   `);
   updateConfig({
@@ -83,6 +86,9 @@ it('update configuration correctly', async () => {
           "stagingKey": "1YgrCzumnKpHTA5a17B_LGHhhA5bGNqEXQfcE",
         },
         "id": "pro.thinhtran.test",
+      },
+      "sentry": Object {
+        "dns": "https://fb6b09b4e69340159611ffd2563898c6@o430974.ingest.sentry.io/5380662",
       },
     }
   `);

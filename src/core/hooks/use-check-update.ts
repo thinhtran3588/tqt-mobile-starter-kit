@@ -2,6 +2,7 @@ import {useEffect} from 'react';
 import {Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import codepush from 'react-native-code-push';
+import * as Sentry from '@sentry/react-native';
 import {config} from '@core/config';
 import {useAuth} from '@auth/contexts';
 import {useConfirmation} from '@core/contexts/confirmation.context';
@@ -37,6 +38,11 @@ export const useCheckUpdate = (): void => {
           },
         ],
       });
+    });
+    codepush.getUpdateMetadata().then((update) => {
+      if (update) {
+        Sentry.setRelease(`${update.appVersion}-codepush:${update.label}`);
+      }
     });
   }, [auth.isTester, openConfirmation, t]);
 };

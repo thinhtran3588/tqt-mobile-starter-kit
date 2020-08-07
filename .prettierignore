@@ -4,3 +4,4 @@ coverage
 fastlane-credentials
 loading.json
 .vscode
+build

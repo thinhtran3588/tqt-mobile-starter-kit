@@ -78,8 +78,11 @@ jobs:
           \cp fastlane-credentials/android/fastlane/googlePlaySecretKey.json android/fastlane/googlePlaySecretKey.json
           \cp fastlane-credentials/android/keystore.properties android/keystore.properties
           \cp fastlane-credentials/tqt-mobile-starter-kit/production/android/app/google-services.json android/app/google-services.json
+          \cp fastlane-credentials/tqt-mobile-starter-kit/production/sentry.properties android/sentry.properties
           \cp fastlane-credentials/ios/.env.default ios/.env.default
           \cp fastlane-credentials/tqt-mobile-starter-kit/production/ios/GoogleService-Info.plist ios/GoogleService-Info.plist
+          \cp fastlane-credentials/tqt-mobile-starter-kit/production/sentry.properties ios/sentry.properties
+          \cp fastlane-credentials/tqt-mobile-starter-kit/production/.env .env
 
       - name: Restore package
         run: |
@@ -91,6 +94,14 @@ jobs:
       - name: Update build number
         run: |
           yarn update-build ${GITHUB_RUN_NUMBER}
+
+      - name: Push to Codepush & Sentry
+        run: |
+          yarn codepush-login
+          yarn codepush-android
+          yarn codepush-android-sentry
+          yarn codepush-ios
+          yarn codepush-ios-sentry
 
       - name: Build & publish to Testflight
         run: |
