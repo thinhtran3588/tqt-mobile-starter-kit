@@ -80,6 +80,7 @@ jobs:
           \cp fastlane-credentials/tqt-mobile-starter-kit/production/android/app/google-services.json android/app/google-services.json
           \cp fastlane-credentials/ios/.env.default ios/.env.default
           \cp fastlane-credentials/tqt-mobile-starter-kit/production/ios/GoogleService-Info.plist ios/GoogleService-Info.plist
+          \cp fastlane-credentials/tqt-mobile-starter-kit/production/.env .env
 
       - name: Restore package
         run: |
