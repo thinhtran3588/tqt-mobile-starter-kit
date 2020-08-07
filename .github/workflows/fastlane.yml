@@ -97,7 +97,7 @@ jobs:
 
       - name: Push to Codepush & Sentry
         run: |
-          run npm install -g appcenter-cli
+          npm install -g appcenter-cli
           yarn codepush-login
           yarn codepush-android
           yarn codepush-android-sentry
