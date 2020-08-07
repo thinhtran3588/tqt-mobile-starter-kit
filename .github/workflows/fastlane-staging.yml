@@ -78,8 +78,11 @@ jobs:
           \cp fastlane-credentials/android/fastlane/googlePlaySecretKey.json android/fastlane/googlePlaySecretKey.json
           \cp fastlane-credentials/android/keystore.properties android/keystore.properties
           \cp fastlane-credentials/tqt-mobile-starter-kit/staging/android/app/google-services.json android/app/google-services.json
+          \cp fastlane-credentials/tqt-mobile-starter-kit/staging/sentry.properties android/sentry.properties
           \cp fastlane-credentials/ios/.env.default ios/.env.default
           \cp fastlane-credentials/tqt-mobile-starter-kit/staging/ios/GoogleService-Info.plist ios/GoogleService-Info.plist
+          \cp fastlane-credentials/tqt-mobile-starter-kit/staging/sentry.properties ios/sentry.properties
+          \cp fastlane-credentials/tqt-mobile-starter-kit/staging/.env .env
 
       - name: Restore package
         run: |
@@ -109,6 +112,15 @@ jobs:
         with:
           name: app-release-staging
           path: android/app/build/outputs/apk/release/app-release.apk
+
+      - name: Push to Codepush & Sentry
+        run: |
+          npm install -g appcenter-cli
+          yarn codepush-login
+          yarn codepush-android
+          yarn codepush-android-sentry
+          yarn codepush-ios
+          yarn codepush-ios-sentry
 
       - name: Slack Notification Finish
         uses: act10ns/slack@v1

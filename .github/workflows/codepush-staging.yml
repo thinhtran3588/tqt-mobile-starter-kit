@@ -1,12 +1,12 @@
-name: CI-Fastlane
+name: CI-Codepush-Staging
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the fastlane branch
 on:
   push:
-    branches: [fastlane]
+    branches: [codepush-staging]
   pull_request:
-    branches: [fastlane]
+    branches: [codepush-staging]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -77,12 +77,12 @@ jobs:
           \cp fastlane-credentials/android/app/mobile.keystore android/app/mobile.keystore
           \cp fastlane-credentials/android/fastlane/googlePlaySecretKey.json android/fastlane/googlePlaySecretKey.json
           \cp fastlane-credentials/android/keystore.properties android/keystore.properties
-          \cp fastlane-credentials/tqt-mobile-starter-kit/production/android/app/google-services.json android/app/google-services.json
-          \cp fastlane-credentials/tqt-mobile-starter-kit/production/sentry.properties android/sentry.properties
+          \cp fastlane-credentials/tqt-mobile-starter-kit/staging/android/app/google-services.json android/app/google-services.json
+          \cp fastlane-credentials/tqt-mobile-starter-kit/staging/sentry.properties android/sentry.properties
           \cp fastlane-credentials/ios/.env.default ios/.env.default
-          \cp fastlane-credentials/tqt-mobile-starter-kit/production/ios/GoogleService-Info.plist ios/GoogleService-Info.plist
-          \cp fastlane-credentials/tqt-mobile-starter-kit/production/sentry.properties ios/sentry.properties
-          \cp fastlane-credentials/tqt-mobile-starter-kit/production/.env .env
+          \cp fastlane-credentials/tqt-mobile-starter-kit/staging/ios/GoogleService-Info.plist ios/GoogleService-Info.plist
+          \cp fastlane-credentials/tqt-mobile-starter-kit/staging/sentry.properties ios/sentry.properties
+          \cp fastlane-credentials/tqt-mobile-starter-kit/staging/.env .env
 
       - name: Restore package
         run: |
@@ -95,13 +95,13 @@ jobs:
         run: |
           yarn update-build ${GITHUB_RUN_NUMBER}
 
+      - name: Switch env to Staging
+        run: |
+          yarn env staging
+
       - name: Build & publish to Testflight
         run: |
           yarn ios-testflight
-
-      - name: Build & publish to Alpha channel
-        run: |
-          yarn android-alpha
 
       - name: Build APK
         run: |
@@ -110,7 +110,7 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
-          name: app-release
+          name: app-release-staging
           path: android/app/build/outputs/apk/release/app-release.apk
 
       - name: Push to Codepush & Sentry

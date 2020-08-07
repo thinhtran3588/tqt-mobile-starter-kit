@@ -1,12 +1,12 @@
-name: CI-Fastlane
+name: CI-Codepush
 
 # Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the fastlane branch
+# events but only for the codepush branch
 on:
   push:
-    branches: [fastlane]
+    branches: [codepush]
   pull_request:
-    branches: [fastlane]
+    branches: [codepush]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -94,24 +94,6 @@ jobs:
       - name: Update build number
         run: |
           yarn update-build ${GITHUB_RUN_NUMBER}
-
-      - name: Build & publish to Testflight
-        run: |
-          yarn ios-testflight
-
-      - name: Build & publish to Alpha channel
-        run: |
-          yarn android-alpha
-
-      - name: Build APK
-        run: |
-          yarn android-build-apk
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-release
-          path: android/app/build/outputs/apk/release/app-release.apk
 
       - name: Push to Codepush & Sentry
         run: |
