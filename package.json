@@ -95,7 +95,7 @@
     "codepush-history": "source '.env' && echo Android && echo Staging && appcenter codepush deployment history Staging -a $CODE_PUSH_ANDROID_APP_ID && echo Production && appcenter codepush deployment history Production -a $CODE_PUSH_ANDROID_APP_ID && echo iOS && echo Staging && appcenter codepush deployment history Staging -a $CODE_PUSH_IOS_APP_ID && echo Production && appcenter codepush deployment history Production -a $CODE_PUSH_IOS_APP_ID",
     "codepush-ios": "source '.env' && appcenter codepush release-react --sourcemap-output --app $CODE_PUSH_IOS_APP_ID --output-dir ./build --description \"${GITHUB_WORKFLOW}-${GITHUB_RUN_NUMBER}\"",
     "codepush-ios-sentry": "source '.env' && export SENTRY_PROPERTIES=ios/sentry.properties && sentry-cli react-native appcenter $CODE_PUSH_IOS_APP_ID ios ./build/CodePush --dist \"${GITHUB_WORKFLOW}-${GITHUB_RUN_NUMBER}\"",
-    "codepush-ios-production": "source '.env' && appcenter codepush promote -a CODE_PUSH_IOS_APP_ID -s Staging -d Production",
+    "codepush-ios-production": "source '.env' && appcenter codepush promote -a $CODE_PUSH_IOS_APP_ID -s Staging -d Production",
     "codepush-login": "source '.env' && appcenter login --token $CODEPUSH_TOKEN",
     "env": "ts-node job.ts env",
     "ios": "react-native run-ios",

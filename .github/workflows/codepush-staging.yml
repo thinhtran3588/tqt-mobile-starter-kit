@@ -99,20 +99,6 @@ jobs:
         run: |
           yarn env staging
 
-      - name: Build & publish to Testflight
-        run: |
-          yarn ios-testflight
-
-      - name: Build APK
-        run: |
-          yarn android-build-apk
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-release-staging
-          path: android/app/build/outputs/apk/release/app-release.apk
-
       - name: Push to Codepush & Sentry
         run: |
           npm install -g appcenter-cli
