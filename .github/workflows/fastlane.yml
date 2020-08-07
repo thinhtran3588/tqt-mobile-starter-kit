@@ -88,9 +88,6 @@ jobs:
         run: |
           yarn
 
-      - name: Validate source code
-        run: yarn validate
-
       - name: Update build number
         run: |
           yarn update-build ${GITHUB_RUN_NUMBER}
@@ -103,6 +100,9 @@ jobs:
           yarn codepush-android-sentry
           yarn codepush-ios
           yarn codepush-ios-sentry
+
+      - name: Validate source code
+        run: yarn validate
 
       - name: Build & publish to Testflight
         run: |
