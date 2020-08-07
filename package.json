@@ -89,11 +89,11 @@
     "android-hashkey": "keytool -exportcert -alias mobile -keystore android/app/mobile.keystore | openssl sha1 -binary | openssl base64",
     "android-release": "react-native run-android --variant=release",
     "android-signing": "cd android && ./gradlew signingReport && cd ..",
-    "codepush-android": "source '.env' && appcenter codepush release-react --sourcemap-output --app $CODE_PUSH_ANDROID_APP_ID --output-dir ./build",
+    "codepush-android": "source '.env' && appcenter codepush release-react --sourcemap-output --app $CODE_PUSH_ANDROID_APP_ID --output-dir ./build --description \"${GITHUB_WORKFLOW}-${GITHUB_RUN_NUMBER}\"",
     "codepush-android-sentry": "source '.env' && export SENTRY_PROPERTIES=android/sentry.properties && sentry-cli react-native appcenter $CODE_PUSH_ANDROID_APP_ID android ./build/CodePush --dist \"${GITHUB_WORKFLOW}-${GITHUB_RUN_NUMBER}\"",
     "codepush-android-production": "source '.env' && appcenter codepush promote -a $CODE_PUSH_ANDROID_APP_ID -s Staging -d Production",
     "codepush-history": "source '.env' && echo Android && echo Staging && appcenter codepush deployment history Staging -a $CODE_PUSH_ANDROID_APP_ID && echo Production && appcenter codepush deployment history Production -a $CODE_PUSH_ANDROID_APP_ID && echo iOS && echo Staging && appcenter codepush deployment history Staging -a $CODE_PUSH_IOS_APP_ID && echo Production && appcenter codepush deployment history Production -a $CODE_PUSH_IOS_APP_ID",
-    "codepush-ios": "source '.env' && appcenter codepush release-react --sourcemap-output --app $CODE_PUSH_IOS_APP_ID --output-dir ./build",
+    "codepush-ios": "source '.env' && appcenter codepush release-react --sourcemap-output --app $CODE_PUSH_IOS_APP_ID --output-dir ./build --description \"${GITHUB_WORKFLOW}-${GITHUB_RUN_NUMBER}\"",
     "codepush-ios-sentry": "source '.env' && export SENTRY_PROPERTIES=ios/sentry.properties && sentry-cli react-native appcenter $CODE_PUSH_IOS_APP_ID ios ./build/CodePush --dist \"${GITHUB_WORKFLOW}-${GITHUB_RUN_NUMBER}\"",
     "codepush-ios-production": "source '.env' && appcenter codepush promote -a CODE_PUSH_IOS_APP_ID -s Staging -d Production",
     "codepush-login": "source '.env' && appcenter login --token $CODEPUSH_TOKEN",
@@ -114,5 +114,5 @@
     "update-ver": "ts-node job.ts update-ver",
     "validate": "yarn lint && yarn test-coverage"
   },
-  "version": "0.8.0"
+  "version": "0.9.0"
 }
