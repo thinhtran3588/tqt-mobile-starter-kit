@@ -113,15 +113,6 @@ jobs:
           name: app-release-staging
           path: android/app/build/outputs/apk/release/app-release.apk
 
-      - name: Push to Codepush & Sentry
-        run: |
-          npm install -g appcenter-cli
-          yarn codepush-login
-          yarn codepush-android
-          yarn codepush-android-sentry
-          yarn codepush-ios
-          yarn codepush-ios-sentry
-
       - name: Slack Notification Finish
         uses: act10ns/slack@v1
         with:
