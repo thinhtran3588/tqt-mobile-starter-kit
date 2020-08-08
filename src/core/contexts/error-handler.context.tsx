@@ -28,7 +28,10 @@ const ErrorHandlerProvider = (props: ErrorHandlerProviderProps): JSX.Element => 
         type: 'ERROR',
       });
 
-      recordError(err);
+      // only record error if it's not app error
+      if (err.name !== 'AppError') {
+        recordError(err);
+      }
     },
     [t, showNotification],
   );
@@ -51,6 +54,7 @@ const ErrorHandlerProvider = (props: ErrorHandlerProviderProps): JSX.Element => 
       // or hit a custom api to inform the dev team.
       // NOTE: alert or showing any UI change via JS
       // WILL NOT WORK in case of NATIVE ERRORS.
+      handleError(new Error(_exceptionString) as AppError);
     });
 
     // https://stackoverflow.com/questions/48487089/global-unhandledrejection-listener-in-react-native

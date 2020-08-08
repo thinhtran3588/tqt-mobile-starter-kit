@@ -10,8 +10,10 @@ export const configError = (params: ConfigErrorParams): void => {
 };
 
 export const recordError = async (err: Error): Promise<void> => {
+  if (__DEV__) {
+    // eslint-disable-next-line no-console
+    console.log('record err', err);
+    return;
+  }
   Sentry.captureException(err);
-
-  // eslint-disable-next-line no-console
-  console.log('record err', err);
 };
