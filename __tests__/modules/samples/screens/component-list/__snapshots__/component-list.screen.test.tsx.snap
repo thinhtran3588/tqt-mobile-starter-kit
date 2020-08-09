@@ -60,9 +60,12 @@ exports[`renders correctly 1`] = `
             }
           }
         >
-          <Button
-            testID="back-action"
-            title="Back"
+          <View
+            style={
+              Object {
+                "width": 48,
+              }
+            }
           />
           <TouchableWithoutFeedback
             disabled={true}
@@ -75,9 +78,7 @@ exports[`renders correctly 1`] = `
                     "paddingHorizontal": 12,
                   },
                   Array [
-                    Object {
-                      "marginLeft": 8,
-                    },
+                    false,
                     Object {
                       "alignItems": "center",
                     },
@@ -3553,10 +3554,6 @@ exports[`renders correctly in Android 1`] = `
             }
           }
         >
-          <Button
-            testID="back-action"
-            title="Back"
-          />
           <TouchableWithoutFeedback
             disabled={true}
           >
@@ -3568,9 +3565,7 @@ exports[`renders correctly in Android 1`] = `
                     "paddingHorizontal": 12,
                   },
                   Array [
-                    Object {
-                      "marginLeft": 8,
-                    },
+                    false,
                     false,
                     undefined,
                   ],

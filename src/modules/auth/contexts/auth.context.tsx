@@ -11,7 +11,7 @@ import {config} from '@core/config';
 import {AppError, configError} from '@core/exceptions';
 import {useLanguage} from '@core/contexts/language.context';
 import {useImmer} from 'use-immer';
-import {logEvent} from '@app/core/analytics';
+import {logEvent} from '@core/analytics';
 import {EVENT_NAME} from '@app/app.constants';
 
 interface AuthProviderProps {

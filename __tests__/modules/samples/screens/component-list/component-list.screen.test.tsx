@@ -23,12 +23,6 @@ it('renders correctly in Android', async () => {
   expect(toJSON(baseElement)).toMatchSnapshot();
 });
 
-it('presses Back icon', async () => {
-  const {getByTestId} = render(<ComponentListScreen />);
-  fireEvent.press(getByTestId('back-action'));
-  expect(Alert.alert).toBeCalledWith('Alert', 'Press Back button');
-});
-
 it('presses More icon', async () => {
   const {getByTestId} = render(<ComponentListScreen />);
   fireEvent.press(getByTestId('more-action'));

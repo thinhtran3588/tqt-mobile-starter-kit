@@ -3,7 +3,7 @@ import React from 'react';
 import {ModalProps, Modal, Pressable} from 'react-native';
 import {Divider, useTheme, Surface} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
-import {getColor} from '@app/core/helpers';
+import {getColor} from '@core/helpers';
 import {useAppTheme, ConfirmationState} from '@core/contexts';
 import {View} from '../view/view.component';
 import {Text} from '../text/text.component';

@@ -6,7 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
 import {WebViewScreen} from '@core/screens';
-import {ComponentListScreen} from '@samples/screens';
+import {ComponentListScreen, FormScreen} from '@samples/screens';
 import {SettingsScreen} from '@settings/screens';
 import {SignInScreen, ForgotPasswordScreen, SignInPhoneNoScreen} from '@auth/screens';
 import {Colors, Icon} from '@core/components';
@@ -39,11 +39,19 @@ const MainTabs = (): JSX.Element => {
   const tabItems: TabItem[] = [
     {
       name: SCREEN_NAME.COMPONENT_LIST,
-      title: t('components'),
+      title: 'Components',
       icon: 'view-dashboard-outline',
       iconFocused: 'view-dashboard',
       tabBarColor: theme.colors.primary,
       component: ComponentListScreen,
+    },
+    {
+      name: SCREEN_NAME.FORM,
+      title: 'Form',
+      icon: 'cog-outline',
+      iconFocused: 'cog',
+      tabBarColor: Colors.purple500,
+      component: FormScreen,
     },
     {
       name: SCREEN_NAME.SETTINGS,

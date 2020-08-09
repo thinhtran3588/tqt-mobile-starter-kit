@@ -73,11 +73,6 @@ export const ComponentListScreen = (): JSX.Element => {
     <Layout
       header
       headerTitle={t('common:components')}
-      headerBackButton
-      headerBackButtonTestID='back-action'
-      headerBackButtonOnPress={() => {
-        Alert.alert('Alert', 'Press Back button');
-      }}
       headerRightActions={[
         {
           icon: MORE_ICON,

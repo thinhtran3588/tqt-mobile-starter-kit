@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button} from '@core/components';
 import {useNotification} from '@core/hooks';
-import {useConfirmation, ColorType, ConfirmationButton, useAppTheme} from '@app/core/contexts';
+import {useConfirmation, ColorType, ConfirmationButton, useAppTheme} from '@core/contexts';
 import {styles} from './confirmation-sample.styles';
 
 export const ConfirmationSample = (): JSX.Element => {
