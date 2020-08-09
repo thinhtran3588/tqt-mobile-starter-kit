@@ -101,7 +101,6 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
   });
 
   const signIn = async (formValues: {code: string}): Promise<void> => {
-    setLoading(true);
     await verifyCode(formValues.code);
   };
 

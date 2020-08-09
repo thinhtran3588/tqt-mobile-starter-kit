@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import {Button, TextInput, Layout, View} from '@core/components';
 import {useConfirmation} from '@core/contexts';
 import {useForm} from '@core/hooks';
+import {sleep} from '@app/core/helpers';
 import {useTranslation} from 'react-i18next';
 import {styles} from './form.styles';
 
@@ -33,6 +34,7 @@ export const FormScreen = (): JSX.Element => {
   });
 
   const onSubmit = async (formValues: FormData): Promise<void> => {
+    await sleep(1); // to show loading modal
     const submitValues = {
       ...formValues,
       number: Number.parseInt((formValues.number as unknown) as string, 10),
@@ -47,7 +49,7 @@ export const FormScreen = (): JSX.Element => {
     });
   };
 
-  const {handleChange, handleBlur, values, errors, submitForm} = useForm<FormData>({
+  const {handleChange, handleBlur, values, errors, submitForm, setFieldValue} = useForm<FormData>({
     initialValues,
     validationSchema,
     onSubmit,
@@ -62,6 +64,7 @@ export const FormScreen = (): JSX.Element => {
           onBlur={handleBlur('email')}
           value={values.email}
           errorMessage={errors.email}
+          clear={() => setFieldValue('email', '')}
         />
         <TextInput
           label={t('password')}
@@ -70,6 +73,7 @@ export const FormScreen = (): JSX.Element => {
           value={values.password}
           secureTextEntry
           errorMessage={errors.password}
+          clear={() => setFieldValue('password', '')}
         />
         <TextInput
           label='Text'
@@ -77,6 +81,7 @@ export const FormScreen = (): JSX.Element => {
           onBlur={handleBlur('text')}
           value={values.text}
           errorMessage={errors.text}
+          clear={() => setFieldValue('text', '')}
         />
         <TextInput
           label='Number'
@@ -85,6 +90,7 @@ export const FormScreen = (): JSX.Element => {
           value={values.number.toString()}
           errorMessage={errors.number}
           keyboardType='number-pad'
+          clear={() => setFieldValue('number', '0')}
         />
         <Button onPress={submitForm} mode='contained'>
           Submit

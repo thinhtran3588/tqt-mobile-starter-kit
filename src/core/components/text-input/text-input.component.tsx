@@ -8,31 +8,39 @@ import {styles} from './text-input.styles';
 
 export type TextInputProps = React.ComponentProps<typeof RNTextInput> & {
   errorMessage?: string;
+  clear?: () => void;
 };
 
 export const TextInput = (props: TextInputProps): JSX.Element => {
-  const {style, secureTextEntry, error, errorMessage, ...other} = props;
+  const {value, style, secureTextEntry, error, errorMessage, disabled, clear, ...other} = props;
   const {appTheme} = useAppTheme();
   const backgroundColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const [showPassword, setShowPassword] = useState(false);
   return (
     <View>
       <RNTextInput
+        value={value}
         secureTextEntry={secureTextEntry && !showPassword}
         style={[styles.textInput, {backgroundColor}, style]}
         error={error || Boolean(errorMessage)}
+        disabled={disabled}
         {...other}
       />
       <Text style={styles.error} error={Boolean(errorMessage)}>
         {errorMessage}
       </Text>
-      {secureTextEntry && (
-        <IconButton
-          icon={showPassword ? 'eye' : 'eye-off'}
-          style={styles.passwordIcon}
-          size={20}
-          onPress={() => setShowPassword(!showPassword)}
-        />
+      {!disabled && (
+        <View row style={styles.iconContainer}>
+          {Boolean(value) && <IconButton icon='close' size={20} onPress={clear} />}
+          {secureTextEntry && (
+            <IconButton
+              style={styles.showPasswordIcon}
+              icon={showPassword ? 'eye' : 'eye-off'}
+              size={20}
+              onPress={() => setShowPassword(!showPassword)}
+            />
+          )}
+        </View>
       )}
     </View>
   );

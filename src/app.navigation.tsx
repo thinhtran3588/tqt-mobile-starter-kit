@@ -48,8 +48,8 @@ const MainTabs = (): JSX.Element => {
     {
       name: SCREEN_NAME.FORM,
       title: 'Form',
-      icon: 'cog-outline',
-      iconFocused: 'cog',
+      icon: 'calendar-text-outline',
+      iconFocused: 'calendar-text',
       tabBarColor: Colors.purple500,
       component: FormScreen,
     },
