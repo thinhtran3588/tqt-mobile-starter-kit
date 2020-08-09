@@ -240,7 +240,7 @@ exports[`renders correctly 1`] = `
                         ]
                       }
                     >
-                      󰇮
+                      󰓎
                     </Text>
                   </View>
                   <Text
@@ -259,9 +259,9 @@ exports[`renders correctly 1`] = `
                       ]
                     }
                   >
-                    There was a problem processing a transaction on your credit card.
+                    Samples of all components
                     <Button
-                      title="Close Banner"
+                      title="Close"
                     />
                   </Text>
                 </View>
@@ -3731,7 +3731,7 @@ exports[`renders correctly in Android 1`] = `
                         ]
                       }
                     >
-                      󰇮
+                      󰓎
                     </Text>
                   </View>
                   <Text
@@ -3750,9 +3750,9 @@ exports[`renders correctly in Android 1`] = `
                       ]
                     }
                   >
-                    There was a problem processing a transaction on your credit card.
+                    Samples of all components
                     <Button
-                      title="Close Banner"
+                      title="Close"
                     />
                   </Text>
                 </View>

@@ -117,7 +117,7 @@ exports[`presses Close Banner button 1`] = `
                     ]
                   }
                 >
-                  󰇮
+                  󰓎
                 </Text>
               </View>
               <Text
@@ -136,9 +136,9 @@ exports[`presses Close Banner button 1`] = `
                   ]
                 }
               >
-                There was a problem processing a transaction on your credit card.
+                Samples of all components
                 <Button
-                  title="Close Banner"
+                  title="Close"
                 />
               </Text>
             </View>
@@ -288,7 +288,7 @@ exports[`presses Close Banner button 2`] = `
                     ]
                   }
                 >
-                  󰇮
+                  󰓎
                 </Text>
               </View>
               <Text
@@ -307,9 +307,9 @@ exports[`presses Close Banner button 2`] = `
                   ]
                 }
               >
-                There was a problem processing a transaction on your credit card.
+                Samples of all components
                 <Button
-                  title="Close Banner"
+                  title="Close"
                 />
               </Text>
             </View>

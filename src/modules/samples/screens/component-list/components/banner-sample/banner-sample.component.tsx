@@ -10,13 +10,13 @@ export const BannerSample = (): JSX.Element => {
       visible={visible}
       actions={[
         {
-          label: 'Close Banner',
+          label: 'Close',
           onPress: () => setVisible(false),
         },
       ]}
-      icon='email'
+      icon='star'
       style={styles.banner}>
-      There was a problem processing a transaction on your credit card.
+      Samples of all components
     </Banner>
   );
 };

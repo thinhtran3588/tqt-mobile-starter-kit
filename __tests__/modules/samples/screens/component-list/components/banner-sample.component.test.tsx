@@ -7,7 +7,7 @@ it('presses Close Banner button', async () => {
   const {baseElement, getByText} = render(<BannerSample />);
 
   expect(toJSON(baseElement)).toMatchSnapshot();
-  fireEvent.press(getByText('Close Banner'));
+  fireEvent.press(getByText('Close'));
   await sleep(1000);
   // render updated view
   expect(toJSON(baseElement)).toMatchSnapshot();
