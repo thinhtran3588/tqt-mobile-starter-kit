@@ -34,4 +34,12 @@ export const styles = StyleSheet.create({
   divider: {
     backgroundColor: '#D4D4D6',
   },
+  titleText: {
+    textAlign: 'center',
+    margin: 10,
+  },
+  titleContainer: {
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
 });

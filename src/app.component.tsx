@@ -9,7 +9,6 @@ import {
   LanguageProvider,
   useLanguage,
   InternetConnectionProvider,
-  COLORS_LOOKUP,
   LoadingProvider,
   useLoading,
   ErrorHandlerProvider,
@@ -33,11 +32,8 @@ export const BaseApp = (): JSX.Element => {
     confirmation,
     dispatch: {closeConfirmation},
   } = useConfirmation();
-  const themedPrimaryColor = (COLORS_LOOKUP[appTheme.primaryColorId] || COLORS_LOOKUP.CYAN)[
-    appTheme.theme === 'dark' ? 'darkColor' : 'color'
-  ];
   const theme: typeof DarkTheme = merge({}, appTheme.theme === 'dark' ? DarkTheme : DefaultTheme, {
-    colors: {primary: themedPrimaryColor},
+    colors: {primary: appTheme.colors.primary},
   });
 
   useEffect(() => {

@@ -1,15 +1,22 @@
 import {ColorType, AppThemeState} from '../contexts/app-theme.context';
 
 export const getColor = (type: ColorType = 'SUCCESS', theme: AppThemeState): string => {
-  let color: string = theme.colors.success;
-  if (type === 'ERROR') {
-    color = theme.colors.error;
-  } else if (type === 'WARNING') {
-    color = theme.colors.warning;
-  } else if (type === 'INFO') {
-    color = theme.colors.info;
-  } else if (type === 'PRIMARY') {
-    color = theme.colors.primary;
+  let color: string;
+  switch (type) {
+    case 'ERROR':
+      color = theme.colors.error;
+      break;
+    case 'WARNING':
+      color = theme.colors.warning;
+      break;
+    case 'INFO':
+      color = theme.colors.info;
+      break;
+    case 'PRIMARY':
+      color = theme.colors.primary;
+      break;
+    default:
+      color = theme.colors.success;
   }
   return color;
 };

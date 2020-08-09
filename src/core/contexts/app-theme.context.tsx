@@ -184,16 +184,19 @@ const AppThemeProvider = (props: AppThemeProviderProps): JSX.Element => {
       } else {
         draft.theme = draft.darkMode ? 'dark' : 'light';
       }
+      const primaryColor = COLORS_LOOKUP[draft.primaryColorId];
       if (draft.theme === 'light') {
         draft.colors.success = COLORS_LOOKUP.GREEN.color;
         draft.colors.warning = COLORS_LOOKUP.ORANGE.color;
         draft.colors.error = COLORS_LOOKUP.RED.color;
         draft.colors.info = DARK_BACKGROUND_COLOR;
+        draft.colors.primary = primaryColor.color;
       } else {
         draft.colors.success = COLORS_LOOKUP.GREEN.darkColor;
         draft.colors.warning = COLORS_LOOKUP.ORANGE.darkColor;
         draft.colors.error = COLORS_LOOKUP.RED.darkColor;
         draft.colors.info = LIGHT_BACKGROUND_COLOR;
+        draft.colors.primary = primaryColor.darkColor;
       }
     },
     [colorScheme],

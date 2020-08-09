@@ -2,18 +2,13 @@
 import React from 'react';
 import {ModalProps, Modal, Pressable} from 'react-native';
 import {Divider, useTheme, Surface} from 'react-native-paper';
+import {useTranslation} from 'react-i18next';
 import {getColor} from '@app/core/helpers';
-import {ColorType, useAppTheme, ConfirmationState} from '@core/contexts';
+import {useAppTheme, ConfirmationState} from '@core/contexts';
 import {View} from '../view/view.component';
 import {Text} from '../text/text.component';
 import {Blur} from '../blur/blur.component';
 import {styles} from './confirmation.styles';
-
-export interface ConfirmationButton {
-  text: string;
-  onPress: () => void;
-  type?: ColorType;
-}
 
 export interface ConfirmationProps extends ModalProps {
   confirmation: ConfirmationState;
@@ -21,9 +16,25 @@ export interface ConfirmationProps extends ModalProps {
 }
 
 export const Confirmation = (props: ConfirmationProps): JSX.Element => {
+  const {t} = useTranslation();
   const {confirmation, animationType = 'slide', closeConfirmation, ...other} = props;
+  const titleType = confirmation.titleType || 'INFO';
+  let {title} = confirmation;
+  if (!title) {
+    switch (titleType) {
+      case 'ERROR':
+        title = t('common:error');
+        break;
+      case 'WARNING':
+        title = t('common:warning');
+        break;
+      default:
+        title = t('common:confirmation');
+    }
+  }
   const theme = useTheme();
   const {appTheme} = useAppTheme();
+
   return (
     <Modal
       visible={confirmation.open}
@@ -36,6 +47,22 @@ export const Confirmation = (props: ConfirmationProps): JSX.Element => {
         <View style={styles.container}>
           <Blur />
           <Surface style={[styles.messageBox]}>
+            {confirmation.showTitle && (
+              <View
+                style={[
+                  styles.titleContainer,
+                  {
+                    backgroundColor: titleType === 'INFO' ? undefined : getColor(titleType, appTheme),
+                  },
+                ]}>
+                <Text
+                  style={[styles.titleText, !titleType || titleType === 'INFO' ? {} : {color: theme.colors.surface}]}
+                  type='h6'>
+                  {title}
+                </Text>
+                <Divider />
+              </View>
+            )}
             <Text style={[styles.message]} type='p'>
               {confirmation.message}
             </Text>

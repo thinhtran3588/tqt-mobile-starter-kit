@@ -16,11 +16,17 @@ export interface ConfirmationState {
   open?: boolean;
   message: string;
   buttons: ConfirmationButton[];
+  title?: string;
+  titleType?: ColorType;
+  showTitle?: boolean;
 }
 
 export interface OpenConfirmationParams {
   message: string;
   buttons: ConfirmationButton[];
+  title?: string;
+  titleType?: ColorType;
+  showTitle?: boolean;
 }
 
 interface Dispatch {
@@ -32,6 +38,9 @@ export const DEFAULT_CONFIRMATION: ConfirmationState = {
   open: false,
   message: '',
   buttons: [],
+  title: '',
+  titleType: 'INFO',
+  showTitle: true,
 };
 
 const ConfirmationContext = React.createContext(DEFAULT_CONFIRMATION);
@@ -46,6 +55,7 @@ const ConfirmationProvider = (props: ConfirmationProviderProps): JSX.Element => 
       openConfirmation: (params) => {
         setConfirmation((draft) => {
           draft.open = true;
+          draft.showTitle = draft.showTitle !== false;
           Object.assign(draft, params);
         });
       },

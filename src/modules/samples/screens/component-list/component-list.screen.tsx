@@ -16,6 +16,7 @@ import {
   CardSample,
   NotificationSample,
   ErrorHandlerSample,
+  ConfirmationSample,
 } from './components';
 import {styles} from './component-list.styles';
 
@@ -27,12 +28,16 @@ export const ComponentListScreen = (): JSX.Element => {
   const textColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const componentList = [
     {
-      title: 'ErrorHandlerSample',
-      element: <ErrorHandlerSample />,
+      title: 'ConfirmationSample',
+      element: <ConfirmationSample />,
     },
     {
       title: 'NotificationSample',
       element: <NotificationSample />,
+    },
+    {
+      title: 'ErrorHandlerSample',
+      element: <ErrorHandlerSample />,
     },
     {
       title: 'TextSample',
@@ -84,7 +89,6 @@ export const ComponentListScreen = (): JSX.Element => {
       ]}>
       <BannerSample />
       <ScrollView>
-        <CardSample />
         {componentList.map((component, index) => (
           <Card key={index.toString()} style={styles.card}>
             <Card.Title
@@ -95,6 +99,7 @@ export const ComponentListScreen = (): JSX.Element => {
             <Card.Content style={styles.cardContent}>{component.element}</Card.Content>
           </Card>
         ))}
+        <CardSample />
       </ScrollView>
     </Layout>
   );

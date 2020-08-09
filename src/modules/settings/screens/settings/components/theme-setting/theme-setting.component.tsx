@@ -18,7 +18,7 @@ export const ThemeSetting = (): JSX.Element => {
   const selectedColor = COLORS.find((c) => c.id === appTheme.primaryColorId)?.text;
 
   return (
-    <View>
+    <>
       <ListItem
         title={t('useSystemTheme')}
         leftIcon='theme-light-dark'
@@ -36,23 +36,25 @@ export const ThemeSetting = (): JSX.Element => {
         switchRightDisabled={appTheme.useSystemTheme}
         switchRightTestID='dark-theme-switch'
       />
-      <ListItem
-        testID='primary-color-list-item'
-        title={t('primaryColor')}
-        description={selectedColor}
-        leftIcon='format-color-fill'
-        rightIcon='chevron-right'
-        onPress={() => setColorPickerOpen(true)}
-      />
-      <View style={[styles.colorBox, {backgroundColor: theme.colors.primary}]} />
-      <Picker
-        key='primary-color-picker'
-        initialValue={appTheme.primaryColorId}
-        open={colorPickerOpen}
-        setOpen={setColorPickerOpen}
-        dataSources={colors}
-        onChangeValue={setPrimaryColor}
-      />
-    </View>
+      <View>
+        <ListItem
+          testID='primary-color-list-item'
+          title={t('primaryColor')}
+          description={selectedColor}
+          leftIcon='format-color-fill'
+          rightIcon='chevron-right'
+          onPress={() => setColorPickerOpen(true)}
+        />
+        <View style={[styles.colorBox, {backgroundColor: theme.colors.primary}]} />
+        <Picker
+          key='primary-color-picker'
+          initialValue={appTheme.primaryColorId}
+          open={colorPickerOpen}
+          setOpen={setColorPickerOpen}
+          dataSources={colors}
+          onChangeValue={setPrimaryColor}
+        />
+      </View>
+    </>
   );
 };
