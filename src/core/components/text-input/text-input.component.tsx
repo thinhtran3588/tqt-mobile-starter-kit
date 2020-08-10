@@ -9,10 +9,11 @@ import {styles} from './text-input.styles';
 export type TextInputProps = React.ComponentProps<typeof RNTextInput> & {
   errorMessage?: string;
   clear?: () => void;
+  showClearButton?: boolean;
 };
 
 export const TextInput = (props: TextInputProps): JSX.Element => {
-  const {value, style, secureTextEntry, error, errorMessage, disabled, clear, ...other} = props;
+  const {value, style, secureTextEntry, error, errorMessage, disabled, clear, showClearButton = true, ...other} = props;
   const {appTheme} = useAppTheme();
   const backgroundColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const [showPassword, setShowPassword] = useState(false);
@@ -31,7 +32,7 @@ export const TextInput = (props: TextInputProps): JSX.Element => {
       </Text>
       {!disabled && (
         <View row style={styles.iconContainer}>
-          {Boolean(value) && <IconButton icon='close' size={20} onPress={clear} />}
+          {Boolean(value) && showClearButton && <IconButton icon='close' size={20} onPress={clear} />}
           {secureTextEntry && (
             <IconButton
               style={styles.showPasswordIcon}

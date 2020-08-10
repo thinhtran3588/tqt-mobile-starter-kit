@@ -48,7 +48,7 @@ export const ThemeSetting = (): JSX.Element => {
         <View style={[styles.colorBox, {backgroundColor: theme.colors.primary}]} />
         <Picker
           key='primary-color-picker'
-          initialValue={appTheme.primaryColorId}
+          value={appTheme.primaryColorId}
           open={colorPickerOpen}
           setOpen={setColorPickerOpen}
           dataSources={colors}

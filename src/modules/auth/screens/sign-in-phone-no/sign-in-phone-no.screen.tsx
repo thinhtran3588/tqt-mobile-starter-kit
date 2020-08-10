@@ -7,7 +7,6 @@ import {TextInput, Button, Layout, View} from '@core/components';
 import {useAuth} from '@auth/contexts';
 import {config} from '@core/config';
 import {SCREEN_NAME} from '@app/app.constants';
-import {useLoading} from '@core/contexts';
 import {useForm} from '@core/hooks';
 import {styles} from './sign-in-phone-no.styles';
 
@@ -29,7 +28,6 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
     auth,
     dispatch: {sendPhoneNoVerificationCode, verifyCode},
   } = useAuth();
-  const {setLoading} = useLoading();
   const [verificationStatus, setVerificationStatus] = useImmer<VerificationStatus>({
     codeSent: false,
     waitTime: 0,

@@ -13,9 +13,9 @@ export interface PickerDataItem {
   label: string;
 }
 export interface PickerProps {
+  value: string;
   open?: boolean;
   setOpen: (open: boolean) => void;
-  initialValue: string;
   dataSources: PickerDataItem[];
   onChangeValue: (value: string) => void;
 }
@@ -23,7 +23,7 @@ export interface PickerProps {
 export const Picker = forwardRef((props: PickerProps, ref: any) => {
   const {t} = useTranslation('common');
   const theme = useTheme();
-  const {open, dataSources, setOpen, initialValue, onChangeValue} = props;
+  const {open, dataSources, setOpen, value: initialValue, onChangeValue} = props;
   const selectedItem = dataSources.find((data) => data.value === initialValue);
   const selectedValue = selectedItem ? [selectedItem.label] : undefined;
 

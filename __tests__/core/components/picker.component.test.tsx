@@ -13,7 +13,7 @@ it('renders close correctly', async () => {
   const {baseElement} = render(
     <Picker
       key='primary-color-picker'
-      initialValue={Colors.amber500}
+      value={Colors.amber500}
       open={false}
       setOpen={setPickerOpen}
       dataSources={colors}
@@ -29,7 +29,7 @@ it('renders open correctly', async () => {
   const {baseElement} = render(
     <Picker
       key='primary-color-picker'
-      initialValue={Colors.amber500}
+      value={Colors.amber500}
       open
       setOpen={setPickerOpen}
       dataSources={colors}
@@ -45,7 +45,7 @@ it('renders with incorrect initial value correctly', async () => {
   const {baseElement} = render(
     <Picker
       key='primary-color-picker'
-      initialValue=''
+      value=''
       open
       setOpen={setPickerOpen}
       dataSources={colors}
@@ -71,7 +71,7 @@ it('opens picker and pick a value', async () => {
         <Picker
           ref={ref}
           key='primary-color-picker'
-          initialValue={Colors.amber500}
+          value={Colors.amber500}
           open={pickerOpen}
           setOpen={setPickerOpen}
           dataSources={colors}
@@ -109,7 +109,7 @@ it('opens picker and do nothing if pick the same value', async () => {
         <Picker
           ref={ref}
           key='primary-color-picker'
-          initialValue={Colors.amber500}
+          value={Colors.amber500}
           open={pickerOpen}
           setOpen={setPickerOpen}
           dataSources={colors}

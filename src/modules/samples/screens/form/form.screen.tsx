@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import * as Yup from 'yup';
-import {Button, TextInput, Layout, View} from '@core/components';
-import {useConfirmation} from '@core/contexts';
+import {Button, TextInput, Layout, View, PickerDataItem, PickerInput} from '@core/components';
+import {useConfirmation, LANGUAGES} from '@core/contexts';
 import {useForm} from '@core/hooks';
 import {sleep} from '@app/core/helpers';
 import {useTranslation} from 'react-i18next';
@@ -12,10 +12,14 @@ interface FormData {
   password: string;
   text?: string;
   number: number;
+  language: string;
 }
+
+const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, label: lang.text}));
 
 export const FormScreen = (): JSX.Element => {
   const {t} = useTranslation('auth');
+  const [disabled, setDisabled] = useState(false);
   const {
     dispatch: {openConfirmation},
   } = useConfirmation();
@@ -24,6 +28,7 @@ export const FormScreen = (): JSX.Element => {
     password: '',
     text: '',
     number: 0,
+    language: 'en',
   });
 
   const validationSchema = Yup.object().shape<FormData>({
@@ -31,6 +36,7 @@ export const FormScreen = (): JSX.Element => {
     password: Yup.string().required(t('common:required')),
     text: Yup.string(),
     number: Yup.number().required(t('common:required')),
+    language: Yup.string().required(t('common:required')),
   });
 
   const onSubmit = async (formValues: FormData): Promise<void> => {
@@ -65,6 +71,7 @@ export const FormScreen = (): JSX.Element => {
           value={values.email}
           errorMessage={errors.email}
           clear={() => setFieldValue('email', '')}
+          disabled={disabled}
         />
         <TextInput
           label={t('password')}
@@ -74,6 +81,7 @@ export const FormScreen = (): JSX.Element => {
           secureTextEntry
           errorMessage={errors.password}
           clear={() => setFieldValue('password', '')}
+          disabled={disabled}
         />
         <TextInput
           label='Text'
@@ -82,6 +90,7 @@ export const FormScreen = (): JSX.Element => {
           value={values.text}
           errorMessage={errors.text}
           clear={() => setFieldValue('text', '')}
+          disabled={disabled}
         />
         <TextInput
           label='Number'
@@ -90,10 +99,25 @@ export const FormScreen = (): JSX.Element => {
           value={values.number.toString()}
           errorMessage={errors.number}
           keyboardType='number-pad'
-          clear={() => setFieldValue('number', '0')}
+          clear={() => setFieldValue('number', initialValues.number)}
+          disabled={disabled}
         />
-        <Button onPress={submitForm} mode='contained'>
+        <PickerInput
+          label='Language'
+          onChangeText={handleChange('language')}
+          onBlur={handleBlur('language')}
+          value={values.language}
+          errorMessage={errors.language}
+          clear={() => setFieldValue('language', initialValues.language)}
+          dataSources={languages}
+          onChangeValue={handleChange('language')}
+          disabled={disabled}
+        />
+        <Button style={styles.button} onPress={submitForm} mode='contained'>
           Submit
+        </Button>
+        <Button style={styles.button} onPress={() => setDisabled(!disabled)} mode='contained'>
+          {disabled ? 'Enable' : 'Disable'}
         </Button>
       </View>
     </Layout>

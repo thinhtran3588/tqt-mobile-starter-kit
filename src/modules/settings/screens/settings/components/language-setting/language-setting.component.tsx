@@ -22,7 +22,7 @@ export const LanguageSetting = (): JSX.Element => {
       />
       <Picker
         key='language-picker'
-        initialValue={language}
+        value={language}
         open={pickerOpen}
         setOpen={setPickerOpen}
         dataSources={languages}

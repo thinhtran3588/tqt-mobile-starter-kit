@@ -9,6 +9,7 @@ export * from './loading/loading.component';
 export * from './loading-modal/loading-modal.component';
 export * from './blur/blur.component';
 export * from './picker/picker.component';
+export * from './picker-input/picker-input.component';
 export * from './internet-connection/internet-connection.component';
 export * from './confirmation/confirmation.component';
 
