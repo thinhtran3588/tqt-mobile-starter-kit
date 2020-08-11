@@ -1,5 +1,5 @@
-import React from 'react';
-import {SafeAreaView, StatusBar, ViewStyle} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {SafeAreaView, StatusBar, ViewStyle, Platform, KeyboardAvoidingView, Keyboard} from 'react-native';
 import {Surface, useTheme, Appbar} from 'react-native-paper';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/contexts';
@@ -39,12 +39,27 @@ export const Layout = (props: LayoutProps): JSX.Element => {
   } = props;
   const isFocused = useIsFocused();
   const appHeaderColor = headerColor || (appTheme.theme === 'dark' ? theme.colors.surface : theme.colors.primary);
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
 
   const goBack = (): void => {
     if (navigation.canGoBack()) {
       navigation.goBack();
     }
   };
+
+  useEffect(() => {
+    const showListener = Keyboard.addListener('keyboardDidShow', (e) => {
+      setKeyboardHeight(e.endCoordinates.height);
+    });
+    const hideListener = Keyboard.addListener('keyboardDidHide', () => {
+      setKeyboardHeight(0);
+    });
+
+    return () => {
+      showListener.remove();
+      hideListener.remove();
+    };
+  }, []);
 
   return (
     <>
@@ -94,7 +109,16 @@ export const Layout = (props: LayoutProps): JSX.Element => {
             backgroundColor: appTheme.theme === 'light' ? LIGHT_BACKGROUND_COLOR : DARK_BACKGROUND_COLOR,
           },
         ]}>
-        <Surface style={[styles.flex, style]}>{children}</Surface>
+        <Surface
+          style={[
+            styles.flex,
+            style,
+            {
+              marginBottom: keyboardHeight,
+            },
+          ]}>
+          {children}
+        </Surface>
       </SafeAreaView>
       {showInternetConnection && <InternetConnection />}
     </>

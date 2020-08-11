@@ -33,7 +33,6 @@ const countries: PickerDataItem[] = COUNTRIES.map((country) => ({value: country.
 export const FormScreen = (): JSX.Element => {
   const {t} = useTranslation('auth');
   const [disabled, setDisabled] = useState(false);
-  const [keyboardHeight, setKeyboardHeight] = useState(0);
   const {
     dispatch: {openConfirmation},
   } = useConfirmation();
@@ -86,22 +85,8 @@ export const FormScreen = (): JSX.Element => {
     return <Menu.Item key={item.value} onPress={() => onPressMenuItem(item)} title={title} style={styles.menuItem} />;
   };
 
-  useEffect(() => {
-    const showListener = Keyboard.addListener('keyboardDidShow', (e) => {
-      setKeyboardHeight(e.endCoordinates.height);
-    });
-    const hideListener = Keyboard.addListener('keyboardDidHide', () => {
-      setKeyboardHeight(0);
-    });
-
-    return () => {
-      showListener.remove();
-      hideListener.remove();
-    };
-  }, []);
-
   return (
-    <Layout style={{paddingBottom: keyboardHeight}}>
+    <Layout>
       <ScrollView contentContainerStyle={styles.container}>
         <TextInput
           label={t('email')}
