@@ -16,7 +16,7 @@
     "version": "0.9.0"
   },
   "dateFormat": "DD/MM/YYYY",
-  "defaultCountryCode": "+84",
+  "defaultCountryCode": "VN",
   "defaultLang": "vi",
   "fb": {
     "id": ""
