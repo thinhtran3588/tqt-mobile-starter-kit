@@ -9,7 +9,9 @@ import {styles} from './text-input.styles';
 export type TextInputProps = React.ComponentProps<typeof RNTextInput> & {
   errorMessage?: string;
   showClearButton?: boolean;
+  alwaysShowClearButton?: boolean;
   defaultValue?: string;
+  clear?: () => void;
 };
 
 const ICON_SIZE = 20;
@@ -23,20 +25,28 @@ export const TextInput = (props: TextInputProps): JSX.Element => {
     errorMessage,
     disabled,
     showClearButton = true,
+    alwaysShowClearButton = false,
     onChangeText,
     defaultValue = '',
+    clear: clearInput,
     ...other
   } = props;
   const {appTheme} = useAppTheme();
   const backgroundColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const [showPassword, setShowPassword] = useState(false);
+  const clearButtonVisible = (showClearButton && Boolean(value)) || alwaysShowClearButton;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const inputEl = useRef<any>(undefined);
 
   const clear = (): void => {
-    onChangeText && onChangeText(defaultValue);
+    if (clearInput) {
+      clearInput();
+    } else {
+      onChangeText && onChangeText(defaultValue);
+    }
     setTimeout(() => inputEl.current.focus(), 100);
   };
+
   return (
     <View>
       <RNTextInput
@@ -56,7 +66,7 @@ export const TextInput = (props: TextInputProps): JSX.Element => {
       )}
       {!disabled && (
         <View row style={styles.iconContainer}>
-          {showClearButton && Boolean(value) && <IconButton icon='close' size={ICON_SIZE} onPress={clear} />}
+          {clearButtonVisible && <IconButton icon='close' size={ICON_SIZE} onPress={clear} />}
           {secureTextEntry && (
             <IconButton
               style={styles.showPasswordIcon}

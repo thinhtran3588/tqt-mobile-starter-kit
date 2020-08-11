@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import * as Yup from 'yup';
 import COUNTRIES from '@assets/json/countries.json';
-import {Keyboard} from 'react-native';
 import {
   Button,
   TextInput,
@@ -11,6 +10,7 @@ import {
   AutocompleteInput,
   ScrollView,
   Menu,
+  AutocompleteMultipleInput,
 } from '@core/components';
 import {useConfirmation, LANGUAGES} from '@core/contexts';
 import {useForm} from '@core/hooks';
@@ -25,6 +25,7 @@ interface FormData {
   number: number;
   language: string;
   country: string;
+  countries: string[];
 }
 
 const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, label: lang.text}));
@@ -37,12 +38,13 @@ export const FormScreen = (): JSX.Element => {
     dispatch: {openConfirmation},
   } = useConfirmation();
   const [initialValues] = useState<FormData>({
-    email: '',
-    password: '',
-    text: '',
+    email: 'a@a.com',
+    password: 'Abc@12345',
+    text: 'text',
     number: 0,
-    language: '',
-    country: '',
+    language: 'vi',
+    country: 'VN',
+    countries: ['VN'],
   });
 
   const validationSchema = Yup.object().shape<FormData>({
@@ -52,6 +54,9 @@ export const FormScreen = (): JSX.Element => {
     number: Yup.number().required(t('common:required')),
     language: Yup.string().required(t('common:required')),
     country: Yup.string().required(t('common:required')),
+    countries: Yup.array()
+      .of(Yup.string().required(t('common:required')))
+      .required(t('common:required')),
   });
 
   const onSubmit = async (formValues: FormData): Promise<void> => {
@@ -148,6 +153,15 @@ export const FormScreen = (): JSX.Element => {
           errorMessage={errors.country}
           dataSources={countries}
           onChangeValue={handleChange('country')}
+          disabled={disabled}
+          customRenderMenuItem={customRenderMenuItem}
+        />
+        <AutocompleteMultipleInput
+          label='Autocomplete multiple values'
+          values={values.countries}
+          errorMessages={errors.countries}
+          dataSources={countries}
+          onChangeValues={(value) => setFieldValue('countries', value)}
           disabled={disabled}
           customRenderMenuItem={customRenderMenuItem}
         />

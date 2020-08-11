@@ -97,6 +97,7 @@ exports[`renders row correctly 1`] = `
           Array [
             Object {
               "flexDirection": "row",
+              "flexWrap": "wrap",
             },
             Object {},
             undefined,

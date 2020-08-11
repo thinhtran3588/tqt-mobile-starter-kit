@@ -141,6 +141,7 @@ exports[`renders correctly 1`] = `
             Object {
               "backgroundColor": "#ffffff",
               "flex": 1,
+              "marginBottom": 0,
               "shadowColor": "#000000",
               "shadowOffset": Object {
                 "height": 3,
@@ -1644,6 +1645,7 @@ exports[`renders correctly 1`] = `
                           Array [
                             Object {
                               "flexDirection": "row",
+                              "flexWrap": "wrap",
                             },
                             Object {},
                             undefined,
@@ -2533,6 +2535,7 @@ exports[`renders correctly 1`] = `
                           Array [
                             Object {
                               "flexDirection": "row",
+                              "flexWrap": "wrap",
                             },
                             Object {},
                             undefined,
@@ -2738,6 +2741,7 @@ exports[`renders correctly 1`] = `
                           Array [
                             Object {
                               "flexDirection": "row",
+                              "flexWrap": "wrap",
                             },
                             Object {},
                             undefined,
@@ -3132,6 +3136,7 @@ exports[`renders correctly 1`] = `
                           Array [
                             Object {
                               "flexDirection": "row",
+                              "flexWrap": "wrap",
                             },
                             Object {},
                             undefined,
@@ -3793,6 +3798,7 @@ exports[`renders correctly in Android 1`] = `
             Object {
               "backgroundColor": "#ffffff",
               "flex": 1,
+              "marginBottom": 0,
               "shadowColor": "#000000",
               "shadowOffset": Object {
                 "height": 3,
@@ -5296,6 +5302,7 @@ exports[`renders correctly in Android 1`] = `
                           Array [
                             Object {
                               "flexDirection": "row",
+                              "flexWrap": "wrap",
                             },
                             Object {},
                             undefined,
@@ -6185,6 +6192,7 @@ exports[`renders correctly in Android 1`] = `
                           Array [
                             Object {
                               "flexDirection": "row",
+                              "flexWrap": "wrap",
                             },
                             Object {},
                             undefined,
@@ -6390,6 +6398,7 @@ exports[`renders correctly in Android 1`] = `
                           Array [
                             Object {
                               "flexDirection": "row",
+                              "flexWrap": "wrap",
                             },
                             Object {},
                             undefined,
@@ -6784,6 +6793,7 @@ exports[`renders correctly in Android 1`] = `
                           Array [
                             Object {
                               "flexDirection": "row",
+                              "flexWrap": "wrap",
                             },
                             Object {},
                             undefined,

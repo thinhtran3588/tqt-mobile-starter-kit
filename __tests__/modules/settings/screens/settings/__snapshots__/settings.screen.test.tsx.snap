@@ -44,6 +44,7 @@ exports[`opens language picker 1`] = `
             Object {
               "backgroundColor": "#ffffff",
               "flex": 1,
+              "marginBottom": 0,
               "shadowColor": "#000000",
               "shadowOffset": Object {
                 "height": 3,
@@ -2170,6 +2171,7 @@ exports[`opens primary color picker 1`] = `
             Object {
               "backgroundColor": "#ffffff",
               "flex": 1,
+              "marginBottom": 0,
               "shadowColor": "#000000",
               "shadowOffset": Object {
                 "height": 3,
@@ -4296,6 +4298,7 @@ exports[`renders correctly 1`] = `
             Object {
               "backgroundColor": "#ffffff",
               "flex": 1,
+              "marginBottom": 0,
               "shadowColor": "#000000",
               "shadowOffset": Object {
                 "height": 3,
@@ -6422,6 +6425,7 @@ exports[`uses dark theme 1`] = `
             Object {
               "backgroundColor": "#272727",
               "flex": 1,
+              "marginBottom": 0,
               "shadowColor": "#000000",
               "shadowOffset": Object {
                 "height": 3,
@@ -8548,6 +8552,7 @@ exports[`uses light theme 1`] = `
             Object {
               "backgroundColor": "#ffffff",
               "flex": 1,
+              "marginBottom": 0,
               "shadowColor": "#000000",
               "shadowOffset": Object {
                 "height": 3,

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {SafeAreaView, StatusBar, ViewStyle, Platform, KeyboardAvoidingView, Keyboard} from 'react-native';
+import {SafeAreaView, StatusBar, ViewStyle, Keyboard} from 'react-native';
 import {Surface, useTheme, Appbar} from 'react-native-paper';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/contexts';
