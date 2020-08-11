@@ -10,3 +10,4 @@ export * from './card-sample/card-sample.component';
 export * from './notification-sample/notification-sample.component';
 export * from './confirmation-sample/confirmation-sample.component';
 export * from './error-handler-sample/error-handler-sample.component';
+export * from './menu-sample/menu-sample.component';

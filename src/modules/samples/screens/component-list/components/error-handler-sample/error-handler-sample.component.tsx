@@ -21,10 +21,10 @@ export const ErrorHandlerSample = (): JSX.Element => {
 
   return (
     <>
-      <Button testID='sample-button' style={styles.item} onPress={createError} mode='contained'>
+      <Button testID='sample-button' style={styles.item} onPress={createError}>
         Make js error
       </Button>
-      <Button style={[styles.item, styles.lastRow]} onPress={createErrorAsync} mode='contained'>
+      <Button style={[styles.item, styles.lastRow]} onPress={createErrorAsync}>
         Make promise error
       </Button>
     </>

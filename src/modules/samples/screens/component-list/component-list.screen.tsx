@@ -17,6 +17,7 @@ import {
   NotificationSample,
   ErrorHandlerSample,
   ConfirmationSample,
+  MenuSample,
 } from './components';
 import {styles} from './component-list.styles';
 
@@ -38,6 +39,10 @@ export const ComponentListScreen = (): JSX.Element => {
     {
       title: 'ErrorHandlerSample',
       element: <ErrorHandlerSample />,
+    },
+    {
+      title: 'MenuSample',
+      element: <MenuSample />,
     },
     {
       title: 'TextSample',

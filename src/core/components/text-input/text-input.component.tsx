@@ -8,12 +8,25 @@ import {styles} from './text-input.styles';
 
 export type TextInputProps = React.ComponentProps<typeof RNTextInput> & {
   errorMessage?: string;
-  clear?: () => void;
   showClearButton?: boolean;
+  defaultValue?: string;
 };
 
+const ICON_SIZE = 20;
+
 export const TextInput = (props: TextInputProps): JSX.Element => {
-  const {value, style, secureTextEntry, error, errorMessage, disabled, clear, showClearButton = true, ...other} = props;
+  const {
+    value,
+    style,
+    secureTextEntry,
+    error,
+    errorMessage,
+    disabled,
+    showClearButton = true,
+    onChangeText,
+    defaultValue = '',
+    ...other
+  } = props;
   const {appTheme} = useAppTheme();
   const backgroundColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const [showPassword, setShowPassword] = useState(false);
@@ -25,19 +38,24 @@ export const TextInput = (props: TextInputProps): JSX.Element => {
         style={[styles.textInput, {backgroundColor}, style]}
         error={error || Boolean(errorMessage)}
         disabled={disabled}
+        onChangeText={onChangeText}
         {...other}
       />
-      <Text style={styles.error} error={Boolean(errorMessage)}>
-        {errorMessage}
-      </Text>
+      {errorMessage && (
+        <Text style={styles.error} error={Boolean(errorMessage)}>
+          {errorMessage}
+        </Text>
+      )}
       {!disabled && (
         <View row style={styles.iconContainer}>
-          {Boolean(value) && showClearButton && <IconButton icon='close' size={20} onPress={clear} />}
+          {showClearButton && Boolean(value) && (
+            <IconButton icon='close' size={ICON_SIZE} onPress={() => onChangeText && onChangeText(defaultValue)} />
+          )}
           {secureTextEntry && (
             <IconButton
               style={styles.showPasswordIcon}
               icon={showPassword ? 'eye' : 'eye-off'}
-              size={20}
+              size={ICON_SIZE}
               onPress={() => setShowPassword(!showPassword)}
             />
           )}

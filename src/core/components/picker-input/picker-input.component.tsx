@@ -17,8 +17,8 @@ export type PickerInputProps = React.ComponentProps<typeof RNTextInput> & {
 
 export const PickerInput = (props: PickerInputProps): JSX.Element => {
   const [open, setOpen] = useState(false);
-  const {value, dataSources, onChangeValue, disabled, ...other} = props;
-  const label = dataSources.find((item) => item.value === value)?.label;
+  const {value, dataSources, onChangeValue, disabled, clear, ...other} = props;
+  const label = dataSources.find((item) => item.value === value)?.label || '';
   const openModal = (): void => {
     if (!disabled) {
       setOpen(true);
@@ -26,11 +26,11 @@ export const PickerInput = (props: PickerInputProps): JSX.Element => {
   };
   return (
     <View>
-      <TextInput {...other} value={label} showClearButton={false} disabled={disabled} />
-      {!disabled && <IconButton style={styles.dropdownIcon} icon='chevron-down' size={20} />}
+      <TextInput {...other} value={label} disabled={disabled} />
       <Pressable style={styles.overlay} onPress={openModal}>
         <View />
       </Pressable>
+      {!disabled && Boolean(value) && <IconButton style={styles.dropdownIcon} icon='close' size={20} onPress={clear} />}
       <Picker value={value} open={open} setOpen={setOpen} dataSources={dataSources} onChangeValue={onChangeValue} />
     </View>
   );
