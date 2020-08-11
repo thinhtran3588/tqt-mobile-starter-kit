@@ -3,11 +3,12 @@ import {useImmer} from 'use-immer';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
-import {TextInput, Button, Layout, View} from '@core/components';
+import COUNTRIES from '@assets/json/countries.json';
+import {TextInput, Button, Layout, View, PickerDataItem, AutocompleteInput, Menu} from '@core/components';
 import {useAuth} from '@auth/contexts';
 import {config} from '@core/config';
 import {SCREEN_NAME} from '@app/app.constants';
-import {useForm} from '@core/hooks';
+import {useForm, useDimensions} from '@core/hooks';
 import {styles} from './sign-in-phone-no.styles';
 
 interface FormData {
@@ -20,6 +21,8 @@ interface VerificationStatus {
   waitTime: number;
   phoneNo: string;
 }
+
+const countries: PickerDataItem[] = COUNTRIES.map((country) => ({value: country.code, label: country.dialCode}));
 
 export const SignInPhoneNoScreen = (): JSX.Element => {
   const {t} = useTranslation('auth');
@@ -34,6 +37,7 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
     phoneNo: '',
   });
   const [intervalCountSendTime, setIntervalCountSendTime] = useState<NodeJS.Timeout>();
+  const {screen} = useDimensions();
 
   useEffect(() => {
     if (auth.isSignedIn) {
@@ -65,7 +69,8 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
   });
 
   const sendCode = async (formValues: FormData): Promise<void> => {
-    const phoneNo = `${formValues.countryCode}${formValues.phoneNo}`;
+    const country = COUNTRIES.find((c) => c.code === formValues.countryCode);
+    const phoneNo = `${country?.dialCode}${formValues.phoneNo}`;
     await sendPhoneNoVerificationCode(phoneNo);
 
     setVerificationStatus((draft) => {
@@ -110,19 +115,31 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
     onSubmit: signIn,
   });
 
+  const customRenderMenuItem = (item: PickerDataItem, onPressMenuItem: (item: PickerDataItem) => void): JSX.Element => {
+    const country = COUNTRIES.find((c) => c.code === item.value);
+    if (!country) {
+      return <></>;
+    }
+    const title = `(${country.dialCode}) ${country.name}`;
+    return <Menu.Item key={item.value} onPress={() => onPressMenuItem(item)} title={title} style={styles.menuItem} />;
+  };
+
   return (
     <Layout header headerBackButton headerTitle={t('signInWithPhoneNo')} style={styles.container}>
       <View row>
-        <View flex={2}>
-          <TextInput
+        <View flex={1}>
+          <AutocompleteInput
             label={' '}
             value={values.countryCode}
             errorMessage={errors.countryCode}
-            keyboardType='number-pad'
+            dataSources={countries}
+            onChangeValue={handleChange('countryCode')}
             disabled={verificationStatus.codeSent}
+            menuWidth={screen.width - 80}
+            customRenderMenuItem={customRenderMenuItem}
           />
         </View>
-        <View flex={9}>
+        <View flex={2}>
           <TextInput
             label={t('phoneNo')}
             onChangeText={handleChange('phoneNo')}

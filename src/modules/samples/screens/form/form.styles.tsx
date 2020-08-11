@@ -2,9 +2,14 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    margin: 20,
+    marginLeft: 40,
+    marginRight: 40,
+    position: 'relative',
   },
   button: {
     marginTop: 20,
+  },
+  menuItem: {
+    maxWidth: '100%',
   },
 });

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {TextInput as RNTextInput, IconButton} from 'react-native-paper';
 import {useAppTheme, LIGHT_BACKGROUND_COLOR, DARK_BACKGROUND_COLOR} from '@core/contexts';
 import {Text} from '../text/text.component';
@@ -30,9 +30,17 @@ export const TextInput = (props: TextInputProps): JSX.Element => {
   const {appTheme} = useAppTheme();
   const backgroundColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const [showPassword, setShowPassword] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const inputEl = useRef<any>(undefined);
+
+  const clear = (): void => {
+    onChangeText && onChangeText(defaultValue);
+    setTimeout(() => inputEl.current.focus(), 100);
+  };
   return (
     <View>
       <RNTextInput
+        ref={inputEl}
         value={value}
         secureTextEntry={secureTextEntry && !showPassword}
         style={[styles.textInput, {backgroundColor}, style]}
@@ -48,9 +56,7 @@ export const TextInput = (props: TextInputProps): JSX.Element => {
       )}
       {!disabled && (
         <View row style={styles.iconContainer}>
-          {showClearButton && Boolean(value) && (
-            <IconButton icon='close' size={ICON_SIZE} onPress={() => onChangeText && onChangeText(defaultValue)} />
-          )}
+          {showClearButton && Boolean(value) && <IconButton icon='close' size={ICON_SIZE} onPress={clear} />}
           {secureTextEntry && (
             <IconButton
               style={styles.showPasswordIcon}

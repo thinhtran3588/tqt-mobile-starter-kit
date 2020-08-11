@@ -15,17 +15,29 @@ export type AutocompleteInputProps = React.ComponentProps<typeof RNTextInput> & 
   dataSources: PickerDataItem[];
   onChangeValue: (value: string) => void;
   maxItemsShown?: number;
+  customRenderMenuItem?: (item: PickerDataItem, onPressMenuItem: (item: PickerDataItem) => void) => void;
+  menuWidth?: number;
 };
 
 export const AutocompleteInput = (props: AutocompleteInputProps): JSX.Element => {
   const [open, setOpen] = useState(false);
-  const {value, dataSources, onChangeValue, disabled, maxItemsShown = 5, errorMessage, ...other} = props;
+  const {
+    value,
+    dataSources,
+    onChangeValue,
+    disabled,
+    maxItemsShown = 5,
+    errorMessage,
+    customRenderMenuItem,
+    menuWidth: overrideMenuWidth,
+    ...other
+  } = props;
   const label = dataSources.find((item) => item.value === value)?.label || '';
   const [matchedItems, setMatchedItems] = useState<PickerDataItem[]>(
     dataSources.filter((_item, index) => index < maxItemsShown),
   );
   const [text, setText] = useState(label);
-  const [menuWidth, setMenuWidth] = useState(0);
+  const [menuWidth, setMenuWidth] = useState(overrideMenuWidth || 0);
 
   useEffect(() => {
     setText(label);
@@ -73,7 +85,10 @@ export const AutocompleteInput = (props: AutocompleteInputProps): JSX.Element =>
   };
 
   const onLayout = (event: LayoutChangeEvent): void => {
-    setMenuWidth(event.nativeEvent.layout.width);
+    const width = overrideMenuWidth || event.nativeEvent.layout.width;
+    if (width !== menuWidth) {
+      setMenuWidth(width);
+    }
   };
 
   return (
@@ -91,14 +106,18 @@ export const AutocompleteInput = (props: AutocompleteInputProps): JSX.Element =>
         visible={!disabled && open}
         onDismiss={() => setOpen(false)}
         anchor={<View style={styles.menuAnchor} />}>
-        {matchedItems.map((item) => (
-          <Menu.Item
-            key={item.value}
-            onPress={() => onPressMenuItem(item)}
-            title={item.label}
-            style={{maxWidth: menuWidth}}
-          />
-        ))}
+        {matchedItems.map((item) =>
+          customRenderMenuItem ? (
+            customRenderMenuItem(item, onPressMenuItem)
+          ) : (
+            <Menu.Item
+              key={item.value}
+              onPress={() => onPressMenuItem(item)}
+              title={item.label}
+              style={styles.menuItem}
+            />
+          ),
+        )}
       </Menu>
       {errorMessage && (
         <Text style={styles.error} error={Boolean(errorMessage)}>

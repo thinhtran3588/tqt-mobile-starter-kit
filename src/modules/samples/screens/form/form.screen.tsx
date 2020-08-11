@@ -1,15 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import * as Yup from 'yup';
 import COUNTRIES from '@assets/json/countries.json';
+import {Keyboard} from 'react-native';
 import {
   Button,
   TextInput,
   Layout,
-  View,
   PickerDataItem,
   PickerInput,
   AutocompleteInput,
   ScrollView,
+  Menu,
 } from '@core/components';
 import {useConfirmation, LANGUAGES} from '@core/contexts';
 import {useForm} from '@core/hooks';
@@ -32,6 +33,7 @@ const countries: PickerDataItem[] = COUNTRIES.map((country) => ({value: country.
 export const FormScreen = (): JSX.Element => {
   const {t} = useTranslation('auth');
   const [disabled, setDisabled] = useState(false);
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
   const {
     dispatch: {openConfirmation},
   } = useConfirmation();
@@ -75,71 +77,101 @@ export const FormScreen = (): JSX.Element => {
     onSubmit,
   });
 
+  const customRenderMenuItem = (item: PickerDataItem, onPressMenuItem: (item: PickerDataItem) => void): JSX.Element => {
+    const country = COUNTRIES.find((c) => c.code === item.value);
+    if (!country) {
+      return <></>;
+    }
+    const title = `${country.name}(${country.dialCode})`;
+    return <Menu.Item key={item.value} onPress={() => onPressMenuItem(item)} title={title} style={styles.menuItem} />;
+  };
+
+  useEffect(() => {
+    const showListener = Keyboard.addListener('keyboardDidShow', (e) => {
+      setKeyboardHeight(e.endCoordinates.height);
+    });
+    const hideListener = Keyboard.addListener('keyboardDidHide', () => {
+      setKeyboardHeight(0);
+    });
+
+    return () => {
+      showListener.remove();
+      hideListener.remove();
+    };
+  }, []);
+
   return (
-    <Layout>
-      <ScrollView>
-        <View style={styles.container}>
-          <AutocompleteInput
-            label='Autocomplete'
-            value={values.country}
-            errorMessage={errors.country}
-            dataSources={countries}
-            onChangeValue={handleChange('country')}
-            disabled={disabled}
-          />
-          <TextInput
-            label={t('email')}
-            onChangeText={handleChange('email')}
-            onBlur={handleBlur('email')}
-            value={values.email}
-            errorMessage={errors.email}
-            disabled={disabled}
-          />
-          <TextInput
-            label={t('password')}
-            onChangeText={handleChange('password')}
-            onBlur={handleBlur('password')}
-            value={values.password}
-            secureTextEntry
-            errorMessage={errors.password}
-            disabled={disabled}
-          />
-          <TextInput
-            label='Text'
-            onChangeText={handleChange('text')}
-            onBlur={handleBlur('text')}
-            value={values.text}
-            errorMessage={errors.text}
-            disabled={disabled}
-          />
-          <TextInput
-            label='Number'
-            onChangeText={handleChange('number')}
-            onBlur={handleBlur('number')}
-            value={values.number.toString()}
-            errorMessage={errors.number}
-            keyboardType='number-pad'
-            defaultValue='0'
-            disabled={disabled}
-          />
-          <PickerInput
-            label='Picker'
-            onChangeText={handleChange('language')}
-            onBlur={handleBlur('language')}
-            value={values.language}
-            errorMessage={errors.language}
-            clear={() => setFieldValue('language', initialValues.language)}
-            dataSources={languages}
-            onChangeValue={handleChange('language')}
-            disabled={disabled}
-          />
-          <Button style={styles.button} onPress={submitForm} mode='contained'>
-            Submit
-          </Button>
-          <Button style={styles.button} onPress={() => setDisabled(!disabled)} mode='contained'>
-            {disabled ? 'Enable' : 'Disable'}
-          </Button>
-        </View>
+    <Layout style={{paddingBottom: keyboardHeight}}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <TextInput
+          label={t('email')}
+          onChangeText={handleChange('email')}
+          onBlur={handleBlur('email')}
+          value={values.email}
+          errorMessage={errors.email}
+          disabled={disabled}
+        />
+        <TextInput
+          label={t('password')}
+          onChangeText={handleChange('password')}
+          onBlur={handleBlur('password')}
+          value={values.password}
+          secureTextEntry
+          errorMessage={errors.password}
+          disabled={disabled}
+        />
+        <TextInput
+          label='Text'
+          onChangeText={handleChange('text')}
+          onBlur={handleBlur('text')}
+          value={values.text}
+          errorMessage={errors.text}
+          disabled={disabled}
+        />
+        <TextInput
+          label='Number'
+          onChangeText={handleChange('number')}
+          onBlur={handleBlur('number')}
+          value={values.number.toString()}
+          errorMessage={errors.number}
+          keyboardType='number-pad'
+          defaultValue='0'
+          disabled={disabled}
+        />
+        <PickerInput
+          label='Picker'
+          onChangeText={handleChange('language')}
+          onBlur={handleBlur('language')}
+          value={values.language}
+          errorMessage={errors.language}
+          clear={() => setFieldValue('language', initialValues.language)}
+          dataSources={languages}
+          onChangeValue={handleChange('language')}
+          disabled={disabled}
+        />
+        <AutocompleteInput
+          label='Autocomplete'
+          value={values.country}
+          errorMessage={errors.country}
+          dataSources={countries}
+          onChangeValue={handleChange('country')}
+          disabled={disabled}
+        />
+        <AutocompleteInput
+          label='Autocomplete (custom)'
+          value={values.country}
+          errorMessage={errors.country}
+          dataSources={countries}
+          onChangeValue={handleChange('country')}
+          disabled={disabled}
+          customRenderMenuItem={customRenderMenuItem}
+        />
+        <Button style={styles.button} onPress={submitForm} mode='contained'>
+          Submit
+        </Button>
+        <Button style={styles.button} onPress={() => setDisabled(!disabled)} mode='contained'>
+          {disabled ? 'Enable' : 'Disable'}
+        </Button>
       </ScrollView>
     </Layout>
   );
