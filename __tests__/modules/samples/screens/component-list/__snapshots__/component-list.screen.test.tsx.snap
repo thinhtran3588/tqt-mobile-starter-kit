@@ -1093,7 +1093,7 @@ exports[`renders correctly 1`] = `
                           ]
                         }
                       >
-                        12/08/2020 17:30
+                        01/01/2020 00:00
                       </Text>
                     </View>
                   </View>
@@ -5087,7 +5087,7 @@ exports[`renders correctly in Android 1`] = `
                           ]
                         }
                       >
-                        12/08/2020 17:30
+                        01/01/2020 00:00
                       </Text>
                     </View>
                   </View>
