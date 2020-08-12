@@ -63,15 +63,15 @@ export const App = (): JSX.Element => {
           <LanguageProvider>
             <I18nextProvider i18n={i18next}>
               <AppThemeProvider>
-                <ErrorHandlerProvider>
-                  <AuthProvider>
-                    <InternetConnectionProvider>
+                <InternetConnectionProvider>
+                  <ErrorHandlerProvider>
+                    <AuthProvider>
                       <SafeAreaProvider>
                         <BaseApp />
                       </SafeAreaProvider>
-                    </InternetConnectionProvider>
-                  </AuthProvider>
-                </ErrorHandlerProvider>
+                    </AuthProvider>
+                  </ErrorHandlerProvider>
+                </InternetConnectionProvider>
               </AppThemeProvider>
             </I18nextProvider>
           </LanguageProvider>
