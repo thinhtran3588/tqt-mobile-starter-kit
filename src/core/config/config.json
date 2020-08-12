@@ -1,10 +1,10 @@
 {
   "android": {
-    "id": "pro.thinhtran.starterkit",
     "codepush": {
       "productionKey": "",
       "stagingKey": ""
-    }
+    },
+    "id": "pro.thinhtran.starterkit"
   },
   "appInfo": {
     "author": "Thinh Tran",
@@ -16,6 +16,7 @@
     "version": "0.9.0"
   },
   "dateFormat": "DD/MM/YYYY",
+  "datetimeFormat": "DD/MM/YYYY HH:mm",
   "defaultCountryCode": "VN",
   "defaultLang": "vi",
   "fb": {
@@ -26,13 +27,14 @@
     "webClientId": ""
   },
   "ios": {
-    "id": "pro.thinhtran.starterkit",
     "codepush": {
       "productionKey": "",
       "stagingKey": ""
-    }
+    },
+    "id": "pro.thinhtran.starterkit"
   },
   "sentry": {
     "dns": ""
-  }
+  },
+  "timeFormat": "HH:mm"
 }

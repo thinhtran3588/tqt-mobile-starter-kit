@@ -15,7 +15,8 @@ export interface DatePickerDataItem {
   label: string;
 }
 export interface DatePickerProps {
-  value: Date;
+  value?: Date;
+  defaultValue?: Date;
   open?: boolean;
   setOpen: (open: boolean) => void;
   onChangeValue: (value: Date) => void;
@@ -35,13 +36,13 @@ const createPickerData = (fromDate: Date, toDate: Date): string[][] => {
 };
 
 export const DatePicker = forwardRef((props: DatePickerProps, ref: any) => {
-  const {open, fromDate, toDate, setOpen, value: initialValue, onChangeValue} = props;
+  const {open, fromDate, toDate, setOpen, value: initialValue, defaultValue, onChangeValue} = props;
   const {t} = useTranslation('common');
   const {showNotification} = useNotification();
   const theme = useTheme();
   const minDate = fromDate || new Date(1900, 0, 1);
   const maxDate = toDate || new Date(2099, 11, 31);
-  const date = initialValue || minDate;
+  const date = initialValue || defaultValue || minDate;
   const selectedValue = [date.getDate().toString(), (date.getMonth() + 1).toString(), date.getFullYear().toString()];
 
   const onClose = (): void => {

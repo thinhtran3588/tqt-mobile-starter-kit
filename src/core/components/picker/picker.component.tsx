@@ -9,15 +9,15 @@ import {Blur} from '../blur/blur.component';
 import {styles} from './picker.styles';
 
 export interface PickerDataItem {
-  value: string;
+  value?: string;
   label: string;
 }
 export interface PickerProps {
-  value: string;
+  value?: string;
   open?: boolean;
   setOpen: (open: boolean) => void;
   dataSources: PickerDataItem[];
-  onChangeValue: (value: string) => void;
+  onChangeValue: (value?: string) => void;
 }
 
 export const Picker = forwardRef((props: PickerProps, ref: any) => {

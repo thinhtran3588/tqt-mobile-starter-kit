@@ -97,7 +97,7 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
     );
   };
 
-  const {handleChange, handleBlur, submitForm, values, errors} = useForm<FormData>({
+  const {handleChange, handleBlur, submitForm, values, errors, setFieldValue} = useForm<FormData>({
     initialValues,
     validationSchema,
     onSubmit: sendCode,
@@ -133,7 +133,7 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
             value={values.countryCode}
             errorMessage={errors.countryCode}
             dataSources={countries}
-            onChangeValue={handleChange('countryCode')}
+            onChangeValue={(value) => setFieldValue('countryCode', value)}
             disabled={verificationStatus.codeSent}
             menuWidth={screen.width - 80}
             customRenderMenuItem={customRenderMenuItem}

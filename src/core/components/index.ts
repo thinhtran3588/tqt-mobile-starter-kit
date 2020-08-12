@@ -16,6 +16,7 @@ export * from './autocomplete-input/autocomplete-input.component';
 export * from './autocomplete-multiple-input/autocomplete-multiple-input.component';
 export * from './date-picker/date-picker.component';
 export * from './time-picker/time-picker.component';
+export * from './datetime-picker-input/datetime-picker-input.component';
 
 export {StatusBar, Alert, ScrollView, Pressable, Image} from 'react-native';
 

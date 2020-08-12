@@ -7,12 +7,15 @@ import {PickerDataItem, Picker} from '../picker/picker.component';
 import {View} from '../view/view.component';
 import {styles} from './picker-input.styles';
 
-export type PickerInputProps = React.ComponentProps<typeof RNTextInput> & {
-  value: string;
+export type PickerInputProps = Omit<
+  React.ComponentProps<typeof RNTextInput>,
+  'value' | 'onChangeText' | 'defaultValue' | 'onBlur'
+> & {
+  value?: string;
   errorMessage?: string;
   clear?: () => void;
   dataSources: PickerDataItem[];
-  onChangeValue: (value: string) => void;
+  onChangeValue: (value?: string) => void;
 };
 
 export const PickerInput = (props: PickerInputProps): JSX.Element => {

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import dayjs from 'dayjs';
 import {Button, Text, PickerDataItem, Picker, DatePicker, TimePicker} from '@core/components';
 import {LANGUAGES} from '@core/contexts';
+import {config} from '@core/config';
 import {styles} from './picker-sample.styles';
 
 const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, label: lang.text}));
@@ -23,7 +24,7 @@ export const PickerSample = (): JSX.Element => {
         open={pickerOpen}
         setOpen={setPickerOpen}
         dataSources={languages}
-        onChangeValue={setLanguage}
+        onChangeValue={(value) => setLanguage(value || config().defaultLang)}
       />
       <Text style={styles.text}>{languages.find((lang) => lang.value === language)?.label}</Text>
       <Button testID='date-picker-button' style={styles.item} onPress={() => setDatePickerOpen(true)}>

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
-import {useAppTheme, COLORS} from '@core/contexts';
+import {useAppTheme, COLORS, DEFAULT_APP_THEME} from '@core/contexts';
 import {ListItem, View, Picker, PickerDataItem} from '@core/components';
 import {styles} from './theme-setting.styles';
 
@@ -52,7 +52,7 @@ export const ThemeSetting = (): JSX.Element => {
           open={colorPickerOpen}
           setOpen={setColorPickerOpen}
           dataSources={colors}
-          onChangeValue={setPrimaryColor}
+          onChangeValue={(value) => setPrimaryColor(value || DEFAULT_APP_THEME.primaryColorId)}
         />
       </View>
     </>

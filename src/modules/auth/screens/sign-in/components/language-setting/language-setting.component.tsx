@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Button, Picker, PickerDataItem} from '@core/components';
 import {LANGUAGES, useLanguage} from '@core/contexts';
+import {config} from '@core/config';
 import {styles} from './language-setting.styles';
 
 const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, label: lang.text}));
@@ -20,7 +21,7 @@ export const LanguageSetting = (): JSX.Element => {
         open={pickerOpen}
         setOpen={setPickerOpen}
         dataSources={languages}
-        onChangeValue={setLanguage}
+        onChangeValue={(value) => setLanguage(value || config().defaultLang)}
       />
     </>
   );

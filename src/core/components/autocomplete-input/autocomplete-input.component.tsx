@@ -9,11 +9,10 @@ import {PickerDataItem} from '../picker/picker.component';
 import {styles} from './autocomplete-input.styles';
 
 export type AutocompleteInputProps = React.ComponentProps<typeof RNTextInput> & {
-  value: string;
   errorMessage?: string;
   clear?: () => void;
   dataSources: PickerDataItem[];
-  onChangeValue: (value: string) => void;
+  onChangeValue: (value?: string) => void;
   maxItemsShown?: number;
   customRenderMenuItem?: (item: PickerDataItem, onPressMenuItem: (item: PickerDataItem) => void) => void;
   menuWidth?: number;

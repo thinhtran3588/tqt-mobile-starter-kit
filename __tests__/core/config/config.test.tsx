@@ -20,6 +20,7 @@ it('update configuration correctly', async () => {
         "version": "0.9.0",
       },
       "dateFormat": "DD/MM/YYYY",
+      "datetimeFormat": "DD/MM/YYYY HH:mm",
       "defaultCountryCode": "VN",
       "defaultLang": "vi",
       "fb": Object {
@@ -39,6 +40,7 @@ it('update configuration correctly', async () => {
       "sentry": Object {
         "dns": "https://fb6b09b4e69340159611ffd2563898c6@o430974.ingest.sentry.io/5380662",
       },
+      "timeFormat": "HH:mm",
     }
   `);
   updateConfig({
@@ -71,6 +73,7 @@ it('update configuration correctly', async () => {
         "version": "0.9.0",
       },
       "dateFormat": "DD/MM/YYYY",
+      "datetimeFormat": "DD/MM/YYYY HH:mm",
       "defaultCountryCode": "VN",
       "defaultLang": "vi",
       "fb": Object {
@@ -90,6 +93,7 @@ it('update configuration correctly', async () => {
       "sentry": Object {
         "dns": "https://fb6b09b4e69340159611ffd2563898c6@o430974.ingest.sentry.io/5380662",
       },
+      "timeFormat": "HH:mm",
     }
   `);
 });

@@ -11,6 +11,7 @@ import {
   ScrollView,
   Menu,
   AutocompleteMultipleInput,
+  DatetimePickerInput,
 } from '@core/components';
 import {useConfirmation, LANGUAGES} from '@core/contexts';
 import {useForm} from '@core/hooks';
@@ -26,6 +27,7 @@ interface FormData {
   language: string;
   country: string;
   countries: string[];
+  date?: Date;
 }
 
 const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, label: lang.text}));
@@ -45,6 +47,7 @@ export const FormScreen = (): JSX.Element => {
     language: 'vi',
     country: 'VN',
     countries: ['VN'],
+    date: new Date(),
   });
 
   const validationSchema = Yup.object().shape<FormData>({
@@ -57,6 +60,7 @@ export const FormScreen = (): JSX.Element => {
     countries: Yup.array()
       .of(Yup.string().required(t('common:required')))
       .required(t('common:required')),
+    date: Yup.date(),
   });
 
   const onSubmit = async (formValues: FormData): Promise<void> => {
@@ -130,21 +134,45 @@ export const FormScreen = (): JSX.Element => {
         />
         <PickerInput
           label='Picker'
-          onChangeText={handleChange('language')}
-          onBlur={handleBlur('language')}
           value={values.language}
           errorMessage={errors.language}
-          clear={() => setFieldValue('language', initialValues.language)}
+          clear={() => setFieldValue('language', '')}
           dataSources={languages}
-          onChangeValue={handleChange('language')}
+          onChangeValue={(value) => setFieldValue('language', value)}
           disabled={disabled}
+        />
+        <DatetimePickerInput
+          label='Date Picker'
+          value={values.date}
+          errorMessage={errors.date}
+          onChangeValue={(value) => setFieldValue('date', value)}
+          disabled={disabled}
+          defaultPickerValue={new Date()}
+          type='datePicker'
+        />
+        <DatetimePickerInput
+          label='Time Picker'
+          value={values.date}
+          errorMessage={errors.date}
+          onChangeValue={(value) => setFieldValue('date', value)}
+          disabled={disabled}
+          defaultPickerValue={new Date()}
+          type='timePicker'
+        />
+        <DatetimePickerInput
+          label='Datetime Picker'
+          value={values.date}
+          errorMessage={errors.date}
+          onChangeValue={(value) => setFieldValue('date', value)}
+          disabled={disabled}
+          defaultPickerValue={new Date()}
         />
         <AutocompleteInput
           label='Autocomplete'
           value={values.country}
           errorMessage={errors.country}
           dataSources={countries}
-          onChangeValue={handleChange('country')}
+          onChangeValue={(value) => setFieldValue('country', value)}
           disabled={disabled}
         />
         <AutocompleteInput
@@ -152,7 +180,7 @@ export const FormScreen = (): JSX.Element => {
           value={values.country}
           errorMessage={errors.country}
           dataSources={countries}
-          onChangeValue={handleChange('country')}
+          onChangeValue={(value) => setFieldValue('country', value)}
           disabled={disabled}
           customRenderMenuItem={customRenderMenuItem}
         />

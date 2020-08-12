@@ -14,7 +14,7 @@ export interface TimePickerDataItem {
   label: string;
 }
 export interface TimePickerProps {
-  value: Date;
+  value?: Date;
   open?: boolean;
   setOpen: (open: boolean) => void;
   onChangeValue: (value: Date) => void;
@@ -32,7 +32,7 @@ export const TimePicker = forwardRef((props: TimePickerProps, ref: any) => {
   const {open, setOpen, value: initialValue, onChangeValue} = props;
   const {t} = useTranslation('common');
   const theme = useTheme();
-  const date = initialValue;
+  const date = initialValue || new Date();
   const selectedValue = [date.getHours().toString(), date.getMinutes().toString()];
 
   const onClose = (): void => {

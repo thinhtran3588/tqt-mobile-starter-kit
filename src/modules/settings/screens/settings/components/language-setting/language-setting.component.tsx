@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {useLanguage, LANGUAGES} from '@core/contexts';
 import {ListItem, Picker, PickerDataItem} from '@core/components';
+import {config} from '@core/config';
 
 const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, label: lang.text}));
 
@@ -26,7 +27,7 @@ export const LanguageSetting = (): JSX.Element => {
         open={pickerOpen}
         setOpen={setPickerOpen}
         dataSources={languages}
-        onChangeValue={setLanguage}
+        onChangeValue={(value) => setLanguage(value || config().defaultLang)}
       />
     </>
   );

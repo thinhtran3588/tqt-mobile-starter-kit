@@ -9,11 +9,11 @@ import {PickerDataItem} from '../picker/picker.component';
 import {styles} from './autocomplete-multiple-input.styles';
 
 export type AutocompleteMultipleInputProps = React.ComponentProps<typeof RNTextInput> & {
-  values: string[];
+  values: (string | undefined)[];
   errorMessages?: string | string[];
   clear?: () => void;
   dataSources: PickerDataItem[];
-  onChangeValues: (values: string[]) => void;
+  onChangeValues: (values: (string | undefined)[]) => void;
   maxItemsShown?: number;
   customRenderMenuItem?: (item: PickerDataItem, onPressMenuItem: (item: PickerDataItem) => void) => void;
   menuWidth?: number;
@@ -66,7 +66,7 @@ export const AutocompleteMultipleInput = (props: AutocompleteMultipleInputProps)
     }
   };
 
-  const removeItem = (value: string): void => {
+  const removeItem = (value?: string): void => {
     onChangeValues(values.filter((val) => val !== value));
   };
 
