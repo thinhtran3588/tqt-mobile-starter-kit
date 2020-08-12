@@ -1,40 +1,66 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, {forwardRef} from 'react';
 import RNPicker, {PickerOptions} from 'react-native-picker';
+import dayjs from 'dayjs';
 import colorConvert from 'color-convert';
 import {Modal, Pressable, Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
+import {useNotification} from '@app/core/hooks';
 import {Blur} from '../blur/blur.component';
-import {styles} from './picker.styles';
+import {styles} from './date-picker.styles';
 
-export interface PickerDataItem {
-  value: string;
+export interface DatePickerDataItem {
+  value: Date;
   label: string;
 }
-export interface PickerProps {
-  value: string;
+export interface DatePickerProps {
+  value: Date;
   open?: boolean;
   setOpen: (open: boolean) => void;
-  dataSources: PickerDataItem[];
-  onChangeValue: (value: string) => void;
+  onChangeValue: (value: Date) => void;
+  fromDate?: Date;
+  toDate?: Date;
 }
 
-export const Picker = forwardRef((props: PickerProps, ref: any) => {
+const createPickerData = (fromDate: Date, toDate: Date): string[][] => {
+  const minYear = fromDate.getFullYear();
+  const maxYear = toDate.getFullYear();
+  const pickerData = [
+    Array.from(new Array(31), (x, i) => (i + 1).toString()),
+    Array.from(new Array(12), (x, i) => (i + 1).toString()),
+    Array.from(new Array(maxYear - minYear + 1), (x, i) => (i + minYear).toString()),
+  ];
+  return pickerData;
+};
+
+export const DatePicker = forwardRef((props: DatePickerProps, ref: any) => {
+  const {open, fromDate, toDate, setOpen, value: initialValue, onChangeValue} = props;
   const {t} = useTranslation('common');
+  const {showNotification} = useNotification();
   const theme = useTheme();
-  const {open, dataSources, setOpen, value: initialValue, onChangeValue} = props;
-  const selectedItem = dataSources.find((data) => data.value === initialValue);
-  const selectedValue = selectedItem ? [selectedItem.label] : undefined;
+  const minDate = fromDate || new Date(1900, 0, 1);
+  const maxDate = toDate || new Date(2099, 11, 31);
+  const date = initialValue || minDate;
+  const selectedValue = [date.getDate().toString(), (date.getMonth() + 1).toString(), date.getFullYear().toString()];
 
   const onClose = (): void => {
     setOpen(false);
   };
 
   const onPickerConfirm = (items: string[]): void => {
-    const item = dataSources.find((data) => data.label === items[0]);
-    if (item && item.value !== initialValue) {
-      onChangeValue(item.value);
+    const newDate = dayjs(new Date(+items[2], +items[1] - 1, +items[0]));
+    const currentDate = dayjs(initialValue);
+    if (
+      newDate.date().toString() !== items[0] ||
+      (newDate.month() + 1).toString() !== items[1] ||
+      newDate.year().toString() !== items[2]
+    ) {
+      showNotification({message: t('invalidDate'), type: 'ERROR'});
+    } else if (!newDate.isSame(currentDate)) {
+      onChangeValue(
+        currentDate.set('year', newDate.year()).set('month', newDate.month()).set('date', newDate.date()).toDate(),
+      );
     }
     onClose();
   };
@@ -44,7 +70,7 @@ export const Picker = forwardRef((props: PickerProps, ref: any) => {
     const whiteColorHexArr = [...colorConvert.hex.rgb('#fff'), 1];
     const pickerTextColorHexArr = [...colorConvert.hex.rgb(theme.colors.text), 1];
     const pickerBackgroundHexArr = [...colorConvert.hex.rgb(theme.colors.background), Platform.OS === 'ios' ? 0 : 0.9];
-    const pickerData = dataSources.map((data) => data.label);
+    const pickerData = createPickerData(minDate, maxDate);
     const pickerOptions: PickerOptions = {
       pickerConfirmBtnText: t('select'),
       pickerCancelBtnText: t('cancel'),

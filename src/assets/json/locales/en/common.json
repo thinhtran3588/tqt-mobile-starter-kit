@@ -6,6 +6,7 @@
   "confirmation": "Confirmation",
   "error": "Error",
   "invalid": "Invalid",
+  "invalidDate": "Invalid date",
   "noInternetConnection": "No Internet Connection",
   "required": "Required",
   "restart": "Restart",

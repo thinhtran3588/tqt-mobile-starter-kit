@@ -14,6 +14,8 @@ export * from './internet-connection/internet-connection.component';
 export * from './confirmation/confirmation.component';
 export * from './autocomplete-input/autocomplete-input.component';
 export * from './autocomplete-multiple-input/autocomplete-multiple-input.component';
+export * from './date-picker/date-picker.component';
+export * from './time-picker/time-picker.component';
 
 export {StatusBar, Alert, ScrollView, Pressable, Image} from 'react-native';
 

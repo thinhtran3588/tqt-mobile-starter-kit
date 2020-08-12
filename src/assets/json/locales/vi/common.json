@@ -3,7 +3,10 @@
   "cancel": "Bỏ qua",
   "components": "Components",
   "confirm": "Xác nhận",
+  "confirmation": "Xác nhận",
+  "error": "Lỗi",
   "invalid": "Không hợp lệ",
+  "invalidDate": "Ngày không hợp lệ",
   "noInternetConnection": "Không có kết nối mạng",
   "required": "Bắt buộc",
   "restart": "Khởi động lại",
@@ -11,7 +14,5 @@
   "settings": "Cài đặt",
   "unknownError": "Có lỗi xảy ra",
   "updateRestartConfirmation": "Bản cập nhật mới vừa được cài đặt. Vui lòng khởi động lại để cập nhật",
-  "confirmation": "Xác nhận",
-  "error": "Lỗi",
   "warning": "Cảnh báo"
 }
