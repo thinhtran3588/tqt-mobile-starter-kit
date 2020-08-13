@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
-import {TextInput, Button} from '@core/components';
+import {Button, FormInput, FormField} from '@core/components';
 import {useAuth, useClearSignInForm} from '@auth/contexts';
 import {SCREEN_NAME} from '@app/app.constants';
 import {useForm} from '@core/hooks';
@@ -54,11 +54,28 @@ export const EmailSignUp = (): JSX.Element => {
     }
   };
 
-  const {handleChange, handleBlur, values, errors, setValues, submitForm} = useForm<FormData>({
+  const form = useForm<FormData>({
     initialValues,
     validationSchema,
     onSubmit,
   });
+  const {setValues, submitForm} = form;
+  const fields: FormField<FormData>[] = [
+    {
+      name: 'email',
+      type: 'text',
+    },
+    {
+      name: 'password',
+      type: 'text',
+      secureTextEntry: true,
+    },
+    {
+      name: 'passwordConfirmation',
+      type: 'text',
+      secureTextEntry: true,
+    },
+  ];
 
   useEffect(() => {
     setValues(initialValues, false);
@@ -66,29 +83,9 @@ export const EmailSignUp = (): JSX.Element => {
 
   return (
     <>
-      <TextInput
-        label={t('email')}
-        onChangeText={handleChange('email')}
-        onBlur={handleBlur('email')}
-        value={values.email}
-        errorMessage={errors.email}
-      />
-      <TextInput
-        label={t('password')}
-        onChangeText={handleChange('password')}
-        onBlur={handleBlur('password')}
-        value={values.password}
-        secureTextEntry
-        errorMessage={errors.password}
-      />
-      <TextInput
-        label={t('passwordConfirmation')}
-        onChangeText={handleChange('passwordConfirmation')}
-        onBlur={handleBlur('passwordConfirmation')}
-        value={values.passwordConfirmation}
-        secureTextEntry
-        errorMessage={errors.passwordConfirmation}
-      />
+      {fields.map((field, index) => (
+        <FormInput key={index.toString()} form={form} t={t} field={field} />
+      ))}
       <Button style={styles.button} onPress={submitForm} mode='contained'>
         {t('signUp')}
       </Button>

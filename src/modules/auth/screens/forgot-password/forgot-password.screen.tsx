@@ -2,7 +2,7 @@ import React from 'react';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
-import {TextInput, Button, Layout, View} from '@core/components';
+import {Button, Layout, View, FormField, FormInput} from '@core/components';
 import {useAuth} from '@auth/contexts';
 import {useForm, useNotification} from '@core/hooks';
 import {styles} from './forgot-password.styles';
@@ -33,22 +33,20 @@ export const ForgotPasswordScreen = (): JSX.Element => {
     navigation.goBack();
   };
 
-  const {handleChange, handleBlur, values, errors, submitForm} = useForm<FormData>({
+  const form = useForm<FormData>({
     initialValues,
     validationSchema,
     onSubmit,
   });
-
+  const {submitForm} = form;
+  const emailField: FormField<FormData> = {
+    name: 'email',
+    type: 'text',
+  };
   return (
     <Layout header headerBackButton headerTitle={t('recoverPassword')} style={styles.container}>
       <View>
-        <TextInput
-          label={t('email')}
-          onChangeText={handleChange('email')}
-          onBlur={handleBlur('email')}
-          value={values.email}
-          errorMessage={errors.email}
-        />
+        <FormInput form={form} t={t} field={emailField} />
         <Button style={styles.button} onPress={submitForm} mode='contained'>
           {t('send')}
         </Button>

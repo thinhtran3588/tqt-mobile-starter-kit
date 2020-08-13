@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
-import {View, TextInput, Button} from '@core/components';
+import {View, Button, FormInput, FormField} from '@core/components';
 import {useForm} from '@core/hooks';
 import {useAuth, useClearSignInForm} from '@auth/contexts';
 import {SCREEN_NAME} from '@app/app.constants';
@@ -40,12 +40,23 @@ export const EmailSignIn = (): JSX.Element => {
       setTimeout(() => navigation.navigate(SCREEN_NAME.MAIN_TABS), 100);
     }
   };
-
-  const {handleChange, handleBlur, values, errors, setValues, submitForm} = useForm<FormData>({
+  const form = useForm<FormData>({
     initialValues,
     validationSchema,
     onSubmit,
   });
+  const {setValues, submitForm} = form;
+  const fields: FormField<FormData>[] = [
+    {
+      name: 'email',
+      type: 'text',
+    },
+    {
+      name: 'password',
+      type: 'text',
+      secureTextEntry: true,
+    },
+  ];
 
   useEffect(() => {
     setValues(initialValues, false);
@@ -53,21 +64,9 @@ export const EmailSignIn = (): JSX.Element => {
 
   return (
     <View>
-      <TextInput
-        label={t('email')}
-        onChangeText={handleChange('email')}
-        onBlur={handleBlur('email')}
-        value={values.email}
-        errorMessage={errors.email}
-      />
-      <TextInput
-        label={t('password')}
-        onChangeText={handleChange('password')}
-        onBlur={handleBlur('password')}
-        value={values.password}
-        secureTextEntry
-        errorMessage={errors.password}
-      />
+      {fields.map((field, index) => (
+        <FormInput key={index.toString()} form={form} t={t} field={field} />
+      ))}
       <Button style={styles.button} onPress={submitForm} mode='contained'>
         {t('signIn')}
       </Button>

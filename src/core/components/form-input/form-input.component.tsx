@@ -11,25 +11,32 @@ import {
   AutocompleteMultipleInput,
 } from '../autocomplete-multiple-input/autocomplete-multiple-input.component';
 
-export type FormInputProps<Values> = (
+export type FormField<Values> = (
   | (TextInputProps & {type: 'text'})
   | (PickerInputProps & {type: 'picker'})
   | (DatetimePickerInputProps & {type: 'datePicker' | 'timePicker' | 'dateTimePicker'})
   | (AutocompleteInputProps & {type: 'autocomplete'})
   | (AutocompleteMultipleInputProps & {type: 'autocomplete-multiple'})
-) & {field?: keyof Values; form?: FormikContextType<Values>; t?: TFunction};
+) & {name?: keyof Values};
+
+export type FormInputProps<Values> = {
+  field: FormField<Values>;
+  form?: FormikContextType<Values>;
+  t?: TFunction;
+};
 
 type FormInput = <FormData>(props: FormInputProps<FormData>) => JSX.Element;
 
 export const FormInput: FormInput = (props) => {
-  const {type = 'text', form, field, t, ...other} = props;
+  const {form, t, field} = props;
+  const {type = 'text', name, ...other} = field;
   const extendedProps = {
-    onChangeText: form && field ? form.handleChange(field) : undefined,
-    onChangeValue: form && field ? (val?: unknown) => form.setFieldValue(field as string, val) : undefined,
-    onBlur: form && field ? form.handleBlur(field) : undefined,
-    errorMessage: form && field ? form.errors[field] : '',
-    value: form && field ? form.values[field] : undefined,
-    label: field && t ? t(field as string) : undefined,
+    onChangeText: form && name ? form.handleChange(name) : undefined,
+    onChangeValue: form && name ? (val?: unknown) => form.setFieldValue(name as string, val) : undefined,
+    onBlur: form && name ? form.handleBlur(name) : undefined,
+    errorMessage: form && name ? form.errors[name] : '',
+    value: form && name ? form.values[name] : undefined,
+    label: name && t ? t(name as string) : undefined,
   };
 
   switch (type) {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import * as Yup from 'yup';
 import COUNTRIES from '@assets/json/countries.json';
-import {Button, Layout, PickerDataItem, ScrollView, Menu, FormInput, FormInputProps} from '@core/components';
+import {Button, Layout, PickerDataItem, ScrollView, Menu, FormInput, FormField} from '@core/components';
 import {useConfirmation, LANGUAGES} from '@core/contexts';
 import {useForm} from '@core/hooks';
 import {sleep} from '@core/helpers';
@@ -23,7 +23,7 @@ const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, 
 const countries: PickerDataItem[] = COUNTRIES.map((country) => ({value: country.code, label: country.name}));
 
 export const FormScreen = (): JSX.Element => {
-  const {t} = useTranslation('auth');
+  const {t} = useTranslation('common');
   const [disabled, setDisabled] = useState(false);
   const {
     dispatch: {openConfirmation},
@@ -84,26 +84,26 @@ export const FormScreen = (): JSX.Element => {
     return <Menu.Item key={item.value} onPress={() => onPressMenuItem(item)} title={title} style={styles.menuItem} />;
   };
 
-  const fields: FormInputProps<FormData>[] = [
+  const fields: FormField<FormData>[] = [
     {
-      field: 'email',
+      name: 'email',
       type: 'text',
       disabled,
     },
     {
-      field: 'password',
+      name: 'password',
       type: 'text',
       disabled,
       secureTextEntry: true,
     },
     {
-      field: 'text',
+      name: 'text',
       type: 'text',
       disabled,
       label: 'Text',
     },
     {
-      field: 'number',
+      name: 'number',
       type: 'text',
       disabled,
       label: 'Number',
@@ -112,42 +112,42 @@ export const FormScreen = (): JSX.Element => {
       keyboardType: 'number-pad',
     },
     {
-      field: 'language',
+      name: 'language',
       type: 'picker',
       disabled,
       label: 'Picker',
       dataSources: languages,
     },
     {
-      field: 'date',
+      name: 'date',
       type: 'datePicker',
       disabled,
       label: 'Date Picker',
       defaultPickerValue: new Date(),
     },
     {
-      field: 'date',
+      name: 'date',
       type: 'timePicker',
       disabled,
       label: 'Time Picker',
       defaultPickerValue: new Date(),
     },
     {
-      field: 'date',
+      name: 'date',
       type: 'dateTimePicker',
       disabled,
       label: 'DateTime Picker',
       defaultPickerValue: new Date(),
     },
     {
-      field: 'country',
+      name: 'country',
       type: 'autocomplete',
       disabled,
       label: 'Autocomplete',
       dataSources: countries,
     },
     {
-      field: 'country',
+      name: 'country',
       type: 'autocomplete',
       disabled,
       label: 'Autocomplete (custom)',
@@ -155,7 +155,7 @@ export const FormScreen = (): JSX.Element => {
       customRenderMenuItem,
     },
     {
-      field: 'countries',
+      name: 'countries',
       type: 'autocomplete-multiple',
       disabled,
       label: 'Autocomplete Multiple',
@@ -167,8 +167,7 @@ export const FormScreen = (): JSX.Element => {
     <Layout>
       <ScrollView contentContainerStyle={styles.container}>
         {fields.map((field, index) => (
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          <FormInput key={index.toString()} form={form} t={t} {...field} />
+          <FormInput key={index.toString()} form={form} t={t} field={field} />
         ))}
         <Button style={styles.button} onPress={submitForm} mode='contained'>
           Submit

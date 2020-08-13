@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
 import COUNTRIES from '@assets/json/countries.json';
-import {TextInput, Button, Layout, View, PickerDataItem, AutocompleteInput, Menu} from '@core/components';
+import {Button, Layout, View, PickerDataItem, Menu, FormField, FormInput} from '@core/components';
 import {useAuth} from '@auth/contexts';
 import {config} from '@core/config';
 import {SCREEN_NAME} from '@app/app.constants';
@@ -97,24 +97,6 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
     );
   };
 
-  const {handleChange, handleBlur, submitForm, values, errors, setFieldValue} = useForm<FormData>({
-    initialValues,
-    validationSchema,
-    onSubmit: sendCode,
-  });
-
-  const signIn = async (formValues: {code: string}): Promise<void> => {
-    await verifyCode(formValues.code);
-  };
-
-  const codeForm = useForm<{code: string}>({
-    initialValues: {code: ''},
-    validationSchema: Yup.object().shape({
-      code: Yup.string().required(t('common:required')),
-    }),
-    onSubmit: signIn,
-  });
-
   const customRenderMenuItem = (item: PickerDataItem, onPressMenuItem: (item: PickerDataItem) => void): JSX.Element => {
     const country = COUNTRIES.find((c) => c.code === item.value);
     if (!country) {
@@ -124,31 +106,56 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
     return <Menu.Item key={item.value} onPress={() => onPressMenuItem(item)} title={title} style={styles.menuItem} />;
   };
 
+  const form = useForm<FormData>({
+    initialValues,
+    validationSchema,
+    onSubmit: sendCode,
+  });
+  const {submitForm} = form;
+  const fields: FormField<FormData>[] = [
+    {
+      name: 'countryCode',
+      type: 'autocomplete',
+      dataSources: countries,
+      disabled: verificationStatus.codeSent,
+      menuWidth: screen.width - 80,
+      customRenderMenuItem,
+      label: ' ',
+    },
+    {
+      name: 'phoneNo',
+      type: 'text',
+      disabled: verificationStatus.codeSent,
+      keyboardType: 'number-pad',
+    },
+  ];
+
+  const signIn = async (formValues: {verificationCode: string}): Promise<void> => {
+    await verifyCode(formValues.verificationCode);
+  };
+
+  const codeForm = useForm<{verificationCode: string}>({
+    initialValues: {verificationCode: ''},
+    validationSchema: Yup.object().shape({
+      verificationCode: Yup.string().required(t('common:required')),
+    }),
+    onSubmit: signIn,
+  });
+
+  const codeField: FormField<{verificationCode: string}> = {
+    name: 'verificationCode',
+    type: 'text',
+    keyboardType: 'number-pad',
+  };
+
   return (
     <Layout header headerBackButton headerTitle={t('signInWithPhoneNo')} style={styles.container}>
       <View row>
         <View flex={1}>
-          <AutocompleteInput
-            label={' '}
-            value={values.countryCode}
-            errorMessage={errors.countryCode}
-            dataSources={countries}
-            onChangeValue={(value) => setFieldValue('countryCode', value)}
-            disabled={verificationStatus.codeSent}
-            menuWidth={screen.width - 80}
-            customRenderMenuItem={customRenderMenuItem}
-          />
+          <FormInput form={form} t={t} field={fields[0]} />
         </View>
         <View flex={2}>
-          <TextInput
-            label={t('phoneNo')}
-            onChangeText={handleChange('phoneNo')}
-            onBlur={handleBlur('phoneNo')}
-            value={values.phoneNo}
-            errorMessage={errors.phoneNo}
-            keyboardType='number-pad'
-            disabled={verificationStatus.codeSent}
-          />
+          <FormInput form={form} t={t} field={fields[1]} />
         </View>
       </View>
       <Button style={styles.button} onPress={submitForm} mode='contained' disabled={verificationStatus.waitTime !== 0}>
@@ -156,14 +163,8 @@ export const SignInPhoneNoScreen = (): JSX.Element => {
       </Button>
       {verificationStatus.codeSent && (
         <>
-          <TextInput
-            label={t('verificationCode')}
-            onChangeText={codeForm.handleChange('code')}
-            onBlur={codeForm.handleBlur('code')}
-            value={codeForm.values.code}
-            errorMessage={codeForm.errors.code}
-            keyboardType='number-pad'
-          />
+          <FormInput form={codeForm} t={t} field={codeField} />
+          <FormInput form={form} t={t} field={fields[1]} />
           <Button style={styles.button} onPress={codeForm.submitForm} mode='contained'>
             {t('signIn')}
           </Button>
