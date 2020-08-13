@@ -1,18 +1,7 @@
 import React, {useState} from 'react';
 import * as Yup from 'yup';
 import COUNTRIES from '@assets/json/countries.json';
-import {
-  Button,
-  TextInput,
-  Layout,
-  PickerDataItem,
-  PickerInput,
-  AutocompleteInput,
-  ScrollView,
-  Menu,
-  AutocompleteMultipleInput,
-  DatetimePickerInput,
-} from '@core/components';
+import {Button, Layout, PickerDataItem, ScrollView, Menu, FormInput, FormInputProps} from '@core/components';
 import {useConfirmation, LANGUAGES} from '@core/contexts';
 import {useForm} from '@core/hooks';
 import {sleep} from '@core/helpers';
@@ -79,11 +68,12 @@ export const FormScreen = (): JSX.Element => {
     });
   };
 
-  const {handleChange, handleBlur, values, errors, submitForm, setFieldValue} = useForm<FormData>({
+  const form = useForm<FormData>({
     initialValues,
     validationSchema,
     onSubmit,
   });
+  const {values, submitForm} = form;
 
   const customRenderMenuItem = (item: PickerDataItem, onPressMenuItem: (item: PickerDataItem) => void): JSX.Element => {
     const country = COUNTRIES.find((c) => c.code === item.value);
@@ -94,105 +84,92 @@ export const FormScreen = (): JSX.Element => {
     return <Menu.Item key={item.value} onPress={() => onPressMenuItem(item)} title={title} style={styles.menuItem} />;
   };
 
+  const fields: FormInputProps<FormData>[] = [
+    {
+      field: 'email',
+      type: 'text',
+      disabled,
+    },
+    {
+      field: 'password',
+      type: 'text',
+      disabled,
+      secureTextEntry: true,
+    },
+    {
+      field: 'text',
+      type: 'text',
+      disabled,
+      label: 'Text',
+    },
+    {
+      field: 'number',
+      type: 'text',
+      disabled,
+      label: 'Number',
+      value: values.number.toString(),
+      defaultValue: '0',
+      keyboardType: 'number-pad',
+    },
+    {
+      field: 'language',
+      type: 'picker',
+      disabled,
+      label: 'Picker',
+      dataSources: languages,
+    },
+    {
+      field: 'date',
+      type: 'datePicker',
+      disabled,
+      label: 'Date Picker',
+      defaultPickerValue: new Date(),
+    },
+    {
+      field: 'date',
+      type: 'timePicker',
+      disabled,
+      label: 'Time Picker',
+      defaultPickerValue: new Date(),
+    },
+    {
+      field: 'date',
+      type: 'dateTimePicker',
+      disabled,
+      label: 'DateTime Picker',
+      defaultPickerValue: new Date(),
+    },
+    {
+      field: 'country',
+      type: 'autocomplete',
+      disabled,
+      label: 'Autocomplete',
+      dataSources: countries,
+    },
+    {
+      field: 'country',
+      type: 'autocomplete',
+      disabled,
+      label: 'Autocomplete (custom)',
+      dataSources: countries,
+      customRenderMenuItem,
+    },
+    {
+      field: 'countries',
+      type: 'autocomplete-multiple',
+      disabled,
+      label: 'Autocomplete Multiple',
+      dataSources: countries,
+    },
+  ];
+
   return (
     <Layout>
       <ScrollView contentContainerStyle={styles.container}>
-        <TextInput
-          label={t('email')}
-          onChangeText={handleChange('email')}
-          onBlur={handleBlur('email')}
-          value={values.email}
-          errorMessage={errors.email}
-          disabled={disabled}
-        />
-        <TextInput
-          label={t('password')}
-          onChangeText={handleChange('password')}
-          onBlur={handleBlur('password')}
-          value={values.password}
-          secureTextEntry
-          errorMessage={errors.password}
-          disabled={disabled}
-        />
-        <TextInput
-          label='Text'
-          onChangeText={handleChange('text')}
-          onBlur={handleBlur('text')}
-          value={values.text}
-          errorMessage={errors.text}
-          disabled={disabled}
-        />
-        <TextInput
-          label='Number'
-          onChangeText={handleChange('number')}
-          onBlur={handleBlur('number')}
-          value={values.number.toString()}
-          errorMessage={errors.number}
-          keyboardType='number-pad'
-          defaultValue='0'
-          disabled={disabled}
-        />
-        <PickerInput
-          label='Picker'
-          value={values.language}
-          errorMessage={errors.language}
-          clear={() => setFieldValue('language', '')}
-          dataSources={languages}
-          onChangeValue={(value) => setFieldValue('language', value)}
-          disabled={disabled}
-        />
-        <DatetimePickerInput
-          label='Date Picker'
-          value={values.date}
-          errorMessage={errors.date}
-          onChangeValue={(value) => setFieldValue('date', value)}
-          disabled={disabled}
-          defaultPickerValue={new Date()}
-          type='datePicker'
-        />
-        <DatetimePickerInput
-          label='Time Picker'
-          value={values.date}
-          errorMessage={errors.date}
-          onChangeValue={(value) => setFieldValue('date', value)}
-          disabled={disabled}
-          defaultPickerValue={new Date()}
-          type='timePicker'
-        />
-        <DatetimePickerInput
-          label='Datetime Picker'
-          value={values.date}
-          errorMessage={errors.date}
-          onChangeValue={(value) => setFieldValue('date', value)}
-          disabled={disabled}
-          defaultPickerValue={new Date()}
-        />
-        <AutocompleteInput
-          label='Autocomplete'
-          value={values.country}
-          errorMessage={errors.country}
-          dataSources={countries}
-          onChangeValue={(value) => setFieldValue('country', value)}
-          disabled={disabled}
-        />
-        <AutocompleteInput
-          label='Autocomplete (custom)'
-          value={values.country}
-          errorMessage={errors.country}
-          dataSources={countries}
-          onChangeValue={(value) => setFieldValue('country', value)}
-          disabled={disabled}
-          customRenderMenuItem={customRenderMenuItem}
-        />
-        <AutocompleteMultipleInput
-          label='Autocomplete multiple values'
-          values={values.countries}
-          errorMessages={errors.countries}
-          dataSources={countries}
-          onChangeValues={(value) => setFieldValue('countries', value)}
-          disabled={disabled}
-          customRenderMenuItem={customRenderMenuItem}
-        />
+        {fields.map((field, index) => (
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          <FormInput key={index.toString()} form={form} t={t} {...field} />
+        ))}
         <Button style={styles.button} onPress={submitForm} mode='contained'>
           Submit
         </Button>

@@ -17,7 +17,7 @@ export interface TimePickerProps {
   value?: Date;
   open?: boolean;
   setOpen: (open: boolean) => void;
-  onChangeValue: (value: Date) => void;
+  onChangeValue?: (value: Date) => void;
 }
 
 const createPickerData = (): string[][] => {
@@ -44,8 +44,15 @@ export const TimePicker = forwardRef((props: TimePickerProps, ref: any) => {
       .set('hour', +items[0])
       .set('minute', +items[1]);
     const currentDate = dayjs(initialValue);
-    if (!newDate.isSame(currentDate)) {
-      onChangeValue(currentDate.set('hour', newDate.hour()).set('minute', newDate.minute()).toDate());
+    if (!newDate.isSame(currentDate) && onChangeValue) {
+      onChangeValue(
+        currentDate
+          .set('hour', newDate.hour())
+          .set('minute', newDate.minute())
+          .set('second', 0)
+          .set('millisecond', 0)
+          .toDate(),
+      );
     }
     onClose();
   };

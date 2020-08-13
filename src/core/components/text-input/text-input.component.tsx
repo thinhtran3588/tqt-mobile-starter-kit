@@ -12,6 +12,7 @@ export type TextInputProps = React.ComponentProps<typeof RNTextInput> & {
   alwaysShowClearButton?: boolean;
   defaultValue?: string;
   clear?: () => void;
+  clearFocus?: boolean;
 };
 
 const ICON_SIZE = 20;
@@ -29,6 +30,7 @@ export const TextInput = (props: TextInputProps): JSX.Element => {
     onChangeText,
     defaultValue = '',
     clear: clearInput,
+    clearFocus = true,
     ...other
   } = props;
   const {appTheme} = useAppTheme();
@@ -44,7 +46,9 @@ export const TextInput = (props: TextInputProps): JSX.Element => {
     } else {
       onChangeText && onChangeText(defaultValue);
     }
-    setTimeout(() => inputEl.current.focus(), 100);
+    if (clearFocus) {
+      setTimeout(() => inputEl.current.focus(), 100);
+    }
   };
 
   return (
@@ -59,7 +63,7 @@ export const TextInput = (props: TextInputProps): JSX.Element => {
         onChangeText={onChangeText}
         {...other}
       />
-      {errorMessage && (
+      {Boolean(errorMessage) && (
         <Text style={styles.error} error={Boolean(errorMessage)}>
           {errorMessage}
         </Text>

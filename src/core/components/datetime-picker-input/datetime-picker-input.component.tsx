@@ -18,7 +18,7 @@ export type DatetimePickerInputProps = Omit<
   defaultValue?: Date;
   defaultPickerValue?: Date;
   errorMessage?: string;
-  onChangeValue: (value?: Date) => void;
+  onChangeValue?: (value?: Date) => void;
   format?: string;
   type?: 'datePicker' | 'timePicker' | 'dateTimePicker';
   clearButtonVisible?: boolean;
@@ -63,7 +63,7 @@ export const DatetimePickerInput = (props: DatetimePickerInputProps): JSX.Elemen
     }
   };
   const clear = (): void => {
-    onChangeValue(defaultValue);
+    onChangeValue && onChangeValue(defaultValue);
   };
 
   return (

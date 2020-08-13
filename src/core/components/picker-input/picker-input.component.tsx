@@ -12,24 +12,28 @@ export type PickerInputProps = Omit<
   'value' | 'onChangeText' | 'defaultValue' | 'onBlur'
 > & {
   value?: string;
+  defaultValue?: string;
   errorMessage?: string;
-  clear?: () => void;
   dataSources: PickerDataItem[];
-  onChangeValue: (value?: string) => void;
+  onChangeValue?: (value?: string) => void;
 };
 
 export const PickerInput = (props: PickerInputProps): JSX.Element => {
   const [open, setOpen] = useState(false);
-  const {value, dataSources, onChangeValue, disabled, clear, ...other} = props;
+  const {value, defaultValue, dataSources, onChangeValue, disabled, ...other} = props;
   const label = dataSources.find((item) => item.value === value)?.label || '';
   const openModal = (): void => {
     if (!disabled) {
       setOpen(true);
     }
   };
+  const clear = (): void => {
+    onChangeValue && onChangeValue(defaultValue);
+  };
+
   return (
     <View>
-      <TextInput {...other} value={label} disabled={disabled} />
+      <TextInput {...other} value={label} disabled={disabled} clear={clear} clearFocus={false} />
       <Pressable style={styles.overlay} onPress={openModal}>
         <View />
       </Pressable>

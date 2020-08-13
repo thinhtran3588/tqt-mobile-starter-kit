@@ -17,7 +17,7 @@ export interface PickerProps {
   open?: boolean;
   setOpen: (open: boolean) => void;
   dataSources: PickerDataItem[];
-  onChangeValue: (value?: string) => void;
+  onChangeValue?: (value?: string) => void;
 }
 
 export const Picker = forwardRef((props: PickerProps, ref: any) => {
@@ -33,7 +33,7 @@ export const Picker = forwardRef((props: PickerProps, ref: any) => {
 
   const onPickerConfirm = (items: string[]): void => {
     const item = dataSources.find((data) => data.label === items[0]);
-    if (item && item.value !== initialValue) {
+    if (item && item.value !== initialValue && onChangeValue) {
       onChangeValue(item.value);
     }
     onClose();

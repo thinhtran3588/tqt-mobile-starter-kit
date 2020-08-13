@@ -19,7 +19,7 @@ export interface DatePickerProps {
   defaultValue?: Date;
   open?: boolean;
   setOpen: (open: boolean) => void;
-  onChangeValue: (value: Date) => void;
+  onChangeValue?: (value: Date) => void;
   fromDate?: Date;
   toDate?: Date;
 }
@@ -58,9 +58,17 @@ export const DatePicker = forwardRef((props: DatePickerProps, ref: any) => {
       newDate.year().toString() !== items[2]
     ) {
       showNotification({message: t('invalidDate'), type: 'ERROR'});
-    } else if (!newDate.isSame(currentDate)) {
+    } else if (!newDate.isSame(currentDate) && onChangeValue) {
       onChangeValue(
-        currentDate.set('year', newDate.year()).set('month', newDate.month()).set('date', newDate.date()).toDate(),
+        currentDate
+          .set('year', newDate.year())
+          .set('month', newDate.month())
+          .set('date', newDate.date())
+          .set('hour', 0)
+          .set('minute', 0)
+          .set('second', 0)
+          .set('millisecond', 0)
+          .toDate(),
       );
     }
     onClose();

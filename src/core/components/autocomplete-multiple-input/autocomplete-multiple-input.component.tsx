@@ -9,11 +9,11 @@ import {PickerDataItem} from '../picker/picker.component';
 import {styles} from './autocomplete-multiple-input.styles';
 
 export type AutocompleteMultipleInputProps = React.ComponentProps<typeof RNTextInput> & {
-  values: (string | undefined)[];
+  values?: (string | undefined)[];
   errorMessages?: string | string[];
   clear?: () => void;
   dataSources: PickerDataItem[];
-  onChangeValues: (values: (string | undefined)[]) => void;
+  onChangeValues?: (values: (string | undefined)[]) => void;
   maxItemsShown?: number;
   customRenderMenuItem?: (item: PickerDataItem, onPressMenuItem: (item: PickerDataItem) => void) => void;
   menuWidth?: number;
@@ -52,8 +52,10 @@ export const AutocompleteMultipleInput = (props: AutocompleteMultipleInputProps)
   };
 
   const onPressMenuItem = (item: PickerDataItem): void => {
-    if (!values.includes(item.value)) {
-      onChangeValues([...values, item.value]);
+    if (!values) {
+      onChangeValues && onChangeValues([item.value]);
+    } else if (!values.includes(item.value)) {
+      onChangeValues && onChangeValues([...values, item.value]);
     }
     setText('');
     setOpen(false);
@@ -67,7 +69,7 @@ export const AutocompleteMultipleInput = (props: AutocompleteMultipleInputProps)
   };
 
   const removeItem = (value?: string): void => {
-    onChangeValues(values.filter((val) => val !== value));
+    onChangeValues && onChangeValues(values ? values.filter((val) => val !== value) : []);
   };
 
   const clear = (): void => {
@@ -84,7 +86,7 @@ export const AutocompleteMultipleInput = (props: AutocompleteMultipleInputProps)
         onChangeText={onChangeText}
         onFocus={onFocus}
         clear={clear}
-        alwaysShowClearButton={Boolean(values) && values.length > 0}
+        alwaysShowClearButton={Boolean(values) && values && values.length > 0}
       />
       <Menu
         style={{width: menuWidth}}
@@ -105,11 +107,12 @@ export const AutocompleteMultipleInput = (props: AutocompleteMultipleInputProps)
         )}
       </Menu>
       <View row>
-        {values.map((value) => (
-          <Chip style={styles.chip} key={value} onClose={() => removeItem(value)}>
-            {dataSources.find((item) => item.value === value)?.label}
-          </Chip>
-        ))}
+        {values &&
+          values.map((value) => (
+            <Chip style={styles.chip} key={value} onClose={() => removeItem(value)}>
+              {dataSources.find((item) => item.value === value)?.label}
+            </Chip>
+          ))}
       </View>
       {errorMessages && (
         <Text style={styles.error} error={Boolean(errorMessages)}>

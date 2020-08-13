@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, {useState, useEffect} from 'react';
-import {Keyboard, LayoutChangeEvent} from 'react-native';
+import {Keyboard, LayoutChangeEvent, NativeSyntheticEvent, TextInputFocusEventData} from 'react-native';
 import {TextInput as RNTextInput, Menu} from 'react-native-paper';
 import {TextInput} from '../text-input/text-input.component';
 import {View} from '../view/view.component';
@@ -8,11 +8,14 @@ import {Text} from '../text/text.component';
 import {PickerDataItem} from '../picker/picker.component';
 import {styles} from './autocomplete-input.styles';
 
-export type AutocompleteInputProps = React.ComponentProps<typeof RNTextInput> & {
+export type AutocompleteInputProps = Omit<
+  React.ComponentProps<typeof RNTextInput>,
+  'onChangeText' | 'onBlur' | 'clear' | 'defaultValue'
+> & {
   errorMessage?: string;
   clear?: () => void;
   dataSources: PickerDataItem[];
-  onChangeValue: (value?: string) => void;
+  onChangeValue?: (value?: string) => void;
   maxItemsShown?: number;
   customRenderMenuItem?: (item: PickerDataItem, onPressMenuItem: (item: PickerDataItem) => void) => void;
   menuWidth?: number;
@@ -47,17 +50,18 @@ export const AutocompleteInput = (props: AutocompleteInputProps): JSX.Element =>
   const onBlur = (): void => {
     const matchedItem = dataSources.find((item) => item.label === text);
     if (!text) {
-      onChangeValue('');
+      onChangeValue && onChangeValue('');
     } else if (!matchedItem) {
       setText(label);
     } else {
-      onChangeValue(matchedItem.value);
+      onChangeValue && onChangeValue(matchedItem.value);
     }
     setOpen(false);
   };
 
-  const onFocus = (): void => {
+  const onFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>): void => {
     setOpen(true);
+    props.onFocus && props.onFocus(e);
   };
 
   const onChangeText = (textValue: string): void => {
@@ -68,7 +72,7 @@ export const AutocompleteInput = (props: AutocompleteInputProps): JSX.Element =>
     setMatchedItems(newMatchedItems);
     if (newMatchedItems.length > 0) {
       if (newMatchedItems.length === 1 && newMatchedItems[0].label === textValue) {
-        onChangeValue(newMatchedItems[0].value);
+        onChangeValue && onChangeValue(newMatchedItems[0].value);
         setOpen(false);
       } else {
         setOpen(true);
@@ -79,7 +83,7 @@ export const AutocompleteInput = (props: AutocompleteInputProps): JSX.Element =>
   };
 
   const onPressMenuItem = (item: PickerDataItem): void => {
-    onChangeValue(item.value);
+    onChangeValue && onChangeValue(item.value);
     setOpen(false);
   };
 
@@ -88,6 +92,10 @@ export const AutocompleteInput = (props: AutocompleteInputProps): JSX.Element =>
     if (width !== menuWidth) {
       setMenuWidth(width);
     }
+  };
+
+  const clear = (): void => {
+    onChangeValue && onChangeValue('');
   };
 
   return (
@@ -99,6 +107,7 @@ export const AutocompleteInput = (props: AutocompleteInputProps): JSX.Element =>
         onChangeText={onChangeText}
         onBlur={onBlur}
         onFocus={onFocus}
+        clear={clear}
       />
       <Menu
         style={{width: menuWidth}}
