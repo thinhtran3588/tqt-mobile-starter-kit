@@ -389,6 +389,8 @@ PODS:
     - React
   - react-native-netinfo (5.9.5):
     - React
+  - react-native-notifications (3.3.2):
+    - React
   - react-native-safe-area-context (3.1.1):
     - React
   - react-native-webview (10.3.3):
@@ -549,6 +551,7 @@ DEPENDENCIES:
   - "react-native-blur (from `../node_modules/@react-native-community/blur`)"
   - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
+  - react-native-notifications (from `../node_modules/react-native-notifications`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -663,6 +666,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-fbsdk"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
+  react-native-notifications:
+    :path: "../node_modules/react-native-notifications"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-webview:
@@ -777,6 +782,7 @@ SPEC CHECKSUMS:
   react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
   react-native-fbsdk: 00c15d138bba6d4efa628670886fc58cec858c19
   react-native-netinfo: a53b00d949b6456913aaf507d9dba90c4008c611
+  react-native-notifications: 367bc1db867fbf7b8af9651c9d4f35dcb9df0a2b
   react-native-safe-area-context: 344b969c45af3d8464d36e8dea264942992ef033
   react-native-webview: 136107c8fc07efc95be59e519710cdc05822ad40
   React-RCTActionSheet: aadd91a1d6cbfae50dd41f140004f816e9e47ade

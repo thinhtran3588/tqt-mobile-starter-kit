@@ -122,3 +122,11 @@ jest.mock('@sentry/react-native', () => ({
   setUser: jest.fn(),
   captureException: jest.fn(),
 }));
+
+jest.mock('react-native-notifications', () => ({
+  events: () => ({
+    registerNotificationReceivedForeground: jest.fn(),
+    registerNotificationOpened: jest.fn(),
+  }),
+  postLocalNotification: jest.fn(),
+}));

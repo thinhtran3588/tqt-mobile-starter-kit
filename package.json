@@ -31,6 +31,7 @@
     "react-native-exception-handler": "^2.10.8",
     "react-native-fbsdk": "^2.0.0",
     "react-native-gesture-handler": "^1.6.1",
+    "react-native-notifications": "^3.3.2",
     "react-native-paper": "^4.0.1",
     "react-native-picker": "^4.3.7",
     "react-native-reanimated": "^1.9.0",

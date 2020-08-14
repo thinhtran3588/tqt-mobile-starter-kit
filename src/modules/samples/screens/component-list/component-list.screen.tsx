@@ -19,6 +19,7 @@ import {
   ConfirmationSample,
   MenuSample,
   PickerSample,
+  LocalNotificationSample,
 } from './components';
 import {styles} from './component-list.styles';
 
@@ -29,6 +30,10 @@ export const ComponentListScreen = (): JSX.Element => {
   const {appTheme} = useAppTheme();
   const textColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const componentList = [
+    {
+      title: 'LocalNotificationSample',
+      element: <LocalNotificationSample />,
+    },
     {
       title: 'ConfirmationSample',
       element: <ConfirmationSample />,

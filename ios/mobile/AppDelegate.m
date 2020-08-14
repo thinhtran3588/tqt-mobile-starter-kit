@@ -10,6 +10,7 @@
 #import <RNGoogleSignin/RNGoogleSignin.h>
 #import <CodePush/CodePush.h>
 #import <React/RCTLinkingManager.h>
+#import <RNNotifications.h>
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -41,7 +42,7 @@ static void InitializeFlipper(UIApplication *application) {
 #ifdef FB_SONARKIT_ENABLED
   InitializeFlipper(application);
 #endif
-
+  [RNNotifications startMonitorNotifications];
   if ([FIRApp defaultApp] == nil) {
     [FIRApp configure];
   }
