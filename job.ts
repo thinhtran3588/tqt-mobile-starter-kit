@@ -241,6 +241,15 @@ export const updateVersion = (version: string): void => {
         },
       ],
     },
+    {
+      src: path.resolve(__dirname, `README.md`),
+      replaces: [
+        {
+          old: /\(current version: [\w, ,.,-]*\)/,
+          new: `(current version: ${version})`,
+        },
+      ],
+    },
   ];
 
   runReplaceTasks(replaceTasks);

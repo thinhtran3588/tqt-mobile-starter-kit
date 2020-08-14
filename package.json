@@ -118,5 +118,5 @@
     "update-ver": "ts-node job.ts update-ver",
     "validate": "yarn lint && yarn test-coverage"
   },
-  "version": "0.9.0"
+  "version": "0.10.0"
 }

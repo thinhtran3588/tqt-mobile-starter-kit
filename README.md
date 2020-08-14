@@ -1,4 +1,4 @@
-# tqt-mobile-starter-kit
+# tqt-mobile-starter-kit (current version: 0.10.0)
 
 ![Typed with TypeScript](https://flat.badgen.net/badge/icon/Typed?icon=typescript&label&labelColor=blue&color=555555)
 ![Eslint](https://badgen.net/badge/eslint/airbnb/ff5a5f?icon=airbnb)
