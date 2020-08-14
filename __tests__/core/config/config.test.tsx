@@ -21,6 +21,13 @@ it('update configuration correctly', async () => {
       },
       "dateFormat": "DD/MM/YYYY",
       "datetimeFormat": "DD/MM/YYYY HH:mm",
+      "deepLink": Object {
+        "appScheme": "tqtstarterkit",
+        "prefixes": Array [
+          "http://starterkit.thinhtran.pro",
+          "tqtstarterkit://",
+        ],
+      },
       "defaultCountryCode": "VN",
       "defaultLang": "vi",
       "fb": Object {
@@ -74,6 +81,13 @@ it('update configuration correctly', async () => {
       },
       "dateFormat": "DD/MM/YYYY",
       "datetimeFormat": "DD/MM/YYYY HH:mm",
+      "deepLink": Object {
+        "appScheme": "tqtstarterkit",
+        "prefixes": Array [
+          "http://starterkit.thinhtran.pro",
+          "tqtstarterkit://",
+        ],
+      },
       "defaultCountryCode": "VN",
       "defaultLang": "vi",
       "fb": Object {

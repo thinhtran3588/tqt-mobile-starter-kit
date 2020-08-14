@@ -9,6 +9,10 @@
   "appInfo": {
     "name": "TQT Starter Kit"
   },
+  "deepLink": {
+    "appScheme": "tqtstarterkit",
+    "prefixes": ["http://starterkit.thinhtran.pro", "tqtstarterkit://"]
+  },
   "fb": {
     "id": "284064976159443"
   },

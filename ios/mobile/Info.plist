@@ -42,9 +42,21 @@
 					<string>com.googleusercontent.apps.460761628098-tbm75hbrsmlgs07saish5bjjo14u3uuf</string>
 				</array>
 			</dict>
+			<dict>
+				<key>CFBundleTypeRole</key>
+				<string>Editor</string>
+				<key>CFBundleURLName</key>
+				<string>deep_linking</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>tqtstarterkit</string>
+				</array>
+			</dict>
 		</array>
 		<key>CFBundleVersion</key>
 		<string>1</string>
+		<key>CodePushDeploymentKey</key>
+		<string>runtime-key</string>
 		<key>FacebookAppID</key>
 		<string>284064976159443</string>
 		<key>FacebookDisplayName</key>
@@ -104,7 +116,5 @@
 		</array>
 		<key>UIViewControllerBasedStatusBarAppearance</key>
 		<false/>
-		<key>CodePushDeploymentKey</key>
-		<string>runtime-key</string>
 	</dict>
 </plist>

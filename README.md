@@ -22,6 +22,7 @@ A starter kit for React Native written in Typescript with :heart:. A production-
 - Analytics: [Firebase Analytics](https://rnfirebase.io/analytics/usage)
 - Forms: [Formik](https://formik.org/)
 - Persist data: [async-storage](https://github.com/react-native-community/async-storage)
+- Deep linking: [React Navigation](https://reactnavigation.org/docs/deep-linking/)
 
 **Master:**
 ![CI-Master](https://github.com/thinhtran3588/tqt-mobile-starter-kit/workflows/CI-Master/badge.svg)

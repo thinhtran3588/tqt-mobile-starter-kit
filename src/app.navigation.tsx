@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, LinkingOptions} from '@react-navigation/native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import {useTranslation} from 'react-i18next';
@@ -13,7 +13,8 @@ import {Colors, Icon} from '@core/components';
 import {useAppTheme} from '@core/contexts';
 import {useAuth} from '@auth/contexts';
 import {SCREEN_NAME} from '@app/app.constants';
-import {trackScreen} from './core/analytics';
+import {trackScreen} from '@core/analytics';
+import {config} from '@core/config';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -112,6 +113,22 @@ export const AppNavigation = (): JSX.Element => {
     },
   ];
 
+  const linking: LinkingOptions = {
+    prefixes: config().deepLink.prefixes,
+    config: {
+      screens: {
+        [SCREEN_NAME.SIGN_IN]: 'signin',
+        [SCREEN_NAME.MAIN_TABS]: {
+          screens: {
+            [SCREEN_NAME.FORM]: 'form',
+            [SCREEN_NAME.SETTINGS]: 'settings',
+            [SCREEN_NAME.COMPONENT_LIST]: 'components',
+          },
+        },
+      },
+    },
+  };
+
   return (
     <NavigationContainer
       ref={navigationRef as any}
@@ -128,7 +145,8 @@ export const AppNavigation = (): JSX.Element => {
 
         // Save the current route name for later comparison
         routeNameRef.current = currentRouteName;
-      }}>
+      }}
+      linking={linking}>
       <Stack.Navigator initialRouteName={auth.isSignedIn ? SCREEN_NAME.MAIN_TABS : SCREEN_NAME.SIGN_IN}>
         {stackItems.map((stackItem) => (
           <Stack.Screen

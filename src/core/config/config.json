@@ -17,6 +17,10 @@
   },
   "dateFormat": "DD/MM/YYYY",
   "datetimeFormat": "DD/MM/YYYY HH:mm",
+  "deepLink": {
+    "appScheme": "",
+    "prefixes": []
+  },
   "defaultCountryCode": "VN",
   "defaultLang": "vi",
   "fb": {

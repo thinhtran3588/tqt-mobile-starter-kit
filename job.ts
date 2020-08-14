@@ -103,6 +103,10 @@ export const setEnv = async (environment: string = 'production'): Promise<void> 
           old: /<string name="facebook_app_id">.*<\/string>/,
           new: `<string name="facebook_app_id">${config().fb.id}</string>`,
         },
+        {
+          old: /<string name="deep_link">.*<\/string>/,
+          new: `<string name="deep_link">${config().deepLink.appScheme}</string>`,
+        },
       ],
     },
     {
@@ -161,6 +165,12 @@ export const setEnv = async (environment: string = 'production'): Promise<void> 
           old: /<string>google_url<\/string>[\n,	, ]*<key>CFBundleURLSchemes<\/key>[\n,	, ]*<array>[\n,	, ]*<string>[\w,.,-]*<\/string>[\n,	, ]*<\/array>/,
           new: `<string>google_url</string>\n				<key>CFBundleURLSchemes</key>\n				<array>\n					<string>${
             config().google.reverseClientId
+          }</string>\n				</array>`,
+        },
+        {
+          old: /<string>deep_linking<\/string>[\n,	, ]*<key>CFBundleURLSchemes<\/key>[\n,	, ]*<array>[\n,	, ]*<string>[\w,.,-]*<\/string>[\n,	, ]*<\/array>/,
+          new: `<string>deep_linking</string>\n				<key>CFBundleURLSchemes</key>\n				<array>\n					<string>${
+            config().deepLink.appScheme
           }</string>\n				</array>`,
         },
       ],
