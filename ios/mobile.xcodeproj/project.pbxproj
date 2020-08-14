@@ -285,7 +285,7 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = BB37Q3GL4U;
 						LastSwiftMigration = 1120;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -706,8 +706,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = mobile/mobile.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BB37Q3GL4U;
 				ENABLE_BITCODE = NO;
@@ -720,7 +720,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pro.thinhtran.starterkit;
 				PRODUCT_NAME = mobile;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore pro.thinhtran.starterkit";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -737,11 +737,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = mobile/mobile.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BB37Q3GL4U;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = mobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -753,7 +753,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = pro.thinhtran.starterkit;
 				PRODUCT_NAME = mobile;
 				PROVISIONING_PROFILE = "3a6a3d45-9ef6-41e0-810b-a9c4e10dd7e6";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore pro.thinhtran.starterkit";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
