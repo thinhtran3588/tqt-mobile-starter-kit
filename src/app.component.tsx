@@ -18,15 +18,16 @@ import {
 import {AuthProvider} from '@auth/contexts';
 import {merge} from '@core/helpers';
 import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal, Confirmation} from '@core/components';
+import {useCheckUpdate, usePushNotification} from '@core/hooks';
 import {i18next} from './i18n';
 import {AppNavigation} from './app.navigation';
-import {useCheckUpdate} from './core/hooks/use-check-update';
 
 export const BaseApp = (): JSX.Element => {
   const {appTheme} = useAppTheme();
   const {language} = useLanguage();
   const {loading} = useLoading();
   useCheckUpdate();
+  usePushNotification();
 
   const {
     confirmation,
@@ -58,25 +59,35 @@ export const BaseApp = (): JSX.Element => {
 export const App = (): JSX.Element => {
   return (
     <RootSiblingParent>
-      <LoadingProvider>
-        <ConfirmationProvider>
-          <LanguageProvider>
-            <I18nextProvider i18n={i18next}>
+      <LanguageProvider>
+        <I18nextProvider i18n={i18next}>
+          <LoadingProvider>
+            <ConfirmationProvider>
               <AppThemeProvider>
-                <InternetConnectionProvider>
-                  <ErrorHandlerProvider>
-                    <AuthProvider>
-                      <SafeAreaProvider>
+                <SafeAreaProvider>
+                  <InternetConnectionProvider>
+                    <ErrorHandlerProvider>
+                      <AuthProvider>
                         <BaseApp />
-                      </SafeAreaProvider>
-                    </AuthProvider>
-                  </ErrorHandlerProvider>
-                </InternetConnectionProvider>
+                      </AuthProvider>
+                    </ErrorHandlerProvider>
+                  </InternetConnectionProvider>
+                </SafeAreaProvider>
               </AppThemeProvider>
-            </I18nextProvider>
-          </LanguageProvider>
-        </ConfirmationProvider>
-      </LoadingProvider>
+            </ConfirmationProvider>
+          </LoadingProvider>
+        </I18nextProvider>
+      </LanguageProvider>
     </RootSiblingParent>
   );
+};
+
+export const AppHeadlessCheck = ({isHeadless}: {isHeadless: boolean}): JSX.Element | null => {
+  if (isHeadless) {
+    // App has been launched in the background by iOS, ignore
+    // eslint-disable-next-line no-null/no-null
+    return null;
+  }
+
+  return <App />;
 };

@@ -4,7 +4,13 @@
 
 import 'react-native-gesture-handler';
 import {AppRegistry} from 'react-native';
-import {App} from '@app/app.component';
+import messaging from '@react-native-firebase/messaging';
+import {AppHeadlessCheck} from '@app/app.component';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => App);
+// Register background handler
+messaging().setBackgroundMessageHandler(async (_remoteMessage) => {
+  // handle message in background
+});
+
+AppRegistry.registerComponent(appName, () => AppHeadlessCheck);

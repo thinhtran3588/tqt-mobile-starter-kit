@@ -111,6 +111,13 @@ jest.mock('react-native-code-push', () => ({
 
 jest.mock('@react-native-firebase/analytics', () => () => ({}));
 
+jest.mock('@react-native-firebase/messaging', () => () => ({
+  requestPermission: jest.fn(),
+  subscribeToTopic: jest.fn(),
+  getToken: jest.fn(),
+  onMessage: jest.fn(),
+}));
+
 jest.mock('@sentry/react-native', () => ({
   setUser: jest.fn(),
   captureException: jest.fn(),

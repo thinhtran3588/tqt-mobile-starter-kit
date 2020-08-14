@@ -46,6 +46,9 @@ PODS:
     - FirebaseAnalytics (= 6.6.2)
   - Firebase/CoreOnly (6.28.1):
     - FirebaseCore (= 6.9.1)
+  - Firebase/Messaging (6.28.1):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 4.6.0)
   - FirebaseAnalytics (6.6.2):
     - FirebaseCore (~> 6.8)
     - FirebaseInstallations (~> 1.4)
@@ -74,6 +77,19 @@ PODS:
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/UserDefaults (~> 6.7)
     - PromisesObjC (~> 1.2)
+  - FirebaseInstanceID (4.5.1):
+    - FirebaseCore (~> 6.8)
+    - FirebaseInstallations (~> 1.0)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/UserDefaults (~> 6.7)
+  - FirebaseMessaging (4.6.1):
+    - FirebaseCore (~> 6.8)
+    - FirebaseInstanceID (~> 4.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/Reachability (~> 6.7)
+    - GoogleUtilities/UserDefaults (~> 6.7)
+    - Protobuf (>= 3.9.2, ~> 3.9)
   - Flipper (0.41.5):
     - Flipper-Folly (~> 2.2)
     - Flipper-RSocket (~> 1.1)
@@ -188,6 +204,7 @@ PODS:
   - Picker/Core (4.3.7):
     - React
   - PromisesObjC (1.2.9)
+  - Protobuf (3.12.0)
   - RCTRequired (0.63.0)
   - RCTTypeSafety (0.63.0):
     - FBLazyVector (= 0.63.0)
@@ -457,6 +474,11 @@ PODS:
     - Firebase/Auth (~> 6.28.1)
     - React
     - RNFBApp
+  - RNFBMessaging (7.6.1):
+    - Firebase/Analytics (~> 6.28.1)
+    - Firebase/Messaging (~> 6.28.1)
+    - React
+    - RNFBApp
   - RNGestureHandler (1.6.1):
     - React
   - RNGoogleSignin (4.0.3):
@@ -547,6 +569,7 @@ DEPENDENCIES:
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
+  - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
   - RNReanimated (from `../node_modules/react-native-reanimated`)
@@ -571,6 +594,8 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseInstallations
+    - FirebaseInstanceID
+    - FirebaseMessaging
     - Flipper
     - Flipper-DoubleConversion
     - Flipper-Folly
@@ -588,6 +613,7 @@ SPEC REPOS:
     - nanopb
     - OpenSSL-Universal
     - PromisesObjC
+    - Protobuf
     - Sentry
     - SSZipArchive
     - YogaKit
@@ -677,6 +703,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBAuth:
     :path: "../node_modules/@react-native-firebase/auth"
+  RNFBMessaging:
+    :path: "../node_modules/@react-native-firebase/messaging"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
@@ -711,6 +739,8 @@ SPEC CHECKSUMS:
   FirebaseCore: 687b8e6a0a4337b898a6326d68254c2f80c143af
   FirebaseCoreDiagnostics: 7535fe695737f8c5b350584292a70b7f8ff0357b
   FirebaseInstallations: 3c520c951305cbf9ca54eb891ff9e6d1fd384881
+  FirebaseInstanceID: c4ad474b87787afd27d09541800620993b457d6f
+  FirebaseMessaging: 942cfe05b4f53c95ab8959395ca35c200398b2f0
   Flipper: 33585e2d9810fe5528346be33bcf71b37bb7ae13
   Flipper-DoubleConversion: 38631e41ef4f9b12861c67d17cb5518d06badc41
   Flipper-Folly: c12092ea368353b58e992843a990a3225d4533c3
@@ -733,6 +763,7 @@ SPEC CHECKSUMS:
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
   Picker: 37554355aef82a532ea95b71b6eeba66bc86182b
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
   RCTRequired: e46bb77db03887b3e200d34b08515c804669db99
   RCTTypeSafety: 270fed6675c42f80fb87b47d626ef3cede1505e6
   React: e008906ff1328f9bccb345ff4f7826397ad223fc
@@ -766,6 +797,7 @@ SPEC CHECKSUMS:
   RNFBAnalytics: 43b6cdfb3f3c8ddd4425260aa246a5f73d7f71c3
   RNFBApp: d55b3a69d199cff25ecf4f3bf41a86c47aa37d57
   RNFBAuth: 8cdec65b3c88e8f5b2aa0109d8cbfbaaa73fb379
+  RNFBMessaging: 3bb7dcf398789ce359a9f6b97b83472a3090f65a
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNGoogleSignin: ccf71ee4b6cfd324fd788a41e457e2043838c0d9
   RNReanimated: b5ccb50650ba06f6e749c7c329a1bc3ae0c88b43
