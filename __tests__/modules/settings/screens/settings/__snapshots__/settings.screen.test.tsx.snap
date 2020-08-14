@@ -1718,7 +1718,7 @@ exports[`opens language picker 1`] = `
                         ]
                       }
                     >
-                      0.9.0.1
+                      0.10.0.1
                     </Text>
                   </View>
                 </View>
@@ -3845,7 +3845,7 @@ exports[`opens primary color picker 1`] = `
                         ]
                       }
                     >
-                      0.9.0.1
+                      0.10.0.1
                     </Text>
                   </View>
                 </View>
@@ -5972,7 +5972,7 @@ exports[`renders correctly 1`] = `
                         ]
                       }
                     >
-                      0.9.0.1
+                      0.10.0.1
                     </Text>
                   </View>
                 </View>
@@ -8099,7 +8099,7 @@ exports[`uses dark theme 1`] = `
                         ]
                       }
                     >
-                      0.9.0.1
+                      0.10.0.1
                     </Text>
                   </View>
                 </View>
@@ -10226,7 +10226,7 @@ exports[`uses light theme 1`] = `
                         ]
                       }
                     >
-                      0.9.0.1
+                      0.10.0.1
                     </Text>
                   </View>
                 </View>
