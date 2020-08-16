@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {SafeAreaView, StatusBar, ViewStyle, Keyboard} from 'react-native';
+import {SafeAreaView, StatusBar, ViewStyle, Keyboard, Platform} from 'react-native';
 import {Surface, useTheme, Appbar} from 'react-native-paper';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/contexts';
@@ -113,9 +113,11 @@ export const Layout = (props: LayoutProps): JSX.Element => {
           style={[
             styles.flex,
             style,
-            {
-              marginBottom: keyboardHeight,
-            },
+            Platform.OS === 'ios'
+              ? {
+                  marginBottom: keyboardHeight,
+                }
+              : {},
           ]}>
           {children}
         </Surface>
