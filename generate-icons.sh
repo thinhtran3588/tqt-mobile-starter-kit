@@ -7,14 +7,7 @@ appIcon="./src/assets/images/app-icon.png"
 halfRadius=512
 iosIconFolder="./ios/mobile/Images.xcassets/AppIcon.appiconset"
 androidIconFolder="./android/app/src/main/res"
-# base="./src/assets/images/app_icon.png"
-# noAlphaIcon="./src/assets/images/app_icon_no_alpha.png"
-# roundIcon="./src/assets/images/app_icon_round.png"
-# splashIcon="./src/assets/images/splash_icon.png"
-# iosIconFolder="./ios/mobile/Images.xcassets/AppIcon.appiconset"
-# iosSplashIconFolder="./ios/mobile/Images.xcassets/SplashIcon.imageset"
-# androidIconFolder="./android/app/src/main/res"
-# echo $z
+androidNotiIcon="./src/assets/images/notification_icon.png"
 
 
 convert "$base" -alpha remove "${noAlphaIcon}"
@@ -92,3 +85,6 @@ for (( i = 0; i < ${#androidRoundIconNames[@]}; ++i )); do
   convert "$roundIcon" -resize "${androidRoundIconResolutions[i]}x${androidRoundIconResolutions[i]}" -unsharp 1x4 "${androidIconFolder}/${androidRoundIconNames[i]}.png"
   echo "Wrote ${androidIconFolder}/${androidRoundIconNames[i]}.png"
 done
+
+\cp ${androidNotiIcon} "${androidIconFolder}/drawable/notification_icon.png"
+echo "Wrote ${androidIconFolder}/drawable/notification_icon.png"
