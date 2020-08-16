@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import * as Yup from 'yup';
 import COUNTRIES from '@assets/json/countries.json';
-import {Button, Layout, PickerDataItem, ScrollView, Menu, FormInput, FormField} from '@core/components';
-import {useConfirmation, LANGUAGES} from '@core/contexts';
+import {Button, Layout, PickerDataItem, ScrollView, Menu, FormInput, FormField, Confirmation} from '@core/components';
+import {LANGUAGES} from '@core/contexts';
 import {useForm} from '@core/hooks';
 import {sleep} from '@core/helpers';
 import {useTranslation} from 'react-i18next';
@@ -25,9 +25,7 @@ const countries: PickerDataItem[] = COUNTRIES.map((country) => ({value: country.
 export const FormScreen = (): JSX.Element => {
   const {t} = useTranslation('common');
   const [disabled, setDisabled] = useState(false);
-  const {
-    dispatch: {openConfirmation},
-  } = useConfirmation();
+  const [confirmationOpen, setConfirmationOpen] = useState(false);
   const [initialValues] = useState<FormData>({
     email: 'a@a.com',
     password: 'Abc@12345',
@@ -38,6 +36,7 @@ export const FormScreen = (): JSX.Element => {
     countries: ['VN'],
     date: new Date(),
   });
+  const [submitValues, setSubmitValues] = useState<FormData>(initialValues);
 
   const validationSchema = Yup.object().shape<FormData>({
     email: Yup.string().email(t('common:invalid')).required(t('common:required')),
@@ -53,25 +52,19 @@ export const FormScreen = (): JSX.Element => {
   });
 
   const onSubmit = async (formValues: FormData): Promise<void> => {
-    await sleep(1); // to show loading modal
-    const submitValues = {
+    await sleep(1);
+    setSubmitValues({
       ...formValues,
       number: Number.parseInt((formValues.number as unknown) as string, 10),
-    };
-    openConfirmation({
-      message: JSON.stringify(submitValues),
-      buttons: [
-        {
-          text: 'OK',
-        },
-      ],
     });
+    setConfirmationOpen(true);
   };
 
   const form = useForm<FormData>({
     initialValues,
     validationSchema,
     onSubmit,
+    showLoading: false,
   });
   const {values, submitForm} = form;
 
@@ -176,6 +169,16 @@ export const FormScreen = (): JSX.Element => {
           {disabled ? 'Enable' : 'Disable'}
         </Button>
       </ScrollView>
+      <Confirmation
+        open={confirmationOpen}
+        onClose={() => setConfirmationOpen(false)}
+        message={JSON.stringify(submitValues)}
+        buttons={[
+          {
+            text: 'OK',
+          },
+        ]}
+      />
     </Layout>
   );
 };

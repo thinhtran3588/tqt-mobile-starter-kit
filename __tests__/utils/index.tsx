@@ -9,7 +9,6 @@ import {
   LanguageProvider,
   InternetConnectionProvider,
   LoadingProvider,
-  ConfirmationProvider,
   ErrorHandlerProvider,
 } from '@core/contexts';
 import {PaperProvider, DefaultTheme, DarkTheme} from '@core/components';
@@ -40,19 +39,17 @@ const AllTheProviders = (props: Props): JSX.Element => {
   const {children} = props;
   return (
     <LoadingProvider>
-      <ConfirmationProvider>
-        <LanguageProvider>
-          <AppThemeProvider>
-            <ErrorHandlerProvider>
-              <AuthProvider>
-                <InternetConnectionProvider>
-                  <BaseApp>{children}</BaseApp>
-                </InternetConnectionProvider>
-              </AuthProvider>
-            </ErrorHandlerProvider>
-          </AppThemeProvider>
-        </LanguageProvider>
-      </ConfirmationProvider>
+      <LanguageProvider>
+        <AppThemeProvider>
+          <ErrorHandlerProvider>
+            <AuthProvider>
+              <InternetConnectionProvider>
+                <BaseApp>{children}</BaseApp>
+              </InternetConnectionProvider>
+            </AuthProvider>
+          </ErrorHandlerProvider>
+        </AppThemeProvider>
+      </LanguageProvider>
     </LoadingProvider>
   );
 };

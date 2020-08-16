@@ -12,27 +12,21 @@ import {
   LoadingProvider,
   useLoading,
   ErrorHandlerProvider,
-  ConfirmationProvider,
-  useConfirmation,
 } from '@core/contexts';
-import {AuthProvider} from '@auth/contexts';
+import {AuthProvider, useAuth} from '@auth/contexts';
 import {merge} from '@core/helpers';
-import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal, Confirmation} from '@core/components';
-import {useCheckUpdate, usePushNotification} from '@core/hooks';
+import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal, CheckUpdate} from '@core/components';
+import {usePushNotification} from '@core/hooks';
 import {i18next} from './i18n';
 import {AppNavigation} from './app.navigation';
 
 export const BaseApp = (): JSX.Element => {
+  const {auth} = useAuth();
   const {appTheme} = useAppTheme();
   const {language} = useLanguage();
   const {loading} = useLoading();
-  useCheckUpdate();
   usePushNotification();
 
-  const {
-    confirmation,
-    dispatch: {closeConfirmation},
-  } = useConfirmation();
   const theme: typeof DarkTheme = merge({}, appTheme.theme === 'dark' ? DarkTheme : DefaultTheme, {
     colors: {primary: appTheme.colors.primary},
   });
@@ -51,7 +45,7 @@ export const BaseApp = (): JSX.Element => {
     <PaperProvider theme={theme}>
       <AppNavigation />
       <LoadingModal loading={loading} />
-      <Confirmation confirmation={confirmation} closeConfirmation={closeConfirmation} />
+      <CheckUpdate isTester={auth.isTester} />
     </PaperProvider>
   );
 };
@@ -62,19 +56,17 @@ export const App = (): JSX.Element => {
       <LanguageProvider>
         <I18nextProvider i18n={i18next}>
           <LoadingProvider>
-            <ConfirmationProvider>
-              <AppThemeProvider>
-                <SafeAreaProvider>
-                  <InternetConnectionProvider>
-                    <ErrorHandlerProvider>
-                      <AuthProvider>
-                        <BaseApp />
-                      </AuthProvider>
-                    </ErrorHandlerProvider>
-                  </InternetConnectionProvider>
-                </SafeAreaProvider>
-              </AppThemeProvider>
-            </ConfirmationProvider>
+            <AppThemeProvider>
+              <SafeAreaProvider>
+                <InternetConnectionProvider>
+                  <ErrorHandlerProvider>
+                    <AuthProvider>
+                      <BaseApp />
+                    </AuthProvider>
+                  </ErrorHandlerProvider>
+                </InternetConnectionProvider>
+              </SafeAreaProvider>
+            </AppThemeProvider>
           </LoadingProvider>
         </I18nextProvider>
       </LanguageProvider>

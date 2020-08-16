@@ -1,7 +1,8 @@
 import {useFormik, FormikConfig, FormikContextType} from 'formik';
-import {useLoading} from '../contexts';
+import {useLoading} from '@core/contexts';
 
-export const useForm = <Values>(config: FormikConfig<Values>): FormikContextType<Values> => {
+export const useForm = <Values>(params: FormikConfig<Values> & {showLoading?: boolean}): FormikContextType<Values> => {
+  const {showLoading = true, ...config} = params;
   const form = useFormik<Values>(config);
   const {setLoading} = useLoading();
 
@@ -11,9 +12,9 @@ export const useForm = <Values>(config: FormikConfig<Values>): FormikContextType
       return;
     }
 
-    setLoading(true);
+    showLoading && setLoading(true);
     await config.onSubmit(form.values, form);
-    setLoading(false);
+    showLoading && setLoading(false);
   };
 
   return {...form, submitForm};

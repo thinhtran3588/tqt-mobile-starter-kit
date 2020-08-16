@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   },
   messageBox: {
     borderRadius: 10,
-    minWidth: 200,
+    minWidth: 300,
     maxWidth: 600,
     borderWidth: 0,
     elevation: 8,
