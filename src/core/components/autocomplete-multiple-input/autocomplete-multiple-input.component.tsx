@@ -81,7 +81,7 @@ export const AutocompleteMultipleInput = (props: AutocompleteMultipleInputProps)
     <View onLayout={onLayout}>
       <TextInput
         {...other}
-        value={text}
+        value={!disabled ? text : ' '}
         disabled={disabled}
         onChangeText={onChangeText}
         onFocus={onFocus}
@@ -106,10 +106,10 @@ export const AutocompleteMultipleInput = (props: AutocompleteMultipleInputProps)
           ),
         )}
       </Menu>
-      <View row>
+      <View row style={[disabled ? styles.disabledChipContainer : {}]}>
         {values &&
           values.map((value) => (
-            <Chip style={styles.chip} key={value} onClose={() => removeItem(value)}>
+            <Chip style={styles.chip} key={value} onClose={!disabled ? () => removeItem(value) : undefined}>
               {dataSources.find((item) => item.value === value)?.label}
             </Chip>
           ))}

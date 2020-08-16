@@ -15,4 +15,7 @@ export const styles = StyleSheet.create({
     marginRight: 5,
     marginTop: 5,
   },
+  disabledChipContainer: {
+    marginTop: -35,
+  },
 });
