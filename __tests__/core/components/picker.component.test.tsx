@@ -59,9 +59,9 @@ it('opens picker and pick a value', async () => {
   const setPrimaryColor = jest.fn();
   const Wrapper = (): JSX.Element => {
     const ref = React.createRef();
-    const [pickerOpen, setPickerOpen] = useState(false);
+    const [open, setOpen] = useState(false);
     const openPicker = (): void => {
-      setPickerOpen(true);
+      setOpen(true);
       if (ref) {
         (ref.current as any).props.onShow();
       }
@@ -72,8 +72,8 @@ it('opens picker and pick a value', async () => {
           ref={ref}
           key='primary-color-picker'
           value={Colors.amber500}
-          open={pickerOpen}
-          setOpen={setPickerOpen}
+          open={open}
+          setOpen={setOpen}
           dataSources={colors}
           onChangeValue={setPrimaryColor}
         />
@@ -96,9 +96,9 @@ it('opens picker and do nothing if pick the same value', async () => {
   const setPrimaryColor = jest.fn();
   const Wrapper = (): JSX.Element => {
     const ref = React.createRef();
-    const [pickerOpen, setPickerOpen] = useState(false);
+    const [open, setOpen] = useState(false);
     const openPicker = (): void => {
-      setPickerOpen(true);
+      setOpen(true);
       if (ref) {
         (ref.current as any).props.onShow();
       }
@@ -109,8 +109,8 @@ it('opens picker and do nothing if pick the same value', async () => {
           ref={ref}
           key='primary-color-picker'
           value={Colors.amber500}
-          open={pickerOpen}
-          setOpen={setPickerOpen}
+          open={open}
+          setOpen={setOpen}
           dataSources={colors}
           onChangeValue={setPrimaryColor}
         />

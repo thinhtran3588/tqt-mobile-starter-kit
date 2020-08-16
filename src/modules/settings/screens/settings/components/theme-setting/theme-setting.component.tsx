@@ -9,7 +9,7 @@ const colors: PickerDataItem[] = COLORS.map((c) => ({value: c.id, label: c.text}
 
 export const ThemeSetting = (): JSX.Element => {
   const {t} = useTranslation('settings');
-  const [colorPickerOpen, setColorPickerOpen] = useState(false);
+  const [openColorPicker, setOpenColorPicker] = useState(false);
   const theme = useTheme();
   const {
     appTheme,
@@ -43,14 +43,14 @@ export const ThemeSetting = (): JSX.Element => {
           description={selectedColor}
           leftIcon='format-color-fill'
           rightIcon='chevron-right'
-          onPress={() => setColorPickerOpen(true)}
+          onPress={() => setOpenColorPicker(true)}
         />
         <View style={[styles.colorBox, {backgroundColor: theme.colors.primary}]} />
         <Picker
           key='primary-color-picker'
           value={appTheme.primaryColorId}
-          open={colorPickerOpen}
-          setOpen={setColorPickerOpen}
+          open={openColorPicker}
+          setOpen={setOpenColorPicker}
           dataSources={colors}
           onChangeValue={(value) => setPrimaryColor(value || DEFAULT_APP_THEME.primaryColorId)}
         />

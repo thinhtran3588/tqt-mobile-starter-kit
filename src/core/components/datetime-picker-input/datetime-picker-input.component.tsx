@@ -27,8 +27,8 @@ export type DatetimePickerInputProps = Omit<
 const ICON_SIZE = 20;
 
 export const DatetimePickerInput = (props: DatetimePickerInputProps): JSX.Element => {
-  const [datePickerOpen, setDatePickerOpen] = useState(false);
-  const [timePickerOpen, setTimePickerOpen] = useState(false);
+  const [openDatePicker, setOpenDatePicker] = useState(false);
+  const [openTimePicker, setOpenTimePicker] = useState(false);
   const {
     value,
     defaultValue,
@@ -57,9 +57,9 @@ export const DatetimePickerInput = (props: DatetimePickerInputProps): JSX.Elemen
       return;
     }
     if (type === 'datePicker') {
-      setDatePickerOpen(true);
+      setOpenDatePicker(true);
     } else if (type === 'timePicker') {
-      setTimePickerOpen(true);
+      setOpenTimePicker(true);
     }
   };
   const clear = (): void => {
@@ -81,13 +81,13 @@ export const DatetimePickerInput = (props: DatetimePickerInputProps): JSX.Elemen
                 style={styles.icon}
                 icon='calendar'
                 size={ICON_SIZE}
-                onPress={() => setDatePickerOpen(true)}
+                onPress={() => setOpenDatePicker(true)}
               />
               <IconButton
                 style={styles.icon}
                 icon='clock-outline'
                 size={ICON_SIZE}
-                onPress={() => setTimePickerOpen(true)}
+                onPress={() => setOpenTimePicker(true)}
               />
             </>
           )}
@@ -95,14 +95,14 @@ export const DatetimePickerInput = (props: DatetimePickerInputProps): JSX.Elemen
       )}
       <DatePicker
         value={value || defaultPickerValue}
-        open={datePickerOpen}
-        setOpen={setDatePickerOpen}
+        open={openDatePicker}
+        setOpen={setOpenDatePicker}
         onChangeValue={onChangeValue}
       />
       <TimePicker
         value={value || defaultPickerValue}
-        open={timePickerOpen}
-        setOpen={setTimePickerOpen}
+        open={openTimePicker}
+        setOpen={setOpenTimePicker}
         onChangeValue={onChangeValue}
       />
     </View>

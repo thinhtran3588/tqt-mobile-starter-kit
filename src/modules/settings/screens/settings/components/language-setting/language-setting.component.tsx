@@ -8,7 +8,7 @@ const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, 
 
 export const LanguageSetting = (): JSX.Element => {
   const {t} = useTranslation('settings');
-  const [pickerOpen, setPickerOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const {language, setLanguage} = useLanguage();
   const selectedLang = LANGUAGES.find((lang) => lang.code === language)?.text;
   return (
@@ -19,13 +19,13 @@ export const LanguageSetting = (): JSX.Element => {
         description={selectedLang}
         leftIcon='globe-model'
         rightIcon='chevron-right'
-        onPress={() => setPickerOpen(true)}
+        onPress={() => setOpen(true)}
       />
       <Picker
         key='language-picker'
         value={language}
-        open={pickerOpen}
-        setOpen={setPickerOpen}
+        open={open}
+        setOpen={setOpen}
         dataSources={languages}
         onChangeValue={(value) => setLanguage(value || config().defaultLang)}
       />
