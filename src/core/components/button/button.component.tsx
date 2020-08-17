@@ -20,6 +20,7 @@ const Button = (props: React.ComponentProps<typeof RNButton>): JSX.Element => {
       uppercase={uppercase}
       {...other}
       labelStyle={[labelColorStyle, labelStyle]}
+      contentStyle={styles.content}
     />
   );
 };
