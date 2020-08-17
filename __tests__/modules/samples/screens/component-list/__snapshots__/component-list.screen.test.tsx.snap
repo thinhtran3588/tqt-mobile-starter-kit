@@ -427,13 +427,13 @@ exports[`renders correctly 1`] = `
                       }
                     >
                       <Button
-                        title="Show local notification"
+                        title="Local notification"
                       />
                       <Button
-                        title="Show local notification at same place"
+                        title="Local notification (same place)"
                       />
                       <Button
-                        title="Show scheduled local notification after 10 seconds"
+                        title="Scheduled local notification (5s)"
                       />
                     </View>
                   </View>
@@ -4578,13 +4578,13 @@ exports[`renders correctly in Android 1`] = `
                       }
                     >
                       <Button
-                        title="Show local notification"
+                        title="Local notification"
                       />
                       <Button
-                        title="Show local notification at same place"
+                        title="Local notification (same place)"
                       />
                       <Button
-                        title="Show scheduled local notification after 10 seconds"
+                        title="Scheduled local notification (5s)"
                       />
                     </View>
                   </View>
