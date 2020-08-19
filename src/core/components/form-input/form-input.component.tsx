@@ -10,6 +10,10 @@ import {
   AutocompleteMultipleInputProps,
   AutocompleteMultipleInput,
 } from '../autocomplete-multiple-input/autocomplete-multiple-input.component';
+import {
+  CheckboxMultipleInputProps,
+  CheckboxMultipleInput,
+} from '../checkbox-multiple-input/checkbox-multiple-input.component';
 
 export type FormField<Values> = (
   | (TextInputProps & {type: 'text'})
@@ -17,6 +21,7 @@ export type FormField<Values> = (
   | (DatetimePickerInputProps & {type: 'datePicker' | 'timePicker' | 'dateTimePicker'})
   | (AutocompleteInputProps & {type: 'autocomplete'})
   | (AutocompleteMultipleInputProps & {type: 'autocomplete-multiple'})
+  | (CheckboxMultipleInputProps & {type: 'checkbox-multiple'})
 ) & {name?: keyof Values};
 
 export type FormInputProps<Values> = {
@@ -88,6 +93,19 @@ export const FormInput: FormInput = (props) => {
           label={other.label || extendedProps.label}
           onChangeValues={autocompleteMultipleProps.onChangeValues || extendedProps.onChangeValue}
           errorMessages={autocompleteMultipleProps.errorMessages || (extendedProps.errorMessage as string)}
+        />
+      );
+    }
+    case 'checkbox-multiple': {
+      const checkboxMultipleProps = other as CheckboxMultipleInputProps;
+      return (
+        <CheckboxMultipleInput
+          dataSources={checkboxMultipleProps.dataSources}
+          values={checkboxMultipleProps.values || ((extendedProps.value as unknown) as string[])}
+          label={other.label || extendedProps.label}
+          onChangeValues={checkboxMultipleProps.onChangeValues || extendedProps.onChangeValue}
+          errorMessages={checkboxMultipleProps.errorMessages || (extendedProps.errorMessage as string)}
+          disabled={checkboxMultipleProps.disabled}
         />
       );
     }

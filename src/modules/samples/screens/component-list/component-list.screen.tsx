@@ -20,6 +20,7 @@ import {
   MenuSample,
   PickerSample,
   LocalNotificationSample,
+  CheckboxSample,
 } from './components';
 import {styles} from './component-list.styles';
 
@@ -81,6 +82,10 @@ export const ComponentListScreen = (): JSX.Element => {
     {
       title: 'ButtonSample',
       element: <ButtonSample />,
+    },
+    {
+      title: 'CheckboxSample',
+      element: <CheckboxSample />,
     },
   ];
 

@@ -16,11 +16,16 @@ interface FormData {
   language: string;
   country: string;
   countries: string[];
+  options: string[];
   date?: Date;
 }
 
 const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, label: lang.text}));
 const countries: PickerDataItem[] = COUNTRIES.map((country) => ({value: country.code, label: country.name}));
+const options: PickerDataItem[] = [1, 2, 3, 4, 5].map((num) => ({
+  value: num.toString(),
+  label: `Option ${num.toString()}`,
+}));
 
 export const FormScreen = (): JSX.Element => {
   const {t} = useTranslation('common');
@@ -34,6 +39,7 @@ export const FormScreen = (): JSX.Element => {
     language: 'vi',
     country: 'VN',
     countries: ['VN'],
+    options: [],
     date: new Date(),
   });
   const [submitValues, setSubmitValues] = useState<FormData>(initialValues);
@@ -46,6 +52,9 @@ export const FormScreen = (): JSX.Element => {
     language: Yup.string().required(t('common:required')),
     country: Yup.string().required(t('common:required')),
     countries: Yup.array()
+      .of(Yup.string().required(t('common:required')))
+      .required(t('common:required')),
+    options: Yup.array()
       .of(Yup.string().required(t('common:required')))
       .required(t('common:required')),
     date: Yup.date(),
@@ -153,6 +162,13 @@ export const FormScreen = (): JSX.Element => {
       disabled,
       label: 'Autocomplete Multiple',
       dataSources: countries,
+    },
+    {
+      name: 'options',
+      type: 'checkbox-multiple',
+      disabled,
+      label: 'Checkbox Multiple',
+      dataSources: options,
     },
   ];
 

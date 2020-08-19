@@ -17,6 +17,8 @@ export * from './autocomplete-multiple-input/autocomplete-multiple-input.compone
 export * from './date-picker/date-picker.component';
 export * from './time-picker/time-picker.component';
 export * from './datetime-picker-input/datetime-picker-input.component';
+export * from './checkbox/checkbox.component';
+export * from './checkbox-multiple-input/checkbox-multiple-input.component';
 export * from './form-input/form-input.component';
 export * from './check-update/check-update.component';
 
@@ -37,7 +39,6 @@ export {
   Avatar,
   Badge,
   Banner,
-  Checkbox,
   List,
   Divider,
   Switch,
