@@ -3,11 +3,10 @@ import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
+import {Button, FormInput, FormField, useForm} from '@app/core';
 import {Dispatch, RootState} from '@app/stores';
-import {Button, FormInput, FormField} from '@core/components';
-import {useAuth} from '@auth/contexts';
 import {SCREEN_NAME} from '@app/app.constants';
-import {useForm} from '@core/hooks';
+import {useAuth} from '@auth/contexts';
 import {styles} from './email-sign-up.styles';
 
 interface FormData {

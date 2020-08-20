@@ -6,14 +6,11 @@ import appleAuth, {
   AppleAuthRequestScope,
   AppleAuthRequestOperation,
 } from '@invertase/react-native-apple-authentication';
-import {usePersistenceImmer} from '@core/hooks/use-persistence';
-import {config} from '@core/config';
-import {AppError, configError} from '@core/exceptions';
 import {useImmer} from 'use-immer';
-import {logEvent, configAnalytics, logAuthEvent} from '@core/analytics';
+import {useSelector} from 'react-redux';
+import {usePersistenceImmer, config, AppError, configError, logEvent, configAnalytics, logAuthEvent} from '@app/core';
 import {EVENT_NAME} from '@app/app.constants';
 import {RootState} from '@app/stores';
-import {useSelector} from 'react-redux';
 
 interface AuthProviderProps {
   children?: React.ReactNode;

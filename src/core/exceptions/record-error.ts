@@ -1,5 +1,5 @@
 import * as Sentry from '@sentry/react-native';
-import {config} from '@core/config';
+import {config} from '../config';
 
 if (!__DEV__) {
   Sentry.init({

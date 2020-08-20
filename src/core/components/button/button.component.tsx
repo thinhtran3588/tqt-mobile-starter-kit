@@ -4,7 +4,7 @@ import {TextStyle} from 'react-native';
 import {Button as RNButton} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {RootState} from '@app/stores';
-import {DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/constants';
+import {DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '../../constants';
 import {styles} from './button.styles';
 
 const Button = (props: React.ComponentProps<typeof RNButton>): JSX.Element => {

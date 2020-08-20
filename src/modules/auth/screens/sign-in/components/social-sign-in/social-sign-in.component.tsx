@@ -2,9 +2,9 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Platform} from 'react-native';
 import {useDispatch} from 'react-redux';
+import {View, Colors, IconButton} from '@app/core';
 import {Dispatch} from '@app/stores';
 import {SCREEN_NAME} from '@app/app.constants';
-import {View, Colors, IconButton} from '@core/components';
 import {useAuth, SignInType} from '@auth/contexts';
 import {styles} from './social-sign-in.styles';
 

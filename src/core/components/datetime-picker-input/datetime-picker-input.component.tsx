@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {Pressable} from 'react-native';
 import {TextInput as RNTextInput, IconButton} from 'react-native-paper';
 import dayjs from 'dayjs';
-import {config} from '@core/config';
+import {config} from '../../config';
 import {TextInput} from '../text-input/text-input.component';
 import {View} from '../view/view.component';
 import {styles} from './datetime-picker-input.styles';

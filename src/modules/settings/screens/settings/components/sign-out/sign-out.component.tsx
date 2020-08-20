@@ -1,7 +1,7 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
+import {ListItem, View, Divider} from '@app/core';
 import {useAuth} from '@auth/contexts';
-import {ListItem, View, Divider} from '@core/components';
 import {styles} from './sign-out.styles';
 
 export const SignOut = (): JSX.Element => {

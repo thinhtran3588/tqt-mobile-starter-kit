@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from '@core/components';
+import {Text} from '@app/core';
 
 export const TextSample = (): JSX.Element => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Badge} from '@core/components';
+import {View, Badge} from '@app/core';
 import {styles} from './badge-sample.styles';
 
 export const BadgeSample = (): JSX.Element => {

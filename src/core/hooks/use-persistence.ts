@@ -1,5 +1,5 @@
-import {storage} from '@core/storages';
 import {useEffect, Dispatch, SetStateAction} from 'react';
+import {storage} from '../storages';
 
 export const usePersistence = <T>(
   state: T,

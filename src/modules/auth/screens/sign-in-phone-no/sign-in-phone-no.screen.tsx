@@ -3,12 +3,21 @@ import {useImmer} from 'use-immer';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
-import COUNTRIES from '@assets/json/countries.json';
-import {Button, Layout, View, PickerDataItem, Menu, FormField, FormInput} from '@core/components';
+import COUNTRIES from '@app/assets/json/countries.json';
+import {
+  Button,
+  Layout,
+  View,
+  PickerDataItem,
+  Menu,
+  FormField,
+  FormInput,
+  config,
+  useForm,
+  useDimensions,
+} from '@app/core';
 import {useAuth} from '@auth/contexts';
-import {config} from '@core/config';
 import {SCREEN_NAME} from '@app/app.constants';
-import {useForm, useDimensions} from '@core/hooks';
 import {styles} from './sign-in-phone-no.styles';
 
 interface FormData {

@@ -1,9 +1,9 @@
 import Toast, {ToastOptions} from 'react-native-root-toast';
-import {getColor} from '@core/helpers';
-import {ColorType, LIGHT_BACKGROUND_COLOR, DARK_BACKGROUND_COLOR} from '@core/constants';
 import {useCallback} from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from '@app/stores';
+import {ColorType, LIGHT_BACKGROUND_COLOR, DARK_BACKGROUND_COLOR} from '../constants';
+import {getColor} from '../helpers';
 
 export interface NotificationParams extends ToastOptions {
   message: string;

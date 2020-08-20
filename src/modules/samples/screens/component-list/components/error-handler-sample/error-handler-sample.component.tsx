@@ -1,8 +1,7 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import {Dispatch} from '@app/stores';
-import {Button} from '@core/components';
-import {sleep} from '@core/helpers';
+import {Button, sleep} from '@app/core';
 import {styles} from './error-handler-sample.styles';
 
 export const ErrorHandlerSample = (): JSX.Element => {

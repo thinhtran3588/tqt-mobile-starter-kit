@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {Text, List, Layout, ScrollView, Divider} from '@core/components';
+import {Text, List, Layout, ScrollView, Divider} from '@app/core';
 import {ThemeSetting, GeneralInfo, LanguageSetting, SignOut, Profile, BetaUserSetting} from './components';
 
 export const SettingsScreen = (): JSX.Element => {

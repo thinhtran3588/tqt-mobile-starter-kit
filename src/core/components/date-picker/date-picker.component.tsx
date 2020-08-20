@@ -6,7 +6,7 @@ import colorConvert from 'color-convert';
 import {Modal, Pressable, Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
-import {useNotification} from '@app/core/hooks';
+import {useNotification} from '../../hooks/use-notification';
 import {Blur} from '../blur/blur.component';
 import {styles} from './date-picker.styles';
 

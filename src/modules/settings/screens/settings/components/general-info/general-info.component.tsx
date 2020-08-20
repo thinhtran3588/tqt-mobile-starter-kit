@@ -1,8 +1,7 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
-import {ListItem} from '@core/components';
-import {config, appFullVersion} from '@core/config';
+import {ListItem, config, appFullVersion} from '@app/core';
 import {SCREEN_NAME} from '@app/app.constants';
 
 export const GeneralInfo = (): JSX.Element => {

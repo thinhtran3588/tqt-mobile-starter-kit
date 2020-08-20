@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {RootState, Dispatch} from '@app/stores';
-import {Button, Picker, PickerDataItem} from '@core/components';
-import {config} from '@core/config';
+import {Button, Picker, PickerDataItem, config} from '@app/core';
 import {styles} from './language-setting.styles';
 
 const languages: PickerDataItem[] = config().languages.map((lang) => ({value: lang.code, label: lang.text}));

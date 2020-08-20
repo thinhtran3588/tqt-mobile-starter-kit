@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActivityIndicator, Colors, View} from '@core/components';
+import {ActivityIndicator, Colors, View} from '@app/core';
 import {styles} from './activity-indicator-sample.styles';
 
 export const ActivityIndicatorSample = (): JSX.Element => {

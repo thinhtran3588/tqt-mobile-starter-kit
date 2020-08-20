@@ -1,5 +1,5 @@
 import {Models} from '@rematch/core';
-import {internetConnection, loading} from '@core/models';
+import {internetConnection, loading} from '@app/core';
 import {settings} from '@settings/models';
 import {signIn} from '@auth/models';
 

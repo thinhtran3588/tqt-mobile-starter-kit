@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import dayjs from 'dayjs';
-import {Button} from '@core/components';
-import {usePushNotification} from '@core/hooks';
+import {Button, usePushNotification} from '@app/core';
 import {styles} from './local-notification-sample.styles';
 
 export const LocalNotificationSample = (): JSX.Element => {

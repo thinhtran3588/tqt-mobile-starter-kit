@@ -1,8 +1,8 @@
 import React, {createRef} from 'react';
 import {WebViewNavigation} from 'react-native-webview';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {Layout, WebView} from '@core/components';
 import {Linking} from 'react-native';
+import {Layout, WebView} from '../../components';
 
 interface WebViewParams {
   title: string;

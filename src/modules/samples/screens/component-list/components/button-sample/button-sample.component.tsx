@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Alert} from '@core/components';
+import {Button, Alert} from '@app/core';
 import {styles} from './button-sample.styles';
 
 export const ButtonSample = (): JSX.Element => {

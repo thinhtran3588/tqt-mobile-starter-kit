@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {useSelector, useDispatch} from 'react-redux';
+import {config, COLORS, ListItem, View, Picker, PickerDataItem} from '@app/core';
 import {RootState, Dispatch} from '@app/stores';
-import {config} from '@core/config';
-import {COLORS} from '@core/constants';
-import {ListItem, View, Picker, PickerDataItem} from '@core/components';
 import {styles} from './theme-setting.styles';
 
 const colors: PickerDataItem[] = COLORS.map((c) => ({value: c.id, label: c.text}));

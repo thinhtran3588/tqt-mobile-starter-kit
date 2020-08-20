@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Icon, Colors} from '@core/components';
+import {View, Icon, Colors} from '@app/core';
 import {styles} from './icon-sample.styles';
 
 export const IconSample = (): JSX.Element => {

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Checkbox, CheckboxStatus} from '@core/components';
+import {Checkbox, CheckboxStatus} from '@app/core';
 
 export const CheckboxSample = (): JSX.Element => {
   const [status1, setStatus1] = useState<CheckboxStatus>('indeterminate');

@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {SafeAreaView, StatusBar, ViewStyle, Keyboard, Platform} from 'react-native';
 import {Surface, useTheme, Appbar} from 'react-native-paper';
 import {useSelector} from 'react-redux';
-import {RootState} from '@app/stores';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
-import {DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/constants';
+import {RootState} from '@app/stores';
+import {DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '../../constants';
 import {InternetConnection} from '../internet-connection/internet-connection.component';
 import {styles} from './layout.styles';
 

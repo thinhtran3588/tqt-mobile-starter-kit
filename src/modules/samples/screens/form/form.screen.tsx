@@ -1,11 +1,20 @@
 import React, {useState} from 'react';
 import * as Yup from 'yup';
-import COUNTRIES from '@assets/json/countries.json';
-import {Button, Layout, PickerDataItem, ScrollView, Menu, FormInput, FormField, Confirmation} from '@core/components';
-import {useForm} from '@core/hooks';
-import {sleep} from '@core/helpers';
-import {config} from '@app/core/config';
 import {useTranslation} from 'react-i18next';
+import COUNTRIES from '@app/assets/json/countries.json';
+import {
+  Button,
+  Layout,
+  PickerDataItem,
+  ScrollView,
+  Menu,
+  FormInput,
+  FormField,
+  Confirmation,
+  useForm,
+  sleep,
+  config,
+} from '@app/core';
 import {styles} from './form.styles';
 
 interface FormData {

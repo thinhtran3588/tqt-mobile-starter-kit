@@ -7,11 +7,18 @@ import {useColorScheme} from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import {PersistGate} from 'redux-persist/lib/integration/react';
 import {Provider, useSelector, useDispatch} from 'react-redux';
+import {
+  PaperProvider,
+  DefaultTheme,
+  DarkTheme,
+  LoadingModal,
+  CheckUpdate,
+  merge,
+  usePushNotification,
+  useErrorHandler,
+} from '@app/core';
 import {store, persistor, RootState, Dispatch} from '@app/stores';
 import {AuthProvider, useAuth} from '@auth/contexts';
-import {merge} from '@core/helpers';
-import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal, CheckUpdate} from '@core/components';
-import {usePushNotification, useErrorHandler} from '@core/hooks';
 import {i18next} from '@app/i18n';
 import {AppNavigation} from './app.navigation';
 

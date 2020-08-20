@@ -1,10 +1,8 @@
 import {createModel} from '@rematch/core';
 import {ColorSchemeName} from 'react-native';
+import {config, logEvent, COLORS_LOOKUP, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@app/core';
 import {RootModel, Dispatch} from '@app/stores';
-import {logEvent} from '@app/core/analytics';
 import {EVENT_NAME} from '@app/app.constants';
-import {config} from '@core/config';
-import {COLORS_LOOKUP, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@app/core/constants';
 
 export interface ThemeState {
   useSystemTheme: boolean;

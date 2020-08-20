@@ -3,8 +3,7 @@ import {Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {useSelector} from 'react-redux';
 import {RootState} from '@app/stores';
-import {DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/constants';
-import {Card, Alert, ScrollView, Layout} from '@core/components';
+import {DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR, Card, Alert, ScrollView, Layout} from '@app/core';
 import {
   ActivityIndicatorSample,
   TextSample,

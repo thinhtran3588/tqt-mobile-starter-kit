@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Confirmation, ConfirmationButton} from '@core/components';
-import {useNotification} from '@core/hooks';
-import {ColorType} from '@core/constants';
+import {Button, Confirmation, ConfirmationButton, useNotification, ColorType} from '@app/core';
 import {useSelector} from 'react-redux';
 import {RootState} from '@app/stores';
 import {styles} from './confirmation-sample.styles';

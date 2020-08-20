@@ -1,5 +1,5 @@
 import React from 'react';
-import {Banner} from '@core/components';
+import {Banner} from '@app/core';
 import {styles} from './banner-sample.styles';
 
 export const BannerSample = (): JSX.Element => {

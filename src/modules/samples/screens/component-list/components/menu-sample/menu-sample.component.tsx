@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Menu, Divider, View} from '@core/components';
-import {useDimensions} from '@core/hooks';
+import {Button, Menu, Divider, View, useDimensions} from '@app/core';
 import {styles} from './menu-sample.styles';
 
 export const MenuSample = (): JSX.Element => {

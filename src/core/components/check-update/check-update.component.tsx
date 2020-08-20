@@ -3,7 +3,7 @@ import {Platform} from 'react-native';
 import codepush from 'react-native-code-push';
 import * as Sentry from '@sentry/react-native';
 import {useTranslation} from 'react-i18next';
-import {config} from '@core/config';
+import {config} from '../../config';
 import {Confirmation} from '../confirmation/confirmation.component';
 
 export interface CheckUpdateProps {

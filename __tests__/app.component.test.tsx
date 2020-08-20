@@ -2,7 +2,7 @@
 // import {render, fireEvent} from '@test-utils';
 // import RNBootSplash from 'react-native-bootsplash';
 // import {App, BaseApp} from '@app/app.component';
-// import {AppThemeProvider, useAppTheme, LanguageProvider, PrimaryColorProvider} from '@core/contexts';
+// import {AppThemeProvider, useAppTheme, LanguageProvider, PrimaryColorProvider} from '@app/core';
 // import {Button} from 'react-native-paper';
 // import {AppNavigation} from '@app/app.navigation';
 

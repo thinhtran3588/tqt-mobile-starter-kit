@@ -5,11 +5,20 @@ import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {RootState} from '@app/stores';
-import {Layout, Image, Button, TabView, TabBar, SceneMap, ScrollView} from '@core/components';
-import {DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/constants';
-import {useDimensions} from '@core/hooks';
+import {
+  Layout,
+  Image,
+  Button,
+  TabView,
+  TabBar,
+  SceneMap,
+  ScrollView,
+  useDimensions,
+  DARK_BACKGROUND_COLOR,
+  LIGHT_BACKGROUND_COLOR,
+} from '@app/core';
 import {SCREEN_NAME} from '@app/app.constants';
-import Logo from '@assets/images/app-logo.png';
+import Logo from '@app/assets/images/app-logo.png';
 import {SocialSignIn, LanguageSetting, EmailSignIn, EmailSignUp} from './components';
 import {styles} from './sign-in.styles';
 

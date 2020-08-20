@@ -3,7 +3,7 @@ import React, {useState, useRef} from 'react';
 import {TextInput as RNTextInput, IconButton} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {RootState} from '@app/stores';
-import {LIGHT_BACKGROUND_COLOR, DARK_BACKGROUND_COLOR} from '@core/constants';
+import {LIGHT_BACKGROUND_COLOR, DARK_BACKGROUND_COLOR} from '../../constants';
 import {Text} from '../text/text.component';
 import {View} from '../view/view.component';
 import {styles} from './text-input.styles';

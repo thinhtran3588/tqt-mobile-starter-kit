@@ -1,8 +1,7 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from '@app/stores';
-import {Card, Text, Button, Alert} from '@core/components';
-import {DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/constants';
+import {Card, Text, Button, Alert, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@app/core';
 import {styles} from './card-sample.styles';
 
 export const CardSample = (): JSX.Element => {

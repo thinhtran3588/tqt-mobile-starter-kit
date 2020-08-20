@@ -5,16 +5,13 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import {createStackNavigator} from '@react-navigation/stack';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
-import {WebViewScreen} from '@core/screens';
+import {useSelector} from 'react-redux';
+import {WebViewScreen, Colors, Icon, trackScreen, config} from '@app/core';
 import {ComponentListScreen, FormScreen} from '@samples/screens';
 import {SettingsScreen} from '@settings/screens';
 import {SignInScreen, ForgotPasswordScreen, SignInPhoneNoScreen} from '@auth/screens';
-import {Colors, Icon} from '@core/components';
 import {useAuth} from '@auth/contexts';
 import {SCREEN_NAME} from '@app/app.constants';
-import {trackScreen} from '@core/analytics';
-import {config} from '@core/config';
-import {useSelector} from 'react-redux';
 import {RootState} from './stores';
 
 const Tab = createMaterialBottomTabNavigator();

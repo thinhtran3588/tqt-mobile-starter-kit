@@ -5,8 +5,8 @@ import Promise from 'bluebird';
 import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
 import {Dispatch} from '@app/stores';
-import {useNotification} from '@core/hooks/use-notification';
-import {AppError, recordError} from '@core/exceptions';
+import {AppError, recordError} from '../exceptions';
+import {useNotification} from './use-notification';
 
 export const useErrorHandler = (): void => {
   const {t} = useTranslation();

@@ -1,8 +1,7 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
+import {Button, useNotification} from '@app/core';
 import {RootState} from '@app/stores';
-import {Button} from '@core/components';
-import {useNotification} from '@core/hooks';
 import {styles} from './notification-sample.styles';
 
 export const NotificationSample = (): JSX.Element => {

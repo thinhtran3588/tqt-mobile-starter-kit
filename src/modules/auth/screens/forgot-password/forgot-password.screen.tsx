@@ -2,9 +2,8 @@ import React from 'react';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
-import {Button, Layout, View, FormField, FormInput} from '@core/components';
+import {useForm, useNotification, Button, Layout, View, FormField, FormInput} from '@app/core';
 import {useAuth} from '@auth/contexts';
-import {useForm, useNotification} from '@core/hooks';
 import {styles} from './forgot-password.styles';
 
 interface FormData {

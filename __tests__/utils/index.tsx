@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // https://testing-library.com/docs/native-testing-library/setup
 import React, {ReactNode, ReactElement} from 'react';
-import {render, RenderResult, RenderOptions} from '@testing-library/react-native';
-import {PaperProvider, DefaultTheme, DarkTheme} from '@core/components';
-import {useSelector} from 'react-redux';
-import {RootState} from '@app/stores';
 import merge from 'lodash/merge';
-import {COLORS_LOOKUP} from '@app/core/constants';
+import {render, RenderResult, RenderOptions} from '@testing-library/react-native';
+import {useSelector} from 'react-redux';
+import {PaperProvider, DefaultTheme, DarkTheme, COLORS_LOOKUP} from '@app/core';
+import {RootState} from '@app/stores';
 
 interface Props {
   children?: ReactNode;
