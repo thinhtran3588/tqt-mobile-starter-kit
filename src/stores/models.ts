@@ -1,9 +1,10 @@
 import {Models} from '@rematch/core';
-import {language, theme, internetConnection, loading} from '@core/models';
+import {theme, internetConnection, loading} from '@core/models';
 import {signIn} from '@auth/models';
+import {settings} from '@settings/models';
 
 export interface RootModel extends Models<RootModel> {
-  language: typeof language;
+  settings: typeof settings;
   theme: typeof theme;
   internetConnection: typeof internetConnection;
   loading: typeof loading;
@@ -11,7 +12,7 @@ export interface RootModel extends Models<RootModel> {
 }
 
 export const models: RootModel = {
-  language,
+  settings,
   theme,
   internetConnection,
   loading,

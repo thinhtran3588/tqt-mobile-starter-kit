@@ -19,7 +19,7 @@ export const BaseApp = (): JSX.Element => {
   const {auth} = useAuth();
   const colorScheme = useColorScheme();
   const {language, theme, loading} = useSelector((state: RootState) => ({
-    language: state.language,
+    language: state.settings.language,
     theme: state.theme,
     loading: state.loading,
   }));
