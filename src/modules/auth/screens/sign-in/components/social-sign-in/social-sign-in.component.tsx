@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux';
 import {Dispatch} from '@app/stores';
 import {SCREEN_NAME} from '@app/app.constants';
 import {View, Colors, IconButton} from '@core/components';
-import {useAuth, SignInType, useClearSignInForm} from '@auth/contexts';
+import {useAuth, SignInType} from '@auth/contexts';
 import {styles} from './social-sign-in.styles';
 
 export const SocialSignIn = (): JSX.Element => {
@@ -16,8 +16,8 @@ export const SocialSignIn = (): JSX.Element => {
   const navigation = useNavigation();
   const {
     loading: {setLoading},
+    signIn: {clearSignInForm},
   } = useDispatch<Dispatch>();
-  const {clearSignInForm} = useClearSignInForm();
 
   const signIn = async (signInType: SignInType): Promise<void> => {
     if (auth.isSignedIn) {

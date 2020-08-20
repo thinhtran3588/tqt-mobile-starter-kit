@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
+import {useDispatch, useSelector} from 'react-redux';
+import {Dispatch, RootState} from '@app/stores';
 import {View, Button, FormInput, FormField} from '@core/components';
 import {useForm} from '@core/hooks';
-import {useAuth, useClearSignInForm} from '@auth/contexts';
+import {useAuth} from '@auth/contexts';
 import {SCREEN_NAME} from '@app/app.constants';
 import {styles} from './email-sign-in.styles';
 
@@ -13,17 +15,21 @@ interface FormData {
   password: string;
 }
 
+const initialValues: FormData = {
+  email: '',
+  password: '',
+};
+
 export const EmailSignIn = (): JSX.Element => {
   const {t} = useTranslation('auth');
   const navigation = useNavigation();
   const {
     dispatch: {signInEmail},
   } = useAuth();
-  const {toggleClearSignInForm, clearSignInForm} = useClearSignInForm();
-  const [initialValues] = useState<FormData>({
-    email: '',
-    password: '',
-  });
+  const toggleClearForm = useSelector((state: RootState) => state.signIn.toggleClearForm);
+  const {
+    signIn: {clearSignInForm},
+  } = useDispatch<Dispatch>();
   const validationSchema = Yup.object().shape<FormData>({
     email: Yup.string().email(t('common:invalid')).required(t('common:required')),
     password: Yup.string().required(t('common:required')),
@@ -60,7 +66,7 @@ export const EmailSignIn = (): JSX.Element => {
 
   useEffect(() => {
     setValues(initialValues, false);
-  }, [toggleClearSignInForm, setValues, initialValues]);
+  }, [setValues, toggleClearForm]);
 
   return (
     <View>
