@@ -9,10 +9,11 @@ import appleAuth, {
 import {usePersistenceImmer} from '@core/hooks/use-persistence';
 import {config} from '@core/config';
 import {AppError, configError} from '@core/exceptions';
-import {useLanguage} from '@core/contexts/language.context';
 import {useImmer} from 'use-immer';
 import {logEvent, configAnalytics, logAuthEvent} from '@core/analytics';
 import {EVENT_NAME} from '@app/app.constants';
+import {RootState} from '@app/stores';
+import {useSelector} from 'react-redux';
 
 interface AuthProviderProps {
   children?: React.ReactNode;
@@ -68,7 +69,7 @@ let confirmationResult: FirebaseAuthTypes.ConfirmationResult | undefined;
 
 const AuthProvider = (props: AuthProviderProps): JSX.Element => {
   const {children} = props;
-  const {language} = useLanguage();
+  const language = useSelector((state: RootState) => state.settings.language);
   const [auth, setAuth] = useImmer(DEFAULT_AUTH);
   const [initializing, setInitializing] = useState(true);
   const [setAuthPersistence] = usePersistenceImmer(auth, setAuth, AUTH_KEY);

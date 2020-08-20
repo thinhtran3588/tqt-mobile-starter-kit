@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import * as Yup from 'yup';
 import COUNTRIES from '@assets/json/countries.json';
 import {Button, Layout, PickerDataItem, ScrollView, Menu, FormInput, FormField, Confirmation} from '@core/components';
-import {LANGUAGES} from '@core/contexts';
 import {useForm} from '@core/hooks';
 import {sleep} from '@core/helpers';
+import {config} from '@app/core/config';
 import {useTranslation} from 'react-i18next';
 import {styles} from './form.styles';
 
@@ -20,7 +20,7 @@ interface FormData {
   date?: Date;
 }
 
-const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, label: lang.text}));
+const languages: PickerDataItem[] = config().languages.map((lang) => ({value: lang.code, label: lang.text}));
 const countries: PickerDataItem[] = COUNTRIES.map((country) => ({value: country.code, label: country.name}));
 const options: PickerDataItem[] = [1, 2, 3, 4, 5].map((num) => ({
   value: num.toString(),

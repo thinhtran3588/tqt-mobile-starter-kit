@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import dayjs from 'dayjs';
 import {Button, Text, PickerDataItem, Picker, DatePicker, TimePicker} from '@core/components';
-import {LANGUAGES} from '@core/contexts';
 import {config} from '@core/config';
 import {styles} from './picker-sample.styles';
 
-const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, label: lang.text}));
+const languages: PickerDataItem[] = config().languages.map((lang) => ({value: lang.code, label: lang.text}));
 
 export const PickerSample = (): JSX.Element => {
   const [language, setLanguage] = useState('vi');

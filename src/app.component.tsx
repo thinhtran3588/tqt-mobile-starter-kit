@@ -6,14 +6,7 @@ import {RootSiblingParent} from 'react-native-root-siblings';
 import {PersistGate} from 'redux-persist/lib/integration/react';
 import {Provider, useSelector} from 'react-redux';
 import {store, persistor, RootState} from '@app/stores';
-import {
-  AppThemeProvider,
-  useAppTheme,
-  LanguageProvider,
-  InternetConnectionProvider,
-  LoadingProvider,
-  useLoading,
-} from '@core/contexts';
+import {AppThemeProvider, useAppTheme, InternetConnectionProvider, LoadingProvider, useLoading} from '@core/contexts';
 import {AuthProvider, useAuth} from '@auth/contexts';
 import {merge} from '@core/helpers';
 import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal, CheckUpdate} from '@core/components';
@@ -58,21 +51,19 @@ export const App = (): JSX.Element => {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <RootSiblingParent>
-          <LanguageProvider>
-            <I18nextProvider i18n={i18next}>
-              <LoadingProvider>
-                <AppThemeProvider>
-                  <SafeAreaProvider>
-                    <InternetConnectionProvider>
-                      <AuthProvider>
-                        <BaseApp />
-                      </AuthProvider>
-                    </InternetConnectionProvider>
-                  </SafeAreaProvider>
-                </AppThemeProvider>
-              </LoadingProvider>
-            </I18nextProvider>
-          </LanguageProvider>
+          <I18nextProvider i18n={i18next}>
+            <LoadingProvider>
+              <AppThemeProvider>
+                <SafeAreaProvider>
+                  <InternetConnectionProvider>
+                    <AuthProvider>
+                      <BaseApp />
+                    </AuthProvider>
+                  </InternetConnectionProvider>
+                </SafeAreaProvider>
+              </AppThemeProvider>
+            </LoadingProvider>
+          </I18nextProvider>
         </RootSiblingParent>
       </PersistGate>
     </Provider>
