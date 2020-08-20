@@ -3,14 +3,17 @@ import {useEffect, useCallback} from 'react';
 import {setJSExceptionHandler, setNativeExceptionHandler} from 'react-native-exception-handler';
 import Promise from 'bluebird';
 import {useTranslation} from 'react-i18next';
+import {useDispatch} from 'react-redux';
+import {Dispatch} from '@app/stores';
 import {useNotification} from '@core/hooks/use-notification';
 import {AppError, recordError} from '@core/exceptions';
-import {useLoading} from '../contexts/loading.context';
 
 export const useErrorHandler = (): void => {
   const {t} = useTranslation();
   const {showNotification} = useNotification();
-  const {setLoading} = useLoading();
+  const {
+    loading: {setLoading},
+  } = useDispatch<Dispatch>();
 
   const handleError = useCallback(
     (err: AppError): void => {

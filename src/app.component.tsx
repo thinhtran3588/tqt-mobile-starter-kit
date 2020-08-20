@@ -8,7 +8,6 @@ import NetInfo from '@react-native-community/netinfo';
 import {PersistGate} from 'redux-persist/lib/integration/react';
 import {Provider, useSelector, useDispatch} from 'react-redux';
 import {store, persistor, RootState, Dispatch} from '@app/stores';
-import {LoadingProvider, useLoading} from '@core/contexts';
 import {AuthProvider, useAuth} from '@auth/contexts';
 import {merge} from '@core/helpers';
 import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal, CheckUpdate} from '@core/components';
@@ -18,11 +17,11 @@ import {AppNavigation} from './app.navigation';
 
 export const BaseApp = (): JSX.Element => {
   const {auth} = useAuth();
-  const {loading} = useLoading();
   const colorScheme = useColorScheme();
-  const {language, theme} = useSelector((state: RootState) => ({
+  const {language, theme, loading} = useSelector((state: RootState) => ({
     language: state.language,
     theme: state.theme,
+    loading: state.loading,
   }));
   const {
     theme: {setColorScheme},
@@ -77,11 +76,9 @@ export const App = (): JSX.Element => {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <I18nextProvider i18n={i18next}>
-          <LoadingProvider>
-            <AuthProvider>
-              <BaseApp />
-            </AuthProvider>
-          </LoadingProvider>
+          <AuthProvider>
+            <BaseApp />
+          </AuthProvider>
         </I18nextProvider>
       </PersistGate>
     </Provider>

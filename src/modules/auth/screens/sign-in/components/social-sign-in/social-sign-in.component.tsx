@@ -1,9 +1,10 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Platform} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {Dispatch} from '@app/stores';
 import {SCREEN_NAME} from '@app/app.constants';
 import {View, Colors, IconButton} from '@core/components';
-import {useLoading} from '@core/contexts';
 import {useAuth, SignInType, useClearSignInForm} from '@auth/contexts';
 import {styles} from './social-sign-in.styles';
 
@@ -13,7 +14,9 @@ export const SocialSignIn = (): JSX.Element => {
     dispatch: {signInFacebook, signInGoogle, signInApple},
   } = useAuth();
   const navigation = useNavigation();
-  const {setLoading} = useLoading();
+  const {
+    loading: {setLoading},
+  } = useDispatch<Dispatch>();
   const {clearSignInForm} = useClearSignInForm();
 
   const signIn = async (signInType: SignInType): Promise<void> => {

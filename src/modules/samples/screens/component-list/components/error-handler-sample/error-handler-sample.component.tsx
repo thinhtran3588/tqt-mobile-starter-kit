@@ -1,11 +1,14 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
+import {Dispatch} from '@app/stores';
 import {Button} from '@core/components';
 import {sleep} from '@core/helpers';
-import {useLoading} from '@core/contexts';
 import {styles} from './error-handler-sample.styles';
 
 export const ErrorHandlerSample = (): JSX.Element => {
-  const {setLoading} = useLoading();
+  const {
+    loading: {setLoading},
+  } = useDispatch<Dispatch>();
   const createError = (): void => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (undefined as any).test();

@@ -2,9 +2,7 @@
 // https://testing-library.com/docs/native-testing-library/setup
 import React, {ReactNode, ReactElement} from 'react';
 import {render, RenderResult, RenderOptions} from '@testing-library/react-native';
-import {InternetConnectionProvider, LoadingProvider} from '@core/contexts';
 import {PaperProvider, DefaultTheme, DarkTheme} from '@core/components';
-import {AuthProvider} from '@auth/contexts';
 import {useSelector} from 'react-redux';
 import {RootState} from '@app/stores';
 import merge from 'lodash/merge';
@@ -14,7 +12,7 @@ interface Props {
   children?: ReactNode;
 }
 
-const BaseApp = (props: Props): JSX.Element => {
+const AllTheProviders = (props: Props): JSX.Element => {
   const {children} = props;
   const theme = useSelector((state: RootState) => state.theme);
   const paperTheme: typeof DarkTheme = merge({}, theme.theme === 'dark' ? DarkTheme : DefaultTheme, {
@@ -24,28 +22,12 @@ const BaseApp = (props: Props): JSX.Element => {
   return <PaperProvider theme={paperTheme}>{children}</PaperProvider>;
 };
 
-const AllTheProviders = (props: Props): JSX.Element => {
-  const {children} = props;
-  return (
-    <LoadingProvider>
-      <AuthProvider>
-        <InternetConnectionProvider>
-          <BaseApp>{children}</BaseApp>
-        </InternetConnectionProvider>
-      </AuthProvider>
-    </LoadingProvider>
-  );
-};
-
 const customRender = (
   ui: ReactElement<any>,
   options?: Omit<RenderOptions, 'queries'>,
   useWrapper: boolean = true,
 ): RenderResult => {
-  if (useWrapper) {
-    return render(ui, {wrapper: AllTheProviders, ...options});
-  }
-  return render(ui, options);
+  return render(ui, {wrapper: useWrapper ? AllTheProviders : options?.wrapper, ...options});
 };
 
 // re-export everything
