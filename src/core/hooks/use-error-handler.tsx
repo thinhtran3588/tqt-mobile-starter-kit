@@ -1,20 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, {useEffect, useCallback} from 'react';
+import {useEffect, useCallback} from 'react';
 import {setJSExceptionHandler, setNativeExceptionHandler} from 'react-native-exception-handler';
 import Promise from 'bluebird';
 import {useTranslation} from 'react-i18next';
 import {useNotification} from '@core/hooks/use-notification';
 import {AppError, recordError} from '@core/exceptions';
-import {useLoading} from './loading.context';
+import {useLoading} from '../contexts/loading.context';
 
-interface ErrorHandlerProviderProps {
-  children?: React.ReactNode;
-}
-
-const ErrorHandlerContext = React.createContext(undefined);
-
-const ErrorHandlerProvider = (props: ErrorHandlerProviderProps): JSX.Element => {
-  const {children} = props;
+export const useErrorHandler = (): void => {
   const {t} = useTranslation();
   const {showNotification} = useNotification();
   const {setLoading} = useLoading();
@@ -71,8 +64,4 @@ const ErrorHandlerProvider = (props: ErrorHandlerProviderProps): JSX.Element => 
       handleError(err);
     };
   }, [handleError, setLoading]);
-
-  return <ErrorHandlerContext.Provider value={undefined}>{children}</ErrorHandlerContext.Provider>;
 };
-
-export {ErrorHandlerProvider};

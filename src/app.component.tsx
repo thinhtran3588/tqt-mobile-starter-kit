@@ -13,12 +13,11 @@ import {
   InternetConnectionProvider,
   LoadingProvider,
   useLoading,
-  ErrorHandlerProvider,
 } from '@core/contexts';
 import {AuthProvider, useAuth} from '@auth/contexts';
 import {merge} from '@core/helpers';
 import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal, CheckUpdate} from '@core/components';
-import {usePushNotification} from '@core/hooks';
+import {usePushNotification, useErrorHandler} from '@core/hooks';
 import {i18next} from './i18n';
 import {AppNavigation} from './app.navigation';
 
@@ -29,6 +28,7 @@ export const BaseApp = (): JSX.Element => {
   const language = useSelector((state: RootState) => state.settings.language);
 
   usePushNotification();
+  useErrorHandler();
 
   const theme: typeof DarkTheme = merge({}, appTheme.theme === 'dark' ? DarkTheme : DefaultTheme, {
     colors: {primary: appTheme.colors.primary},
@@ -64,11 +64,9 @@ export const App = (): JSX.Element => {
                 <AppThemeProvider>
                   <SafeAreaProvider>
                     <InternetConnectionProvider>
-                      <ErrorHandlerProvider>
-                        <AuthProvider>
-                          <BaseApp />
-                        </AuthProvider>
-                      </ErrorHandlerProvider>
+                      <AuthProvider>
+                        <BaseApp />
+                      </AuthProvider>
                     </InternetConnectionProvider>
                   </SafeAreaProvider>
                 </AppThemeProvider>
