@@ -1,10 +1,10 @@
 import {Models} from '@rematch/core';
-import {settings} from '@app/modules/settings/models';
+import {language} from '@core/models';
 
 export interface RootModel extends Models<RootModel> {
-  settings: typeof settings;
+  language: typeof language;
 }
 
 export const models: RootModel = {
-  settings,
+  language,
 };

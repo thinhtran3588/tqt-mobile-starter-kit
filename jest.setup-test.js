@@ -143,7 +143,7 @@ jest.mock('redux-persist', () => ({
 jest.mock('react-redux', () => ({
   useSelector: () => ({}),
   useDispatch: () => ({
-    settings: {
+    language: {
       setLanguageI18n: jest.fn(),
     },
   }),

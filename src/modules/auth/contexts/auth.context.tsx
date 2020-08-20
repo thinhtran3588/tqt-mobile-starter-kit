@@ -69,7 +69,7 @@ let confirmationResult: FirebaseAuthTypes.ConfirmationResult | undefined;
 
 const AuthProvider = (props: AuthProviderProps): JSX.Element => {
   const {children} = props;
-  const language = useSelector((state: RootState) => state.settings.language);
+  const language = useSelector((state: RootState) => state.language);
   const [auth, setAuth] = useImmer(DEFAULT_AUTH);
   const [initializing, setInitializing] = useState(true);
   const [setAuthPersistence] = usePersistenceImmer(auth, setAuth, AUTH_KEY);

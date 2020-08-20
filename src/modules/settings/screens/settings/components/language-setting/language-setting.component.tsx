@@ -10,9 +10,9 @@ const languages: PickerDataItem[] = config().languages.map((lang) => ({value: la
 export const LanguageSetting = (): JSX.Element => {
   const {t} = useTranslation('settings');
   const [open, setOpen] = useState(false);
-  const language = useSelector((state: RootState) => state.settings.language);
+  const language = useSelector((state: RootState) => state.language);
   const {
-    settings: {setLanguageI18n},
+    language: {setLanguageI18n},
   } = useDispatch<Dispatch>();
   const selectedLang = config().languages.find((lang) => lang.code === language)?.text;
   return (

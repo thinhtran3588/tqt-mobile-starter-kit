@@ -11,14 +11,14 @@ import {AuthProvider, useAuth} from '@auth/contexts';
 import {merge} from '@core/helpers';
 import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal, CheckUpdate} from '@core/components';
 import {usePushNotification, useErrorHandler} from '@core/hooks';
-import {i18next} from './i18n';
+import {i18next} from '@app/i18n';
 import {AppNavigation} from './app.navigation';
 
 export const BaseApp = (): JSX.Element => {
   const {auth} = useAuth();
   const {appTheme} = useAppTheme();
   const {loading} = useLoading();
-  const language = useSelector((state: RootState) => state.settings.language);
+  const language = useSelector((state: RootState) => state.language);
 
   usePushNotification();
   useErrorHandler();
@@ -38,11 +38,15 @@ export const BaseApp = (): JSX.Element => {
   }, [language]);
 
   return (
-    <PaperProvider theme={theme}>
-      <AppNavigation />
-      <LoadingModal loading={loading} />
-      <CheckUpdate isTester={auth.isTester} />
-    </PaperProvider>
+    <SafeAreaProvider>
+      <RootSiblingParent>
+        <PaperProvider theme={theme}>
+          <AppNavigation />
+          <LoadingModal loading={loading} />
+          <CheckUpdate isTester={auth.isTester} />
+        </PaperProvider>
+      </RootSiblingParent>
+    </SafeAreaProvider>
   );
 };
 
@@ -50,21 +54,17 @@ export const App = (): JSX.Element => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <RootSiblingParent>
-          <I18nextProvider i18n={i18next}>
-            <LoadingProvider>
-              <AppThemeProvider>
-                <SafeAreaProvider>
-                  <InternetConnectionProvider>
-                    <AuthProvider>
-                      <BaseApp />
-                    </AuthProvider>
-                  </InternetConnectionProvider>
-                </SafeAreaProvider>
-              </AppThemeProvider>
-            </LoadingProvider>
-          </I18nextProvider>
-        </RootSiblingParent>
+        <I18nextProvider i18n={i18next}>
+          <LoadingProvider>
+            <AppThemeProvider>
+              <InternetConnectionProvider>
+                <AuthProvider>
+                  <BaseApp />
+                </AuthProvider>
+              </InternetConnectionProvider>
+            </AppThemeProvider>
+          </LoadingProvider>
+        </I18nextProvider>
       </PersistGate>
     </Provider>
   );

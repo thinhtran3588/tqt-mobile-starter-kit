@@ -26,7 +26,7 @@ export const SignInScreen = (): JSX.Element => {
     {key: 'signUp', title: t('signUp')},
   ]);
   const dimensions = useDimensions();
-  const language = useSelector((state: RootState) => state.settings.language);
+  const language = useSelector((state: RootState) => state.language);
   const CONTAINER_HEIGHT = 650;
   const marginTop = dimensions.window.height < CONTAINER_HEIGHT ? 0 : (dimensions.window.height - CONTAINER_HEIGHT) / 2;
 
