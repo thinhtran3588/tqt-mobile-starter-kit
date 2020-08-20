@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {SafeAreaView, StatusBar, ViewStyle, Keyboard, Platform} from 'react-native';
 import {Surface, useTheme, Appbar} from 'react-native-paper';
+import {useSelector} from 'react-redux';
+import {RootState} from '@app/stores';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
-import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/contexts';
+import {DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/constants';
 import {InternetConnection} from '../internet-connection/internet-connection.component';
 import {styles} from './layout.styles';
 
@@ -21,9 +23,9 @@ export interface LayoutProps {
 }
 
 export const Layout = (props: LayoutProps): JSX.Element => {
-  const {appTheme} = useAppTheme();
   const navigation = useNavigation();
-  const theme = useTheme();
+  const paperTheme = useTheme();
+  const theme = useSelector((state: RootState) => state.theme);
   const {
     headerTitle,
     headerBackButton,
@@ -38,7 +40,8 @@ export const Layout = (props: LayoutProps): JSX.Element => {
     style,
   } = props;
   const isFocused = useIsFocused();
-  const appHeaderColor = headerColor || (appTheme.theme === 'dark' ? theme.colors.surface : theme.colors.primary);
+  const appHeaderColor =
+    headerColor || (theme.theme === 'dark' ? paperTheme.colors.surface : paperTheme.colors.primary);
   const [keyboardHeight, setKeyboardHeight] = useState(0);
 
   const goBack = (): void => {
@@ -66,8 +69,8 @@ export const Layout = (props: LayoutProps): JSX.Element => {
       {isFocused && (
         <StatusBar
           animated
-          barStyle={header || appTheme.theme === 'dark' ? 'light-content' : 'dark-content'}
-          backgroundColor={header ? appHeaderColor : theme.colors.background}
+          barStyle={header || theme.theme === 'dark' ? 'light-content' : 'dark-content'}
+          backgroundColor={header ? appHeaderColor : paperTheme.colors.background}
         />
       )}
       {header && (
@@ -106,7 +109,7 @@ export const Layout = (props: LayoutProps): JSX.Element => {
         style={[
           styles.flex,
           {
-            backgroundColor: appTheme.theme === 'light' ? LIGHT_BACKGROUND_COLOR : DARK_BACKGROUND_COLOR,
+            backgroundColor: theme.theme === 'light' ? LIGHT_BACKGROUND_COLOR : DARK_BACKGROUND_COLOR,
           },
         ]}>
         <Surface

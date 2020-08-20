@@ -6,7 +6,7 @@ import {RootSiblingParent} from 'react-native-root-siblings';
 import {PersistGate} from 'redux-persist/lib/integration/react';
 import {Provider, useSelector} from 'react-redux';
 import {store, persistor, RootState} from '@app/stores';
-import {AppThemeProvider, useAppTheme, InternetConnectionProvider, LoadingProvider, useLoading} from '@core/contexts';
+import {InternetConnectionProvider, LoadingProvider, useLoading} from '@core/contexts';
 import {AuthProvider, useAuth} from '@auth/contexts';
 import {merge} from '@core/helpers';
 import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal, CheckUpdate} from '@core/components';
@@ -16,15 +16,17 @@ import {AppNavigation} from './app.navigation';
 
 export const BaseApp = (): JSX.Element => {
   const {auth} = useAuth();
-  const {appTheme} = useAppTheme();
   const {loading} = useLoading();
-  const language = useSelector((state: RootState) => state.language);
+  const {language, theme} = useSelector((state: RootState) => ({
+    language: state.language,
+    theme: state.theme,
+  }));
 
   usePushNotification();
   useErrorHandler();
 
-  const theme: typeof DarkTheme = merge({}, appTheme.theme === 'dark' ? DarkTheme : DefaultTheme, {
-    colors: {primary: appTheme.colors.primary},
+  const paperTheme: typeof DarkTheme = merge({}, theme.theme === 'dark' ? DarkTheme : DefaultTheme, {
+    colors: {primary: theme.colors.primary},
   });
 
   useEffect(() => {
@@ -40,7 +42,7 @@ export const BaseApp = (): JSX.Element => {
   return (
     <SafeAreaProvider>
       <RootSiblingParent>
-        <PaperProvider theme={theme}>
+        <PaperProvider theme={paperTheme}>
           <AppNavigation />
           <LoadingModal loading={loading} />
           <CheckUpdate isTester={auth.isTester} />
@@ -56,13 +58,11 @@ export const App = (): JSX.Element => {
       <PersistGate persistor={persistor}>
         <I18nextProvider i18n={i18next}>
           <LoadingProvider>
-            <AppThemeProvider>
-              <InternetConnectionProvider>
-                <AuthProvider>
-                  <BaseApp />
-                </AuthProvider>
-              </InternetConnectionProvider>
-            </AppThemeProvider>
+            <InternetConnectionProvider>
+              <AuthProvider>
+                <BaseApp />
+              </AuthProvider>
+            </InternetConnectionProvider>
           </LoadingProvider>
         </I18nextProvider>
       </PersistGate>

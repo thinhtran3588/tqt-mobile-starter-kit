@@ -1,7 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, {useState, useRef} from 'react';
 import {TextInput as RNTextInput, IconButton} from 'react-native-paper';
-import {useAppTheme, LIGHT_BACKGROUND_COLOR, DARK_BACKGROUND_COLOR} from '@core/contexts';
+import {useSelector} from 'react-redux';
+import {RootState} from '@app/stores';
+import {LIGHT_BACKGROUND_COLOR, DARK_BACKGROUND_COLOR} from '@core/constants';
 import {Text} from '../text/text.component';
 import {View} from '../view/view.component';
 import {styles} from './text-input.styles';
@@ -33,8 +35,8 @@ export const TextInput = (props: TextInputProps): JSX.Element => {
     clearFocus = true,
     ...other
   } = props;
-  const {appTheme} = useAppTheme();
-  const backgroundColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
+  const theme = useSelector((state: RootState) => state.theme);
+  const backgroundColor = theme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const [showPassword, setShowPassword] = useState(false);
   const clearButtonVisible = (showClearButton && Boolean(value)) || alwaysShowClearButton;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,8 +1,9 @@
 import React from 'react';
 import {Platform} from 'react-native';
 import {useTranslation} from 'react-i18next';
-import {useTheme} from 'react-native-paper';
-import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/contexts';
+import {useSelector} from 'react-redux';
+import {RootState} from '@app/stores';
+import {DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/constants';
 import {Card, Alert, ScrollView, Layout} from '@core/components';
 import {
   ActivityIndicatorSample,
@@ -27,9 +28,8 @@ import {styles} from './component-list.styles';
 export const ComponentListScreen = (): JSX.Element => {
   const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
   const {t} = useTranslation('');
-  const theme = useTheme();
-  const {appTheme} = useAppTheme();
-  const textColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
+  const theme = useSelector((state: RootState) => state.theme);
+  const textColor = theme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const componentList = [
     {
       title: 'LocalNotificationSample',

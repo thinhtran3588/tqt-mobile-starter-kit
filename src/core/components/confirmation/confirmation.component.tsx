@@ -3,8 +3,10 @@ import React from 'react';
 import {ModalProps, Modal, Pressable} from 'react-native';
 import {Divider, useTheme, Surface} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
+import {useSelector} from 'react-redux';
+import {RootState} from '@app/stores';
 import {getColor} from '@core/helpers';
-import {useAppTheme, ColorType} from '@core/contexts';
+import {ColorType} from '@core/constants';
 import {View} from '../view/view.component';
 import {Text} from '../text/text.component';
 import {Blur} from '../blur/blur.component';
@@ -52,8 +54,8 @@ export const Confirmation = (props: ConfirmationProps): JSX.Element => {
         headerTitle = t('common:confirmation');
     }
   }
-  const theme = useTheme();
-  const {appTheme} = useAppTheme();
+  const paperTheme = useTheme();
+  const theme = useSelector((state: RootState) => state.theme);
 
   return (
     <>
@@ -74,13 +76,13 @@ export const Confirmation = (props: ConfirmationProps): JSX.Element => {
                     style={[
                       styles.titleContainer,
                       {
-                        backgroundColor: titleType === 'INFO' ? undefined : getColor(titleType, appTheme),
+                        backgroundColor: titleType === 'INFO' ? undefined : getColor(titleType, theme),
                       },
                     ]}>
                     <Text
                       style={[
                         styles.titleText,
-                        !titleType || titleType === 'INFO' ? {} : {color: theme.colors.surface},
+                        !titleType || titleType === 'INFO' ? {} : {color: paperTheme.colors.surface},
                       ]}
                       type='h6'>
                       {headerTitle}
@@ -104,7 +106,7 @@ export const Confirmation = (props: ConfirmationProps): JSX.Element => {
                           styles.button,
                           {
                             backgroundColor:
-                              (button.type || 'INFO') === 'INFO' ? undefined : getColor(button.type, appTheme),
+                              (button.type || 'INFO') === 'INFO' ? undefined : getColor(button.type, theme),
                           },
                           index === 0 ? styles.firstButton : {},
                           index === buttons.length - 1 ? styles.lastButton : {},
@@ -112,7 +114,7 @@ export const Confirmation = (props: ConfirmationProps): JSX.Element => {
                         <Text
                           style={[
                             styles.buttonText,
-                            !button.type || button.type === 'INFO' ? {} : {color: theme.colors.surface},
+                            !button.type || button.type === 'INFO' ? {} : {color: paperTheme.colors.surface},
                           ]}>
                           {button.text}
                         </Text>

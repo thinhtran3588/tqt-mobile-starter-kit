@@ -12,7 +12,7 @@ export type RootState = RematchRootState<RootModel>;
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['language'],
+  whitelist: ['language', 'theme'],
   version: 1,
 };
 

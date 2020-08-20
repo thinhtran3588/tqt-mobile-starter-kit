@@ -1,6 +1,7 @@
-import {ColorType, AppThemeState} from '../contexts/app-theme.context';
+import {ThemeState} from '@core/models';
+import {ColorType} from '@core/constants';
 
-export const getColor = (type: ColorType = 'SUCCESS', theme: AppThemeState): string => {
+export const getColor = (type: ColorType = 'SUCCESS', theme: ThemeState): string => {
   let color: string;
   switch (type) {
     case 'ERROR':

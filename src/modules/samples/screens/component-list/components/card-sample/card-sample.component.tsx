@@ -1,13 +1,13 @@
 import React from 'react';
-import {useTheme} from 'react-native-paper';
+import {useSelector} from 'react-redux';
+import {RootState} from '@app/stores';
 import {Card, Text, Button, Alert} from '@core/components';
-import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/contexts';
+import {DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/constants';
 import {styles} from './card-sample.styles';
 
 export const CardSample = (): JSX.Element => {
-  const theme = useTheme();
-  const {appTheme} = useAppTheme();
-  const textColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
+  const theme = useSelector((state: RootState) => state.theme);
+  const textColor = theme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const pressButton = (button: string): void => {
     Alert.alert('Alert', `Press ${button} button`);
   };

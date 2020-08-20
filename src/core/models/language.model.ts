@@ -2,9 +2,10 @@ import {createModel} from '@rematch/core';
 import {RootModel, Dispatch} from '@app/stores';
 import {logEvent} from '@app/core/analytics';
 import {EVENT_NAME} from '@app/app.constants';
+import {config} from '@core/config';
 
 // default state
-const state = 'en';
+export const state = config().defaultLang;
 
 const setLanguage = (_draft: string, lang: string): string => {
   return lang;

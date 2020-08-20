@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import {Button, Confirmation, ConfirmationButton} from '@core/components';
 import {useNotification} from '@core/hooks';
-import {ColorType, useAppTheme} from '@core/contexts';
+import {ColorType} from '@core/constants';
+import {useSelector} from 'react-redux';
+import {RootState} from '@app/stores';
 import {styles} from './confirmation-sample.styles';
 
 export const ConfirmationSample = (): JSX.Element => {
   const {showNotification} = useNotification();
-  const {appTheme} = useAppTheme();
+  const theme = useSelector((state: RootState) => state.theme);
   const [open, setOpen] = useState(false);
   const [showTitle, setShowTitle] = useState(false);
   const [type, setType] = useState<ColorType>('INFO');
@@ -36,28 +38,28 @@ export const ConfirmationSample = (): JSX.Element => {
       <Button
         style={styles.item}
         onPress={() => showConfirmation('INFO', true)}
-        color={appTheme.colors.info}
+        color={theme.colors.info}
         mode='contained'>
         Show info
       </Button>
       <Button
         style={styles.item}
         onPress={() => showConfirmation('SUCCESS', true)}
-        color={appTheme.colors.success}
+        color={theme.colors.success}
         mode='contained'>
         Show success
       </Button>
       <Button
         style={styles.item}
         onPress={() => showConfirmation('WARNING', true)}
-        color={appTheme.colors.warning}
+        color={theme.colors.warning}
         mode='contained'>
         Show warning
       </Button>
       <Button
         style={[styles.item, styles.lastRow]}
         onPress={() => showConfirmation('ERROR', true)}
-        color={appTheme.colors.error}
+        color={theme.colors.error}
         mode='contained'>
         Show error
       </Button>

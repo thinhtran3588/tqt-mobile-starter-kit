@@ -6,7 +6,7 @@ import {useTheme} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {RootState} from '@app/stores';
 import {Layout, Image, Button, TabView, TabBar, SceneMap, ScrollView} from '@core/components';
-import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/contexts';
+import {DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/constants';
 import {useDimensions} from '@core/hooks';
 import {SCREEN_NAME} from '@app/app.constants';
 import Logo from '@assets/images/app-logo.png';
@@ -17,9 +17,9 @@ import {styles} from './sign-in.styles';
 export const SignInScreen = (): JSX.Element => {
   const {t} = useTranslation('auth');
   const navigation = useNavigation();
-  const theme = useTheme();
-  const {appTheme} = useAppTheme();
-  const backgroundColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
+  const paperTheme = useTheme();
+  const theme = useSelector((state: RootState) => state.theme);
+  const backgroundColor = theme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const [tabIndex, setTabIndex] = React.useState(0);
   const [routes, setRoutes] = React.useState([
     {key: 'signIn', title: t('signIn')},
@@ -55,7 +55,7 @@ export const SignInScreen = (): JSX.Element => {
               <TabBar
                 {...tabProps}
                 style={{backgroundColor}}
-                labelStyle={[styles.tabBarLabel, {color: theme.colors.text}]}
+                labelStyle={[styles.tabBarLabel, {color: paperTheme.colors.text}]}
                 indicatorStyle={{backgroundColor: theme.colors.primary}}
               />
             )}

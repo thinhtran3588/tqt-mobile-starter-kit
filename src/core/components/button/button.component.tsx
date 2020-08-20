@@ -2,16 +2,18 @@
 import React from 'react';
 import {TextStyle} from 'react-native';
 import {Button as RNButton} from 'react-native-paper';
-import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/contexts';
+import {useSelector} from 'react-redux';
+import {RootState} from '@app/stores';
+import {DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/constants';
 import {styles} from './button.styles';
 
 const Button = (props: React.ComponentProps<typeof RNButton>): JSX.Element => {
   const {style, labelStyle, uppercase = false, ...other} = props;
-  const {appTheme} = useAppTheme();
+  const theme = useSelector((state: RootState) => state.theme);
   const labelColorStyle: TextStyle =
     other.mode === 'contained'
       ? {
-          color: appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR,
+          color: theme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR,
         }
       : {};
   return (

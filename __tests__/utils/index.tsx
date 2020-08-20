@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // https://testing-library.com/docs/native-testing-library/setup
 import React, {ReactNode, ReactElement} from 'react';
-import {useColorScheme} from 'react-native';
 import {render, RenderResult, RenderOptions} from '@testing-library/react-native';
-import {AppThemeProvider, useAppTheme, InternetConnectionProvider, LoadingProvider} from '@core/contexts';
+import {InternetConnectionProvider, LoadingProvider} from '@core/contexts';
 import {PaperProvider, DefaultTheme, DarkTheme} from '@core/components';
 import {AuthProvider} from '@auth/contexts';
+import {useSelector} from 'react-redux';
+import {RootState} from '@app/stores';
+import merge from 'lodash/merge';
+import {COLORS_LOOKUP} from '@app/core/constants';
 
 interface Props {
   children?: ReactNode;
@@ -13,32 +16,23 @@ interface Props {
 
 const BaseApp = (props: Props): JSX.Element => {
   const {children} = props;
-  const {appTheme} = useAppTheme();
-  const colorScheme = useColorScheme();
-  let useDarkTheme = true;
-  if (appTheme.useSystemTheme) {
-    useDarkTheme = colorScheme === 'dark';
-  } else {
-    useDarkTheme = appTheme.darkMode;
-  }
-  const theme: typeof DefaultTheme = {
-    ...(useDarkTheme ? DarkTheme : DefaultTheme),
-  };
+  const theme = useSelector((state: RootState) => state.theme);
+  const paperTheme: typeof DarkTheme = merge({}, theme.theme === 'dark' ? DarkTheme : DefaultTheme, {
+    colors: {primary: COLORS_LOOKUP.CYAN.color},
+  });
 
-  return <PaperProvider theme={theme}>{children}</PaperProvider>;
+  return <PaperProvider theme={paperTheme}>{children}</PaperProvider>;
 };
 
 const AllTheProviders = (props: Props): JSX.Element => {
   const {children} = props;
   return (
     <LoadingProvider>
-      <AppThemeProvider>
-        <AuthProvider>
-          <InternetConnectionProvider>
-            <BaseApp>{children}</BaseApp>
-          </InternetConnectionProvider>
-        </AuthProvider>
-      </AppThemeProvider>
+      <AuthProvider>
+        <InternetConnectionProvider>
+          <BaseApp>{children}</BaseApp>
+        </InternetConnectionProvider>
+      </AuthProvider>
     </LoadingProvider>
   );
 };

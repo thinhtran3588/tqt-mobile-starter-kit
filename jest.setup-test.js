@@ -141,10 +141,31 @@ jest.mock('redux-persist', () => ({
 }));
 
 jest.mock('react-redux', () => ({
-  useSelector: () => ({}),
+  useSelector: () => ({
+    language: 'en',
+    theme: {
+      useSystemTheme: true,
+      darkMode: false,
+      primaryColor: 'CYAN',
+      theme: 'light',
+      colorScheme: 'light',
+      colors: {
+        primary: 'cyan',
+        warning: 'orange',
+        error: 'red',
+        success: 'green',
+        info: 'black',
+      },
+    },
+  }),
   useDispatch: () => ({
     language: {
       setLanguageI18n: jest.fn(),
+    },
+    theme: {
+      setDarkMode: jest.fn(),
+      setPrimaryColor: jest.fn(),
+      setUseSystemTheme: jest.fn(),
     },
   }),
 }));

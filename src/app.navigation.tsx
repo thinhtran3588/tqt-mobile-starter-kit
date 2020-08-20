@@ -10,11 +10,12 @@ import {ComponentListScreen, FormScreen} from '@samples/screens';
 import {SettingsScreen} from '@settings/screens';
 import {SignInScreen, ForgotPasswordScreen, SignInPhoneNoScreen} from '@auth/screens';
 import {Colors, Icon} from '@core/components';
-import {useAppTheme} from '@core/contexts';
 import {useAuth} from '@auth/contexts';
 import {SCREEN_NAME} from '@app/app.constants';
 import {trackScreen} from '@core/analytics';
 import {config} from '@core/config';
+import {useSelector} from 'react-redux';
+import {RootState} from './stores';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -35,8 +36,8 @@ interface StackItem {
 
 const MainTabs = (): JSX.Element => {
   const {t} = useTranslation('common');
-  const theme = useTheme();
-  const {appTheme} = useAppTheme();
+  const paperTheme = useTheme();
+  const theme = useSelector((state: RootState) => state.theme);
   const tabItems: TabItem[] = [
     {
       name: SCREEN_NAME.COMPONENT_LIST,
@@ -76,7 +77,7 @@ const MainTabs = (): JSX.Element => {
               const {focused, color} = iconProps;
               return <Icon name={focused ? tabItem.iconFocused : tabItem.icon} color={color} size={25} />;
             },
-            tabBarColor: appTheme.theme === 'dark' ? theme.colors.surface : tabItem.tabBarColor,
+            tabBarColor: theme.theme === 'dark' ? paperTheme.colors.surface : tabItem.tabBarColor,
             tabBarBadge: index === 0 ? 10 : undefined,
           }}
         />
