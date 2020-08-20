@@ -32,7 +32,7 @@ const CheckUpdate = (props: CheckUpdateProps): JSX.Element => {
         Sentry.setRelease(`${update.appVersion}-codepush:${update.label}`);
       }
     });
-  }, [isTester, t]);
+  }, [isTester]);
   return (
     <Confirmation
       message={t('common:updateRestartConfirmation')}

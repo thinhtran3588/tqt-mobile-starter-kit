@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import {useSelector, useDispatch} from 'react-redux';
+import {RootState, Dispatch} from '@app/stores';
 import {ListItem, Confirmation} from '@app/core';
-import {useAuth} from '@auth/contexts';
 
 export const BetaUserSetting = (): JSX.Element => {
   const {t} = useTranslation('settings');
   const [open, setOpen] = useState(false);
+  const isTester = useSelector((state: RootState) => state.settings.isTester);
   const {
-    auth: {isTester},
-    dispatch: {setIsTester},
-  } = useAuth();
+    settings: {setIsTester},
+  } = useDispatch<Dispatch>();
 
   const show = (): void => {
     setOpen(true);

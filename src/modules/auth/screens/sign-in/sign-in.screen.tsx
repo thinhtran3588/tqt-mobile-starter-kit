@@ -3,7 +3,6 @@ import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
-import {useSelector} from 'react-redux';
 import {RootState} from '@app/stores';
 import {
   Layout,
@@ -16,6 +15,7 @@ import {
   useDimensions,
   DARK_BACKGROUND_COLOR,
   LIGHT_BACKGROUND_COLOR,
+  useShallowEqualSelector,
 } from '@app/core';
 import {SCREEN_NAME} from '@app/app.constants';
 import Logo from '@app/assets/images/app-logo.png';
@@ -26,7 +26,10 @@ export const SignInScreen = (): JSX.Element => {
   const {t} = useTranslation('auth');
   const navigation = useNavigation();
   const paperTheme = useTheme();
-  const theme = useSelector((state: RootState) => state.settings.theme);
+  const {theme, language} = useShallowEqualSelector((state: RootState) => ({
+    theme: state.settings.theme,
+    language: state.settings.language,
+  }));
   const backgroundColor = theme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const [tabIndex, setTabIndex] = React.useState(0);
   const [routes, setRoutes] = React.useState([
@@ -34,7 +37,6 @@ export const SignInScreen = (): JSX.Element => {
     {key: 'signUp', title: t('signUp')},
   ]);
   const dimensions = useDimensions();
-  const language = useSelector((state: RootState) => state.settings.language);
   const CONTAINER_HEIGHT = 650;
   const marginTop = dimensions.window.height < CONTAINER_HEIGHT ? 0 : (dimensions.window.height - CONTAINER_HEIGHT) / 2;
 

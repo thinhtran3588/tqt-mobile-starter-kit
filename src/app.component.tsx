@@ -6,7 +6,7 @@ import {RootSiblingParent} from 'react-native-root-siblings';
 import {useColorScheme} from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import {PersistGate} from 'redux-persist/lib/integration/react';
-import {Provider, useSelector, useDispatch} from 'react-redux';
+import {Provider, useDispatch} from 'react-redux';
 import {
   PaperProvider,
   DefaultTheme,
@@ -16,19 +16,20 @@ import {
   merge,
   usePushNotification,
   useErrorHandler,
+  useShallowEqualSelector,
 } from '@app/core';
 import {store, persistor, RootState, Dispatch} from '@app/stores';
-import {AuthProvider, useAuth} from '@auth/contexts';
+import {AuthProvider} from '@auth/contexts';
 import {i18next} from '@app/i18n';
 import {AppNavigation} from './app.navigation';
 
 export const BaseApp = (): JSX.Element => {
-  const {auth} = useAuth();
   const colorScheme = useColorScheme();
-  const {language, theme, loading} = useSelector((state: RootState) => ({
+  const {language, theme, loading, isTester} = useShallowEqualSelector((state: RootState) => ({
     language: state.settings.language,
     theme: state.settings.theme,
     loading: state.loading,
+    isTester: state.settings.isTester,
   }));
   const {
     settings: {setColorScheme},
@@ -71,7 +72,7 @@ export const BaseApp = (): JSX.Element => {
         <PaperProvider theme={paperTheme}>
           <AppNavigation />
           <LoadingModal loading={loading} />
-          <CheckUpdate isTester={auth.isTester} />
+          <CheckUpdate isTester={isTester} />
         </PaperProvider>
       </RootSiblingParent>
     </SafeAreaProvider>

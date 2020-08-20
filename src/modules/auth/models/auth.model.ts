@@ -10,7 +10,6 @@ interface AuthState {
   signInType: SignInType;
   isSignedIn: boolean;
   initializing: boolean;
-  isTester: boolean;
 }
 
 // default state
@@ -21,7 +20,6 @@ const state: AuthState = {
   signInType: 'EMAIL',
   isSignedIn: false,
   initializing: true,
-  isTester: false,
 };
 
 const setAuth = (draft: AuthState, newAuth: AuthState): AuthState => {

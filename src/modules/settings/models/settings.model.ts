@@ -22,6 +22,7 @@ export interface ThemeState {
 export interface SettingsState {
   language: string;
   theme: ThemeState;
+  isTester: boolean;
 }
 
 // default state
@@ -41,6 +42,7 @@ const state: SettingsState = {
       info: DARK_BACKGROUND_COLOR,
     },
   },
+  isTester: false,
 };
 
 const setLanguage = (draft: SettingsState, language: string): SettingsState => {
@@ -103,6 +105,11 @@ const setPrimaryColor = (dispatch: Dispatch) => async (primaryColor: string): Pr
   logEvent(EVENT_NAME.CHANGE_PRIMARY_COLOR, {primaryColor});
 };
 
+const setIsTester = (draft: SettingsState, isTester: boolean): SettingsState => {
+  draft.isTester = isTester;
+  return draft;
+};
+
 export const settings = createModel<RootModel>()({
   state,
   reducers: {
@@ -111,6 +118,7 @@ export const settings = createModel<RootModel>()({
     setDarkMode,
     setPrimaryColorBase,
     setColorScheme,
+    setIsTester,
   },
   effects: (dispatch) => ({
     setLanguageI18n: setLanguageI18n(dispatch),

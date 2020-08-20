@@ -25,7 +25,6 @@ interface AuthState {
   signInType: SignInType;
   isSignedIn: boolean;
   initializing: boolean;
-  isTester: boolean;
 }
 
 interface SignUpEmailParams {
@@ -45,7 +44,6 @@ interface Dispatch {
   sendPasswordResetEmail: (email: string) => Promise<void>;
   sendPhoneNoVerificationCode: (phoneNo: string) => Promise<void>;
   verifyCode: (verificationCode: string) => Promise<void>;
-  setIsTester: (isTester: boolean) => Promise<void>;
 }
 
 const AUTH_KEY = 'AUTH';
@@ -56,7 +54,6 @@ const DEFAULT_AUTH: AuthState = {
   signInType: 'EMAIL',
   isSignedIn: false,
   initializing: true,
-  isTester: false,
 };
 
 const AuthContext = React.createContext(DEFAULT_AUTH);
@@ -77,7 +74,7 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
 
   const onAuthStateChanged: FirebaseAuthTypes.AuthListenerCallback = useCallback((user): void => {
     if (!user) {
-      setAuthPersistence((draft) => Object.assign(draft, DEFAULT_AUTH, {isTester: draft.isTester}));
+      setAuthPersistence((draft) => Object.assign(draft, DEFAULT_AUTH));
     } else {
       let avatarUrl = user.photoURL || '';
       let signInType: SignInType = 'EMAIL';
@@ -260,7 +257,7 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
   };
 
   const signOut = async (): Promise<void> => {
-    setAuthPersistence((draft) => Object.assign(draft, DEFAULT_AUTH, {isTester: draft.isTester}));
+    setAuthPersistence((draft) => Object.assign(draft, DEFAULT_AUTH));
     if (firebaseAuth().currentUser) {
       await firebaseAuth().signOut();
     }
@@ -316,12 +313,6 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
     }
   };
 
-  const setIsTester = async (isTester: boolean): Promise<void> => {
-    setAuthPersistence((draft) => {
-      draft.isTester = isTester;
-    });
-  };
-
   const dispatch = useMemo(
     (): Dispatch => ({
       signInFacebook,
@@ -333,7 +324,6 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       sendPasswordResetEmail,
       sendPhoneNoVerificationCode,
       verifyCode,
-      setIsTester,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [auth],
