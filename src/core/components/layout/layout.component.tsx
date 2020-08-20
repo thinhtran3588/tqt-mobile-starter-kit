@@ -25,7 +25,7 @@ export interface LayoutProps {
 export const Layout = (props: LayoutProps): JSX.Element => {
   const navigation = useNavigation();
   const paperTheme = useTheme();
-  const theme = useSelector((state: RootState) => state.theme);
+  const theme = useSelector((state: RootState) => state.settings.theme);
   const {
     headerTitle,
     headerBackButton,

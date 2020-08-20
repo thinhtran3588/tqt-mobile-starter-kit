@@ -1,4 +1,4 @@
-import {ThemeState} from '@core/models';
+import {ThemeState} from '@settings/models';
 import {ColorType} from '@core/constants';
 
 export const getColor = (type: ColorType = 'SUCCESS', theme: ThemeState): string => {

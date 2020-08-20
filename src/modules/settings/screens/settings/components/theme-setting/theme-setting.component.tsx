@@ -12,9 +12,9 @@ const colors: PickerDataItem[] = COLORS.map((c) => ({value: c.id, label: c.text}
 export const ThemeSetting = (): JSX.Element => {
   const {t} = useTranslation('settings');
   const [openColorPicker, setOpenColorPicker] = useState(false);
-  const theme = useSelector((state: RootState) => state.theme);
+  const theme = useSelector((state: RootState) => state.settings.theme);
   const {
-    theme: {setDarkMode, setPrimaryColor, setUseSystemTheme},
+    settings: {setDarkMode, setPrimaryColor, setUseSystemTheme},
   } = useDispatch<Dispatch>();
   const selectedColor = COLORS.find((c) => c.id === theme.primaryColor)?.text;
 

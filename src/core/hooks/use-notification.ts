@@ -11,7 +11,7 @@ export interface NotificationParams extends ToastOptions {
 }
 
 export const useNotification = (): {showNotification: (params: NotificationParams) => void} => {
-  const theme = useSelector((state: RootState) => state.theme);
+  const theme = useSelector((state: RootState) => state.settings.theme);
   const showNotification = useCallback(
     (params: NotificationParams): void => {
       const {

@@ -6,7 +6,7 @@ import {DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/constants';
 import {styles} from './card-sample.styles';
 
 export const CardSample = (): JSX.Element => {
-  const theme = useSelector((state: RootState) => state.theme);
+  const theme = useSelector((state: RootState) => state.settings.theme);
   const textColor = theme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const pressButton = (button: string): void => {
     Alert.alert('Alert', `Press ${button} button`);

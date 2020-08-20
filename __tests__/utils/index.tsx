@@ -14,7 +14,7 @@ interface Props {
 
 const AllTheProviders = (props: Props): JSX.Element => {
   const {children} = props;
-  const theme = useSelector((state: RootState) => state.theme);
+  const theme = useSelector((state: RootState) => state.settings.theme);
   const paperTheme: typeof DarkTheme = merge({}, theme.theme === 'dark' ? DarkTheme : DefaultTheme, {
     colors: {primary: COLORS_LOOKUP.CYAN.color},
   });

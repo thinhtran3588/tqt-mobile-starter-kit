@@ -9,7 +9,7 @@ import {styles} from './button.styles';
 
 const Button = (props: React.ComponentProps<typeof RNButton>): JSX.Element => {
   const {style, labelStyle, uppercase = false, ...other} = props;
-  const theme = useSelector((state: RootState) => state.theme);
+  const theme = useSelector((state: RootState) => state.settings.theme);
   const labelColorStyle: TextStyle =
     other.mode === 'contained'
       ? {

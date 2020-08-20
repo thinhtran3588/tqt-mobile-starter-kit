@@ -7,7 +7,7 @@ import {styles} from './notification-sample.styles';
 
 export const NotificationSample = (): JSX.Element => {
   const {showNotification} = useNotification();
-  const theme = useSelector((state: RootState) => state.theme);
+  const theme = useSelector((state: RootState) => state.settings.theme);
   return (
     <>
       <Button

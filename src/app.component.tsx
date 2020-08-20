@@ -20,11 +20,11 @@ export const BaseApp = (): JSX.Element => {
   const colorScheme = useColorScheme();
   const {language, theme, loading} = useSelector((state: RootState) => ({
     language: state.settings.language,
-    theme: state.theme,
+    theme: state.settings.theme,
     loading: state.loading,
   }));
   const {
-    theme: {setColorScheme},
+    settings: {setColorScheme},
     internetConnection: {setInternetConnection},
   } = useDispatch<Dispatch>();
 

@@ -8,7 +8,7 @@ import {styles} from './confirmation-sample.styles';
 
 export const ConfirmationSample = (): JSX.Element => {
   const {showNotification} = useNotification();
-  const theme = useSelector((state: RootState) => state.theme);
+  const theme = useSelector((state: RootState) => state.settings.theme);
   const [open, setOpen] = useState(false);
   const [showTitle, setShowTitle] = useState(false);
   const [type, setType] = useState<ColorType>('INFO');

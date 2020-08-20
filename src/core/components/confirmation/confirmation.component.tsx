@@ -55,7 +55,7 @@ export const Confirmation = (props: ConfirmationProps): JSX.Element => {
     }
   }
   const paperTheme = useTheme();
-  const theme = useSelector((state: RootState) => state.theme);
+  const theme = useSelector((state: RootState) => state.settings.theme);
 
   return (
     <>

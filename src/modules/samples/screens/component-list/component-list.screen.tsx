@@ -28,7 +28,7 @@ import {styles} from './component-list.styles';
 export const ComponentListScreen = (): JSX.Element => {
   const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
   const {t} = useTranslation('');
-  const theme = useSelector((state: RootState) => state.theme);
+  const theme = useSelector((state: RootState) => state.settings.theme);
   const textColor = theme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const componentList = [
     {

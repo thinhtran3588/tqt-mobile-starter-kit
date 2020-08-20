@@ -37,7 +37,7 @@ interface StackItem {
 const MainTabs = (): JSX.Element => {
   const {t} = useTranslation('common');
   const paperTheme = useTheme();
-  const theme = useSelector((state: RootState) => state.theme);
+  const theme = useSelector((state: RootState) => state.settings.theme);
   const tabItems: TabItem[] = [
     {
       name: SCREEN_NAME.COMPONENT_LIST,

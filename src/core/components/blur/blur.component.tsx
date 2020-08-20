@@ -17,7 +17,7 @@ export type BlueProps = Omit<BlurViewProperties, 'blurType'> & {
     | 'extraDark';
 };
 export const Blur = (props: BlueProps): JSX.Element => {
-  const theme = useSelector((state: RootState) => state.theme);
+  const theme = useSelector((state: RootState) => state.settings.theme);
   const {style, blurType = theme.theme, blurAmount = 10, ...other} = props;
   return <BlurView style={[styles.blur, style]} {...other} blurType={blurType} blurAmount={blurAmount} />;
 };

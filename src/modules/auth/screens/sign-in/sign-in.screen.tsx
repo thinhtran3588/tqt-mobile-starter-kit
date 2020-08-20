@@ -17,7 +17,7 @@ export const SignInScreen = (): JSX.Element => {
   const {t} = useTranslation('auth');
   const navigation = useNavigation();
   const paperTheme = useTheme();
-  const theme = useSelector((state: RootState) => state.theme);
+  const theme = useSelector((state: RootState) => state.settings.theme);
   const backgroundColor = theme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const [tabIndex, setTabIndex] = React.useState(0);
   const [routes, setRoutes] = React.useState([

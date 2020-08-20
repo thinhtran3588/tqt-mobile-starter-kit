@@ -35,7 +35,7 @@ export const TextInput = (props: TextInputProps): JSX.Element => {
     clearFocus = true,
     ...other
   } = props;
-  const theme = useSelector((state: RootState) => state.theme);
+  const theme = useSelector((state: RootState) => state.settings.theme);
   const backgroundColor = theme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const [showPassword, setShowPassword] = useState(false);
   const clearButtonVisible = (showClearButton && Boolean(value)) || alwaysShowClearButton;

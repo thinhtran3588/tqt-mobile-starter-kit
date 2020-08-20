@@ -1,1 +1,1 @@
-export * from './language.model';
+export * from './settings.model';
