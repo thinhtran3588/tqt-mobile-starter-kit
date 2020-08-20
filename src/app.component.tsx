@@ -3,9 +3,10 @@ import {I18nextProvider} from 'react-i18next';
 import RNBootSplash from 'react-native-bootsplash';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {RootSiblingParent} from 'react-native-root-siblings';
+import {useColorScheme} from 'react-native';
 import {PersistGate} from 'redux-persist/lib/integration/react';
-import {Provider, useSelector} from 'react-redux';
-import {store, persistor, RootState} from '@app/stores';
+import {Provider, useSelector, useDispatch} from 'react-redux';
+import {store, persistor, RootState, Dispatch} from '@app/stores';
 import {InternetConnectionProvider, LoadingProvider, useLoading} from '@core/contexts';
 import {AuthProvider, useAuth} from '@auth/contexts';
 import {merge} from '@core/helpers';
@@ -17,17 +18,21 @@ import {AppNavigation} from './app.navigation';
 export const BaseApp = (): JSX.Element => {
   const {auth} = useAuth();
   const {loading} = useLoading();
+  const colorScheme = useColorScheme();
   const {language, theme} = useSelector((state: RootState) => ({
     language: state.language,
     theme: state.theme,
   }));
-
-  usePushNotification();
-  useErrorHandler();
+  const {
+    theme: {setColorScheme},
+  } = useDispatch<Dispatch>();
 
   const paperTheme: typeof DarkTheme = merge({}, theme.theme === 'dark' ? DarkTheme : DefaultTheme, {
     colors: {primary: theme.colors.primary},
   });
+
+  usePushNotification();
+  useErrorHandler();
 
   useEffect(() => {
     (async () => {
@@ -38,6 +43,10 @@ export const BaseApp = (): JSX.Element => {
   useEffect(() => {
     i18next.changeLanguage(language);
   }, [language]);
+
+  useEffect(() => {
+    setColorScheme(colorScheme);
+  }, [colorScheme, setColorScheme]);
 
   return (
     <SafeAreaProvider>
