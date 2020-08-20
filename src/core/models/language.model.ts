@@ -5,7 +5,7 @@ import {EVENT_NAME} from '@app/app.constants';
 import {config} from '@core/config';
 
 // default state
-export const state = config().defaultLang;
+const state = config().defaultLang;
 
 const setLanguage = (_draft: string, lang: string): string => {
   return lang;

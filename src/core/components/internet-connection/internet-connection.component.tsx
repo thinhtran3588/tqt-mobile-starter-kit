@@ -2,12 +2,13 @@ import React, {useState, useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Animated} from 'react-native';
 import {useTheme} from 'react-native-paper';
-import {useInternetConnection} from '@core/contexts';
+import {useSelector} from 'react-redux';
+import {RootState} from '@app/stores';
 import {Text} from '../text/text.component';
 import {styles} from './internet-connection.styles';
 
 export const InternetConnection = (): JSX.Element => {
-  const isConnected = useInternetConnection();
+  const isConnected = useSelector((state: RootState) => state.internetConnection);
   const {t} = useTranslation('common');
   const theme = useTheme();
   const [slideAnim] = useState(new Animated.Value(0)); // Initial value for opacity: 0

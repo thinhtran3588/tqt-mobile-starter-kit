@@ -4,10 +4,11 @@ import RNBootSplash from 'react-native-bootsplash';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {RootSiblingParent} from 'react-native-root-siblings';
 import {useColorScheme} from 'react-native';
+import NetInfo from '@react-native-community/netinfo';
 import {PersistGate} from 'redux-persist/lib/integration/react';
 import {Provider, useSelector, useDispatch} from 'react-redux';
 import {store, persistor, RootState, Dispatch} from '@app/stores';
-import {InternetConnectionProvider, LoadingProvider, useLoading} from '@core/contexts';
+import {LoadingProvider, useLoading} from '@core/contexts';
 import {AuthProvider, useAuth} from '@auth/contexts';
 import {merge} from '@core/helpers';
 import {PaperProvider, DefaultTheme, DarkTheme, LoadingModal, CheckUpdate} from '@core/components';
@@ -25,6 +26,7 @@ export const BaseApp = (): JSX.Element => {
   }));
   const {
     theme: {setColorScheme},
+    internetConnection: {setInternetConnection},
   } = useDispatch<Dispatch>();
 
   const paperTheme: typeof DarkTheme = merge({}, theme.theme === 'dark' ? DarkTheme : DefaultTheme, {
@@ -48,6 +50,15 @@ export const BaseApp = (): JSX.Element => {
     setColorScheme(colorScheme);
   }, [colorScheme, setColorScheme]);
 
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener((state) => {
+      setInternetConnection(state.isConnected);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, [setInternetConnection]);
+
   return (
     <SafeAreaProvider>
       <RootSiblingParent>
@@ -67,11 +78,9 @@ export const App = (): JSX.Element => {
       <PersistGate persistor={persistor}>
         <I18nextProvider i18n={i18next}>
           <LoadingProvider>
-            <InternetConnectionProvider>
-              <AuthProvider>
-                <BaseApp />
-              </AuthProvider>
-            </InternetConnectionProvider>
+            <AuthProvider>
+              <BaseApp />
+            </AuthProvider>
           </LoadingProvider>
         </I18nextProvider>
       </PersistGate>
