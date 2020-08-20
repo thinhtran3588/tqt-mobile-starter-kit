@@ -44,6 +44,16 @@ it('update configuration correctly', async () => {
         },
         "id": "pro.thinhtran.starterkit",
       },
+      "languages": Array [
+        Object {
+          "code": "en",
+          "text": "English",
+        },
+        Object {
+          "code": "vi",
+          "text": "Tiếng Việt",
+        },
+      ],
       "sentry": Object {
         "dns": "https://fb6b09b4e69340159611ffd2563898c6@o430974.ingest.sentry.io/5380662",
       },
@@ -104,6 +114,16 @@ it('update configuration correctly', async () => {
         },
         "id": "pro.thinhtran.test",
       },
+      "languages": Array [
+        Object {
+          "code": "en",
+          "text": "English",
+        },
+        Object {
+          "code": "vi",
+          "text": "Tiếng Việt",
+        },
+      ],
       "sentry": Object {
         "dns": "https://fb6b09b4e69340159611ffd2563898c6@o430974.ingest.sentry.io/5380662",
       },

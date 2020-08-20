@@ -1,15 +1,19 @@
 import React, {useState} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {RootState, Dispatch} from '@app/stores';
 import {Button, Picker, PickerDataItem} from '@core/components';
-import {LANGUAGES, useLanguage} from '@core/contexts';
 import {config} from '@core/config';
 import {styles} from './language-setting.styles';
 
-const languages: PickerDataItem[] = LANGUAGES.map((lang) => ({value: lang.code, label: lang.text}));
+const languages: PickerDataItem[] = config().languages.map((lang) => ({value: lang.code, label: lang.text}));
 
 export const LanguageSetting = (): JSX.Element => {
   const [open, setOpen] = useState(false);
-  const {language, setLanguage} = useLanguage();
-  const selectedLang = LANGUAGES.find((lang) => lang.code === language)?.text;
+  const language = useSelector((state: RootState) => state.settings.language);
+  const {
+    settings: {setLanguageI18n},
+  } = useDispatch<Dispatch>();
+  const selectedLang = config().languages.find((lang) => lang.code === language)?.text;
   return (
     <>
       <Button icon='globe-model' onPress={() => setOpen(true)} style={styles.button}>
@@ -21,7 +25,7 @@ export const LanguageSetting = (): JSX.Element => {
         open={open}
         setOpen={setOpen}
         dataSources={languages}
-        onChangeValue={(value) => setLanguage(value || config().defaultLang)}
+        onChangeValue={(value) => setLanguageI18n(value || config().defaultLang)}
       />
     </>
   );

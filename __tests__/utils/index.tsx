@@ -2,6 +2,7 @@
 // https://testing-library.com/docs/native-testing-library/setup
 import React, {ReactNode, ReactElement} from 'react';
 import {useColorScheme} from 'react-native';
+import {Provider} from 'react-redux';
 import {render, RenderResult, RenderOptions} from '@testing-library/react-native';
 import {
   AppThemeProvider,
@@ -13,6 +14,7 @@ import {
 } from '@core/contexts';
 import {PaperProvider, DefaultTheme, DarkTheme} from '@core/components';
 import {AuthProvider} from '@auth/contexts';
+import {store} from '@app/stores';
 
 interface Props {
   children?: ReactNode;

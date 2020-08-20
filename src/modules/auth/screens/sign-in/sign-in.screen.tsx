@@ -1,8 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'react-native-paper';
+import {useSelector} from 'react-redux';
+import {RootState} from '@app/stores';
 import {Layout, Image, Button, TabView, TabBar, SceneMap, ScrollView} from '@core/components';
 import {useAppTheme, DARK_BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR} from '@core/contexts';
 import {useDimensions} from '@core/hooks';
@@ -19,11 +21,12 @@ export const SignInScreen = (): JSX.Element => {
   const {appTheme} = useAppTheme();
   const backgroundColor = appTheme.theme === 'dark' ? DARK_BACKGROUND_COLOR : LIGHT_BACKGROUND_COLOR;
   const [tabIndex, setTabIndex] = React.useState(0);
-  const [routes] = React.useState([
+  const [routes, setRoutes] = React.useState([
     {key: 'signIn', title: t('signIn')},
     {key: 'signUp', title: t('signUp')},
   ]);
   const dimensions = useDimensions();
+  const language = useSelector((state: RootState) => state.settings.language);
   const CONTAINER_HEIGHT = 650;
   const marginTop = dimensions.window.height < CONTAINER_HEIGHT ? 0 : (dimensions.window.height - CONTAINER_HEIGHT) / 2;
 
@@ -31,6 +34,13 @@ export const SignInScreen = (): JSX.Element => {
     signIn: EmailSignIn,
     signUp: EmailSignUp,
   });
+
+  useEffect(() => {
+    setRoutes([
+      {key: 'signIn', title: t('signIn')},
+      {key: 'signUp', title: t('signUp')},
+    ]);
+  }, [language, t]);
 
   return (
     <ClearSignInFormProvider>

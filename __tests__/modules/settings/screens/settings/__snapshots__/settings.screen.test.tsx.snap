@@ -902,30 +902,6 @@ exports[`opens language picker 1`] = `
                     >
                       language
                     </Text>
-                    <Text
-                      numberOfLines={2}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#000000",
-                            "fontFamily": "System",
-                            "fontWeight": "400",
-                            "textAlign": "left",
-                          },
-                          Array [
-                            Object {
-                              "fontSize": 14,
-                            },
-                            Object {
-                              "color": "rgba(0, 0, 0, 0.54)",
-                            },
-                            undefined,
-                          ],
-                        ]
-                      }
-                    >
-                      English
-                    </Text>
                   </View>
                   <View
                     pointerEvents="box-none"
@@ -3028,30 +3004,6 @@ exports[`opens primary color picker 1`] = `
                       }
                     >
                       language
-                    </Text>
-                    <Text
-                      numberOfLines={2}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#000000",
-                            "fontFamily": "System",
-                            "fontWeight": "400",
-                            "textAlign": "left",
-                          },
-                          Array [
-                            Object {
-                              "fontSize": 14,
-                            },
-                            Object {
-                              "color": "rgba(0, 0, 0, 0.54)",
-                            },
-                            undefined,
-                          ],
-                        ]
-                      }
-                    >
-                      English
                     </Text>
                   </View>
                   <View
@@ -5156,30 +5108,6 @@ exports[`renders correctly 1`] = `
                     >
                       language
                     </Text>
-                    <Text
-                      numberOfLines={2}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#000000",
-                            "fontFamily": "System",
-                            "fontWeight": "400",
-                            "textAlign": "left",
-                          },
-                          Array [
-                            Object {
-                              "fontSize": 14,
-                            },
-                            Object {
-                              "color": "rgba(0, 0, 0, 0.54)",
-                            },
-                            undefined,
-                          ],
-                        ]
-                      }
-                    >
-                      English
-                    </Text>
                   </View>
                   <View
                     pointerEvents="box-none"
@@ -7283,30 +7211,6 @@ exports[`uses dark theme 1`] = `
                     >
                       language
                     </Text>
-                    <Text
-                      numberOfLines={2}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#ffffff",
-                            "fontFamily": "System",
-                            "fontWeight": "400",
-                            "textAlign": "left",
-                          },
-                          Array [
-                            Object {
-                              "fontSize": 14,
-                            },
-                            Object {
-                              "color": "rgba(255, 255, 255, 0.54)",
-                            },
-                            undefined,
-                          ],
-                        ]
-                      }
-                    >
-                      English
-                    </Text>
                   </View>
                   <View
                     pointerEvents="box-none"
@@ -9409,30 +9313,6 @@ exports[`uses light theme 1`] = `
                       }
                     >
                       language
-                    </Text>
-                    <Text
-                      numberOfLines={2}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#000000",
-                            "fontFamily": "System",
-                            "fontWeight": "400",
-                            "textAlign": "left",
-                          },
-                          Array [
-                            Object {
-                              "fontSize": 14,
-                            },
-                            Object {
-                              "color": "rgba(0, 0, 0, 0.54)",
-                            },
-                            undefined,
-                          ],
-                        ]
-                      }
-                    >
-                      English
                     </Text>
                   </View>
                   <View

@@ -37,6 +37,16 @@
     },
     "id": "pro.thinhtran.starterkit"
   },
+  "languages": [
+    {
+      "code": "en",
+      "text": "English"
+    },
+    {
+      "code": "vi",
+      "text": "Tiếng Việt"
+    }
+  ],
   "sentry": {
     "dns": ""
   },

@@ -130,3 +130,21 @@ jest.mock('react-native-notifications', () => ({
   }),
   postLocalNotification: jest.fn(),
 }));
+
+jest.mock('@rematch/core', () => ({
+  init: jest.fn(),
+  createModel: () => () => ({}),
+}));
+
+jest.mock('redux-persist', () => ({
+  persistStore: jest.fn(),
+}));
+
+jest.mock('react-redux', () => ({
+  useSelector: () => ({}),
+  useDispatch: () => ({
+    settings: {
+      setLanguageI18n: jest.fn(),
+    },
+  }),
+}));
