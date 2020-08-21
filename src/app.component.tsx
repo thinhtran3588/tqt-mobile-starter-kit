@@ -5,7 +5,6 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {RootSiblingParent} from 'react-native-root-siblings';
 import {useColorScheme} from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
-import {PersistGate} from 'redux-persist/lib/integration/react';
 import {Provider, useDispatch} from 'react-redux';
 import {
   PaperProvider,
@@ -18,14 +17,15 @@ import {
   useErrorHandler,
   useShallowEqualSelector,
 } from '@app/core';
-import {store, persistor, RootState, Dispatch} from '@app/stores';
+import {store, RootState, Dispatch} from '@app/stores';
 import {AuthProvider} from '@auth/contexts';
 import {i18next} from '@app/i18n';
 import {AppNavigation} from './app.navigation';
 
 export const BaseApp = (): JSX.Element => {
   const colorScheme = useColorScheme();
-  const {language, theme, loading, isTester} = useShallowEqualSelector((state: RootState) => ({
+  const {language, theme, loading, isTester, isLoadedFromStorage} = useShallowEqualSelector((state: RootState) => ({
+    isLoadedFromStorage: state.isLoadedFromStorage,
     language: state.settings.language,
     theme: state.settings.theme,
     loading: state.loading,
@@ -44,10 +44,10 @@ export const BaseApp = (): JSX.Element => {
   useErrorHandler();
 
   useEffect(() => {
-    (async () => {
+    if (isLoadedFromStorage) {
       RNBootSplash.hide({duration: 500});
-    })();
-  }, []);
+    }
+  }, [isLoadedFromStorage]);
 
   useEffect(() => {
     i18next.changeLanguage(language);
@@ -82,13 +82,11 @@ export const BaseApp = (): JSX.Element => {
 export const App = (): JSX.Element => {
   return (
     <Provider store={store}>
-      <PersistGate persistor={persistor} loading={<LoadingModal loading />}>
-        <I18nextProvider i18n={i18next}>
-          <AuthProvider>
-            <BaseApp />
-          </AuthProvider>
-        </I18nextProvider>
-      </PersistGate>
+      <I18nextProvider i18n={i18next}>
+        <AuthProvider>
+          <BaseApp />
+        </AuthProvider>
+      </I18nextProvider>
     </Provider>
   );
 };

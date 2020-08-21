@@ -12,7 +12,7 @@ export type RootState = RematchRootState<RootModel>;
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['language', 'theme'],
+  whitelist: ['isLoadedFromStorage', 'settings', 'auth'],
   version: 1,
 };
 
@@ -21,4 +21,8 @@ export const store: Store = init({
   plugins: [immerPlugin(), persistPlugin(persistConfig)],
 });
 
-export const persistor = persistStore(store);
+export const persistor = persistStore(store, undefined, () => {
+  if (!store.getState().isLoadedFromStorage) {
+    store.dispatch.isLoadedFromStorage.setIsLoadedFromStorageCompleted();
+  }
+});
