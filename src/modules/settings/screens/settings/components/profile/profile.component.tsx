@@ -1,15 +1,16 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
+import {useSelector} from 'react-redux';
+import {RootState} from '@app/stores';
 import {SCREEN_NAME} from '@app/app.constants';
 import {useNavigation} from '@react-navigation/native';
 import {View, Divider, Button, Avatar, Text} from '@app/core';
-import {useAuth} from '@auth/contexts';
 import {styles} from './profile.styles';
 
 export const Profile = (): JSX.Element => {
   const {t} = useTranslation('settings');
   const navigation = useNavigation();
-  const {auth} = useAuth();
+  const auth = useSelector((state: RootState) => state.auth);
 
   const signIn = (): void => {
     navigation.navigate(SCREEN_NAME.SIGN_IN);

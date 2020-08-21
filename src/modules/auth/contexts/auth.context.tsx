@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useMemo, useState, useCallback} from 'react';
+import React, {useContext, useEffect, useMemo, useCallback} from 'react';
 import firebaseAuth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {LoginManager, AccessToken} from 'react-native-fbsdk';
@@ -6,26 +6,16 @@ import appleAuth, {
   AppleAuthRequestScope,
   AppleAuthRequestOperation,
 } from '@invertase/react-native-apple-authentication';
-import {useImmer} from 'use-immer';
-import {useSelector} from 'react-redux';
-import {usePersistenceImmer, config, AppError, configError, logEvent, configAnalytics, logAuthEvent} from '@app/core';
+import {useSelector, useDispatch} from 'react-redux';
+import {config, AppError, configError, logEvent, configAnalytics, logAuthEvent} from '@app/core';
 import {EVENT_NAME} from '@app/app.constants';
-import {RootState} from '@app/stores';
+import {RootState, Dispatch as StoreDispatch} from '@app/stores';
 
 interface AuthProviderProps {
   children?: React.ReactNode;
 }
 
 export type SignInType = 'EMAIL' | 'PHONE_NO' | 'FACEBOOK' | 'GOOGLE' | 'APPLE';
-
-interface AuthState {
-  userId: string;
-  displayName?: string;
-  avatarUrl?: string;
-  signInType: SignInType;
-  isSignedIn: boolean;
-  initializing: boolean;
-}
 
 interface SignUpEmailParams {
   email: string;
@@ -46,17 +36,6 @@ interface Dispatch {
   verifyCode: (verificationCode: string) => Promise<void>;
 }
 
-const AUTH_KEY = 'AUTH';
-const DEFAULT_AUTH: AuthState = {
-  userId: '',
-  avatarUrl: '',
-  displayName: '',
-  signInType: 'EMAIL',
-  isSignedIn: false,
-  initializing: true,
-};
-
-const AuthContext = React.createContext(DEFAULT_AUTH);
 const AuthDispatchContext = React.createContext<Dispatch>(undefined as never);
 
 let confirmationResult: FirebaseAuthTypes.ConfirmationResult | undefined;
@@ -64,58 +43,55 @@ let confirmationResult: FirebaseAuthTypes.ConfirmationResult | undefined;
 const AuthProvider = (props: AuthProviderProps): JSX.Element => {
   const {children} = props;
   const language = useSelector((state: RootState) => state.settings.language);
-  const [auth, setAuth] = useImmer(DEFAULT_AUTH);
-  const [initializing, setInitializing] = useState(true);
-  const [setAuthPersistence] = usePersistenceImmer(auth, setAuth, AUTH_KEY);
+  const {
+    auth: {setAuth, clearAuth},
+  } = useDispatch<StoreDispatch>();
 
   useEffect(() => {
     firebaseAuth().languageCode = language;
   }, [language]);
 
-  const onAuthStateChanged: FirebaseAuthTypes.AuthListenerCallback = useCallback((user): void => {
-    if (!user) {
-      setAuthPersistence((draft) => Object.assign(draft, DEFAULT_AUTH));
-    } else {
-      let avatarUrl = user.photoURL || '';
-      let signInType: SignInType = 'EMAIL';
-      let displayName = user.displayName || undefined;
-      if (user.providerData && user.providerData.length >= 1) {
-        if (user.providerData[0].providerId === 'facebook.com') {
-          signInType = 'FACEBOOK';
-          avatarUrl = `${avatarUrl}?type=large`;
-        } else if (user.providerData[0].providerId === 'google.com') {
-          signInType = 'GOOGLE';
-          avatarUrl = avatarUrl.replace('s96-c', 's400-c');
-        } else if (user.providerData[0].providerId === 'apple.com') {
-          signInType = 'APPLE';
-          displayName = displayName || user.providerData[0].email;
-        } else if (user.providerData[0].providerId === 'phone') {
-          signInType = 'PHONE_NO';
-          displayName = displayName || user.providerData[0].phoneNumber;
-        } else {
-          signInType = 'EMAIL';
-          displayName = displayName || user.providerData[0].email;
+  const onAuthStateChanged: FirebaseAuthTypes.AuthListenerCallback = useCallback(
+    (user): void => {
+      if (!user) {
+        clearAuth();
+      } else {
+        let avatarUrl = user.photoURL || '';
+        let signInType: SignInType = 'EMAIL';
+        let displayName = user.displayName || undefined;
+        if (user.providerData && user.providerData.length >= 1) {
+          if (user.providerData[0].providerId === 'facebook.com') {
+            signInType = 'FACEBOOK';
+            avatarUrl = `${avatarUrl}?type=large`;
+          } else if (user.providerData[0].providerId === 'google.com') {
+            signInType = 'GOOGLE';
+            avatarUrl = avatarUrl.replace('s96-c', 's400-c');
+          } else if (user.providerData[0].providerId === 'apple.com') {
+            signInType = 'APPLE';
+            displayName = displayName || user.providerData[0].email;
+          } else if (user.providerData[0].providerId === 'phone') {
+            signInType = 'PHONE_NO';
+            displayName = displayName || user.providerData[0].phoneNumber;
+          } else {
+            signInType = 'EMAIL';
+            displayName = displayName || user.providerData[0].email;
+          }
         }
+        setAuth({
+          userId: user.uid,
+          displayName,
+          avatarUrl,
+          isSignedIn: true,
+          signInType,
+        });
       }
-      setAuthPersistence((draft) => {
-        draft.userId = user.uid;
-        draft.displayName = displayName;
-        draft.avatarUrl = avatarUrl;
-        draft.isSignedIn = true;
-        draft.signInType = signInType;
-        draft.initializing = false;
-      });
-    }
 
-    // config error/analytics
-    configError({userId: user?.uid || ''});
-    configAnalytics({userId: user?.uid || ''});
-
-    if (initializing) {
-      setInitializing(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+      // config error/analytics
+      configError({userId: user?.uid || ''});
+      configAnalytics({userId: user?.uid || ''});
+    },
+    [clearAuth, setAuth],
+  );
 
   useEffect(() => {
     const subscriber = firebaseAuth().onAuthStateChanged(onAuthStateChanged);
@@ -256,8 +232,8 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
     return true;
   };
 
-  const signOut = async (): Promise<void> => {
-    setAuthPersistence((draft) => Object.assign(draft, DEFAULT_AUTH));
+  const signOut = useCallback(async (): Promise<void> => {
+    clearAuth();
     if (firebaseAuth().currentUser) {
       await firebaseAuth().signOut();
     }
@@ -267,7 +243,7 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
     } catch (err) {
       // ignore err
     }
-  };
+  }, [clearAuth]);
 
   const sendPasswordResetEmail = async (email: string): Promise<void> => {
     try {
@@ -325,21 +301,14 @@ const AuthProvider = (props: AuthProviderProps): JSX.Element => {
       sendPhoneNoVerificationCode,
       verifyCode,
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [auth],
+    [signOut],
   );
-  const authState = useMemo(() => ({...auth, initializing}), [auth, initializing]);
-  return (
-    <AuthContext.Provider value={authState}>
-      <AuthDispatchContext.Provider value={dispatch}>{children}</AuthDispatchContext.Provider>
-    </AuthContext.Provider>
-  );
+  return <AuthDispatchContext.Provider value={dispatch}>{children}</AuthDispatchContext.Provider>;
 };
 
-const useAuth = (): {auth: AuthState; dispatch: Dispatch} => {
-  const auth = useContext(AuthContext);
+const useAuth = (): {dispatch: Dispatch} => {
   const dispatch = useContext(AuthDispatchContext);
-  return {auth, dispatch};
+  return {dispatch};
 };
 
 export {AuthProvider, useAuth};

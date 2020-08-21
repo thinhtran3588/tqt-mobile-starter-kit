@@ -9,7 +9,6 @@ interface AuthState {
   avatarUrl?: string;
   signInType: SignInType;
   isSignedIn: boolean;
-  initializing: boolean;
 }
 
 // default state
@@ -19,7 +18,6 @@ const state: AuthState = {
   displayName: '',
   signInType: 'EMAIL',
   isSignedIn: false,
-  initializing: true,
 };
 
 const setAuth = (draft: AuthState, newAuth: AuthState): AuthState => {
@@ -27,10 +25,16 @@ const setAuth = (draft: AuthState, newAuth: AuthState): AuthState => {
   return draft;
 };
 
+const clearAuth = (draft: AuthState): AuthState => {
+  Object.assign(draft, state);
+  return draft;
+};
+
 export const auth = createModel<RootModel>()({
   state,
   reducers: {
     setAuth,
+    clearAuth,
   },
   effects: (_dispatch) => ({}),
 });

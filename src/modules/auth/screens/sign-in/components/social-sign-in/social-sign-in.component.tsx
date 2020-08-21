@@ -1,16 +1,16 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Platform} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {View, Colors, IconButton} from '@app/core';
-import {Dispatch} from '@app/stores';
+import {Dispatch, RootState} from '@app/stores';
 import {SCREEN_NAME} from '@app/app.constants';
 import {useAuth, SignInType} from '@auth/contexts';
 import {styles} from './social-sign-in.styles';
 
 export const SocialSignIn = (): JSX.Element => {
+  const auth = useSelector((state: RootState) => state.auth);
   const {
-    auth,
     dispatch: {signInFacebook, signInGoogle, signInApple},
   } = useAuth();
   const navigation = useNavigation();

@@ -3,6 +3,8 @@ import {useImmer} from 'use-immer';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
+import {RootState} from '@app/stores';
 import COUNTRIES from '@app/assets/json/countries.json';
 import {
   Button,
@@ -36,8 +38,8 @@ const countries: PickerDataItem[] = COUNTRIES.map((country) => ({value: country.
 export const SignInPhoneNoScreen = (): JSX.Element => {
   const {t} = useTranslation('auth');
   const navigation = useNavigation();
+  const auth = useSelector((state: RootState) => state.auth);
   const {
-    auth,
     dispatch: {sendPhoneNoVerificationCode, verifyCode},
   } = useAuth();
   const [verificationStatus, setVerificationStatus] = useImmer<VerificationStatus>({

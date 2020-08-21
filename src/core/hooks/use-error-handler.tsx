@@ -17,10 +17,10 @@ export const useErrorHandler = (): void => {
 
   const handleError = useCallback(
     (err: AppError): void => {
-      const {code, messageCode, messageData} = err;
+      const {code, messageCode, messageData, message} = err;
 
       showNotification({
-        message: messageCode ? t(messageCode, messageData) : code || t('common:unknownError'),
+        message: messageCode ? t(messageCode, messageData) : `${code} ${message}` || t('common:unknownError'),
         type: 'ERROR',
       });
 

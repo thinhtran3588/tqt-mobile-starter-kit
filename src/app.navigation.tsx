@@ -10,9 +10,8 @@ import {WebViewScreen, Colors, Icon, trackScreen, config} from '@app/core';
 import {ComponentListScreen, FormScreen} from '@samples/screens';
 import {SettingsScreen} from '@settings/screens';
 import {SignInScreen, ForgotPasswordScreen, SignInPhoneNoScreen} from '@auth/screens';
-import {useAuth} from '@auth/contexts';
 import {SCREEN_NAME} from '@app/app.constants';
-import {RootState} from './stores';
+import {RootState} from '@app/stores';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -84,7 +83,7 @@ const MainTabs = (): JSX.Element => {
 };
 
 export const AppNavigation = (): JSX.Element => {
-  const {auth} = useAuth();
+  const auth = useSelector((state: RootState) => state.auth);
   const routeNameRef = React.useRef();
   const navigationRef = React.useRef();
 

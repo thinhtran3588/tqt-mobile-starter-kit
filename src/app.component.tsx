@@ -82,7 +82,7 @@ export const BaseApp = (): JSX.Element => {
 export const App = (): JSX.Element => {
   return (
     <Provider store={store}>
-      <PersistGate persistor={persistor}>
+      <PersistGate persistor={persistor} loading={<LoadingModal loading />}>
         <I18nextProvider i18n={i18next}>
           <AuthProvider>
             <BaseApp />
