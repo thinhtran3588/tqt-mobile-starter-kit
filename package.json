@@ -34,7 +34,7 @@
     "react-native-notifications": "^3.3.2",
     "react-native-paper": "^4.0.1",
     "react-native-picker": "^4.3.7",
-    "react-native-reanimated": "^1.9.0",
+    "react-native-reanimated": "^2.10.0",
     "react-native-root-siblings": "^4.0.6",
     "react-native-root-toast": "^3.2.1",
     "react-native-safe-area-context": "^3.1.1",
